@@ -4,6 +4,8 @@ Word and LaTex are too overkill for a resume.
 
 So why not write it in Markdown?
 
+Have fun: [oh-resume.zxh.io](https://oh-resume.zxh.io/)
+
 **WIP**
 
 
