@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Fontin SmallCaps";
+  src: url("@/assets/fonts/fontin-small-caps.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "CMU Sans Serif";
+  font-style: normal;
+  font-weight: normal;
+  src: url("@/assets/fonts/cmu-sans-serif/regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "CMU Sans Serif";
+  font-style: normal;
+  font-weight: bold;
+  src: url("@/assets/fonts/cmu-sans-serif/bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "CMU Sans Serif";
+  font-style: italic;
+  font-weight: normal;
+  src: url("@/assets/fonts/cmu-sans-serif/italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "CMU Sans Serif";
+  font-style: italic;
+  font-weight: bold;
+  src: url("@/assets/fonts/cmu-sans-serif/bolditalic.ttf") format("opentype");
+}

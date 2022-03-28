@@ -1,0 +1,57 @@
+.app {
+  @apply h-screen;
+}
+
+.header {
+  height: 60px;
+}
+
+.resume-main {
+  height: calc(100% - 60px);
+  @apply flex;
+}
+
+.editor {
+  @apply flex-1 h-full;
+}
+
+.preview {
+  width: 804px;
+  @apply h-full overflow-auto;
+}
+
+.preview-paper {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  border: solid 1px #000;
+  margin: 5px auto;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+  }
+
+  .header,
+  .editor {
+    display: none;
+  }
+
+  .preview {
+    width: 210mm;
+    overflow: hidden;
+  }
+
+  .preview-paper {
+    border: none;
+    margin: 0 auto;
+  }
+
+  .app,
+  .resume-main,
+  .preview,
+  .preview-paper {
+    height: auto;
+  }
+}

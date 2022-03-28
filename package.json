@@ -1,0 +1,33 @@
+{
+  "name": "oh-resume",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vue/compiler-sfc": "^3.2.31",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "front-matter": "^4.0.2",
+    "markdown-it": "^12.3.2",
+    "markdown-it-deflist": "^2.1.0",
+    "monaco-editor": "^0.22.1",
+    "postcss": "^8.4.8",
+    "prettier": "^2.5.1",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6",
+    "vite-plugin-windicss": "^1.8.3",
+    "vue": "^3.2.31"
+  }
+}
