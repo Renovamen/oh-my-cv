@@ -11,10 +11,19 @@ Have fun: [oh-resume.zxh.io](https://oh-resume.zxh.io/)
 
 &nbsp;
 
+## Notice
+
+Highly recommend using Chrome.
+
+
+&nbsp;
+
 ## Features
 
 - Write your resume in Markdown and preview it in real-time online
 - Export to A4 PDF
+- Automatic page break
+- An open-source static website hosted on [Github Pages](https://pages.github.com/) which doesn't (have the ability to) collect your data
 - Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 
 
@@ -22,9 +31,9 @@ Have fun: [oh-resume.zxh.io](https://oh-resume.zxh.io/)
 
 ## TO-DO
 
-- [ ] Handle page splitting
 - [ ] Support editting font, margin, brand color, etc. online
 - [ ] Support uploading a Markdown file (or pasting a URL)
+- [ ] US Letter
 - [ ] Improve UI 
 
 

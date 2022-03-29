@@ -38,7 +38,7 @@ Shanghai, China
 ## Research Experience
 
 07/2021 – Present
-  ~ **Machine Learning Engineer Intern**, Slow Hand Technology, Beijing
+  ~ **Machine Learning Engineer Intern**, Slow Feet Technology, Beijing
 
 - Devised a new food-agnostic formulation for fine-grained cross-ingredient meal cooking and subsumed the recent popular works into the proposed scheme
 - Proposed a cream of mushroom soup recipe which is competitive when compared with the SOTA recipes with complex steps by only altering the way of cutting mushroom, **submitted to NeurIPS 2099**
@@ -85,4 +85,4 @@ Shanghai, China
 
 **Tools and Frameworks:** Git, PyTorch, Keras, scikit-learn, Linux, Vue, React, Django, LATEX
 
-**Languages:** Chinese (native), English (proficient, TOEFL: 106, GRE: 322)
+**Languages:** Chinese (native), English (proficient)

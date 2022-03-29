@@ -6,9 +6,12 @@ export default {
   plugins: [vue(), windicss()],
   publicDir: "public",
   optimizeDeps: {},
+  server: {
+    host: "0.0.0.0"
+  },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "./src")
     }
   }
 };

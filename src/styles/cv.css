@@ -1,19 +1,72 @@
-.preview {
-  width: 804px;
+.preview-page {
+  padding: 35px 40px;
 }
 
-.preview-paper {
+.preview {
   font-family: "CMU Sans Serif", "PingFang SC", Helvetica, ST-Heiti, "Microsoft Yahei";
-  padding: 30px 40px;
   font-size: 15px;
 }
 
-.preview-paper h1,
-.preview-paper h2,
-.preview-paper h3,
-.preview-paper h4 {
+.preview h1,
+.preview h2,
+.preview h3,
+.preview h4 {
   font-family: "Fontin SmallCaps";
   color: #377bb5;
+}
+
+.preview {
+  word-break: break-all;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.preview h2,
+.preview h3 {
+  font-weight: normal;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.preview h2 {
+  border-bottom: solid 1px rgb(55, 123, 181, .6);
+}
+
+.preview a {
+  color: #377bb5;
+}
+
+.preview ul,
+.preview ol {
+  padding-left: 22px;
+  margin: 5px 0;
+}
+
+.preview ul {
+  list-style-type: circle;
+}
+
+.preview li,
+.preview p,
+.preview dl {
+  line-height: 1.32;
+  margin: 0;
+}
+
+.preview dl {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.preview dl dd {
+  flex: 1;
+  margin-inline-start: 0;
+}
+
+.preview svg.iconify {
+  vertical-align: -0.15rem;
 }
 
 .preview-header {
@@ -23,62 +76,14 @@
 .preview-header h1 {
   font-size: 32px;
   text-align: center;
+  line-height: 1;
+  margin-bottom: 8px;
 }
 
 .preview-header a {
   color: black;
 }
 
-.preview-content {
-  word-break: break-all;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-}
-
-.preview-content a {
-  color: #377bb5;
-}
-
-.preview-content h2 {
-  font-size: 18px;
-  margin: 5px 0;
-  border-bottom: solid 1px rgb(55, 123, 181, .6);
-}
-
-.preview-content ul {
-  list-style-type: circle;
-  padding-left: 22px;
-  margin: 5px 0;
-}
-
-.preview-content li,
-.preview-content p,
-.preview-content dl {
-  line-height: 1.32;
-}
-
-.preview-content dl {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.preview-content dl dd {
-  flex: 1;
-  margin-inline-start: 0;
-}
-
-.preview-content dl,
-.preview-content p {
-  margin: 0;
-}
-
 .preview-header svg.iconify {
   vertical-align: -0.2rem;
 }
-
-.preview-content svg.iconify {
-  vertical-align: -0.15rem;
-}
-

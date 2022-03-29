@@ -1,4 +1,4 @@
-.app {
+#app {
   @apply h-screen;
 }
 
@@ -15,22 +15,40 @@
   @apply flex-1 h-full;
 }
 
-.preview {
-  width: 804px;
-  @apply h-full overflow-auto;
+.preview-container {
+  @apply w-auto h-full overflow-y-scroll overflow-x-hidden;
 }
 
-.preview-paper {
+.preview {
+  width: 804px;
+}
+
+.preview-page {
   width: 210mm;
-  height: 297mm;
+  height: 291mm;
   position: relative;
   border: solid 1px #000;
   margin: 5px auto;
 }
 
+@media only screen and (max-width: 810px) {
+  .resume-main {
+    @apply flex-col-reverse;
+  }
+
+  .preview-container {
+    @apply w-full h-1/2 overflow-x-scroll;
+  }
+
+  .editor {
+    @apply w-full;
+  }
+}
+
 @media print {
   @page {
-    size: A4 portrait;
+    size: A4;
+    margin: 0;
   }
 
   .header,
@@ -39,19 +57,24 @@
   }
 
   .preview {
-    width: 210mm;
+    width: 100%;
     overflow: hidden;
   }
 
-  .preview-paper {
+  .preview-page {
+    width: 100%;
     border: none;
     margin: 0 auto;
   }
 
-  .app,
+  .preview-page-break {
+    page-break-before: always;
+  }
+
+  #app,
   .resume-main,
   .preview,
-  .preview-paper {
+  .preview-page {
     height: auto;
   }
 }
