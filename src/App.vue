@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <Header @update-markdown-content="updateMarkdownContent" />
 
   <splitpanes
     class="resume-main default-theme"
@@ -68,6 +68,12 @@ onBeforeUnmount(() => {
   editor?.dispose();
 });
 
+// Update Markdown content
+
+const updateMarkdownContent = (content: string) => {
+  editor!.getModel()!.setValue(content);
+};
+
 // Render HTML for previewing
 
 const html = computed(() => renderPreviewHTML(inputText.value));
@@ -95,7 +101,9 @@ watch(
   () => width.value,
   () => {
     handleWindowSize();
-    handlePaneResize();
+    nextTick(() => {
+      handlePaneResize();
+    });
   }
 );
 

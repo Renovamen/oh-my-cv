@@ -33,8 +33,9 @@ Highly recommend using Chrome.
 ## TO-DO
 
 - [ ] Support editting font, margin, brand color, etc. online
-- [ ] Support uploading a Markdown file (or pasting a URL)
 - [ ] US Letter
+- [x] Support uploading a Markdown file (or pasting a URL)
+- [x] Improve UI 
 
 
 &nbsp;

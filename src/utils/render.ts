@@ -73,7 +73,7 @@ export const handleHeader = (html: string, frontmatter) => {
 export const handlePageBreak = () => {
   const container = document.querySelector(".preview") as HTMLElement;
 
-  const margin = 80;
+  const margin = 50;
   const a4Height = 1120;
 
   const getPageElement = () => {
