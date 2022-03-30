@@ -1,2 +1,2 @@
 export * from "./files";
-export * from "./html";
+export * from "./render";

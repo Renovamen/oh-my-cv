@@ -1,3 +1,32 @@
+import MarkdownIt from "markdown-it";
+import MarkdownItDeflist from "markdown-it-deflist";
+import matter from "front-matter";
+
+export const getMarkdownIt = () => {
+  const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
+
+  // remember old renderer, if overridden, or proxy to default renderer
+  const defaultRender =
+    md.renderer.rules.link_open ||
+    function (tokens, idx, options, env, self) {
+      return self.renderToken(tokens, idx, options);
+    };
+
+  md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+    // if you are sure other plugins can't add `target` - drop check below
+    const aIndex = tokens[idx].attrIndex("target");
+    if (aIndex < 0) {
+      tokens[idx].attrPush(["target", "_blank"]); // add new attribute
+    } else {
+      (tokens[idx] as any).attrs[aIndex][1] = "_blank"; // replace value of existing attr
+    }
+    // pass token to default renderer.
+    return defaultRender(tokens, idx, options, env, self);
+  };
+
+  return md;
+};
+
 export const handleDeflist = (html: string) => {
   const dlReg = /<dl>([\s\S]*?)<\/dl>/g;
   const dlList = html.match(dlReg);
@@ -17,7 +46,7 @@ export const handleDeflist = (html: string) => {
   return html;
 };
 
-export const appendHeader = (html: string, frontmatter) => {
+export const handleHeader = (html: string, frontmatter) => {
   let header = "";
 
   if (frontmatter.name) header += `<h1>${frontmatter.name}</h1>\n`;
@@ -44,8 +73,8 @@ export const appendHeader = (html: string, frontmatter) => {
 export const handlePageBreak = () => {
   const container = document.querySelector(".preview") as HTMLElement;
 
-  const margin = 60;
-  const a4Height = 1123;
+  const margin = 80;
+  const a4Height = 1120;
 
   const getPageElement = () => {
     const page = document.createElement("div") as HTMLElement;
@@ -84,8 +113,6 @@ export const handlePageBreak = () => {
       parseInt(style.marginTop) +
       parseInt(style.marginBottom);
 
-    console.log(child, child.clientHeight, pageH);
-
     if (pageH + childH > a4Height - margin) {
       newContainer.appendChild(page);
       newContainer.appendChild(getPageBreakElement());
@@ -99,4 +126,16 @@ export const handlePageBreak = () => {
   newContainer.appendChild(page);
 
   container.innerHTML = newContainer.innerHTML;
+};
+
+const md = getMarkdownIt();
+
+export const renderPreviewHTML = (text: string) => {
+  const { body, attributes } = matter(text);
+
+  let html = md.render(body);
+  html = handleDeflist(html);
+  html = handleHeader(html, attributes);
+
+  return html;
 };

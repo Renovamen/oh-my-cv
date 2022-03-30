@@ -1,15 +1,25 @@
 <template>
   <Header />
 
-  <div class="resume-main">
-    <div class="editor">
-      <div ref="editorRef" class="h-full"></div>
-    </div>
-
-    <div class="preview-container">
-      <div class="preview" v-html="html" />
-    </div>
-  </div>
+  <splitpanes
+    class="resume-main default-theme"
+    :horizontal="isMobile"
+    @resize="handlePaneResize"
+  >
+    <pane class="editor">
+      <div ref="editorRef" class="h-full" />
+    </pane>
+    <pane class="preview-pane" min-size="30">
+      <div
+        class="preview-container"
+        :style="{
+          transform: `scale(${previewScale})`
+        }"
+      >
+        <div class="preview" v-html="html" />
+      </div>
+    </pane>
+  </splitpanes>
 </template>
 
 <script lang="ts" setup>
@@ -22,37 +32,11 @@ import {
   nextTick
 } from "vue";
 import * as monaco from "monaco-editor";
-import MarkdownIt from "markdown-it";
-import MarkdownItDeflist from "markdown-it-deflist";
-import matter from "front-matter";
+import { useWindowSize } from "@vueuse/core";
+import { Splitpanes, Pane } from "splitpanes";
+import "splitpanes/dist/splitpanes.css";
 import Header from "./components/Header.vue";
-import {
-  fetchMarkdown,
-  handleDeflist,
-  handlePageBreak,
-  appendHeader
-} from "./utils";
-
-const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
-
-// Remember old renderer, if overridden, or proxy to default renderer
-const defaultRender =
-  md.renderer.rules.link_open ||
-  function (tokens, idx, options, env, self) {
-    return self.renderToken(tokens, idx, options);
-  };
-
-md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-  // If you are sure other plugins can't add `target` - drop check below
-  const aIndex = tokens[idx].attrIndex("target");
-  if (aIndex < 0) {
-    tokens[idx].attrPush(["target", "_blank"]); // add new attribute
-  } else {
-    (tokens[idx] as any).attrs[aIndex][1] = "_blank"; // replace value of existing attr
-  }
-  // pass token to default renderer.
-  return defaultRender(tokens, idx, options, env, self);
-};
+import { fetchMarkdown, handlePageBreak, renderPreviewHTML } from "./utils";
 
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
@@ -66,35 +50,64 @@ onMounted(() => {
     editor = monaco.editor.create(editorRef.value!, {
       value: inputText.value,
       language: "markdown",
-      wordWrap: "on"
+      wordWrap: "on",
+      fontSize: 13,
+      automaticLayout: true
     });
 
     editor.onDidChangeModelContent(() => {
       inputText.value = editor!.getModel()!.getValue();
     });
   });
+
+  handleWindowSize();
+  handlePaneResize();
 });
 
 onBeforeUnmount(() => {
   editor?.dispose();
 });
 
-const frontmatter = computed(() => {
-  const { attributes } = matter(inputText.value);
-  return attributes;
-});
+// Render HTML for previewing
 
-const html = computed(() => {
-  const { body, attributes } = matter(inputText.value);
-  return appendHeader(handleDeflist(md.render(body)), attributes);
-});
+const html = computed(() => renderPreviewHTML(inputText.value));
 
 watch(
-  () => [html.value, frontmatter.value],
+  () => html.value,
   () => {
     nextTick(() => {
       handlePageBreak();
     });
   }
 );
+
+// Handle window size changing
+
+const { width } = useWindowSize();
+const isMobile = ref(false);
+
+const handleWindowSize = () => {
+  if (width.value <= 810) isMobile.value = true;
+  else isMobile.value = false;
+};
+
+watch(
+  () => width.value,
+  () => {
+    handleWindowSize();
+    handlePaneResize();
+  }
+);
+
+// Handle pane size changing
+
+const previewScale = ref(1);
+
+const handlePaneResize = () => {
+  const pane = document.querySelector(".preview-pane") as HTMLElement;
+  const paneW = pane.clientWidth;
+
+  if (paneW >= 804) previewScale.value = 1;
+  else previewScale.value = (width.value <= 810 ? width.value : paneW) / 804;
+};
 </script>

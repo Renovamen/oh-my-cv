@@ -23,7 +23,8 @@ Highly recommend using Chrome.
 - Write your resume in Markdown and preview it in real-time online
 - Export to A4 PDF
 - Automatic page break
-- An open-source static website hosted on [Github Pages](https://pages.github.com/) which doesn't (have the ability to) collect your data
+- Neat template
+- Open-source static website hosted on [Github Pages](https://pages.github.com/) which doesn't (have the ability to) collect your data
 - Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 
 
@@ -34,7 +35,6 @@ Highly recommend using Chrome.
 - [ ] Support editting font, margin, brand color, etc. online
 - [ ] Support uploading a Markdown file (or pasting a URL)
 - [ ] US Letter
-- [ ] Improve UI 
 
 
 &nbsp;

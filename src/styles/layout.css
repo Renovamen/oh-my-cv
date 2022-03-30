@@ -8,15 +8,19 @@
 
 .resume-main {
   height: calc(100% - 60px);
-  @apply flex;
 }
 
 .editor {
-  @apply flex-1 h-full;
+  @apply h-full;
+}
+
+.preview-pane {
+  @apply overflow-y-scroll;
 }
 
 .preview-container {
-  @apply w-auto h-full overflow-y-scroll overflow-x-hidden;
+  width: 804px;
+  @apply mx-auto origin-top-left;
 }
 
 .preview {
@@ -25,24 +29,10 @@
 
 .preview-page {
   width: 210mm;
-  height: 291mm;
+  height: 296mm;
   position: relative;
   border: solid 1px #000;
   margin: 5px auto;
-}
-
-@media only screen and (max-width: 810px) {
-  .resume-main {
-    @apply flex-col-reverse;
-  }
-
-  .preview-container {
-    @apply w-full h-1/2 overflow-x-scroll;
-  }
-
-  .editor {
-    @apply w-full;
-  }
 }
 
 @media print {
@@ -52,29 +42,34 @@
   }
 
   .header,
-  .editor {
+  .editor,
+  .splitpanes__splitter {
     display: none;
   }
 
-  .preview {
-    width: 100%;
-    overflow: hidden;
+  .splitpanes,
+  .splitpanes__pane,
+  .preview-container,
+  .preview,
+  .preview-page {
+    width: 100% !important;
+    background-color: white;
+  }
+
+  .preview-container {
+    transform: scale(1) !important;
   }
 
   .preview-page {
-    width: 100%;
     border: none;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .preview-page-break {
     page-break-before: always;
   }
 
-  #app,
-  .resume-main,
-  .preview,
-  .preview-page {
+  #app {
     height: auto;
   }
 }
