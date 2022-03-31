@@ -1,6 +1,9 @@
+import { nextTick } from "vue";
 import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
 import matter from "front-matter";
+import type { ResumeStyles, ResumeFrontMatter } from "../types";
+import { updatePageMargin } from "./domStyles";
 
 export const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
@@ -46,7 +49,7 @@ export const handleDeflist = (html: string) => {
   return html;
 };
 
-export const handleHeader = (html: string, frontmatter) => {
+export const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
   let header = "";
 
   if (frontmatter.name) header += `<h1>${frontmatter.name}</h1>\n`;
@@ -54,36 +57,39 @@ export const handleHeader = (html: string, frontmatter) => {
   if (frontmatter.header) {
     for (let i = 0; i < frontmatter.header.length; i++) {
       const item = frontmatter.header[i];
+      if (!item) continue;
+      header += item.newLine ? "<br>" : "";
       if (item.link)
         header += `<a href="${
           item.link
         }" target="_blank" rel="noopener noreferrer">${
-          i === 0 ? "" : "<span> | </span>"
+          i === 0 || item.newLine ? "" : "<span> | </span>"
         }<span>${item.text}</span></a>\n`;
       else
-        header += `<span>${i === 0 ? "" : "<span> | </span>"}<span>${
-          item.text
-        }</span></span>\n`;
+        header += `<span>${
+          i === 0 || item.newLine ? "" : "<span> | </span>"
+        }<span>${item.text}</span></span>\n`;
     }
   }
 
   return `<div class="preview-header">${header}</div>` + html;
 };
 
-export const handlePageBreak = () => {
-  const container = document.querySelector(".preview") as HTMLElement;
+export const handlePageBreak = (state: ResumeStyles) => {
+  const container = document.querySelector(".preview") as HTMLDivElement;
 
-  const margin = 50;
+  const margin = state.marginV * 2;
   const a4Height = 1120;
 
   const getPageElement = () => {
-    const page = document.createElement("div") as HTMLElement;
+    const page = document.createElement("div") as HTMLDivElement;
     page.className = "preview-page";
+    updatePageMargin(page, state);
     return page;
   };
 
   const getPageBreakElement = () => {
-    const pageBreak = document.createElement("div") as HTMLElement;
+    const pageBreak = document.createElement("div") as HTMLDivElement;
     pageBreak.className = "preview-page-break";
     return pageBreak;
   };
@@ -91,7 +97,7 @@ export const handlePageBreak = () => {
   let page = getPageElement();
   let pageH = 0;
 
-  const newContainer = document.createElement("div") as HTMLElement;
+  const newContainer = document.createElement("div") as HTMLDivElement;
   newContainer.className = "preview";
 
   const childList = [];
@@ -138,4 +144,19 @@ export const renderPreviewHTML = (text: string) => {
   html = handleHeader(html, attributes);
 
   return html;
+};
+
+export const updateStyles = (state: ResumeStyles) => {
+  const pages = document.querySelectorAll(
+    ".preview-page"
+  ) as NodeListOf<HTMLDivElement>;
+  for (const page of pages) updatePageMargin(page, state);
+};
+
+export const onStylesUpdate = (state: ResumeStyles) => {
+  updateStyles(state); // update styles so that handlePageBreak() can get accurate element heights
+  handlePageBreak(state);
+  nextTick(() => {
+    updateStyles(state); // after handlePageBreak(), all elements' styles will be cleared, so updateStyles() again
+  });
 };

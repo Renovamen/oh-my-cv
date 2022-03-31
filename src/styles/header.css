@@ -1,0 +1,10 @@
+:root {
+  --slider-vertical-height: 150px;
+  --slider-height: 4px;
+  --slider-handle-width: 12px;
+  --slider-handle-height: 12px;
+}
+
+.slider-vertical .slider-handle {
+  right: calc(-1 * (var(--slider-handle-height, 16px)  - var(--slider-height, 6px)) / 2);
+}

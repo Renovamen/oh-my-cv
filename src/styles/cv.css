@@ -1,5 +1,5 @@
 .preview-page {
-  padding: 30px 40px 20px;
+  padding: 25px 40px;
   background-color: white;
 }
 
@@ -26,13 +26,13 @@
 
 .preview h2,
 .preview h3 {
-  font-weight: normal;
+  font-weight: bold;
   font-size: 18px;
   margin: 5px 0;
 }
 
 .preview h2 {
-  border-bottom: solid 1px rgb(55, 123, 181, .6);
+  border-bottom: solid 1px #377bb5;
 }
 
 .preview a {
@@ -68,6 +68,10 @@
 
 .preview svg.iconify {
   vertical-align: -0.15rem;
+}
+
+.preview img {
+  max-width: 100%;
 }
 
 .preview-header {

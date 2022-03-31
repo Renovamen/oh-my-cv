@@ -31,12 +31,13 @@ import {
   watch,
   nextTick
 } from "vue";
+import { useStore } from "vuex";
 import * as monaco from "monaco-editor";
 import { useWindowSize } from "@vueuse/core";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import Header from "./components/Header.vue";
-import { fetchMarkdown, handlePageBreak, renderPreviewHTML } from "./utils";
+import { fetchFile, handlePageBreak, renderPreviewHTML } from "./utils";
 
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
@@ -44,7 +45,7 @@ let editor: monaco.editor.IStandaloneCodeEditor | undefined;
 const inputText = ref("");
 
 onMounted(() => {
-  fetchMarkdown("/example.md").then((text: string) => {
+  fetchFile("/example.md").then((text: string) => {
     inputText.value = text;
 
     editor = monaco.editor.create(editorRef.value!, {
@@ -75,14 +76,14 @@ const updateMarkdownContent = (content: string) => {
 };
 
 // Render HTML for previewing
-
+const store = useStore();
 const html = computed(() => renderPreviewHTML(inputText.value));
 
 watch(
   () => html.value,
   () => {
     nextTick(() => {
-      handlePageBreak();
+      handlePageBreak(store.state);
     });
   }
 );
