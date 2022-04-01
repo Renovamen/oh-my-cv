@@ -7,14 +7,55 @@
     <!-- Buttons -->
 
     <div class="space-x-1.5 flex items-center text-gray-600">
-      <!-- Margin (top-bottom) button -->
-      <button
-        class="h-full relative"
-        @mouseenter="isMarginVSliderOpen = true"
-        @mouseleave="isMarginVSliderOpen = false"
+      <!-- Theme color button -->
+      <OnClickOutside
+        class="relative"
+        @click="isColorPickerOpen = !isColorPickerOpen"
+        @trigger="isColorPickerOpen = false"
       >
         <div
-          class="flex items-center justify-center space-x-1 h-7 w-7 sm:h-8 sm:w-8 rounded border cursor-pointer"
+          class="flex items-center justify-center p-2 h-7 w-7 sm:h-8 sm:w-8 rounded border cursor-pointer"
+          :class="[isColorPickerOpen ? 'border-gray-500' : 'border-gray-300']"
+        >
+          <span
+            class="w-full h-full rounded-sm"
+            :style="{ backgroundColor: currentThemeColor }"
+          />
+        </div>
+
+        <!-- Dropdown -->
+        <ul
+          v-if="isColorPickerOpen"
+          class="absolute flex space-x-2 px-3 py-3 top-8 sm:top-10 -right-40.5 sm:right-0 bg-white border border-gray-300 shadow rounded z-10"
+          @click="(e) => e.stopPropagation()"
+        >
+          <li
+            v-for="(color, i) in DEFAULT_THEME_COLORS"
+            :key="`${i}-color`"
+            class="w-5 h-5 rounded-sm text-white flex items-center justify-center"
+            :style="{ backgroundColor: color }"
+            @click="pickColor(i)"
+          />
+          <li class="w-5 h-5 relative flex items-center justify-center">
+            <span class="iconify text-lg" data-icon="emojione:artist-palette" />
+            <input
+              class="absolute left-0 w-full h-full opacity-0 cursor-pointer"
+              type="color"
+              :value="customColor"
+              @input="customizeColor"
+            />
+          </li>
+        </ul>
+      </OnClickOutside>
+
+      <!-- Margin (top-bottom) button -->
+      <OnClickOutside
+        class="relative"
+        @click="isMarginVSliderOpen = !isMarginVSliderOpen"
+        @trigger="isMarginVSliderOpen = false"
+      >
+        <div
+          class="flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8 rounded border cursor-pointer"
           :class="[isMarginVSliderOpen ? 'border-gray-500' : 'border-gray-300']"
         >
           <span
@@ -26,20 +67,21 @@
         <!-- Dropdown -->
         <div
           v-show="isMarginVSliderOpen"
-          class="absolute w-7 sm:w-8 py-3 top-11 sm:top-12 right-1/2 -mr-3.5 sm:-mr-4 bg-white border border-gray-300 shadow rounded z-10"
+          class="absolute w-7 sm:w-8 py-3 top-8 sm:top-10 right-1/2 -mr-3.5 sm:-mr-4 bg-white border border-gray-300 shadow rounded z-10"
+          @click="(e) => e.stopPropagation()"
         >
           <Slider v-model="marginV" orientation="vertical" class="mx-auto" />
         </div>
-      </button>
+      </OnClickOutside>
 
       <!-- Margin (left-right) button -->
-      <button
-        class="h-full relative"
-        @mouseenter="isMarginHSliderOpen = true"
-        @mouseleave="isMarginHSliderOpen = false"
+      <OnClickOutside
+        class="relative"
+        @click="isMarginHSliderOpen = !isMarginHSliderOpen"
+        @trigger="isMarginHSliderOpen = false"
       >
         <div
-          class="flex items-center justify-center space-x-1 h-7 w-7 sm:h-8 sm:w-8 rounded border cursor-pointer"
+          class="flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8 rounded border cursor-pointer"
           :class="[isMarginHSliderOpen ? 'border-gray-500' : 'border-gray-300']"
         >
           <span
@@ -51,17 +93,18 @@
         <!-- Dropdown -->
         <div
           v-show="isMarginHSliderOpen"
-          class="absolute w-7 sm:w-8 py-3 top-11 sm:top-12 right-1/2 -mr-3.5 sm:-mr-4 bg-white border border-gray-300 shadow rounded z-10"
+          class="absolute w-7 sm:w-8 py-3 top-8 sm:top-10 right-1/2 -mr-3.5 sm:-mr-4 bg-white border border-gray-300 shadow rounded z-10"
+          @click="(e) => e.stopPropagation()"
         >
           <Slider v-model="marginH" orientation="vertical" class="mx-auto" />
         </div>
-      </button>
+      </OnClickOutside>
 
       <!-- File button -->
-      <button
-        class="h-full relative"
-        @mouseenter="isFileMenuOpen = true"
-        @mouseleave="isFileMenuOpen = false"
+      <OnClickOutside
+        class="relative cursor-pointer"
+        @click="isFileMenuOpen = !isFileMenuOpen"
+        @trigger="isFileMenuOpen = false"
       >
         <div
           class="flex items-center space-x-1 px-2 sm:px-3 h-7 sm:h-8 text-white rounded"
@@ -77,7 +120,7 @@
         <!-- Dropdown -->
         <ul
           v-if="isFileMenuOpen"
-          class="absolute top-11 sm:top-12 right-0 w-32 bg-white border border-gray-300 shadow rounded z-10"
+          class="absolute top-8 sm:top-10 right-0 w-32 bg-white border border-gray-300 shadow rounded z-10"
         >
           <li
             class="flex items-center space-x-0.5 sm:space-x-1.5 px-3 h-9 cursor-pointer bg-transparent hover:bg-gray-100 rounded-t"
@@ -97,7 +140,7 @@
             <span class="text-xs sm:text-sm">Export PDF</span>
           </li>
         </ul>
-      </button>
+      </OnClickOutside>
 
       <!-- Github -->
       <a
@@ -112,28 +155,29 @@
         />
       </a>
     </div>
-  </header>
 
-  <Import
-    v-if="isImportOpen"
-    @close-import="toggleImport(false)"
-    @update-markdown-content="
-      (c) => {
-        $emit('updateMarkdownContent', c);
-        isImportOpen = false;
-      }
-    "
-  />
+    <Import
+      v-if="isImportOpen"
+      @close-import="toggleImport(false)"
+      @update-markdown-content="
+        (c) => {
+          $emit('updateMarkdownContent', c);
+          isImportOpen = false;
+        }
+      "
+    />
+  </header>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
+import { OnClickOutside } from "@vueuse/components";
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
 import Import from "./Import.vue";
 import { setStyleState } from "../store";
-import { onStylesUpdate } from "../utils";
+import { onStylesUpdate, DEFAULT_THEME_COLORS } from "../utils";
 
 defineEmits<{
   (e: "updateMarkdownContent", content: string): void;
@@ -179,4 +223,32 @@ const marginH = computed({
     onStylesUpdate(store.state);
   }
 });
+
+// Theme color picker
+const isColorPickerOpen = ref(false);
+const pickedColorId = ref(1);
+const customColor = ref(DEFAULT_THEME_COLORS[0]);
+const currentThemeColor = computed(() =>
+  pickedColorId.value === -1
+    ? customColor.value
+    : DEFAULT_THEME_COLORS[pickedColorId.value]
+);
+
+const pickColor = (i: number) => {
+  pickedColorId.value = i;
+  customColor.value = currentThemeColor.value;
+};
+
+const customizeColor = (e: Event) => {
+  pickedColorId.value = -1;
+  customColor.value = (e.target as HTMLInputElement).value;
+};
+
+watch(
+  () => currentThemeColor.value,
+  () => {
+    setStyleState("themeColor", currentThemeColor.value);
+    onStylesUpdate(store.state);
+  }
+);
 </script>

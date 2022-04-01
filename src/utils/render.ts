@@ -1,9 +1,9 @@
-import { nextTick } from "vue";
 import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
 import matter from "front-matter";
+import { updateDomStyles } from "./domStyles";
+import { CHROME_PRINT_BOTTOM } from "./constants";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
-import { updatePageMargin } from "./domStyles";
 
 export const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
@@ -60,7 +60,7 @@ export const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
       if (!item) continue;
       header += item.newLine ? "<br>" : "";
       if (item.link)
-        header += `<a href="${
+        header += `<a class="preview-header-link" href="${
           item.link
         }" target="_blank" rel="noopener noreferrer">${
           i === 0 || item.newLine ? "" : "<span> | </span>"
@@ -78,13 +78,13 @@ export const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
 export const handlePageBreak = (state: ResumeStyles) => {
   const container = document.querySelector(".preview") as HTMLDivElement;
 
-  const margin = state.marginV * 2;
-  const a4Height = 1120;
+  const margin =
+    state.marginV + Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);
+  const a4Height = 1134;
 
   const getPageElement = () => {
     const page = document.createElement("div") as HTMLDivElement;
     page.className = "preview-page";
-    updatePageMargin(page, state);
     return page;
   };
 
@@ -100,7 +100,7 @@ export const handlePageBreak = (state: ResumeStyles) => {
   const newContainer = document.createElement("div") as HTMLDivElement;
   newContainer.className = "preview";
 
-  const childList = [];
+  const childList = [] as Element[];
 
   if (container.children[0].className !== "preview-page") {
     for (const child of container.children) childList.push(child);
@@ -132,6 +132,8 @@ export const handlePageBreak = (state: ResumeStyles) => {
   newContainer.appendChild(page);
 
   container.innerHTML = newContainer.innerHTML;
+  // Dom styles will be cleared after copying, so update it again
+  updateDomStyles(container, state);
 };
 
 const md = getMarkdownIt();
@@ -146,17 +148,8 @@ export const renderPreviewHTML = (text: string) => {
   return html;
 };
 
-export const updateStyles = (state: ResumeStyles) => {
-  const pages = document.querySelectorAll(
-    ".preview-page"
-  ) as NodeListOf<HTMLDivElement>;
-  for (const page of pages) updatePageMargin(page, state);
-};
-
 export const onStylesUpdate = (state: ResumeStyles) => {
-  updateStyles(state); // update styles so that handlePageBreak() can get accurate element heights
+  const container = document.querySelector(".preview") as HTMLDivElement;
+  updateDomStyles(container, state); // update styles so that handlePageBreak() can get accurate element heights
   handlePageBreak(state);
-  nextTick(() => {
-    updateStyles(state); // after handlePageBreak(), all elements' styles will be cleared, so updateStyles() again
-  });
 };

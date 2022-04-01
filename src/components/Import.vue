@@ -1,6 +1,7 @@
 <template>
-  <div
+  <OnClickOutside
     class="z-10 h-40 w-full sm:w-96 m-auto fixed left-0 right-0 top-0 bottom-0 flex flex-col bg-white border border-gray-400 rounded shadow"
+    @trigger="$emit('closeImport')"
   >
     <div>
       <button
@@ -60,11 +61,12 @@
         </button>
       </div>
     </div>
-  </div>
+  </OnClickOutside>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { OnClickOutside } from "@vueuse/components";
 import { fetchFile, uploadFile } from "../utils";
 
 const emit = defineEmits<{
@@ -82,7 +84,7 @@ const uploadFileFromURL = () => {
   });
 };
 
-const uploadFileFromLocal = (e: any) => {
+const uploadFileFromLocal = (e: Event) => {
   uploadFile(e, (content: string) => {
     emit("updateMarkdownContent", content);
   });

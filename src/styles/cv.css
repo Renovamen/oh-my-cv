@@ -1,5 +1,4 @@
 .preview-page {
-  padding: 25px 40px;
   background-color: white;
 }
 
@@ -13,7 +12,7 @@
 .preview h3,
 .preview h4 {
   font-family: "Fontin SmallCaps";
-  color: #377bb5;
+  font-weight: bold;
 }
 
 .preview {
@@ -32,11 +31,8 @@
 }
 
 .preview h2 {
-  border-bottom: solid 1px #377bb5;
-}
-
-.preview a {
-  color: #377bb5;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .preview ul,

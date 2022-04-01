@@ -16,6 +16,7 @@
     "@vitejs/plugin-vue": "^2.2.4",
     "@vue/compiler-sfc": "^3.2.31",
     "@vueform/slider": "^2.0.9",
+    "@vueuse/components": "^8.2.3",
     "@vueuse/core": "^8.2.0",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.11.0",

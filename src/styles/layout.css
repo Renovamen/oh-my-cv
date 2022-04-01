@@ -29,7 +29,7 @@
 
 .preview-page {
   width: 210mm;
-  height: 296mm;
+  height: 300mm;
   position: relative;
   border: solid 1px #000;
   margin: 5px auto;
@@ -63,6 +63,7 @@
   .preview-page {
     border: none;
     margin: 0;
+    height: 296mm;
   }
 
   .preview-page-break {

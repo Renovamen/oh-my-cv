@@ -37,7 +37,12 @@ import { useWindowSize } from "@vueuse/core";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import Header from "./components/Header.vue";
-import { fetchFile, handlePageBreak, renderPreviewHTML } from "./utils";
+import {
+  fetchFile,
+  handlePageBreak,
+  renderPreviewHTML,
+  onStylesUpdate
+} from "./utils";
 
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
@@ -78,12 +83,17 @@ const updateMarkdownContent = (content: string) => {
 // Render HTML for previewing
 const store = useStore();
 const html = computed(() => renderPreviewHTML(inputText.value));
+let hasInitStyles = false;
 
 watch(
   () => html.value,
   () => {
     nextTick(() => {
-      handlePageBreak(store.state);
+      if (hasInitStyles) handlePageBreak(store.state);
+      else {
+        onStylesUpdate(store.state);
+        hasInitStyles = true;
+      }
     });
   }
 );
