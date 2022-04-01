@@ -3,15 +3,13 @@
 }
 
 .preview {
-  font-family: "CMU Sans Serif", "PingFang SC", Helvetica, ST-Heiti, "Microsoft Yahei";
+  font-family: "CMU Sans Serif";
   font-size: 15px;
 }
 
 .preview h1,
 .preview h2,
-.preview h3,
-.preview h4 {
-  font-family: "Fontin SmallCaps";
+.preview h3 {
   font-weight: bold;
 }
 
@@ -25,7 +23,6 @@
 
 .preview h2,
 .preview h3 {
-  font-weight: bold;
   font-size: 18px;
   margin: 5px 0;
 }

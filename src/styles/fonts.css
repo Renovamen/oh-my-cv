@@ -1,9 +1,4 @@
 @font-face {
-  font-family: "Fontin SmallCaps";
-  src: url("@/assets/fonts/fontin-small-caps.otf") format("opentype");
-}
-
-@font-face {
   font-family: "CMU Sans Serif";
   font-style: normal;
   font-weight: normal;
