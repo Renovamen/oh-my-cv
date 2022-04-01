@@ -14,3 +14,10 @@ export type ResumeFrontMatter = {
   name?: string;
   header?: Array<ResumeHeaderItem>;
 };
+
+export type FrontMatterResults<T> = {
+  readonly attributes: T;
+  readonly body: string;
+  readonly bodyBegin: number;
+  readonly frontmatter?: string;
+};

@@ -1,8 +1,6 @@
 import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
-import matter from "front-matter";
-import { updateDomStyles } from "./domStyles";
-import { CHROME_PRINT_BOTTOM } from "./constants";
+import { extractFrontMatter, updateDomStyles, CHROME_PRINT_BOTTOM } from ".";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
 
 export const getMarkdownIt = () => {
@@ -139,7 +137,7 @@ export const handlePageBreak = (state: ResumeStyles) => {
 const md = getMarkdownIt();
 
 export const renderPreviewHTML = (text: string) => {
-  const { body, attributes } = matter(text);
+  const { body, attributes } = extractFrontMatter(text);
 
   let html = md.render(body);
   html = handleDeflist(html);
