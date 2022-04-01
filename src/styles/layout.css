@@ -58,6 +58,7 @@
 
   .preview-container {
     transform: scale(1) !important;
+    margin-bottom: 0 !important;
   }
 
   .preview-page {

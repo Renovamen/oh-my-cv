@@ -19,23 +19,6 @@ const pattern =
 // need to be moved down into the functions that use it.
 const regex = new RegExp(pattern, "m");
 
-export const extractFrontMatter = (
-  string: string
-): FrontMatterResults<ResumeFrontMatter> => {
-  string = string || "";
-
-  const lines = string.split(/(\r?\n)/);
-  if (lines[0] && /= yaml =|---/.test(lines[0])) {
-    return parse(string);
-  } else {
-    return {
-      attributes: {},
-      body: string,
-      bodyBegin: 1
-    };
-  }
-};
-
 const computeLocation = (match: RegExpExecArray, body: string): number => {
   let line = 1;
   let pos = body.indexOf("\n");
@@ -89,6 +72,23 @@ const parse = (string: string): FrontMatterResults<ResumeFrontMatter> => {
   }
 };
 
-export const testFrontMatter = (string): boolean => {
+export const extractFrontMatter = (
+  string: string
+): FrontMatterResults<ResumeFrontMatter> => {
+  string = string || "";
+
+  const lines = string.split(/(\r?\n)/);
+  if (lines[0] && /= yaml =|---/.test(lines[0])) {
+    return parse(string);
+  } else {
+    return {
+      attributes: {},
+      body: string,
+      bodyBegin: 1
+    };
+  }
+};
+
+export const testFrontMatter = (string: string): boolean => {
   return regex.test(string || "");
 };

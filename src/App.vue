@@ -13,7 +13,8 @@
       <div
         class="preview-container"
         :style="{
-          transform: `scale(${previewScale})`
+          transform: `scale(${previewScale})`,
+          marginBottom: `${previewBottom}px`
         }"
       >
         <div class="preview" v-html="html" />
@@ -67,7 +68,6 @@ onMounted(() => {
   });
 
   handleWindowSize();
-  handlePaneResize();
 });
 
 onBeforeUnmount(() => {
@@ -94,6 +94,8 @@ watch(
         onStylesUpdate(store.state);
         hasInitStyles = true;
       }
+
+      handlePaneResize();
     });
   }
 );
@@ -112,21 +114,25 @@ watch(
   () => width.value,
   () => {
     handleWindowSize();
-    nextTick(() => {
-      handlePaneResize();
-    });
+    handlePaneResize();
   }
 );
 
 // Handle pane size changing
 
 const previewScale = ref(1);
+const previewBottom = ref(0);
 
 const handlePaneResize = () => {
   const pane = document.querySelector(".preview-pane") as HTMLElement;
   const paneW = pane.clientWidth;
 
+  const preview = document.querySelector(".preview-container") as HTMLElement;
+  const previewH = preview.clientHeight;
+
   if (paneW >= 804) previewScale.value = 1;
   else previewScale.value = (width.value <= 810 ? width.value : paneW) / 804;
+
+  previewBottom.value = -(1 - previewScale.value) * previewH;
 };
 </script>
