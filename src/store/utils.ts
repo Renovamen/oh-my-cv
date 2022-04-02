@@ -1,12 +1,15 @@
 import store from ".";
-import type { ResumeStyles } from "../types";
+import type { StoreStates } from "../types";
 
-export const setStyleState = <T extends keyof ResumeStyles>(
+type ModuleNameType = "styles" | "data";
+
+export const setStoreState = <T extends keyof StoreStates>(
+  module: ModuleNameType,
   key: T,
-  value: ResumeStyles[T]
+  value: StoreStates[T]
 ): void => {
   store.commit({
-    type: "__set",
+    type: module + "/__set",
     key: key,
     val: value
   });

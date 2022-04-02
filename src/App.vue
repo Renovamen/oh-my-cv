@@ -1,5 +1,5 @@
 <template>
-  <Header @update-markdown-content="updateMarkdownContent" />
+  <Header />
 
   <splitpanes
     class="resume-main default-theme"
@@ -38,6 +38,7 @@ import { useWindowSize } from "@vueuse/core";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import Header from "./components/Header.vue";
+import { setStoreState } from "./store";
 import {
   fetchFile,
   handlePageBreak,
@@ -45,17 +46,17 @@ import {
   onStylesUpdate
 } from "./utils";
 
+const store = useStore();
+
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
 
-const inputText = ref("");
-
 onMounted(() => {
   fetchFile("/example.md").then((text: string) => {
-    inputText.value = text;
+    setStoreState("data", "mdContent", text);
 
     editor = monaco.editor.create(editorRef.value!, {
-      value: inputText.value,
+      value: store.state.data.mdContent,
       language: "markdown",
       wordWrap: "on",
       fontSize: 13,
@@ -63,7 +64,7 @@ onMounted(() => {
     });
 
     editor.onDidChangeModelContent(() => {
-      inputText.value = editor!.getModel()!.getValue();
+      setStoreState("data", "mdContent", editor!.getModel()!.getValue());
     });
   });
 
@@ -74,24 +75,17 @@ onBeforeUnmount(() => {
   editor?.dispose();
 });
 
-// Update Markdown content
-
-const updateMarkdownContent = (content: string) => {
-  editor!.getModel()!.setValue(content);
-};
-
 // Render HTML for previewing
-const store = useStore();
-const html = computed(() => renderPreviewHTML(inputText.value));
+const html = computed(() => renderPreviewHTML(store.state.data.mdContent));
 let hasInitStyles = false;
 
 watch(
   () => html.value,
   () => {
     nextTick(() => {
-      if (hasInitStyles) handlePageBreak(store.state);
+      if (hasInitStyles) handlePageBreak(store.state.styles);
       else {
-        onStylesUpdate(store.state);
+        onStylesUpdate(store.state.styles);
         hasInitStyles = true;
       }
 

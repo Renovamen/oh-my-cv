@@ -1,6 +1,6 @@
 <template>
   <OnClickOutside
-    class="z-10 h-40 w-full sm:w-96 m-auto fixed left-0 right-0 top-0 bottom-0 flex flex-col bg-white border border-gray-400 rounded shadow"
+    class="import-pane z-10 fixed h-40 w-full sm:w-96 left-0 right-0 top-0 bottom-0 flex flex-col bg-white border border-gray-400 rounded shadow"
     @trigger="$emit('closeImport')"
   >
     <div>
@@ -68,10 +68,10 @@
 import { ref } from "vue";
 import { OnClickOutside } from "@vueuse/components";
 import { fetchFile, uploadFile } from "../utils";
+import { setStoreState } from "../store";
 
 const emit = defineEmits<{
   (e: "closeImport"): void;
-  (e: "updateMarkdownContent", content: string): void;
 }>();
 
 const clickedButton = ref(0);
@@ -80,13 +80,21 @@ const pastedURL = ref("");
 const uploadFileFromURL = () => {
   if (pastedURL.value.trim() === "") return;
   fetchFile(pastedURL.value).then((content: string) => {
-    emit("updateMarkdownContent", content);
+    setStoreState("data", "mdContent", content);
+    emit("closeImport");
   });
 };
 
 const uploadFileFromLocal = (e: Event) => {
   uploadFile(e, (content: string) => {
-    emit("updateMarkdownContent", content);
+    setStoreState("data", "mdContent", content);
+    emit("closeImport");
   });
 };
 </script>
+
+<style scoped>
+.import-pane {
+  margin: auto !important;
+}
+</style>

@@ -4,6 +4,12 @@ export type ResumeStyles = {
   themeColor: string;
 };
 
+export type SystemData = {
+  mdContent: string;
+};
+
+export type StoreStates = ResumeStyles & SystemData;
+
 export type ResumeHeaderItem = {
   text: string;
   link?: string;
