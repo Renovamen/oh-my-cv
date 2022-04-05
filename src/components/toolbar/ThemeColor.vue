@@ -12,10 +12,17 @@
         <li
           v-for="(color, i) in DEFAULT_THEME_COLORS"
           :key="`${i}-color`"
-          class="w-5 h-5 rounded-sm text-white flex items-center justify-center"
+          class="w-5 h-5 rounded-sm text-white"
           :style="{ backgroundColor: color }"
           @click="pickColor(i)"
-        />
+        >
+          <div
+            v-show="pickedColorId === i"
+            class="w-full h-full flex items-center justify-center"
+          >
+            <span class="iconify" data-icon="line-md:confirm" />
+          </div>
+        </li>
         <li class="w-5 h-5 relative flex items-center justify-center">
           <span class="iconify text-lg" data-icon="emojione:artist-palette" />
           <input
