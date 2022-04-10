@@ -19,10 +19,19 @@ const updateThemeColor = (node: HTMLElement, state: ResumeStyles) => {
   if (node.tagName === "H2") node.style.borderBottomColor = state.themeColor;
 };
 
+const updateFontFamily = (container: HTMLElement, state: ResumeStyles) => {
+  const fontEN = state.fontEN.fontFamily || state.fontEN.name;
+  const fontCN = state.fontCN.fontFamily || state.fontCN.name;
+  container.style.fontFamily = fontEN + ", " + fontCN;
+};
+
 export const updateDomStyles = (
   container: HTMLDivElement,
   state: ResumeStyles
 ) => {
+  // Font familt
+  updateFontFamily(container, state);
+
   // Page margin
   const pages = container.querySelectorAll(
     ".preview-page"

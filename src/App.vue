@@ -75,6 +75,14 @@ onBeforeUnmount(() => {
   editor?.dispose();
 });
 
+watch(
+  () => store.state.data.fileImported,
+  () => {
+    editor!.getModel()!.setValue(store.state.data.mdContent);
+    setStoreState("data", "fileImported", false);
+  }
+);
+
 // Render HTML for previewing
 const html = computed(() => renderPreviewHTML(store.state.data.mdContent));
 let hasInitStyles = false;
@@ -89,7 +97,7 @@ watch(
         hasInitStyles = true;
       }
 
-      handlePaneResize();
+      setTimeout(() => handlePaneResize(), 100);
     });
   }
 );
@@ -108,7 +116,7 @@ watch(
   () => width.value,
   () => {
     handleWindowSize();
-    handlePaneResize();
+    setTimeout(() => handlePaneResize(), 50);
   }
 );
 

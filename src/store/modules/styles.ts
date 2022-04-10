@@ -4,7 +4,13 @@ const state = {
   marginV: 35,
   marginH: 45,
   themeColor: "#377bb5",
-  mdContent: ""
+  fontCN: {
+    name: "微软雅黑",
+    fontFamily: "Microsoft YaHei"
+  },
+  fontEN: {
+    name: "CMU Sans Serif"
+  }
 } as ResumeStyles;
 
 const mutations = {

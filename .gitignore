@@ -3,3 +3,4 @@ node_modules/
 .vscode/
 *.log
 .DS_Store
+*.zip

@@ -1,7 +1,8 @@
 import type { SystemData } from "../../types";
 
 const state = {
-  mdContent: ""
+  mdContent: "",
+  fileImported: false
 } as SystemData;
 
 const mutations = {

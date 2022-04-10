@@ -149,5 +149,5 @@ export const renderPreviewHTML = (text: string) => {
 export const onStylesUpdate = (state: ResumeStyles) => {
   const container = document.querySelector(".preview") as HTMLDivElement;
   updateDomStyles(container, state); // update styles so that handlePageBreak() can get accurate element heights
-  handlePageBreak(state);
+  setTimeout(() => handlePageBreak(state), 50);
 };

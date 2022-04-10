@@ -2,10 +2,13 @@ export type ResumeStyles = {
   marginV: number;
   marginH: number;
   themeColor: string;
+  fontCN: Font;
+  fontEN: Font;
 };
 
 export type SystemData = {
   mdContent: string;
+  fileImported: boolean;
 };
 
 export type StoreStates = ResumeStyles & SystemData;
@@ -26,4 +29,9 @@ export type FrontMatterResults<T> = {
   readonly body: string;
   readonly bodyBegin: number;
   readonly frontmatter?: string;
+};
+
+export type Font = {
+  readonly name: string;
+  readonly fontFamily?: string;
 };
