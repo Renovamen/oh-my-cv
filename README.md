@@ -38,7 +38,7 @@ Highly recommend using Chrome.
   
   - [x] Page margin
   - [x] Theme color
-  - [ ] Font
+  - [x] Font
   - [ ] Line height
   - [ ] ...
 

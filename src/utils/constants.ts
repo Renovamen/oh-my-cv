@@ -26,6 +26,11 @@ export const CN_FONTS: Font[] = [
     fontFamily: "Microsoft YaHei"
   },
   {
-    name: "Noto Serif SC"
+    name: "思源宋体",
+    fontFamily: "Noto Serif SC"
+  },
+  {
+    name: "霞鹜文楷",
+    fontFamily: "LXGW WenKai"
   }
 ];

@@ -8,7 +8,7 @@
     </template>
 
     <template #dropdown>
-      <ul class="w-32">
+      <ul class="w-25">
         <li
           v-for="(font, i) in CN_FONTS"
           :key="`font-${i}-${font.name}`"

@@ -3,7 +3,6 @@
 }
 
 .preview {
-  font-family: "CMU Sans Serif", "Microsoft YaHei";
   font-size: 15px;
 }
 
@@ -45,11 +44,16 @@
 .preview li,
 .preview p,
 .preview dl {
-  line-height: 1.32;
   margin: 0;
 }
 
+.preview li,
+.preview p {
+  line-height: 1.3;
+}
+
 .preview dl {
+  line-height: 1.35;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -69,6 +73,10 @@
 
 .preview-header {
   text-align: center;
+}
+
+.preview-header span {
+  font-family: "CMU Sans Serif";
 }
 
 .preview-header h1 {

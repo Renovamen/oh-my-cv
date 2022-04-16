@@ -71,3 +71,17 @@
   font-weight: bold;
   src: url("@/assets/fonts/noto-serif-sc/noto-serif-sc-bold.otf") format("opentype");
 }
+
+@font-face {
+  font-family: "LXGW WenKai";
+  font-style: normal;
+  font-weight: normal;
+  src: url("@/assets/fonts/lxgw-wen-kai/lxgw-wen-kai-regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "LXGW WenKai";
+  font-style: normal;
+  font-weight: bold;
+  src: url("@/assets/fonts/lxgw-wen-kai/lxgw-zhen-kai.ttf") format("opentype");
+}
