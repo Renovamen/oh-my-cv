@@ -12,7 +12,11 @@
         <li
           v-for="(font, i) in CN_FONTS"
           :key="`font-${i}-${font.name}`"
-          class="flex items-center px-3 h-8 text-sm cursor-pointer bg-transparent hover:bg-gray-100 rounded-t"
+          class="flex items-center px-3 h-8 text-sm cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
+          :class="[
+            i === 0 && 'rounded-t',
+            i === CN_FONTS.length - 1 && 'rounded-b'
+          ]"
           @click="pickFont(i)"
         >
           {{ font.name }}

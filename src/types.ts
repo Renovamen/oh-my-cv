@@ -15,6 +15,7 @@ export type SystemData = {
 export type UIData = {
   previewScale: number;
   previewBottom: number;
+  dark: boolean;
 };
 
 export type StoreStates = ResumeStyles & SystemData & UIData;

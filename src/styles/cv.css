@@ -1,5 +1,11 @@
 .preview-page {
   background-color: white;
+  color: black;
+}
+
+.dark .preview-page {
+  background-color: #222222;
+  color: #e5e7eb;
 }
 
 .preview {
@@ -84,6 +90,21 @@
   color: black;
 }
 
+.dark .preview-header a {
+  color: #e5e7eb;
+}
+
 .preview-header svg.iconify {
   vertical-align: -0.2rem;
+}
+
+@media print {
+  .preview-page {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .dark .preview-header a {
+    color: black !important;
+  }
 }

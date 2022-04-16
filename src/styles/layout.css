@@ -31,9 +31,29 @@
   width: 210mm;
   height: 300mm;
   position: relative;
-  border: solid 1px #000;
-  margin: 5px auto;
+  @apply my-1.5 mx-auto border border-black;
 }
+
+/* Dark mode */
+
+.dark .preview-page {
+  @apply border-gray-200;
+}
+
+.dark .splitpanes.default-theme .splitpanes__pane {
+  @apply bg-dark-100;
+}
+
+.dark .splitpanes.default-theme .splitpanes__splitter {
+  @apply bg-dark-400 border-gray-600;
+}
+
+.dark .splitpanes.default-theme .splitpanes__splitter:before,
+.dark .splitpanes.default-theme .splitpanes__splitter:after {
+  @apply bg-gray-500;
+}
+
+/* Print mode */
 
 @media print {
   @page {
@@ -53,7 +73,6 @@
   .preview,
   .preview-page {
     width: 100% !important;
-    background-color: white;
   }
 
   .preview-container {
