@@ -4,6 +4,7 @@
     <FontCN />
     <FontEN />
     <ThemeColor />
+    <LineHeight />
     <MarginVertical />
     <MarginHorizontal />
   </div>
@@ -21,6 +22,7 @@
           <FontEN />
         </div>
         <div class="space-x-1.5 flex pt-1 pb-2 px-2 justify-end">
+          <LineHeight />
           <MarginVertical />
           <MarginHorizontal />
           <ThemeColor />
@@ -36,5 +38,6 @@ import FontEN from "./tools/FontEN.vue";
 import ThemeColor from "./tools/ThemeColor.vue";
 import MarginVertical from "./tools/MarginVertical.vue";
 import MarginHorizontal from "./tools/MarginHorizontal.vue";
+import LineHeight from "./tools/LineHeight.vue";
 import BaseButton from "./tools/BaseButton.vue";
 </script>

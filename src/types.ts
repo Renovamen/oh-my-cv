@@ -1,6 +1,7 @@
 export type ResumeStyles = {
   marginV: number;
   marginH: number;
+  lineHeight: number;
   themeColor: string;
   fontCN: Font;
   fontEN: Font;

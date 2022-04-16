@@ -23,7 +23,7 @@
 .preview h2,
 .preview h3 {
   font-size: 18px;
-  margin: 5px 0;
+  margin-bottom: 5px;
 }
 
 .preview h2 {
@@ -47,13 +47,7 @@
   margin: 0;
 }
 
-.preview li,
-.preview p {
-  line-height: 1.3;
-}
-
 .preview dl {
-  line-height: 1.35;
   display: flex;
   flex-direction: row-reverse;
 }

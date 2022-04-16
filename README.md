@@ -38,8 +38,9 @@ Highly recommend using Chrome.
   
   - [x] Page margin
   - [x] Theme color
-  - [x] Font
-  - [ ] Line height
+  - [x] Font family
+  - [ ] Font size
+  - [x] Line height
   - [ ] ...
 
 - [ ] Support exporting to:
