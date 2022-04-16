@@ -27,8 +27,7 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import BaseButton from "./BaseButton.vue";
 import { setStoreState } from "../../store";
-import { CN_FONTS } from "../../utils";
-import { onStylesUpdate } from "../../utils";
+import { CN_FONTS, onStylesUpdate, handlePageBreak } from "../../utils";
 
 const store = useStore();
 const pickedFontName = computed(() => store.state.styles.fontCN.name);
@@ -37,10 +36,16 @@ const defaultFontId = CN_FONTS.findIndex(
   (item) => item.name === pickedFontName.value
 );
 const pickedFontId = ref(defaultFontId);
+const pickedFont = computed(() => CN_FONTS[pickedFontId.value]);
 
 const pickFont = (i: number) => {
   pickedFontId.value = i;
-  setStoreState("styles", "fontCN", CN_FONTS[pickedFontId.value]);
-  onStylesUpdate(store.state.styles);
+  setStoreState("styles", "fontCN", pickedFont.value);
+  onStylesUpdate(store.state.styles, false);
+
+  const pickedFontFamily = pickedFont.value.fontFamily || pickedFont.value.name;
+  document.fonts.load(`12px ${pickedFontFamily}`).then(() => {
+    handlePageBreak(store.state.styles);
+  });
 };
 </script>

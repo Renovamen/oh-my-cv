@@ -1,7 +1,7 @@
 import store from ".";
 import type { StoreStates } from "../types";
 
-type ModuleNameType = "styles" | "data";
+type ModuleNameType = "styles" | "data" | "ui";
 
 export const setStoreState = <T extends keyof StoreStates>(
   module: ModuleNameType,

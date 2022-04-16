@@ -4,7 +4,7 @@
   <splitpanes
     class="resume-main default-theme"
     :horizontal="isMobile"
-    @resize="handlePaneResize"
+    @resize="updatePreviewScale"
   >
     <pane class="editor">
       <div ref="editorRef" class="h-full" />
@@ -13,8 +13,8 @@
       <div
         class="preview-container"
         :style="{
-          transform: `scale(${previewScale})`,
-          marginBottom: `${previewBottom}px`
+          transform: `scale(${store.state.ui.previewScale})`,
+          marginBottom: `${store.state.ui.previewBottom}px`
         }"
       >
         <div class="preview" v-html="html" />
@@ -43,7 +43,8 @@ import {
   fetchFile,
   handlePageBreak,
   renderPreviewHTML,
-  onStylesUpdate
+  onStylesUpdate,
+  updatePreviewScale
 } from "./utils";
 
 const store = useStore();
@@ -75,6 +76,8 @@ onBeforeUnmount(() => {
   editor?.dispose();
 });
 
+// Update editor content after uploading a file
+
 watch(
   () => store.state.data.fileImported,
   () => {
@@ -96,8 +99,6 @@ watch(
         onStylesUpdate(store.state.styles);
         hasInitStyles = true;
       }
-
-      setTimeout(() => handlePaneResize(), 100);
     });
   }
 );
@@ -116,25 +117,7 @@ watch(
   () => width.value,
   () => {
     handleWindowSize();
-    setTimeout(() => handlePaneResize(), 50);
+    setTimeout(() => updatePreviewScale(), 50);
   }
 );
-
-// Handle pane size changing
-
-const previewScale = ref(1);
-const previewBottom = ref(0);
-
-const handlePaneResize = () => {
-  const pane = document.querySelector(".preview-pane") as HTMLElement;
-  const paneW = pane.clientWidth;
-
-  const preview = document.querySelector(".preview-container") as HTMLElement;
-  const previewH = preview.clientHeight;
-
-  if (paneW >= 804) previewScale.value = 1;
-  else previewScale.value = (width.value <= 810 ? width.value : paneW) / 804;
-
-  previewBottom.value = -(1 - previewScale.value) * previewH;
-};
 </script>

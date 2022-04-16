@@ -2,6 +2,7 @@ import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
 import { extractFrontMatter, updateDomStyles, CHROME_PRINT_BOTTOM } from ".";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
+import { updatePreviewScale } from "./ui";
 
 export const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
@@ -132,6 +133,9 @@ export const handlePageBreak = (state: ResumeStyles) => {
   container.innerHTML = newContainer.innerHTML;
   // Dom styles will be cleared after copying, so update it again
   updateDomStyles(container, state);
+
+  // Updata preview pane's scale
+  updatePreviewScale();
 };
 
 const md = getMarkdownIt();
@@ -146,8 +150,8 @@ export const renderPreviewHTML = (text: string) => {
   return html;
 };
 
-export const onStylesUpdate = (state: ResumeStyles) => {
+export const onStylesUpdate = (state: ResumeStyles, pagePreak = true) => {
   const container = document.querySelector(".preview") as HTMLDivElement;
   updateDomStyles(container, state); // update styles so that handlePageBreak() can get accurate element heights
-  setTimeout(() => handlePageBreak(state), 50);
+  pagePreak && handlePageBreak(state);
 };

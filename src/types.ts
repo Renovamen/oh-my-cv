@@ -11,7 +11,12 @@ export type SystemData = {
   fileImported: boolean;
 };
 
-export type StoreStates = ResumeStyles & SystemData;
+export type UIData = {
+  previewScale: number;
+  previewBottom: number;
+};
+
+export type StoreStates = ResumeStyles & SystemData & UIData;
 
 export type ResumeHeaderItem = {
   text: string;
