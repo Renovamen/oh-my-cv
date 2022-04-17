@@ -88,19 +88,10 @@ watch(
 
 // Render HTML for previewing
 const html = computed(() => renderPreviewHTML(store.state.data.mdContent));
-let hasInitStyles = false;
 
 watch(
   () => html.value,
-  () => {
-    nextTick(() => {
-      if (hasInitStyles) handlePageBreak(store.state.styles);
-      else {
-        onStylesUpdate(store.state.styles);
-        hasInitStyles = true;
-      }
-    });
-  }
+  () => nextTick(() => onStylesUpdate(store.state.styles))
 );
 
 // Handle window size changing

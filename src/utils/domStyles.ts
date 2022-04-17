@@ -37,12 +37,24 @@ const updateFontFamily = (container: HTMLElement, state: ResumeStyles) => {
   container.style.fontFamily = fontEN + ", " + fontCN;
 };
 
+const updateFontSize = (node: HTMLElement, state: ResumeStyles) => {
+  if (node.classList.contains("preview")) {
+    node.style.fontSize = `${state.fontSize}px`;
+    return;
+  }
+  if (node.tagName === "H1") node.style.fontSize = `${Math.ceil(state.fontSize * 2.13)}px`;
+  if (["H2", "H3"].indexOf(node.tagName) !== -1) node.style.fontSize = `${Math.ceil(state.fontSize * 1.2)}px`;
+};
+
 export const updateDomStyles = (
   container: HTMLDivElement,
   state: ResumeStyles
 ) => {
-  // Font familt
+  // Font family
   updateFontFamily(container, state);
+
+  // Body font size
+  updateFontSize(container, state);
 
   // Page margin
   const pages = container.querySelectorAll(
@@ -55,5 +67,6 @@ export const updateDomStyles = (
   for (const node of childNodes) {
     updateThemeColor(node, state);
     updateLineHeight(node, state);
+    updateFontSize(node, state);  // Title font size
   }
 };

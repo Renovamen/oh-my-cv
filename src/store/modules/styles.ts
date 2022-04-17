@@ -11,7 +11,8 @@ const state = {
   },
   fontEN: {
     name: "CMU Sans Serif"
-  }
+  },
+  fontSize: 15
 } as ResumeStyles;
 
 const mutations = {

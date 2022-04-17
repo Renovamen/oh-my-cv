@@ -8,10 +8,6 @@
   color: #e5e7eb;
 }
 
-.preview {
-  font-size: 15px;
-}
-
 .preview h1,
 .preview h2,
 .preview h3 {
@@ -28,7 +24,6 @@
 
 .preview h2,
 .preview h3 {
-  font-size: 18px;
   margin-bottom: 5px;
 }
 
@@ -40,7 +35,7 @@
 .preview ul,
 .preview ol {
   padding-left: 22px;
-  margin: 5px 0;
+  margin: 3px 0;
 }
 
 .preview ul {
@@ -80,7 +75,6 @@
 }
 
 .preview-header h1 {
-  font-size: 32px;
   text-align: center;
   line-height: 1;
   margin-bottom: 8px;

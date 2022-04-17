@@ -5,6 +5,7 @@ export type ResumeStyles = {
   themeColor: string;
   fontCN: Font;
   fontEN: Font;
+  fontSize: number;
 };
 
 export type SystemData = {

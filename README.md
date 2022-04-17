@@ -25,8 +25,9 @@ Highly recommend using Chrome.
 - Import Markdown files from local or URLs
 - Automatic page break
 - Neat template
-- Edit page margins and theme colors
+- Edit page margins, theme colors, line heights, fonts, etc.
 - Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
+- Dark mode
 - Open-source static website hosted on [Github Pages](https://pages.github.com/) which doesn't (have the ability to) collect your data
 
 
@@ -34,12 +35,12 @@ Highly recommend using Chrome.
 
 ## TO-DO
 
-- [ ] Support editting:
+- [x] Support editting:
   
   - [x] Page margin
   - [x] Theme color
   - [x] Font family
-  - [ ] Font size
+  - [x] Font size
   - [x] Line height
   - [ ] ...
 
