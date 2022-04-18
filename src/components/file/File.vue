@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import BaseButton from "./BaseButton.vue";
+import BaseButton from "../tools/BaseButton.vue";
 import Import from "./Import.vue";
 
 const generatePDF = () => {

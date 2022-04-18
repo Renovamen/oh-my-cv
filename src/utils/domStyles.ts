@@ -23,12 +23,14 @@ const updateLineHeight = (node: HTMLElement, state: ResumeStyles) => {
   const lineHeight = state.lineHeight / 100;
   if (["P", "LI"].indexOf(node.tagName) !== -1)
     node.style.lineHeight = lineHeight.toFixed(2);
-  if (["H2", "H3"].indexOf(node.tagName) !== -1) {
+  if (["H2", "H3"].indexOf(node.tagName) !== -1)
     node.style.lineHeight = (lineHeight * 1.154).toFixed(2);
-    node.style.marginTop = `${((0.3125 * lineHeight) / 1.3).toFixed(3)}rem`;
-  }
   if (node.tagName === "DL")
     node.style.lineHeight = (lineHeight * 1.038).toFixed(2);
+};
+
+const updateParagraphSpace = (node: HTMLElement, state: ResumeStyles) => {
+  if (node.tagName === "H2") node.style.marginTop = `${state.paragraphSpace}px`;
 };
 
 const updateFontFamily = (container: HTMLElement, state: ResumeStyles) => {
@@ -42,19 +44,18 @@ const updateFontSize = (node: HTMLElement, state: ResumeStyles) => {
     node.style.fontSize = `${state.fontSize}px`;
     return;
   }
-  if (node.tagName === "H1") node.style.fontSize = `${Math.ceil(state.fontSize * 2.13)}px`;
-  if (["H2", "H3"].indexOf(node.tagName) !== -1) node.style.fontSize = `${Math.ceil(state.fontSize * 1.2)}px`;
+  if (node.tagName === "H1")
+    node.style.fontSize = `${Math.ceil(state.fontSize * 2.13)}px`;
+  if (["H2", "H3"].indexOf(node.tagName) !== -1)
+    node.style.fontSize = `${Math.ceil(state.fontSize * 1.2)}px`;
 };
 
 export const updateDomStyles = (
   container: HTMLDivElement,
   state: ResumeStyles
 ) => {
-  // Font family
   updateFontFamily(container, state);
-
-  // Body font size
-  updateFontSize(container, state);
+  updateFontSize(container, state); // Body font size
 
   // Page margin
   const pages = container.querySelectorAll(
@@ -67,6 +68,7 @@ export const updateDomStyles = (
   for (const node of childNodes) {
     updateThemeColor(node, state);
     updateLineHeight(node, state);
-    updateFontSize(node, state);  // Title font size
+    updateParagraphSpace(node, state);
+    updateFontSize(node, state); // Title font size
   }
 };

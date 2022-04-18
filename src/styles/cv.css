@@ -15,7 +15,7 @@
 }
 
 .preview {
-  word-break: break-all;
+  text-align: justify;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;

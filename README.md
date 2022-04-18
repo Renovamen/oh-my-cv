@@ -42,6 +42,7 @@ Highly recommend using Chrome.
   - [x] Font family
   - [x] Font size
   - [x] Line height
+  - [x] Paragraph space
   - [ ] ...
 
 - [ ] Support exporting to:

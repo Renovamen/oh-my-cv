@@ -1,15 +1,17 @@
 <template>
   <BaseButton>
     <template #icon>
-      <span class="iconify text-sm sm:text-base" data-icon="ri:font-size-2" />
+      <span
+        class="iconify text-sm sm:text-base"
+        data-icon="icon-park-outline:paragraph-break-two"
+      />
     </template>
 
     <template #dropdown>
       <div class="w-7 sm:w-8 py-3">
         <Slider
-          v-model="fontSize"
-          :min="12"
-          :max="20"
+          v-model="paragraphSpace"
+          :max="50"
           orientation="vertical"
           class="mx-auto"
         />
@@ -29,12 +31,12 @@ import { onStylesUpdate } from "../../utils";
 
 const store = useStore();
 
-const fontSize = computed({
+const paragraphSpace = computed({
   get() {
-    return store.state.styles.fontSize;
+    return store.state.styles.paragraphSpace;
   },
   set(value: number) {
-    setStoreState("styles", "fontSize", value);
+    setStoreState("styles", "paragraphSpace", value);
     onStylesUpdate(store.state.styles);
   }
 });

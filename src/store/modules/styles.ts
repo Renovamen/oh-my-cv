@@ -1,9 +1,10 @@
 import type { ResumeStyles } from "../../types";
 
 const state = {
-  marginV: 35,
+  marginV: 45,
   marginH: 45,
   lineHeight: 130,
+  paragraphSpace: 5,
   themeColor: "#377bb5",
   fontCN: {
     name: "微软雅黑",
