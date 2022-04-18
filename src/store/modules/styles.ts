@@ -7,8 +7,8 @@ const state = {
   paragraphSpace: 5,
   themeColor: "#377bb5",
   fontCN: {
-    name: "微软雅黑",
-    fontFamily: "Microsoft YaHei"
+    name: "思源黑体",
+    fontFamily: "Noto Sans SC"
   },
   fontEN: {
     name: "CMU Sans Serif"

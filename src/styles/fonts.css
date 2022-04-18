@@ -73,6 +73,20 @@
 }
 
 @font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: normal;
+  src: url("@/assets/fonts/noto-sans-sc/noto-sans-sc-regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: bold;
+  src: url("@/assets/fonts/noto-sans-sc/noto-sans-sc-bold.otf") format("opentype");
+}
+
+@font-face {
   font-family: "LXGW WenKai";
   font-style: normal;
   font-weight: normal;

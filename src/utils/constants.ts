@@ -22,8 +22,8 @@ export const EN_FONTS: Font[] = [
 
 export const CN_FONTS: Font[] = [
   {
-    name: "微软雅黑",
-    fontFamily: "Microsoft YaHei"
+    name: "思源黑体",
+    fontFamily: "Noto Sans SC"
   },
   {
     name: "思源宋体",
