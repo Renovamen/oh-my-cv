@@ -69,14 +69,14 @@ It's powered by [Vue 3](https://v3.vuejs.org/), [Windi CSS](https://windicss.org
 Clone the repo and install dependencies:
 
 ```bash
-yarn
+pnpm install
 ```
 
 Start dev server / building:
 
 ```bash
-yarn dev
-yarn build
+pnpm dev
+pnpm build
 ```
 
 
