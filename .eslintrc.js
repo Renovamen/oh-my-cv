@@ -11,7 +11,8 @@ module.exports = {
     "plugin:prettier/recommended"
   ],
   rules: {
-    "vue/no-v-html": "off"
+    "vue/no-v-html": "off",
+    "vue/multi-word-component-names": "off"
   },
   ignorePatterns: ["node_modules/", "dist/"]
 };

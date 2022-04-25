@@ -12,7 +12,7 @@
         <li
           v-for="(font, i) in EN_FONTS"
           :key="`font-${i}-${font.name}`"
-          class="flex items-center h-8 px-3 text-sm cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
+          class="menu-li"
           :class="[
             i === 0 && 'rounded-t',
             i === EN_FONTS.length - 1 && 'rounded-b'

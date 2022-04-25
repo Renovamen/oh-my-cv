@@ -1,15 +1,9 @@
 <template>
-  <div
-    class="h-7 w-7 sm:h-8 sm:w-8 text-white rounded bg-indigo-500 cursor-pointer"
-    @click="toggleDark"
-  >
-    <div
-      v-show="!isDark"
-      class="w-full h-full flex items-center justify-center"
-    >
+  <div class="btn w-7 sm:w-8 text-white bg-indigo-500" @click="toggleDark">
+    <div v-show="!isDark" class="w-full h-full flex-center">
       <span class="iconify text-sm sm:text-base" data-icon="ph:sun-bold" />
     </div>
-    <div v-show="isDark" class="w-full h-full flex items-center justify-center">
+    <div v-show="isDark" class="w-full h-full flex-center">
       <span class="iconify text-sm sm:text-base" data-icon="ph:moon-bold" />
     </div>
   </div>

@@ -6,7 +6,7 @@
     @trigger="isDropDownOpen = false"
   >
     <div
-      class="flex items-center justify-center h-7 sm:h-8 rounded cursor-pointer"
+      class="btn"
       :class="[
         props.text ? 'space-x-1 px-2 sm:px-3 whitespace-nowrap' : 'w-7 sm:w-8',
         !isDropDownOpen && props.styles,

@@ -16,14 +16,11 @@
           :style="{ backgroundColor: color }"
           @click="pickColor(i)"
         >
-          <div
-            v-show="pickedColorId === i"
-            class="w-full h-full flex items-center justify-center"
-          >
+          <div v-show="pickedColorId === i" class="w-full h-full flex-center">
             <span class="iconify" data-icon="line-md:confirm" />
           </div>
         </li>
-        <li class="w-5 h-5 relative flex items-center justify-center">
+        <li class="w-5 h-5 relative flex-center">
           <span class="iconify text-lg" data-icon="emojione:artist-palette" />
           <input
             class="absolute left-0 w-full h-full opacity-0 cursor-pointer"

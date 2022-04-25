@@ -1,8 +1,10 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import "windi.css";
 import store from "./store";
-import "./styles";
+
+import "@unocss/reset/tailwind.css";
+import "uno.css";
+import "./styles/index.css";
 
 const app = createApp(App);
 app.use(store).mount("#app");

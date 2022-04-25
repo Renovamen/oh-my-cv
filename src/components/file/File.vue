@@ -10,17 +10,11 @@
 
     <template #dropdown>
       <ul class="w-32">
-        <li
-          class="flex items-center space-x-0.5 sm:space-x-1.5 px-3 h-8 text-sm cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200 rounded-t"
-          @click="toggleImport(true)"
-        >
+        <li class="menu-li rounded-t" @click="toggleImport(true)">
           <span class="iconify text-sm sm:text-base" data-icon="mdi:upload" />
           <span class="text-xs sm:text-sm">Import MD</span>
         </li>
-        <li
-          class="flex items-center space-x-0.5 sm:space-x-1.5 px-3 h-9 cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200 rounded-b"
-          @click="generatePDF"
-        >
+        <li class="menu-li rounded-b" @click="generatePDF">
           <span
             class="iconify text-sm sm:text-base"
             data-icon="mdi:progress-download"

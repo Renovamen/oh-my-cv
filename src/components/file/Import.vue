@@ -5,7 +5,7 @@
   >
     <div>
       <button
-        class="absolute right-3 top-3.5 cursor-pointer"
+        class="absolute right-3 top-2.5 cursor-pointer"
         @click="$emit('closeImport')"
       >
         <span class="iconify" data-icon="ic:baseline-close" />
@@ -54,7 +54,7 @@
           @keyup.enter="uploadFileFromURL"
         />
         <button
-          class="flex items-center justify-center w-8 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"
+          class="flex-center w-8 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"
           @click="uploadFileFromURL"
         >
           <span class="iconify" data-icon="line-md:confirm" />

@@ -1,9 +1,9 @@
 import vue from "@vitejs/plugin-vue";
-import windicss from "vite-plugin-windicss";
+import Unocss from "unocss/vite";
 import path from "path";
 
 export default {
-  plugins: [vue(), windicss()],
+  plugins: [vue(), Unocss()],
   publicDir: "public",
   optimizeDeps: {},
   server: {

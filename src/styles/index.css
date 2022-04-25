@@ -1,8 +1,16 @@
+@import "./fonts.css";
+@import "./layout.css";
+@import "./cv.css";
+
 :root {
   --slider-vertical-height: 150px;
   --slider-height: 4px;
   --slider-handle-width: 12px;
   --slider-handle-height: 12px;
+}
+
+svg.iconify {
+  display: inline-block;
 }
 
 .slider-vertical .slider-handle {

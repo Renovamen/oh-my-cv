@@ -64,7 +64,7 @@ Highly recommend using Chrome.
 
 ## Development
 
-It's powered by [Vue 3](https://v3.vuejs.org/), [Windi CSS](https://windicss.org/) and [Vite](https://vitejs.dev/).
+It's powered by [Vue 3](https://v3.vuejs.org/) and [Vite](https://vitejs.dev/).
 
 Clone the repo and install dependencies:
 

@@ -1,5 +1,6 @@
 #app {
-  @apply h-screen;
+  /* @apply h-screen; */
+  height: 100vh;
 }
 
 .header {
@@ -11,7 +12,8 @@
 }
 
 .editor {
-  @apply h-full;
+  /* @apply h-full; */
+  height: 100%;
 }
 
 .preview-pane {
