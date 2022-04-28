@@ -11,13 +11,13 @@
     </pane>
     <pane class="preview-pane" min-size="30">
       <div
-        class="preview-container"
+        class="preview"
         :style="{
           transform: `scale(${store.state.ui.previewScale})`,
           marginBottom: `${store.state.ui.previewBottom}px`
         }"
       >
-        <div class="preview" v-html="html" />
+        <div class="preview-page" v-html="html" />
       </div>
     </pane>
   </splitpanes>
@@ -70,6 +70,9 @@ onMounted(() => {
   });
 
   handleWindowSize();
+
+  // Initialize styles
+  onStylesUpdate(store.state.styles);
 });
 
 onBeforeUnmount(() => {
@@ -87,11 +90,21 @@ watch(
 );
 
 // Render HTML for previewing
+
 const html = computed(() => renderPreviewHTML(store.state.data.mdContent));
+let hasInitialized = false;
 
 watch(
   () => html.value,
-  () => nextTick(() => onStylesUpdate(store.state.styles))
+  () =>
+    nextTick(() => {
+      if (hasInitialized) {
+        handlePageBreak(store.state.styles);
+      } else {
+        setTimeout(() => handlePageBreak(store.state.styles), 50);
+        hasInitialized = true;
+      }
+    })
 );
 
 // Handle window size changing

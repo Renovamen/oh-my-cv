@@ -1,8 +1,9 @@
 import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
-import { extractFrontMatter, updateDomStyles, CHROME_PRINT_BOTTOM } from ".";
+import { extractFrontMatter, updateStyles, CHROME_PRINT_BOTTOM } from ".";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
 import { updatePreviewScale } from "./ui";
+import { A4_HEIGHT } from "./constants";
 
 export const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
@@ -74,68 +75,62 @@ export const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
   return `<div class="preview-header">${header}</div>` + html;
 };
 
+const clearPageBreak = (page: HTMLDivElement) => {
+  const pageBreaks = page.querySelectorAll(
+    ".preview-page-break"
+  ) as NodeListOf<HTMLDivElement>;
+
+  for (const b of pageBreaks) page.removeChild(b);
+};
+
 export const handlePageBreak = (state: ResumeStyles) => {
-  const container = document.querySelector(".preview") as HTMLDivElement;
+  const page = document.querySelector(".preview-page") as HTMLDivElement;
+  clearPageBreak(page);
 
   const margin =
     state.marginV + Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);
-  const a4Height = 1134;
+  const contentH = A4_HEIGHT - margin;
 
-  const getPageElement = () => {
-    const page = document.createElement("div") as HTMLDivElement;
-    page.className = "preview-page";
-    return page;
-  };
-
-  const getPageBreakElement = () => {
+  const getPageBreakElement = (top: number) => {
     const pageBreak = document.createElement("div") as HTMLDivElement;
     pageBreak.className = "preview-page-break";
+
+    pageBreak.style.marginTop = `${top}px`;
+    pageBreak.style.paddingBottom = `${state.marginV}px`;
+
+    pageBreak.style.marginLeft = `-${state.marginH}px`;
+    pageBreak.style.marginRight = `-${state.marginH}px`;
+
     return pageBreak;
   };
 
-  let page = getPageElement();
   let pageH = 0;
 
-  const newContainer = document.createElement("div") as HTMLDivElement;
-  newContainer.className = "preview";
+  const newPage = document.createElement("div") as HTMLDivElement;
+  newPage.className = "preview-page";
 
-  const childList = [] as Element[];
-
-  if (container.children[0].className !== "preview-page") {
-    for (const child of container.children) childList.push(child);
-  } else {
-    for (const page of container.children) {
-      for (const child of page.children) {
-        childList.push(child);
-      }
-    }
-  }
-
-  for (const child of childList) {
+  for (const child of page.children) {
     const style = window.getComputedStyle(child, null);
     const childH =
       child.clientHeight +
       parseInt(style.marginTop) +
       parseInt(style.marginBottom);
 
-    if (pageH + childH > a4Height - margin) {
-      newContainer.appendChild(page);
-      newContainer.appendChild(getPageBreakElement());
-      page = getPageElement();
+    if (pageH + childH > contentH) {
+      newPage.appendChild(
+        getPageBreakElement(A4_HEIGHT - pageH - state.marginV)
+      );
       pageH = 0;
     }
 
-    page.appendChild(child.cloneNode(true));
+    newPage.appendChild(child.cloneNode(true));
     pageH += childH;
   }
-  newContainer.appendChild(page);
 
-  container.innerHTML = newContainer.innerHTML;
-  // Dom styles will be cleared after copying, so update it again
-  updateDomStyles(container, state);
+  page.innerHTML = newPage.innerHTML;
+  page.style.paddingBottom = `${A4_HEIGHT - pageH - state.marginV}px`;
 
-  // Updata preview pane's scale
-  updatePreviewScale();
+  updatePreviewScale(); // Updata preview pane's scale
 };
 
 const md = getMarkdownIt();
@@ -151,7 +146,6 @@ export const renderPreviewHTML = (text: string) => {
 };
 
 export const onStylesUpdate = (state: ResumeStyles, pagePreak = true) => {
-  const container = document.querySelector(".preview") as HTMLDivElement;
-  updateDomStyles(container, state); // update styles so that handlePageBreak() can get accurate element heights
+  updateStyles(state);
   pagePreak && handlePageBreak(state);
 };

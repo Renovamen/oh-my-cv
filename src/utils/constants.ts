@@ -1,5 +1,7 @@
 import type { Font } from "../types";
 
+export const A4_HEIGHT = 1134;
+
 export const CHROME_PRINT_BOTTOM = 10;
 
 export const DEFAULT_THEME_COLORS = [

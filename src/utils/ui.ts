@@ -7,7 +7,7 @@ export const updatePreviewScale = () => {
   const pane = document.querySelector(".preview-pane") as HTMLElement;
   const paneW = pane.clientWidth;
 
-  const preview = document.querySelector(".preview-container") as HTMLElement;
+  const preview = document.querySelector(".preview") as HTMLElement;
   const previewH = preview.clientHeight;
 
   const previewScale =

@@ -1,6 +1,5 @@
 #app {
-  /* @apply h-screen; */
-  height: 100vh;
+  @apply h-screen;
 }
 
 .header {
@@ -12,33 +11,31 @@
 }
 
 .editor {
-  /* @apply h-full; */
-  height: 100%;
+  @apply h-full;
 }
 
 .preview-pane {
   @apply overflow-y-scroll;
 }
 
-.preview-container {
+.preview {
   width: 804px;
   @apply mx-auto origin-top-left;
 }
 
-.preview {
-  width: 804px;
-}
-
 .preview-page {
   width: 210mm;
-  height: 300mm;
-  position: relative;
   @apply my-1.5 mx-auto border border-black;
+}
+
+.preview-page-break {
+  @apply border-t border-black border-t-1.5;
 }
 
 /* Dark mode */
 
-.dark .preview-page {
+.dark .preview-page,
+.dark .preview-page-break {
   @apply border-gray-200;
 }
 
@@ -54,6 +51,7 @@
 .dark .splitpanes.default-theme .splitpanes__splitter:after {
   @apply bg-gray-500;
 }
+
 
 /* Print mode */
 
@@ -71,13 +69,13 @@
 
   .splitpanes,
   .splitpanes__pane,
-  .preview-container,
   .preview,
   .preview-page {
     width: 100% !important;
+    overflow-y: hidden;
   }
 
-  .preview-container {
+  .preview {
     transform: scale(1) !important;
     margin-bottom: 0 !important;
   }
@@ -85,11 +83,13 @@
   .preview-page {
     border: none;
     margin: 0;
-    height: 296mm;
+    padding-bottom: 0 !important;
   }
 
   .preview-page-break {
     page-break-before: always;
+    margin-top: 0 !important;
+    border: none;
   }
 
   #app {
