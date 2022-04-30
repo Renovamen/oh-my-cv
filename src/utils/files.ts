@@ -30,12 +30,3 @@ export const uploadFile = (e: Event, callback: (content: string) => void) => {
   fileReader.onloadend = handleFileRead;
   fileReader.readAsText(file);
 };
-
-export const onFontsLoaded = (fonts: string | Array<string>) => {
-  const observers = [];
-
-  for (const font of typeof fonts === "string" ? [fonts] : fonts)
-    observers.push(document.fonts.load(`12px ${font}`));
-
-  return Promise.all(observers);
-};

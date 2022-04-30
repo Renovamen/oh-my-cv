@@ -44,11 +44,12 @@ import {
   handlePageBreak,
   renderPreviewHTML,
   updatePreviewScale,
-  updateStyles,
-  onFontsLoaded
+  updateStyles
 } from "./utils";
+import { useFonts } from "./composables";
 
 const store = useStore();
+const { onFontLoaded } = useFonts();
 
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
@@ -78,11 +79,7 @@ onMounted(() => {
     () => html.value,
     () =>
       nextTick(() => {
-        const styles = store.state.styles;
-        const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
-        const fontCN = styles.fontCN.fontFamily || styles.fontCN.name;
-
-        onFontsLoaded([fontEN, fontCN]).then(() => {
+        onFontLoaded.value.then(() => {
           handlePageBreak(store.state.styles);
         });
       })
