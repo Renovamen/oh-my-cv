@@ -1,11 +1,10 @@
 import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
-import { extractFrontMatter, updateStyles, CHROME_PRINT_BOTTOM } from ".";
+import { extractFrontMatter, updateStyles, updatePreviewScale } from ".";
+import { CHROME_PRINT_BOTTOM, A4_HEIGHT } from "./constants";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
-import { updatePreviewScale } from "./ui";
-import { A4_HEIGHT } from "./constants";
 
-export const getMarkdownIt = () => {
+const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
 
   // remember old renderer, if overridden, or proxy to default renderer
@@ -30,7 +29,7 @@ export const getMarkdownIt = () => {
   return md;
 };
 
-export const handleDeflist = (html: string) => {
+const handleDeflist = (html: string) => {
   const dlReg = /<dl>([\s\S]*?)<\/dl>/g;
   const dlList = html.match(dlReg);
 
@@ -49,7 +48,7 @@ export const handleDeflist = (html: string) => {
   return html;
 };
 
-export const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
+const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
   let header = "";
 
   if (frontmatter.name) header += `<h1>${frontmatter.name}</h1>\n`;
@@ -75,17 +74,15 @@ export const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
   return `<div class="preview-header">${header}</div>` + html;
 };
 
-const clearPageBreak = (page: HTMLDivElement) => {
-  const pageBreaks = page.querySelectorAll(
-    ".preview-page-break"
-  ) as NodeListOf<HTMLDivElement>;
+const removeElements = (parent: HTMLElement, selector: string) => {
+  const elements = parent.querySelectorAll(selector) as NodeListOf<HTMLElement>;
 
-  for (const b of pageBreaks) page.removeChild(b);
+  for (const e of elements) parent.removeChild(e);
 };
 
 export const handlePageBreak = (state: ResumeStyles) => {
   const page = document.querySelector(".preview-page") as HTMLDivElement;
-  clearPageBreak(page);
+  removeElements(page, ".preview-page-break");
 
   const margin =
     state.marginV + Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);

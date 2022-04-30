@@ -9,10 +9,11 @@ const pageMarginCss = (state: ResumeStyles) => {
 };
 
 const themeColorCss = (state: ResumeStyles) => {
-  const a = `.preview a:not(.preview-header-link) { color: ${state.themeColor} }`;
-  const h = `.preview h1, .preview h2, .preview h3 { color: ${state.themeColor} }`;
-  const border = `.preview h2 { border-bottom-color: ${state.themeColor} }`;
-  return a + h + border;
+  return (
+    `.preview a:not(.preview-header-link) { color: ${state.themeColor} }` +
+    `.preview h1, .preview h2, .preview h3 { color: ${state.themeColor} }` +
+    `.preview h2 { border-bottom-color: ${state.themeColor} }`
+  );
 };
 
 const lineHeightCss = (state: ResumeStyles) => {
@@ -76,7 +77,7 @@ export const updateStyles = (state: ResumeStyles) => {
       styleSheet.replaceSync(content);
       // @ts-expect-error: using experimental API
       document.adoptedStyleSheets = [
-        // @ts-expect-error
+        // @ts-expect-error: using experimental API
         ...document.adoptedStyleSheets,
         styleSheet
       ];

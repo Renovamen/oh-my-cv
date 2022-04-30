@@ -43,8 +43,9 @@ import {
   fetchFile,
   handlePageBreak,
   renderPreviewHTML,
-  onStylesUpdate,
-  updatePreviewScale
+  updatePreviewScale,
+  updateStyles,
+  onFontsLoaded
 } from "./utils";
 
 const store = useStore();
@@ -69,10 +70,23 @@ onMounted(() => {
     });
   });
 
-  handleWindowSize();
-
   // Initialize styles
-  onStylesUpdate(store.state.styles);
+  updateStyles(store.state.styles);
+
+  // Handle page breaking after HTML changing
+  watch(
+    () => html.value,
+    () =>
+      nextTick(() => {
+        const styles = store.state.styles;
+        const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
+        const fontCN = styles.fontCN.fontFamily || styles.fontCN.name;
+
+        onFontsLoaded([fontEN, fontCN]).then(() => {
+          handlePageBreak(store.state.styles);
+        });
+      })
+  );
 });
 
 onBeforeUnmount(() => {
@@ -92,20 +106,6 @@ watch(
 // Render HTML for previewing
 
 const html = computed(() => renderPreviewHTML(store.state.data.mdContent));
-let hasInitialized = false;
-
-watch(
-  () => html.value,
-  () =>
-    nextTick(() => {
-      if (hasInitialized) {
-        handlePageBreak(store.state.styles);
-      } else {
-        setTimeout(() => handlePageBreak(store.state.styles), 50);
-        hasInitialized = true;
-      }
-    })
-);
 
 // Handle window size changing
 
@@ -116,6 +116,8 @@ const handleWindowSize = () => {
   if (width.value <= 810) isMobile.value = true;
   else isMobile.value = false;
 };
+
+handleWindowSize();
 
 watch(
   () => width.value,

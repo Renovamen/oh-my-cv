@@ -29,7 +29,7 @@
 }
 
 .preview-page-break {
-  @apply border-t border-black border-t-1.5;
+  @apply border-t-2 border-black;
 }
 
 /* Dark mode */

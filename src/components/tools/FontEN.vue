@@ -31,7 +31,12 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import BaseButton from "./BaseButton.vue";
 import { setStoreState } from "../../store";
-import { EN_FONTS, onStylesUpdate, handlePageBreak } from "../../utils";
+import {
+  EN_FONTS,
+  onStylesUpdate,
+  handlePageBreak,
+  onFontsLoaded
+} from "../../utils";
 
 const store = useStore();
 const pickedFontName = computed(() => store.state.styles.fontEN.name);
@@ -48,7 +53,7 @@ const pickFont = (i: number) => {
   onStylesUpdate(store.state.styles, false);
 
   const pickedFontFamily = pickedFont.value.fontFamily || pickedFont.value.name;
-  document.fonts.load(`12px ${pickedFontFamily}`).then(() => {
+  onFontsLoaded(pickedFontFamily).then(() => {
     handlePageBreak(store.state.styles);
   });
 };
