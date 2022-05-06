@@ -1,4 +1,4 @@
-import type { SystemData } from "../../types";
+import type { SystemData } from "~/types";
 
 const state = {
   mdContent: "",

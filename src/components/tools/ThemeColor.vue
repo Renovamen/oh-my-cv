@@ -37,9 +37,9 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
+import { setStoreState } from "~/store";
+import { onStylesUpdate, DEFAULT_THEME_COLORS } from "~/utils";
 import BaseButton from "./BaseButton.vue";
-import { setStoreState } from "../../store";
-import { onStylesUpdate, DEFAULT_THEME_COLORS } from "../../utils";
 
 const store = useStore();
 const defaultColorId = DEFAULT_THEME_COLORS.findIndex(

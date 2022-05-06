@@ -1,4 +1,4 @@
-import type { ResumeStyles } from "../../types";
+import type { ResumeStyles } from "~/types";
 
 const state = {
   marginV: 45,

@@ -30,10 +30,10 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
+import { setStoreState } from "~/store";
+import { CN_FONTS, onStylesUpdate, handlePageBreak } from "~/utils";
+import { useFonts } from "~/composables";
 import BaseButton from "./BaseButton.vue";
-import { setStoreState } from "../../store";
-import { CN_FONTS, onStylesUpdate, handlePageBreak } from "../../utils";
-import { useFonts } from "../../composables";
 
 const store = useStore();
 const pickedFontName = computed(() => store.state.styles.fontCN.name);

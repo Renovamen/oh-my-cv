@@ -37,16 +37,16 @@ import * as monaco from "monaco-editor";
 import { useWindowSize } from "@vueuse/core";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import Header from "./components/Header.vue";
-import { setStoreState } from "./store";
+import Header from "~/components/Header.vue";
+import { setStoreState } from "~/store";
 import {
   fetchFile,
   handlePageBreak,
   renderPreviewHTML,
   updatePreviewScale,
   updateStyles
-} from "./utils";
-import { useFonts } from "./composables";
+} from "~/utils";
+import { useFonts } from "~/composables";
 
 const store = useStore();
 const { onFontLoaded } = useFonts();

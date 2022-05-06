@@ -21,9 +21,9 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
+import { setStoreState } from "~/store";
+import { onStylesUpdate } from "~/utils";
 import BaseButton from "./BaseButton.vue";
-import { setStoreState } from "../../store";
-import { onStylesUpdate } from "../../utils";
 
 const store = useStore();
 

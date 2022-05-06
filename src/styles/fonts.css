@@ -4,56 +4,56 @@
   font-family: "CMU Sans Serif";
   font-style: normal;
   font-weight: normal;
-  src: url("@/assets/fonts/cmu-sans-serif/regular.ttf") format("opentype");
+  src: url("~/assets/fonts/cmu-sans-serif/regular.ttf") format("opentype");
 }
 
 @font-face {
   font-family: "CMU Sans Serif";
   font-style: normal;
   font-weight: bold;
-  src: url("@/assets/fonts/cmu-sans-serif/bold.ttf") format("opentype");
+  src: url("~/assets/fonts/cmu-sans-serif/bold.ttf") format("opentype");
 }
 
 @font-face {
   font-family: "CMU Sans Serif";
   font-style: italic;
   font-weight: normal;
-  src: url("@/assets/fonts/cmu-sans-serif/italic.ttf") format("opentype");
+  src: url("~/assets/fonts/cmu-sans-serif/italic.ttf") format("opentype");
 }
 
 @font-face {
   font-family: "CMU Sans Serif";
   font-style: italic;
   font-weight: bold;
-  src: url("@/assets/fonts/cmu-sans-serif/bolditalic.ttf") format("opentype");
+  src: url("~/assets/fonts/cmu-sans-serif/bolditalic.ttf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: normal;
   font-weight: normal;
-  src: url("@/assets/fonts/times-newer-roman/times-newer-roman-regular.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: normal;
   font-weight: bold;
-  src: url("@/assets/fonts/times-newer-roman/times-newer-roman-bold.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: italic;
   font-weight: normal;
-  src: url("@/assets/fonts/times-newer-roman/times-newer-roman-italic.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-italic.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: italic;
   font-weight: bold;
-  src: url("@/assets/fonts/times-newer-roman/times-newer-roman-bolditalic.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-bolditalic.otf") format("opentype");
 }
 
 /* Chinese */
@@ -62,40 +62,40 @@
   font-family: "Noto Serif SC";
   font-style: normal;
   font-weight: normal;
-  src: url("@/assets/fonts/noto-serif-sc/noto-serif-sc-regular.otf") format("opentype");
+  src: url("~/assets/fonts/noto-serif-sc/noto-serif-sc-regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Noto Serif SC";
   font-style: normal;
   font-weight: bold;
-  src: url("@/assets/fonts/noto-serif-sc/noto-serif-sc-bold.otf") format("opentype");
+  src: url("~/assets/fonts/noto-serif-sc/noto-serif-sc-bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Noto Sans SC";
   font-style: normal;
   font-weight: normal;
-  src: url("@/assets/fonts/noto-sans-sc/noto-sans-sc-regular.otf") format("opentype");
+  src: url("~/assets/fonts/noto-sans-sc/noto-sans-sc-regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Noto Sans SC";
   font-style: normal;
   font-weight: bold;
-  src: url("@/assets/fonts/noto-sans-sc/noto-sans-sc-bold.otf") format("opentype");
+  src: url("~/assets/fonts/noto-sans-sc/noto-sans-sc-bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "LXGW WenKai";
   font-style: normal;
   font-weight: normal;
-  src: url("@/assets/fonts/lxgw-wen-kai/lxgw-wen-kai-regular.ttf") format("opentype");
+  src: url("~/assets/fonts/lxgw-wen-kai/lxgw-wen-kai-regular.ttf") format("opentype");
 }
 
 @font-face {
   font-family: "LXGW WenKai";
   font-style: normal;
   font-weight: bold;
-  src: url("@/assets/fonts/lxgw-wen-kai/lxgw-zhen-kai.ttf") format("opentype");
+  src: url("~/assets/fonts/lxgw-wen-kai/lxgw-zhen-kai.ttf") format("opentype");
 }

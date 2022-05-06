@@ -1,5 +1,5 @@
 import * as monaco from "monaco-editor";
-import type { UIData } from "../../types";
+import type { UIData } from "~/types";
 
 const state = {
   previewScale: 1,

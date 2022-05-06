@@ -1,5 +1,5 @@
 import store from ".";
-import type { StoreStates } from "../types";
+import type { StoreStates } from "~/types";
 
 type ModuleNameType = "styles" | "data" | "ui";
 

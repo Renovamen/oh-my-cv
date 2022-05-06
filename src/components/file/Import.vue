@@ -67,8 +67,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { OnClickOutside } from "@vueuse/components";
-import { fetchFile, uploadFile } from "../../utils";
-import { setStoreState } from "../../store";
+import { fetchFile, uploadFile } from "~/utils";
+import { setStoreState } from "~/store";
 
 const emit = defineEmits<{
   (e: "closeImport"): void;
