@@ -5,21 +5,22 @@
     active-styles="bg-blue-600 text-white"
   >
     <template #icon>
-      <span class="iconify text-sm sm:text-base" data-icon="mdi:file-outline" />
+      <span class="iconify" text="sm sm:base" data-icon="mdi:file-outline" />
     </template>
 
     <template #dropdown>
       <ul class="w-32">
         <li class="menu-li rounded-t" @click="toggleImport(true)">
-          <span class="iconify text-sm sm:text-base" data-icon="mdi:upload" />
-          <span class="text-xs sm:text-sm">Import MD</span>
+          <span class="iconify" text="sm sm:base" data-icon="mdi:upload" />
+          <span text="xs sm:sm">Import MD</span>
         </li>
         <li class="menu-li rounded-b" @click="generatePDF">
           <span
-            class="iconify text-sm sm:text-base"
+            class="iconify"
+            text="sm sm:base"
             data-icon="mdi:progress-download"
           />
-          <span class="text-xs sm:text-sm">Export PDF</span>
+          <span text="xs sm:sm">Export PDF</span>
         </li>
       </ul>
     </template>

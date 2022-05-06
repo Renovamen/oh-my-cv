@@ -1,10 +1,10 @@
 <template>
   <div class="btn w-7 sm:w-8 text-white bg-indigo-500" @click="toggleDark">
     <div v-show="!isDark" class="w-full h-full flex-center">
-      <span class="iconify text-sm sm:text-base" data-icon="ph:sun-bold" />
+      <span class="iconify" text="sm sm:base" data-icon="ph:sun-bold" />
     </div>
     <div v-show="isDark" class="w-full h-full flex-center">
-      <span class="iconify text-sm sm:text-base" data-icon="ph:moon-bold" />
+      <span class="iconify" text="sm sm:base" data-icon="ph:moon-bold" />
     </div>
   </div>
 </template>

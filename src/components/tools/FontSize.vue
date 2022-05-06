@@ -1,7 +1,7 @@
 <template>
   <BaseButton>
     <template #icon>
-      <span class="iconify text-sm sm:text-base" data-icon="ri:font-size-2" />
+      <span class="iconify" text="sm sm:base" data-icon="ri:font-size-2" />
     </template>
 
     <template #dropdown>

@@ -19,11 +19,11 @@
       </template>
 
       <template #dropdown>
-        <div class="space-x-1.5 flex pt-2 pb-1 px-2">
+        <div class="space-x-1.5 flex" p="t-2 b-1 x-2">
           <FontCN />
           <FontEN />
         </div>
-        <div class="space-x-1.5 flex pt-1 pb-2 px-2 justify-end">
+        <div class="space-x-1.5 flex justify-end" p="t-1 b-2 x-2">
           <ParagraphSpace />
           <LineHeight />
           <FontSize />

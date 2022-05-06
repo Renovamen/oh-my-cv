@@ -14,13 +14,15 @@
       ]"
     >
       <slot name="icon" />
-      <span v-if="props.text" class="text-xs sm:text-sm">{{ props.text }}</span>
+      <span v-if="props.text" text="xs sm:sm">{{ props.text }}</span>
     </div>
 
     <!-- Dropdown -->
     <div
       v-show="isDropDownOpen"
-      class="absolute sm:top-10 z-10 bg-white border border-gray-300 dark:(bg-dark-400 border-gray-600) shadow rounded"
+      class="absolute sm:top-10 z-10 shadow"
+      bg="white dark:dark-400"
+      border="1 rounded gray-300 dark:gray-600"
       :class="[dropdownMobileRight ? 'top-11 right-1.5' : 'top-8 right-0']"
       @click="(e) => e.stopPropagation()"
     >

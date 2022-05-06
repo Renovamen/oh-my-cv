@@ -11,7 +11,7 @@
         <span class="iconify" data-icon="ic:baseline-close" />
       </button>
 
-      <div class="px-4 pt-3 pb-1 font-medium">Import a Markdown file</div>
+      <div p="x-4 t-3 b-1" font="medium">Import a Markdown file</div>
 
       <div class="pt-3 flex text-sm">
         <button

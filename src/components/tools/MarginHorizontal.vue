@@ -2,7 +2,8 @@
   <BaseButton>
     <template #icon>
       <span
-        class="iconify text-sm sm:text-base"
+        class="iconify"
+        text="sm sm:base"
         data-icon="icon-park-outline:margin"
       />
     </template>
