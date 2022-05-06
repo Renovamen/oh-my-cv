@@ -27,6 +27,7 @@ Highly recommend using Chrome.
 - Neat template
 - Edit page margins, theme colors, line heights, fonts, etc.
 - Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
+- Tex support ([Katex](https://github.com/KaTeX/KaTeX))
 - Dark mode
 - Open-source static website hosted on [Github Pages](https://pages.github.com/) which doesn't (have the ability to) collect your data
 
@@ -64,7 +65,7 @@ Highly recommend using Chrome.
 
 ## Development
 
-It's powered by [Vue 3](https://v3.vuejs.org/) and [Vite](https://vitejs.dev/).
+It's powered by [Vue 3](https://v3.vuejs.org/), [Vite](https://vitejs.dev/) and [UnoCSS](https://github.com/unocss/unocss).
 
 Clone the repo and install dependencies:
 

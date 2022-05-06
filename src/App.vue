@@ -58,6 +58,7 @@ onMounted(() => {
   fetchFile("/example.md").then((text: string) => {
     setStoreState("data", "mdContent", text);
 
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     editor = monaco.editor.create(editorRef.value!, {
       value: store.state.data.mdContent,
       language: "markdown",

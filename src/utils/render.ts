@@ -1,11 +1,15 @@
 import MarkdownIt from "markdown-it";
+import type Token from "markdown-it/lib/token";
 import MarkdownItDeflist from "markdown-it-deflist";
+import MarkdownItKatex from "./katex";
 import { extractFrontMatter, updateStyles, updatePreviewScale } from ".";
 import { CHROME_PRINT_BOTTOM, A4_HEIGHT } from "./constants";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
 
 const getMarkdownIt = () => {
-  const md = new MarkdownIt({ html: true }).use(MarkdownItDeflist);
+  const md = new MarkdownIt({ html: true })
+    .use(MarkdownItDeflist)
+    .use(MarkdownItKatex);
 
   // remember old renderer, if overridden, or proxy to default renderer
   const defaultRender =
@@ -20,7 +24,7 @@ const getMarkdownIt = () => {
     if (aIndex < 0) {
       tokens[idx].attrPush(["target", "_blank"]); // add new attribute
     } else {
-      (tokens[idx] as any).attrs[aIndex][1] = "_blank"; // replace value of existing attr
+      (tokens[idx] as Token).attrs[aIndex][1] = "_blank"; // replace value of existing attr
     }
     // pass token to default renderer.
     return defaultRender(tokens, idx, options, env, self);

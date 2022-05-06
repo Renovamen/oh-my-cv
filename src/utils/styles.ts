@@ -38,13 +38,7 @@ const fontFamilyCss = (state: ResumeStyles) => {
 };
 
 const fontSizeCss = (state: ResumeStyles) => {
-  return (
-    `.preview { font-size: ${state.fontSize}px }` +
-    `.preview h1 { font-size: ${Math.ceil(state.fontSize * 2.13)}px }` +
-    `.preview h2, .preview h3 { font-size: ${Math.ceil(
-      state.fontSize * 1.2
-    )}px }`
-  );
+  return `.preview { font-size: ${state.fontSize}px }`;
 };
 
 // Copied from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts

@@ -4,6 +4,7 @@ import store from "~/store";
 
 import "@unocss/reset/tailwind.css";
 import "uno.css";
+import "katex/dist/katex.min.css";
 import "~/styles/index.css";
 
 const app = createApp(App);
