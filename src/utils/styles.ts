@@ -1,4 +1,4 @@
-import { CHROME_PRINT_BOTTOM } from "./constants";
+import { CHROME_PRINT_BOTTOM, PAPER, getPreviewW } from "./constants";
 import type { ResumeStyles } from "../types";
 
 let styleSheet = undefined;
@@ -41,6 +41,14 @@ const fontSizeCss = (state: ResumeStyles) => {
   return `.preview { font-size: ${state.fontSize}px }`;
 };
 
+const paperCss = (state: ResumeStyles) => {
+  return (
+    `.preview-page { width: ${PAPER[state.paper].w}mm }` +
+    `.preview { width: ${getPreviewW(state.paper)}px }` +
+    `@media print { @page { size: ${state.paper}; } }`
+  );
+};
+
 // Copied from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
 const supportsConstructedSheet = (() => {
   try {
@@ -58,7 +66,8 @@ export const updateStyles = (state: ResumeStyles) => {
     fontSizeCss(state) +
     themeColorCss(state) +
     paragraphSpaceCss(state) +
-    lineHeightCss(state);
+    lineHeightCss(state) +
+    paperCss(state);
 
   if (supportsConstructedSheet) {
     // Use constructed sheet if supported

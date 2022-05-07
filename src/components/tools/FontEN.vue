@@ -3,13 +3,13 @@
     <template #icon>
       <span
         class="iconify"
-        text="sm sm:base"
+        text="sm pc:base"
         data-icon="icon-park-outline:english"
       />
     </template>
 
     <template #dropdown>
-      <ul class="w-36">
+      <ul w="34">
         <li
           v-for="(font, i) in EN_FONTS"
           :key="`font-${i}-${font.name}`"

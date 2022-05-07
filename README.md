@@ -21,11 +21,10 @@ Highly recommend using Chrome.
 ## Features
 
 - Write your resume in Markdown and preview it in real-time online
-- Export to A4 PDFs
-- Import Markdown files from local or URLs
+- Export to A4 and US Letter size PDFs
 - Automatic page break
 - Neat template
-- Edit page margins, theme colors, line heights, fonts, etc.
+- Customize: page margins, theme colors, line heights, fonts, etc.
 - Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 - Tex support ([Katex](https://github.com/KaTeX/KaTeX))
 - Dark mode
@@ -36,29 +35,11 @@ Highly recommend using Chrome.
 
 ## TO-DO
 
-- [x] Support editting:
-  
-  - [x] Page margin
-  - [x] Theme color
-  - [x] Font family
-  - [x] Font size
-  - [x] Line height
-  - [x] Paragraph space
-  - [ ] ...
-
-- [ ] Support exporting to:
+- [ ] Export to:
 
   - [x] PDF
   - [ ] Markdown
   - [ ] HTML
-
-- [ ] Page size:
-
-  - [x] A4
-  - [ ] US Letter
-
-- [x] Support uploading a Markdown file (or pasting a URL)
-- [x] Improve UI
 
 
 &nbsp;

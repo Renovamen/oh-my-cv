@@ -1,7 +1,5 @@
 import type { Font } from "../types";
 
-export const A4_HEIGHT = 1134;
-
 export const CHROME_PRINT_BOTTOM = 10;
 
 export const DEFAULT_THEME_COLORS = [
@@ -36,3 +34,19 @@ export const CN_FONTS: Font[] = [
     fontFamily: "LXGW WenKai"
   }
 ];
+
+export const PAPER = {
+  A4: {
+    h: 297,
+    w: 210
+  },
+  letter: {
+    h: 279,
+    w: 216
+  }
+};
+
+export const getPaperPx = (paper: string, v: "h" | "w") =>
+  +(PAPER[paper][v] * 3.82).toFixed(0);
+
+export const getPreviewW = (paper: string) => getPaperPx(paper, "w") + 2;

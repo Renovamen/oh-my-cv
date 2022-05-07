@@ -1,11 +1,11 @@
 <template>
   <BaseButton>
     <template #icon>
-      <span class="iconify" text="sm sm:base" data-icon="ri:font-size-2" />
+      <span class="iconify" text="sm pc:base" data-icon="ri:font-size-2" />
     </template>
 
     <template #dropdown>
-      <div class="w-7 sm:w-8 py-3">
+      <div class="w-7 pc:w-8 py-3">
         <Slider
           v-model="fontSize"
           :min="12"

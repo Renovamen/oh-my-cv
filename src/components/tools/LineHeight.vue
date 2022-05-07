@@ -3,13 +3,13 @@
     <template #icon>
       <span
         class="iconify"
-        text="sm sm:base"
+        text="sm pc:base"
         data-icon="mdi:format-line-height"
       />
     </template>
 
     <template #dropdown>
-      <div class="w-7 sm:w-8 py-3">
+      <div class="w-7 pc:w-8 py-3">
         <Slider
           v-model="lineHeight"
           :min="100"

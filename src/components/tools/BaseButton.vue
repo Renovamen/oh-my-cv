@@ -1,6 +1,6 @@
 <template>
   <OnClickOutside
-    class="cursor-pointer sm:relative"
+    class="cursor-pointer pc:relative"
     :class="[!dropdownMobileRight && 'relative']"
     @click="isDropDownOpen = !isDropDownOpen"
     @trigger="isDropDownOpen = false"
@@ -8,19 +8,19 @@
     <div
       class="btn"
       :class="[
-        props.text ? 'space-x-1 px-2 sm:px-3 whitespace-nowrap' : 'w-7 sm:w-8',
+        props.text ? 'space-x-1 px-2 whitespace-nowrap' : 'w-7 pc:w-8',
         !isDropDownOpen && props.styles,
         isDropDownOpen && props.activeStyles
       ]"
     >
       <slot name="icon" />
-      <span v-if="props.text" text="xs sm:sm">{{ props.text }}</span>
+      <span v-if="props.text" text="xs pc:sm">{{ props.text }}</span>
     </div>
 
     <!-- Dropdown -->
     <div
       v-show="isDropDownOpen"
-      class="absolute sm:top-10 z-10 shadow"
+      class="absolute pc:top-10 z-10 shadow"
       bg="white dark:dark-400"
       border="1 rounded gray-300 dark:gray-600"
       :class="[dropdownMobileRight ? 'top-11 right-1.5' : 'top-8 right-0']"

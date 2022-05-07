@@ -19,12 +19,10 @@
 }
 
 .preview {
-  width: 804px;
   @apply mx-auto origin-top-left;
 }
 
 .preview-page {
-  width: 210mm;
   @apply my-1.5 mx-auto border border-black;
 }
 
@@ -57,7 +55,6 @@
 
 @media print {
   @page {
-    size: A4;
     margin: 0;
   }
 

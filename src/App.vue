@@ -4,7 +4,7 @@
   <splitpanes
     class="resume-main default-theme"
     :horizontal="isMobile"
-    @resize="updatePreviewScale"
+    @resize="updatePreviewScale(styles.paper)"
   >
     <pane class="editor">
       <div ref="editorRef" class="h-full" />
@@ -51,6 +51,8 @@ import { useFonts } from "~/composables";
 const store = useStore();
 const { onFontLoaded } = useFonts();
 
+const styles = computed(() => store.state.styles);
+
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
 
@@ -73,7 +75,7 @@ onMounted(() => {
   });
 
   // Initialize styles
-  updateStyles(store.state.styles);
+  updateStyles(styles.value);
 
   // Handle page breaking after HTML changing
   watch(
@@ -81,7 +83,7 @@ onMounted(() => {
     () =>
       nextTick(() => {
         onFontLoaded.value.then(() => {
-          handlePageBreak(store.state.styles);
+          handlePageBreak(styles.value);
         });
       })
   );
@@ -121,7 +123,7 @@ watch(
   () => width.value,
   () => {
     handleWindowSize();
-    setTimeout(() => updatePreviewScale(), 50);
+    setTimeout(() => updatePreviewScale(styles.value.paper), 50);
   }
 );
 </script>

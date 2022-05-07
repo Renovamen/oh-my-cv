@@ -7,6 +7,7 @@ export type ResumeStyles = {
   fontCN: Font;
   fontEN: Font;
   fontSize: number;
+  paper: string;
 };
 
 export type SystemData = {

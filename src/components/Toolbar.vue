@@ -1,6 +1,6 @@
 <template>
   <!-- PC -->
-  <div class="space-x-1.5 hidden sm:flex">
+  <div class="space-x-1.5 hidden pc:flex">
     <FontCN />
     <FontEN />
     <ThemeColor />
@@ -9,19 +9,21 @@
     <FontSize />
     <MarginVertical />
     <MarginHorizontal />
+    <Paper />
   </div>
 
   <!-- Mobile -->
-  <div class="sm:hidden">
+  <div class="pc:hidden">
     <BaseButton text="Tools" :dropdown-mobile-right="true">
       <template #icon>
         <span class="iconify text-sm" data-icon="jam:tools" />
       </template>
 
       <template #dropdown>
-        <div class="space-x-1.5 flex" p="t-2 b-1 x-2">
+        <div class="space-x-1.5 flex justify-end" p="t-2 b-1 x-2">
           <FontCN />
           <FontEN />
+          <ThemeColor />
         </div>
         <div class="space-x-1.5 flex justify-end" p="t-1 b-2 x-2">
           <ParagraphSpace />
@@ -29,7 +31,7 @@
           <FontSize />
           <MarginVertical />
           <MarginHorizontal />
-          <ThemeColor />
+          <Paper />
         </div>
       </template>
     </BaseButton>
@@ -45,5 +47,6 @@ import MarginVertical from "./tools/MarginVertical.vue";
 import MarginHorizontal from "./tools/MarginHorizontal.vue";
 import LineHeight from "./tools/LineHeight.vue";
 import ParagraphSpace from "./tools/ParagraphSpace.vue";
+import Paper from "./tools/Paper.vue";
 import BaseButton from "./tools/BaseButton.vue";
 </script>

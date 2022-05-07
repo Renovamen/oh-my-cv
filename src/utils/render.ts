@@ -3,7 +3,7 @@ import type Token from "markdown-it/lib/token";
 import MarkdownItDeflist from "markdown-it-deflist";
 import MarkdownItKatex from "./katex";
 import { extractFrontMatter, updateStyles, updatePreviewScale } from ".";
-import { CHROME_PRINT_BOTTOM, A4_HEIGHT } from "./constants";
+import { CHROME_PRINT_BOTTOM, getPaperPx } from "./constants";
 import type { ResumeStyles, ResumeFrontMatter } from "../types";
 
 const getMarkdownIt = () => {
@@ -88,9 +88,10 @@ export const handlePageBreak = (state: ResumeStyles) => {
   const page = document.querySelector(".preview-page") as HTMLDivElement;
   removeElements(page, ".preview-page-break");
 
+  const HEIGHT = getPaperPx(state.paper, "h");
   const margin =
     state.marginV + Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);
-  const contentH = A4_HEIGHT - margin;
+  const contentH = HEIGHT - margin;
 
   const getPageBreakElement = (top: number) => {
     const pageBreak = document.createElement("div") as HTMLDivElement;
@@ -118,9 +119,7 @@ export const handlePageBreak = (state: ResumeStyles) => {
       parseInt(style.marginBottom);
 
     if (pageH + childH > contentH) {
-      newPage.appendChild(
-        getPageBreakElement(A4_HEIGHT - pageH - state.marginV)
-      );
+      newPage.appendChild(getPageBreakElement(HEIGHT - pageH - state.marginV));
       pageH = 0;
     }
 
@@ -129,9 +128,9 @@ export const handlePageBreak = (state: ResumeStyles) => {
   }
 
   page.innerHTML = newPage.innerHTML;
-  page.style.paddingBottom = `${A4_HEIGHT - pageH - state.marginV}px`;
+  page.style.paddingBottom = `${HEIGHT - pageH - state.marginV}px`;
 
-  updatePreviewScale(); // Updata preview pane's scale
+  updatePreviewScale(state.paper); // Updata preview pane's scale
 };
 
 const md = getMarkdownIt();

@@ -2,7 +2,7 @@
   <BaseButton>
     <template #icon>
       <span
-        class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-sm"
+        class="w-3 h-3 pc:w-3.5 pc:h-3.5 rounded-sm"
         :style="{ backgroundColor: currentThemeColor }"
       />
     </template>
