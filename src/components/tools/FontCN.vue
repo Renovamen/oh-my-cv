@@ -1,5 +1,5 @@
 <template>
-  <BaseButton :text="pickedFontName">
+  <BaseButton :text="pickedFontName" tip="中文字体">
     <template #icon>
       <span
         class="iconify"

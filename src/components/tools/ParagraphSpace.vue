@@ -1,5 +1,5 @@
 <template>
-  <BaseButton>
+  <BaseButton tip="Paragraph spacing">
     <template #icon>
       <span
         class="iconify"

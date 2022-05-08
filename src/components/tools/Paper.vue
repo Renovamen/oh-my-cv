@@ -1,5 +1,5 @@
 <template>
-  <BaseButton :text="pickedPaper">
+  <BaseButton :text="pickedPaper" tip="Paper size">
     <template #icon>
       <span
         class="iconify"

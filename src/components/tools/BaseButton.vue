@@ -4,9 +4,11 @@
     :class="[!dropdownMobileRight && 'relative']"
     @click="isDropDownOpen = !isDropDownOpen"
     @trigger="isDropDownOpen = false"
+    @mouseenter="isTipOpen = true"
+    @mouseleave="isTipOpen = false"
   >
     <div
-      class="btn"
+      class="btn relative"
       :class="[
         props.text ? 'space-x-1 px-2 whitespace-nowrap' : 'w-7 pc:w-8',
         !isDropDownOpen && props.styles,
@@ -16,6 +18,17 @@
       <slot name="icon" />
       <span v-if="props.text" text="xs pc:sm">{{ props.text }}</span>
     </div>
+
+    <span
+      v-if="props.tip && isTipOpen && !isDropDownOpen"
+      class="absolute z-20 rounded-sm truncate right-0 pc:(left-1/2 -translate-x-2/4 right-auto)"
+      p="x-2 y-1"
+      top="8 pc:10"
+      text="xs pc:sm white dark:black"
+      bg="black opacity-80 dark:(gray-300 opacity-90)"
+    >
+      {{ props.tip }}
+    </span>
 
     <!-- Dropdown -->
     <div
@@ -41,6 +54,11 @@ const props = defineProps({
     required: false,
     default: ""
   },
+  tip: {
+    type: String,
+    required: false,
+    default: undefined
+  },
   styles: {
     type: String,
     required: false,
@@ -59,4 +77,5 @@ const props = defineProps({
 });
 
 const isDropDownOpen = ref(false);
+const isTipOpen = ref(false);
 </script>

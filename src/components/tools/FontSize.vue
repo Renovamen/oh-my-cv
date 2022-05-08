@@ -1,5 +1,5 @@
 <template>
-  <BaseButton>
+  <BaseButton tip="Font size">
     <template #icon>
       <span class="iconify" text="sm pc:base" data-icon="ri:font-size-2" />
     </template>

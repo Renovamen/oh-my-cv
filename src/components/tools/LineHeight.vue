@@ -1,10 +1,10 @@
 <template>
-  <BaseButton>
+  <BaseButton tip="Line spacing">
     <template #icon>
       <span
         class="iconify"
-        text="sm pc:base"
-        data-icon="mdi:format-line-height"
+        text="base pc:lg"
+        data-icon="ic:round-format-line-spacing"
       />
     </template>
 

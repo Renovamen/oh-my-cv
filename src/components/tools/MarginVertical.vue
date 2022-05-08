@@ -1,5 +1,5 @@
 <template>
-  <BaseButton>
+  <BaseButton tip="Margins (top & bottom)">
     <template #icon>
       <span
         class="iconify"

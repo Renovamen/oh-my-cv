@@ -1,6 +1,6 @@
 <template>
   <OnClickOutside
-    class="import-pane z-10 fixed h-40 w-full pc:w-96 left-0 right-0 top-0 bottom-0 flex flex-col bg-white border border-gray-400 rounded shadow"
+    class="import-pane z-30 fixed h-40 w-full pc:w-96 left-0 right-0 top-0 bottom-0 flex flex-col bg-white border border-gray-400 rounded shadow"
     @trigger="$emit('closeImport')"
   >
     <div>
