@@ -1,10 +1,10 @@
-# Oh, Resume!
+# Oh, CV!
 
-Word and LaTex are too overkill for a resume.
+Word and LaTeX are too overkill for a curriculum vitae / resume.
 
 So why not write it in Markdown?
 
-Have fun: [oh-resume.zxh.io](https://oh-resume.zxh.io/)
+Have fun: [ohcv.zxh.io](https://ohcv.zxh.io/)
 
 **WIP**
 

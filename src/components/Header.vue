@@ -4,7 +4,7 @@
     border="b gray-300 dark:gray-600"
   >
     <div class="flex items-center">
-      <h1 font="bold" text="base pc:lg dark:gray-100">Oh, Resume!</h1>
+      <h1 font="bold" text="base pc:lg dark:gray-100">Oh, CV!</h1>
     </div>
 
     <div class="space-x-1.5 flex items-center text-gray-600 dark:text-gray-300">
@@ -13,7 +13,7 @@
       <File />
       <a
         class="btn w-7 pc:w-8 text-white bg-gray-500 hover:bg-gray-600"
-        href="http://github.com/Renovamen/oh-resume"
+        href="http://github.com/Renovamen/oh-cv"
         target="_blank"
         rel="nofollow noopener"
       >
