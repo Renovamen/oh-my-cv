@@ -1,7 +1,5 @@
 import { CHROME_PRINT_BOTTOM, PAPER, getPreviewW } from "./constants";
-import type { ResumeStyles } from "../types";
-
-let styleSheet = undefined;
+import type { ResumeStyles } from "~/types";
 
 const pageMarginCss = (state: ResumeStyles) => {
   const bottom = Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);
@@ -58,6 +56,8 @@ const supportsConstructedSheet = (() => {
   return false;
 })();
 
+let styleSheet = undefined as CSSStyleSheet | HTMLStyleElement | undefined;
+
 // Borrowed from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
 export const updateStyles = (state: ResumeStyles) => {
   const content =
@@ -77,6 +77,7 @@ export const updateStyles = (state: ResumeStyles) => {
 
     if (!styleSheet) {
       styleSheet = new CSSStyleSheet();
+      // @ts-expect-error: using experimental API
       styleSheet.replaceSync(content);
       // @ts-expect-error: using experimental API
       document.adoptedStyleSheets = [
@@ -85,6 +86,7 @@ export const updateStyles = (state: ResumeStyles) => {
         styleSheet
       ];
     } else {
+      // @ts-expect-error: using experimental API
       styleSheet.replaceSync(content);
     }
   } else {

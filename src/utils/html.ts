@@ -8,6 +8,8 @@ const htmlEscapeMap = {
 
 const htmlEscapeRegexp = /[&<>'"]/g;
 
+type K = keyof typeof htmlEscapeMap;
+
 export const htmlEscape = (str: string): string => {
-  return str.replace(htmlEscapeRegexp, (char) => htmlEscapeMap[char]);
+  return str.replace(htmlEscapeRegexp, (char) => htmlEscapeMap[char as K]);
 };

@@ -32,14 +32,15 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import { setStoreState } from "~/store";
 import { onStylesUpdate, PAPER } from "~/utils";
+import type { PaperType } from "~/types";
 import BaseButton from "./BaseButton.vue";
 
 const store = useStore();
-const pickedPaper = ref<string>(store.state.styles.paper);
+const pickedPaper = ref<PaperType>(store.state.styles.paper);
 
 const paperList = Object.keys(PAPER);
 
-const pickPaper = (paper: string) => {
+const pickPaper = (paper: PaperType) => {
   pickedPaper.value = paper;
 
   setStoreState("styles", "paper", pickedPaper.value);

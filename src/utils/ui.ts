@@ -1,8 +1,9 @@
 import { useWindowSize } from "@vueuse/core";
-import { setStoreState } from "../store";
+import { setStoreState } from "~/store";
 import { getPreviewW } from "./constants";
+import type { PaperType } from "~/types";
 
-export const updatePreviewScale = (paper: string) => {
+export const updatePreviewScale = (paper: PaperType) => {
   const { width } = useWindowSize();
 
   const pane = document.querySelector(".preview-pane") as HTMLElement;

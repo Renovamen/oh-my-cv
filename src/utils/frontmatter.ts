@@ -1,7 +1,7 @@
 // Adapted from https://github.com/jxson/front-matter
 
 import * as yaml from "js-yaml";
-import { FrontMatterResults, ResumeFrontMatter } from "../types";
+import { FrontMatterResults, ResumeFrontMatter } from "~/types";
 
 const optionalByteOrderMark = "\\ufeff?";
 const platform = typeof process !== "undefined" ? process.platform : "";
@@ -51,7 +51,7 @@ const parse = (string: string): FrontMatterResults<ResumeFrontMatter> => {
   const line = computeLocation(match, string);
 
   try {
-    const attributes = yaml.load(yamlString) || {};
+    const attributes = (yaml.load(yamlString) || {}) as ResumeFrontMatter;
     lastAttributes = attributes;
 
     return {

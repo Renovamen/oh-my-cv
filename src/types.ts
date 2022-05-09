@@ -1,3 +1,7 @@
+import { PAPER } from "~/utils";
+
+export type PaperType = keyof typeof PAPER;
+
 export type ResumeStyles = {
   marginV: number;
   marginH: number;
@@ -7,7 +11,7 @@ export type ResumeStyles = {
   fontCN: Font;
   fontEN: Font;
   fontSize: number;
-  paper: string;
+  paper: PaperType;
 };
 
 export type SystemData = {
@@ -18,7 +22,6 @@ export type SystemData = {
 export type UIData = {
   previewScale: number;
   previewBottom: number;
-  dark: boolean;
 };
 
 export type StoreStates = ResumeStyles & SystemData & UIData;

@@ -14,12 +14,12 @@ export const uploadFile = (e: Event, callback: (content: string) => void) => {
 
   if (
     !(e.target as HTMLInputElement).files ||
-    (e.target as HTMLInputElement).files.length < 1
+    (e.target as HTMLInputElement).files!.length < 1
   )
     return;
 
-  const file: File = (e.target as HTMLInputElement).files[0];
-  let fileReader: FileReader = null;
+  const file: File = (e.target as HTMLInputElement).files![0];
+  let fileReader: FileReader | null = null;
 
   const handleFileRead = () => {
     const content = (fileReader as FileReader).result as string;

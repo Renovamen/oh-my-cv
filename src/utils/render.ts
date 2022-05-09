@@ -4,7 +4,7 @@ import MarkdownItDeflist from "markdown-it-deflist";
 import MarkdownItKatex from "./katex";
 import { extractFrontMatter, updateStyles, updatePreviewScale } from ".";
 import { CHROME_PRINT_BOTTOM, getPaperPx } from "./constants";
-import type { ResumeStyles, ResumeFrontMatter } from "../types";
+import type { ResumeStyles, ResumeFrontMatter } from "~/types";
 
 const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true })
@@ -24,7 +24,7 @@ const getMarkdownIt = () => {
     if (aIndex < 0) {
       tokens[idx].attrPush(["target", "_blank"]); // add new attribute
     } else {
-      (tokens[idx] as Token).attrs[aIndex][1] = "_blank"; // replace value of existing attr
+      (tokens[idx] as Token).attrs![aIndex][1] = "_blank"; // replace value of existing attr
     }
     // pass token to default renderer.
     return defaultRender(tokens, idx, options, env, self);
@@ -79,7 +79,7 @@ const handleHeader = (html: string, frontmatter: ResumeFrontMatter) => {
 };
 
 const removeElements = (parent: HTMLElement, selector: string) => {
-  const elements = parent.querySelectorAll(selector) as NodeListOf<HTMLElement>;
+  const elements = Array.from(parent.querySelectorAll(selector));
 
   for (const e of elements) parent.removeChild(e);
 };
@@ -111,7 +111,7 @@ export const handlePageBreak = (state: ResumeStyles) => {
   const newPage = document.createElement("div") as HTMLDivElement;
   newPage.className = "preview-page";
 
-  for (const child of page.children) {
+  for (const child of Array.from(page.children)) {
     const style = window.getComputedStyle(child, null);
     const childH =
       child.clientHeight +
