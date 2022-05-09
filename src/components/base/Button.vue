@@ -21,7 +21,7 @@
 
     <span
       v-if="props.tip && isTipOpen && !isDropDownOpen"
-      class="absolute z-20 rounded-sm truncate right-0 pc:(left-1/2 -translate-x-2/4 right-auto)"
+      class="absolute z-20 rounded truncate right-0 pc:(left-1/2 -translate-x-2/4 right-auto)"
       p="x-2 y-1"
       top="8 pc:10"
       text="xs pc:sm white dark:black"

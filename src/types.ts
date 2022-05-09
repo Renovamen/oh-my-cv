@@ -1,4 +1,7 @@
+import type { App } from "vue";
 import { PAPER } from "~/utils";
+
+export type UserModule = (ctx: App<Element>) => void;
 
 export type PaperType = keyof typeof PAPER;
 

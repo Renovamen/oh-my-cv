@@ -7,11 +7,16 @@
     "strict": true,
     "esModuleInterop": true,
     "jsx": "preserve",
+    "sourceMap": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vite/client",
+      "vite-plugin-pages/client"
+    ],
     "paths": {
       "~/*": ["src/*"]
     }

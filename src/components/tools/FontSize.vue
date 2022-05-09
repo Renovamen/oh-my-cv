@@ -1,5 +1,5 @@
 <template>
-  <BaseButton tip="Font size">
+  <Button :tip="t('tooltip.font_size')">
     <template #icon>
       <span class="iconify" text="sm pc:base" data-icon="ri:font-size-2" />
     </template>
@@ -15,19 +15,21 @@
         />
       </div>
     </template>
-  </BaseButton>
+  </Button>
 </template>
 
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
 import { setStoreState } from "~/store";
 import { onStylesUpdate } from "~/utils";
-import BaseButton from "./BaseButton.vue";
+import Button from "~/components/base/Button.vue";
 
 const store = useStore();
+const { t } = useI18n();
 
 const fontSize = computed({
   get() {

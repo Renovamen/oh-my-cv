@@ -19,13 +19,13 @@ header:
 Boston, MA
   ~ **University of Charles River**
 
-09/2021 – 01/2023
+09/2021 - 01/2023
   ~ M.S. in Computer Science
 
 Shanghai, China
   ~ **Huangdu Institute of Technology**
 
-09/2016 – 07/2020
+09/2016 - 07/2020
   ~ B.Eng. in Software Engineering 
 
 
@@ -39,7 +39,7 @@ Shanghai, China
 
 ## Research Experience
 
-07/2021 – Present
+07/2021 - Present
   ~ **Machine Learning Engineer Intern**, Slow Feet Technology, Beijing
 
 - Devised a new food-agnostic formulation for fine-grained cross-ingredient meal cooking and subsumed the recent popular works into the proposed scheme
@@ -47,7 +47,7 @@ Shanghai, China
 - Developed a pan for meal cooking which is benefiting the group members' research work
 
 
-08/2020 – Present
+08/2020 - Present
   ~ **Reseach Intern**, Paddling University, Beijing
 
 - Designed an efficient method for mapo tofu quality estimation via thermometer
@@ -55,7 +55,7 @@ Shanghai, China
 - Outperformed SOTA methods while cooking much more efficient in experiments on popular tofu
 
 
-03/2020 – 06/2020
+03/2020 - 06/2020
   ~ **Research Assistant**, Huangdu Institute of Technology, Shanghai
 
 - Proposed a novel framework consisting of a spoon and a pair of chopsticks for eating mapo toufu, **published in NeurIPS 2077**
@@ -64,7 +64,7 @@ Shanghai, China
 - Outperformed baselines and existed methods substantially in terms of diversity, novelty and coherence
 
 
-07/2018 – 08/2018
+07/2018 - 08/2018
   ~ **Reseach Intern**, Paddling University, Beijing
 
 - Designed two sandwiches consisting of breads and meat of two traditional bacon cheese burgers to make use of unused ingredients

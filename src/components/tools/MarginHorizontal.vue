@@ -1,5 +1,5 @@
 <template>
-  <BaseButton tip="Margins (left & right)">
+  <Button :tip="t('tooltip.margin_h')">
     <template #icon>
       <span
         class="iconify"
@@ -13,19 +13,21 @@
         <Slider v-model="marginH" orientation="vertical" class="mx-auto" />
       </div>
     </template>
-  </BaseButton>
+  </Button>
 </template>
 
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
 import { setStoreState } from "~/store";
 import { onStylesUpdate } from "~/utils";
-import BaseButton from "./BaseButton.vue";
+import Button from "~/components/base/Button.vue";
 
 const store = useStore();
+const { t } = useI18n();
 
 const marginH = computed({
   get() {

@@ -10,7 +10,7 @@ export const fontLoader = (fonts: string | Array<string>) => {
   return Promise.all(observers);
 };
 
-export const useFonts = () => {
+export const resolveFonts = () => {
   const store = useStore();
 
   const fontFamilyEN = computed(

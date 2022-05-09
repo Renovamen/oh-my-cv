@@ -7,7 +7,7 @@
 }
 
 .resume-main {
-  height: calc(100% - 50px);
+  height: calc(100% - 50px) !important;
 }
 
 .editor {
@@ -15,7 +15,7 @@
 }
 
 .preview-pane {
-  @apply overflow-y-scroll;
+  overflow-y: scroll !important;
 }
 
 .preview {
@@ -69,7 +69,6 @@
   .preview,
   .preview-page {
     width: 100% !important;
-    overflow-y: hidden;
   }
 
   .preview {

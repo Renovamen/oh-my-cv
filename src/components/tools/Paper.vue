@@ -1,5 +1,5 @@
 <template>
-  <BaseButton :text="pickedPaper" tip="Paper size">
+  <Button :text="store.state.styles.paper" :tip="t('tooltip.paper')">
     <template #icon>
       <span
         class="iconify"
@@ -9,41 +9,33 @@
     </template>
 
     <template #dropdown>
-      <ul w="17 pc:18.5">
-        <li
-          v-for="(paper, i) in paperList"
-          :key="`paper-${i}-${paper}`"
-          class="menu-li"
-          :class="[
-            i === 0 && 'rounded-t',
-            i === paperList.length - 1 && 'rounded-b'
-          ]"
-          @click="pickPaper(paper)"
-        >
-          {{ paper }}
-        </li>
-      </ul>
+      <Dropdown :items="items" />
     </template>
-  </BaseButton>
+  </Button>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 import { setStoreState } from "~/store";
 import { onStylesUpdate, PAPER } from "~/utils";
 import type { PaperType } from "~/types";
-import BaseButton from "./BaseButton.vue";
+import Button from "~/components/base/Button.vue";
+import Dropdown from "~/components/base/Dropdown.vue";
 
 const store = useStore();
-const pickedPaper = ref<PaperType>(store.state.styles.paper);
-
-const paperList = Object.keys(PAPER);
+const { t } = useI18n();
 
 const pickPaper = (paper: PaperType) => {
-  pickedPaper.value = paper;
-
-  setStoreState("styles", "paper", pickedPaper.value);
+  setStoreState("styles", "paper", paper);
   onStylesUpdate(store.state.styles);
 };
+
+const items = computed(() =>
+  Object.keys(PAPER).map((paper) => ({
+    text: paper,
+    function: ({ text }: { text: PaperType }) => pickPaper(text)
+  }))
+);
 </script>

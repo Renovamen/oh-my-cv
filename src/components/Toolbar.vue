@@ -14,7 +14,7 @@
 
   <!-- Mobile -->
   <div class="pc:hidden">
-    <BaseButton text="Tools" :dropdown-mobile-right="true">
+    <Button text="Tools" :dropdown-mobile-right="true">
       <template #icon>
         <span class="iconify text-sm" data-icon="jam:tools" />
       </template>
@@ -34,11 +34,12 @@
           <Paper />
         </div>
       </template>
-    </BaseButton>
+    </Button>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Button from "~/components/base/Button.vue";
 import FontCN from "./tools/FontCN.vue";
 import FontEN from "./tools/FontEN.vue";
 import FontSize from "./tools/FontSize.vue";
@@ -48,5 +49,4 @@ import MarginHorizontal from "./tools/MarginHorizontal.vue";
 import LineHeight from "./tools/LineHeight.vue";
 import ParagraphSpace from "./tools/ParagraphSpace.vue";
 import Paper from "./tools/Paper.vue";
-import BaseButton from "./tools/BaseButton.vue";
 </script>

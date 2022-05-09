@@ -1,5 +1,5 @@
 <template>
-  <BaseButton tip="Theme color">
+  <Button :tip="t('tooltip.theme')">
     <template #icon>
       <span
         class="w-3 h-3 pc:w-3.5 pc:h-3.5 rounded-sm"
@@ -31,17 +31,20 @@
         </li>
       </ul>
     </template>
-  </BaseButton>
+  </Button>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 import { setStoreState } from "~/store";
 import { onStylesUpdate, DEFAULT_THEME_COLORS } from "~/utils";
-import BaseButton from "./BaseButton.vue";
+import Button from "~/components/base/Button.vue";
 
 const store = useStore();
+const { t } = useI18n();
+
 const defaultColorId = DEFAULT_THEME_COLORS.findIndex(
   (item) => item === store.state.styles.themeColor
 );

@@ -15,7 +15,7 @@ export default defineConfig({
     ],
     [
       "menu-li",
-      "flex items-center space-x-0.5 pc:space-x-1.5 px-3 h-8 text-sm capitalize cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
+      "flex items-center space-x-0.5 pc:space-x-1.5 px-3 h-8 text-sm capitalize truncate cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
     ]
   ],
   theme: {

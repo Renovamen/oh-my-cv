@@ -9,6 +9,7 @@
 
     <div class="space-x-1.5 flex items-center text-gray-600 dark:text-gray-300">
       <Toolbar />
+      <ToggleLang />
       <ToggleDark />
       <File />
       <a
@@ -26,5 +27,6 @@
 <script lang="ts" setup>
 import Toolbar from "./Toolbar.vue";
 import ToggleDark from "./ToggleDark.vue";
+import ToggleLang from "./ToggleLang.vue";
 import File from "./file/File.vue";
 </script>

@@ -11,7 +11,7 @@
         <span class="iconify" data-icon="ic:baseline-close" />
       </button>
 
-      <div p="x-4 t-3 b-1" font="medium">Import a Markdown file</div>
+      <div p="x-4 t-3 b-1" font="medium">{{ t("import.title") }}</div>
 
       <div class="pt-3 flex text-sm">
         <button
@@ -22,7 +22,7 @@
           ]"
           @click="clickedButton = 0"
         >
-          Upload a file
+          {{ t("import.from_local") }}
         </button>
         <button
           class="px-2 py-0.5 border-l border-r border-t rounded-t-sm"
@@ -32,7 +32,7 @@
           ]"
           @click="clickedButton = 1"
         >
-          Paste file URL
+          {{ t("import.from_url") }}
         </button>
       </div>
     </div>
@@ -66,9 +66,12 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { OnClickOutside } from "@vueuse/components";
 import { fetchFile, uploadFile } from "~/utils";
 import { setStoreState } from "~/store";
+
+const { t } = useI18n();
 
 const emit = defineEmits<{
   (e: "closeImport"): void;
