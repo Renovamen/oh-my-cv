@@ -11,12 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
 import { switchLocalePath } from "~/composables";
 import { SUPPORT_LOCALES, LocaleType } from "~/i18n";
-import Button from "~/components/base/Button.vue";
-import Dropdown from "~/components/base/Dropdown.vue";
 
 const { availableLocales, locale, t } = useI18n();
 

@@ -1,6 +1,8 @@
 import Vue from "@vitejs/plugin-vue";
 import Unocss from "unocss/vite";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
+import Components from "unplugin-vue-components/vite";
+import AutoImport from "unplugin-auto-import/vite";
 import Pages from "vite-plugin-pages";
 import path from "path";
 
@@ -17,6 +19,17 @@ export default {
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ["vue"]
+    }),
+
+    // https://github.com/antfu/unplugin-auto-import
+    AutoImport({
+      imports: ["vue", "vuex", "vue-router", "vue-i18n", "@vueuse/core"],
+      dts: "src/auto-imports.d.ts"
+    }),
+
+    // https://github.com/antfu/unplugin-vue-components
+    Components({
+      dts: "src/components.d.ts"
     }),
 
     // https://github.com/antfu/unocss

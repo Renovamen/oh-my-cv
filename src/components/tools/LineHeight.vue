@@ -15,7 +15,7 @@
           :min="100"
           :max="200"
           :step="5"
-          :format="(value) => value / 100"
+          :format="(value: number) => value / 100"
           orientation="vertical"
           class="mx-auto"
         />
@@ -25,14 +25,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useStore } from "vuex";
-import { useI18n } from "vue-i18n";
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
 import { setStoreState } from "~/store";
 import { onStylesUpdate } from "~/utils";
-import Button from "~/components/base/Button.vue";
 
 const store = useStore();
 const { t } = useI18n();

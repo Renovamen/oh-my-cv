@@ -1,6 +1,3 @@
-import { useStore } from "vuex";
-import { computed } from "vue";
-
 export const fontLoader = (fonts: string | Array<string>) => {
   const observers = [];
 

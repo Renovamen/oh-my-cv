@@ -23,10 +23,3 @@
     </div>
   </header>
 </template>
-
-<script lang="ts" setup>
-import Toolbar from "./Toolbar.vue";
-import ToggleDark from "./ToggleDark.vue";
-import ToggleLang from "./ToggleLang.vue";
-import File from "./file/File.vue";
-</script>

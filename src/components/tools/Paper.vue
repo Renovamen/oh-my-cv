@@ -15,14 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useStore } from "vuex";
-import { useI18n } from "vue-i18n";
 import { setStoreState } from "~/store";
 import { onStylesUpdate, PAPER } from "~/utils";
 import type { PaperType } from "~/types";
-import Button from "~/components/base/Button.vue";
-import Dropdown from "~/components/base/Dropdown.vue";
 
 const store = useStore();
 const { t } = useI18n();

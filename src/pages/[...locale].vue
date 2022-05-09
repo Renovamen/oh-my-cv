@@ -24,19 +24,9 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ref,
-  onMounted,
-  onBeforeUnmount,
-  computed,
-  watch,
-  nextTick
-} from "vue";
-import { useStore } from "vuex";
 import * as monaco from "monaco-editor";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import Header from "~/components/Header.vue";
 import { setStoreState } from "~/store";
 import {
   fetchFile,

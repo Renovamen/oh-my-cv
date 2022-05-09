@@ -45,7 +45,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import { OnClickOutside } from "@vueuse/components";
 
 const props = defineProps({

@@ -17,12 +17,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
-import { useI18n } from "vue-i18n";
-import Button from "~/components/base/Button.vue";
-import Dropdown from "~/components/base/Dropdown.vue";
-import Import from "./Import.vue";
-
 const { t } = useI18n();
 
 // Import menu

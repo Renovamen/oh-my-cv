@@ -35,12 +35,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from "vue";
-import { useStore } from "vuex";
-import { useI18n } from "vue-i18n";
 import { setStoreState } from "~/store";
 import { onStylesUpdate, DEFAULT_THEME_COLORS } from "~/utils";
-import Button from "~/components/base/Button.vue";
 
 const store = useStore();
 const { t } = useI18n();

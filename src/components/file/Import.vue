@@ -50,7 +50,7 @@
         <input
           class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none"
           :value="pastedURL"
-          @change="pastedURL = $event.target.value"
+          @change="pastedURL = ($event.target as HTMLTextAreaElement).value"
           @keyup.enter="uploadFileFromURL"
         />
         <button
@@ -65,8 +65,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import { useI18n } from "vue-i18n";
 import { OnClickOutside } from "@vueuse/components";
 import { fetchFile, uploadFile } from "~/utils";
 import { setStoreState } from "~/store";

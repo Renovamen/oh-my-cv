@@ -22,14 +22,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useStore } from "vuex";
-import { useI18n } from "vue-i18n";
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
 import { setStoreState } from "~/store";
 import { onStylesUpdate } from "~/utils";
-import Button from "~/components/base/Button.vue";
 
 const store = useStore();
 const { t } = useI18n();

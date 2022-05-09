@@ -8,7 +8,9 @@
       @click="
         item.function
           ? item.function({ text: item.text, i: i })
-          : toLink(item.link)
+          : item.link
+          ? toLink(item.link)
+          : () => {}
       "
     >
       <span
@@ -23,12 +25,19 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import type { PropType } from "vue";
 import { isExternal } from "~/utils";
+
+type Item = {
+  text: string;
+  icon?: string;
+  link?: string;
+  function?: ({ text, i }: { text: string; i: number }) => void;
+};
 
 defineProps({
   items: {
-    type: Object,
+    type: Array as PropType<Array<Item>>,
     required: true
   }
 });

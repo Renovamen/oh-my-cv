@@ -1,6 +1,3 @@
-import { computed, watch } from "vue";
-import { useStore } from "vuex";
-import { useWindowSize } from "@vueuse/core";
 import { updatePreviewScale } from "~/utils";
 
 export const resolveWindowSize = () => {

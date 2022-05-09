@@ -37,16 +37,3 @@
     </Button>
   </div>
 </template>
-
-<script lang="ts" setup>
-import Button from "~/components/base/Button.vue";
-import FontCN from "./tools/FontCN.vue";
-import FontEN from "./tools/FontEN.vue";
-import FontSize from "./tools/FontSize.vue";
-import ThemeColor from "./tools/ThemeColor.vue";
-import MarginVertical from "./tools/MarginVertical.vue";
-import MarginHorizontal from "./tools/MarginHorizontal.vue";
-import LineHeight from "./tools/LineHeight.vue";
-import ParagraphSpace from "./tools/ParagraphSpace.vue";
-import Paper from "./tools/Paper.vue";
-</script>

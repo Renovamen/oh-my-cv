@@ -1,4 +1,3 @@
-import { useWindowSize } from "@vueuse/core";
 import { setStoreState } from "~/store";
 import { getPreviewW } from "./constants";
 import type { PaperType } from "~/types";

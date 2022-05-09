@@ -1,7 +1,3 @@
-import { watch } from "vue";
-import { useRoute } from "vue-router";
-import { useI18n } from "vue-i18n";
-
 const defaultLocale = "en";
 
 export const listenLocalePath = (props: { locale: string[] | string }) => {
