@@ -1,6 +1,6 @@
 <template>
   <Button
-    :text="t('file.btn')"
+    :tip="t('file.btn')"
     styles="bg-blue-500 text-white"
     active-styles="bg-blue-600 text-white"
   >

@@ -1,6 +1,6 @@
 const defaultLocale = "en";
 
-export const listenLocalePath = (props: { locale: string[] | string }) => {
+export const watchLocalePath = (props: { locale: string[] | string }) => {
   const { availableLocales, locale } = useI18n();
 
   const checkLocale = (toLocale: string) => {

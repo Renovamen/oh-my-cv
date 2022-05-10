@@ -171,7 +171,7 @@ const mathBlock = (
   return true;
 };
 
-const katex = (
+export const MarkdownItKatex = (
   md: MarkdownIt,
   options: KatexOptions = { throwOnError: false }
 ): void => {
@@ -223,5 +223,3 @@ const katex = (
   md.renderer.rules.mathInline = inlineRenderer;
   md.renderer.rules.mathBlock = blockRenderer;
 };
-
-export default katex;

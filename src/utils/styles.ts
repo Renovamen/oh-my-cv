@@ -1,14 +1,13 @@
 import { useStyleStore } from "~/store";
 import { CHROME_PRINT_BOTTOM, PAPER, getPreviewW } from "./constants";
+import type { ResumeStyles } from "~/types";
 
-const { styles } = useStyleStore();
-
-const pageMarginCss = () => {
+const pageMarginCss = (styles: ResumeStyles) => {
   const bottom = Math.max(styles.marginV - 10, CHROME_PRINT_BOTTOM);
   return `.preview-page { padding: ${styles.marginV}px ${styles.marginH}px ${bottom}px }`;
 };
 
-const themeColorCss = () => {
+const themeColorCss = (styles: ResumeStyles) => {
   return (
     `.preview a:not(.preview-header-link) { color: ${styles.themeColor} }` +
     `.preview h1, .preview h2, .preview h3 { color: ${styles.themeColor} }` +
@@ -16,7 +15,7 @@ const themeColorCss = () => {
   );
 };
 
-const lineHeightCss = () => {
+const lineHeightCss = (styles: ResumeStyles) => {
   const lineHeight = styles.lineHeight / 100;
   return (
     `.preview p, .preview li { line-height: ${lineHeight.toFixed(2)} }` +
@@ -27,21 +26,21 @@ const lineHeightCss = () => {
   );
 };
 
-const paragraphSpaceCss = () => {
+const paragraphSpaceCss = (styles: ResumeStyles) => {
   return `.preview h2 { margin-top: ${styles.paragraphSpace}px }`;
 };
 
-const fontFamilyCss = () => {
+const fontFamilyCss = (styles: ResumeStyles) => {
   const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
   const fontCN = styles.fontCN.fontFamily || styles.fontCN.name;
   return `.preview { font-family: ${fontEN}, ${fontCN} }`;
 };
 
-const fontSizeCss = () => {
+const fontSizeCss = (styles: ResumeStyles) => {
   return `.preview { font-size: ${styles.fontSize}px }`;
 };
 
-const paperCss = () => {
+const paperCss = (styles: ResumeStyles) => {
   return (
     `.preview-page { width: ${PAPER[styles.paper].w}mm }` +
     `.preview { width: ${getPreviewW(styles.paper)}px }` +
@@ -62,14 +61,16 @@ let styleSheet = undefined as CSSStyleSheet | HTMLStyleElement | undefined;
 
 // Borrowed from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
 export const updateStyles = () => {
+  const { styles } = useStyleStore();
+
   const content =
-    pageMarginCss() +
-    fontFamilyCss() +
-    fontSizeCss() +
-    themeColorCss() +
-    paragraphSpaceCss() +
-    lineHeightCss() +
-    paperCss();
+    pageMarginCss(styles) +
+    fontFamilyCss(styles) +
+    fontSizeCss(styles) +
+    themeColorCss(styles) +
+    paragraphSpaceCss(styles) +
+    lineHeightCss(styles) +
+    paperCss(styles);
 
   if (supportsConstructedSheet) {
     // Use constructed sheet if supported

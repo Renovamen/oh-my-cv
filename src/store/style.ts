@@ -1,6 +1,15 @@
 import { defineStore } from "pinia";
-import { onStylesUpdate } from "~/utils";
-import type { ResumeStyles } from "~/types";
+import { updateStyles, resolvePageBreak } from "~/utils";
+import type { ResumeStyles, Font } from "~/types";
+
+const fontLoader = (fonts: string | Array<string>) => {
+  const observers = [];
+
+  for (const font of typeof fonts === "string" ? [fonts] : fonts)
+    observers.push(document.fonts.load(`12px ${font}`));
+
+  return Promise.all(observers);
+};
 
 export const useStyleStore = defineStore("style", () => {
   const styles = reactive<ResumeStyles>({
@@ -25,14 +34,26 @@ export const useStyleStore = defineStore("style", () => {
     value: ResumeStyles[T]
   ) => {
     styles[key] = value;
+    updateStyles();
+    resolvePageBreak();
+  };
 
-    if (key === "fontEN" || key === "fontCN")
-      onStylesUpdate(false); // Should handle page break after loading font
-    else onStylesUpdate();
+  const onFontLoaded = () =>
+    fontLoader([
+      styles.fontEN.fontFamily || styles.fontEN.name,
+      styles.fontCN.fontFamily || styles.fontCN.name
+    ]);
+
+  const setFont = (key: "fontCN" | "fontEN", value: Font) => {
+    styles[key] = value;
+    updateStyles();
+    onFontLoaded().then(() => setTimeout(() => resolvePageBreak(), 50));
   };
 
   return {
     styles,
-    setStyle
+    setStyle,
+    setFont,
+    onFontLoaded
   };
 });

@@ -15,5 +15,10 @@ module.exports = {
     "vue/multi-word-component-names": "off",
     "@typescript-eslint/no-non-null-assertion": "off"
   },
-  ignorePatterns: ["node_modules/", "dist/"]
+  ignorePatterns: [
+    "node_modules/",
+    "dist/",
+    "auto-imports.d.ts",
+    "components.d.ts"
+  ]
 };

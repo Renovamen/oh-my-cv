@@ -17,16 +17,14 @@
 <script lang="ts" setup>
 import { useStyleStore } from "~/store";
 import { CN_FONTS } from "~/utils";
-import { resolveFonts } from "~/composables";
 
 const { t } = useI18n();
-const { styles } = useStyleStore();
-const { toggleFont } = resolveFonts();
+const { styles, setFont } = useStyleStore();
 
 const items = computed(() =>
   CN_FONTS.map((item) => ({
     text: item.name,
-    function: ({ i }: { i: number }) => toggleFont("fontCN", CN_FONTS[i])
+    function: ({ i }: { i: number }) => setFont("fontCN", CN_FONTS[i])
   }))
 );
 </script>

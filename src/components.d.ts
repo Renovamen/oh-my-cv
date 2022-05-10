@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Button: typeof import('./components/base/Button.vue')['default']
     Dropdown: typeof import('./components/base/Dropdown.vue')['default']
+    Editor: typeof import('./components/Editor.vue')['default']
     File: typeof import('./components/file/File.vue')['default']
     FontCN: typeof import('./components/tools/FontCN.vue')['default']
     FontEN: typeof import('./components/tools/FontEN.vue')['default']

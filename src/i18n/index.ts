@@ -4,7 +4,7 @@ export const SUPPORT_LOCALES = {
     icon: "icon-park-outline:english"
   },
   "zh-CN": {
-    name: "中文",
+    name: "简体中文",
     icon: "icon-park-outline:chinese"
   }
 };

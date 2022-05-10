@@ -8,7 +8,7 @@
     @mouseleave="isTipOpen = false"
   >
     <div
-      class="btn relative"
+      class="btn"
       :class="[
         props.text ? 'space-x-1 px-2 whitespace-nowrap' : 'w-7 pc:w-8',
         !isDropDownOpen && props.styles,

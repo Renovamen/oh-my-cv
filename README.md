@@ -41,6 +41,10 @@ Highly recommend using Chrome.
   - [ ] Markdown
   - [ ] HTML
 
+- [ ] Pick any fonts from [Google Fonts](https://fonts.google.com/)
+
+- [ ] Custom CSS
+
 
 &nbsp;
 

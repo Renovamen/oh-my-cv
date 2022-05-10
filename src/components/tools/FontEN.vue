@@ -17,16 +17,14 @@
 <script lang="ts" setup>
 import { useStyleStore } from "~/store";
 import { EN_FONTS } from "~/utils";
-import { resolveFonts } from "~/composables";
 
 const { t } = useI18n();
-const { styles } = useStyleStore();
-const { toggleFont } = resolveFonts();
+const { styles, setFont } = useStyleStore();
 
 const items = computed(() =>
   EN_FONTS.map((item) => ({
     text: item.name,
-    function: ({ i }: { i: number }) => toggleFont("fontEN", EN_FONTS[i])
+    function: ({ i }: { i: number }) => setFont("fontEN", EN_FONTS[i])
   }))
 );
 </script>
