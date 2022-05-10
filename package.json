@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite --host",
     "lint": "eslint --ext .js,.ts,.vue ./",
-    "serve": "vite preview --port 8000"
+    "serve": "vite preview --port 8000 --host"
   },
   "dependencies": {
     "@vueform/slider": "^2.0.9",
