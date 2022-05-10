@@ -27,19 +27,13 @@
 <script lang="ts" setup>
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
-import { setStoreState } from "~/store";
-import { onStylesUpdate } from "~/utils";
+import { useStyleStore } from "~/store";
 
-const store = useStore();
 const { t } = useI18n();
+const { styles, setStyle } = useStyleStore();
 
 const lineHeight = computed({
-  get() {
-    return store.state.styles.lineHeight;
-  },
-  set(value: number) {
-    setStoreState("styles", "lineHeight", value);
-    onStylesUpdate(store.state.styles);
-  }
+  get: () => styles.lineHeight,
+  set: (value: number) => setStyle("lineHeight", value)
 });
 </script>

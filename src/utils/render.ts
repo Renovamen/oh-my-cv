@@ -4,7 +4,8 @@ import MarkdownItDeflist from "markdown-it-deflist";
 import MarkdownItKatex from "./katex";
 import { extractFrontMatter, updateStyles, updatePreviewScale } from ".";
 import { CHROME_PRINT_BOTTOM, getPaperPx } from "./constants";
-import type { ResumeStyles, ResumeFrontMatter } from "~/types";
+import type { ResumeFrontMatter } from "~/types";
+import { useStyleStore } from "~/store";
 
 const getMarkdownIt = () => {
   const md = new MarkdownIt({ html: true })
@@ -84,13 +85,15 @@ const removeElements = (parent: HTMLElement, selector: string) => {
   for (const e of elements) parent.removeChild(e);
 };
 
-export const handlePageBreak = (state: ResumeStyles) => {
+export const handlePageBreak = () => {
+  const { styles } = useStyleStore();
+
   const page = document.querySelector(".preview-page") as HTMLDivElement;
   removeElements(page, ".preview-page-break");
 
-  const HEIGHT = getPaperPx(state.paper, "h");
+  const HEIGHT = getPaperPx(styles.paper, "h");
   const margin =
-    state.marginV + Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);
+    styles.marginV + Math.max(styles.marginV - 10, CHROME_PRINT_BOTTOM);
   const contentH = HEIGHT - margin;
 
   const getPageBreakElement = (top: number) => {
@@ -98,10 +101,10 @@ export const handlePageBreak = (state: ResumeStyles) => {
     pageBreak.className = "preview-page-break";
 
     pageBreak.style.marginTop = `${top}px`;
-    pageBreak.style.paddingBottom = `${state.marginV}px`;
+    pageBreak.style.paddingBottom = `${styles.marginV}px`;
 
-    pageBreak.style.marginLeft = `-${state.marginH}px`;
-    pageBreak.style.marginRight = `-${state.marginH}px`;
+    pageBreak.style.marginLeft = `-${styles.marginH}px`;
+    pageBreak.style.marginRight = `-${styles.marginH}px`;
 
     return pageBreak;
   };
@@ -119,7 +122,7 @@ export const handlePageBreak = (state: ResumeStyles) => {
       parseInt(style.marginBottom);
 
     if (pageH + childH > contentH) {
-      newPage.appendChild(getPageBreakElement(HEIGHT - pageH - state.marginV));
+      newPage.appendChild(getPageBreakElement(HEIGHT - pageH - styles.marginV));
       pageH = 0;
     }
 
@@ -128,9 +131,9 @@ export const handlePageBreak = (state: ResumeStyles) => {
   }
 
   page.innerHTML = newPage.innerHTML;
-  page.style.paddingBottom = `${HEIGHT - pageH - state.marginV}px`;
+  page.style.paddingBottom = `${HEIGHT - pageH - styles.marginV}px`;
 
-  updatePreviewScale(state.paper); // Updata preview pane's scale
+  updatePreviewScale(); // Updata preview pane's scale
 };
 
 const md = getMarkdownIt();
@@ -145,7 +148,7 @@ export const renderPreviewHTML = (text: string) => {
   return html;
 };
 
-export const onStylesUpdate = (state: ResumeStyles, pagePreak = true) => {
-  updateStyles(state);
-  pagePreak && handlePageBreak(state);
+export const onStylesUpdate = (pagePreak = true) => {
+  updateStyles();
+  pagePreak && handlePageBreak();
 };

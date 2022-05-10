@@ -1,5 +1,5 @@
 <template>
-  <Button :text="pickedFontName" :tip="t('tooltip.font_en')">
+  <Button :text="styles.fontEN.name" :tip="t('tooltip.font_en')">
     <template #icon>
       <span
         class="iconify"
@@ -15,26 +15,18 @@
 </template>
 
 <script lang="ts" setup>
-import { setStoreState } from "~/store";
-import { EN_FONTS, onStylesUpdate, handlePageBreak } from "~/utils";
+import { useStyleStore } from "~/store";
+import { EN_FONTS } from "~/utils";
 import { resolveFonts } from "~/composables";
 
-const store = useStore();
 const { t } = useI18n();
-const { onFontLoaded } = resolveFonts();
-
-const pickedFontName = computed(() => store.state.styles.fontEN.name);
-
-const pickFont = (i: number) => {
-  setStoreState("styles", "fontEN", EN_FONTS[i]);
-  onStylesUpdate(store.state.styles, false);
-  onFontLoaded.value.then(() => handlePageBreak(store.state.styles));
-};
+const { styles } = useStyleStore();
+const { toggleFont } = resolveFonts();
 
 const items = computed(() =>
   EN_FONTS.map((item) => ({
     text: item.name,
-    function: ({ i }: { i: number }) => pickFont(i)
+    function: ({ i }: { i: number }) => toggleFont("fontEN", EN_FONTS[i])
   }))
 );
 </script>

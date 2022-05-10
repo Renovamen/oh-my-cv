@@ -67,9 +67,10 @@
 <script lang="ts" setup>
 import { OnClickOutside } from "@vueuse/components";
 import { fetchFile, uploadFile } from "~/utils";
-import { setStoreState } from "~/store";
+import { useDataStore } from "~/store";
 
 const { t } = useI18n();
+const { setData } = useDataStore();
 
 const emit = defineEmits<{
   (e: "closeImport"): void;
@@ -81,16 +82,16 @@ const pastedURL = ref("");
 const uploadFileFromURL = () => {
   if (pastedURL.value.trim() === "") return;
   fetchFile(pastedURL.value).then((content: string) => {
-    setStoreState("data", "mdContent", content);
-    setStoreState("data", "fileImported", true);
+    setData("mdContent", content);
+    setData("fileImported", true);
     emit("closeImport");
   });
 };
 
 const uploadFileFromLocal = (e: Event) => {
   uploadFile(e, (content: string) => {
-    setStoreState("data", "mdContent", content);
-    setStoreState("data", "fileImported", true);
+    setData("mdContent", content);
+    setData("fileImported", true);
     emit("closeImport");
   });
 };

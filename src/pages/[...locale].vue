@@ -4,7 +4,7 @@
   <splitpanes
     class="resume-main default-theme"
     :horizontal="isMobile"
-    @resize="updatePreviewScale(styles.paper)"
+    @resize="updatePreviewScale"
   >
     <pane class="editor">
       <div ref="editorRef" class="h-full" />
@@ -13,8 +13,8 @@
       <div
         class="preview"
         :style="{
-          transform: `scale(${store.state.ui.previewScale})`,
-          marginBottom: `${store.state.ui.previewBottom}px`
+          transform: `scale(${ui.previewScale})`,
+          marginBottom: `${ui.previewBottom}px`
         }"
       >
         <div class="preview-page" v-html="html" />
@@ -27,7 +27,7 @@
 import * as monaco from "monaco-editor";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { setStoreState } from "~/store";
+import { useDataStore, useUIStore } from "~/store";
 import {
   fetchFile,
   handlePageBreak,
@@ -42,21 +42,21 @@ import {
   isDark
 } from "~/composables";
 
-const store = useStore();
-const { onFontLoaded } = resolveFonts();
+const { ui } = useUIStore();
+const { data, setData } = useDataStore();
 
-const styles = computed(() => store.state.styles);
+const { onFontLoaded } = resolveFonts();
 
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
 
 onMounted(() => {
   fetchFile("/example.md").then((text: string) => {
-    setStoreState("data", "mdContent", text);
+    setData("mdContent", text);
 
     /* eslint-disable @typescript-eslint/no-non-null-assertion */
     editor = monaco.editor.create(editorRef.value!, {
-      value: store.state.data.mdContent,
+      value: data.mdContent,
       language: "markdown",
       wordWrap: "on",
       fontSize: 13,
@@ -64,7 +64,7 @@ onMounted(() => {
     });
 
     editor.onDidChangeModelContent(() => {
-      setStoreState("data", "mdContent", editor!.getModel()!.getValue());
+      setData("mdContent", editor!.getModel()!.getValue());
     });
 
     watch(isDark, (val) => {
@@ -73,7 +73,7 @@ onMounted(() => {
   });
 
   // Initialize styles
-  updateStyles(styles.value);
+  updateStyles();
 
   // Handle page breaking after HTML changing
   watch(
@@ -81,7 +81,7 @@ onMounted(() => {
     () =>
       nextTick(() => {
         onFontLoaded.value.then(() => {
-          handlePageBreak(styles.value);
+          handlePageBreak();
         });
       })
   );
@@ -93,15 +93,15 @@ onBeforeUnmount(() => {
 
 // Update editor content after uploading a file
 watch(
-  () => store.state.data.fileImported,
+  () => data.fileImported,
   () => {
-    editor!.getModel()!.setValue(store.state.data.mdContent);
-    setStoreState("data", "fileImported", false);
+    editor!.getModel()!.setValue(data.mdContent);
+    setData("fileImported", false);
   }
 );
 
 // Render HTML for previewing
-const html = computed(() => renderPreviewHTML(store.state.data.mdContent));
+const html = computed(() => renderPreviewHTML(data.mdContent));
 
 // Handle window size changing
 const { isMobile } = resolveWindowSize();

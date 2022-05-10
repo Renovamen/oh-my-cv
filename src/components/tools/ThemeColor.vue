@@ -35,14 +35,14 @@
 </template>
 
 <script lang="ts" setup>
-import { setStoreState } from "~/store";
-import { onStylesUpdate, DEFAULT_THEME_COLORS } from "~/utils";
+import { useStyleStore } from "~/store";
+import { DEFAULT_THEME_COLORS } from "~/utils";
 
-const store = useStore();
 const { t } = useI18n();
+const { styles, setStyle } = useStyleStore();
 
 const defaultColorId = DEFAULT_THEME_COLORS.findIndex(
-  (item) => item === store.state.styles.themeColor
+  (item) => item === styles.themeColor
 );
 
 const pickedColorId = ref(defaultColorId);
@@ -65,9 +65,6 @@ const customizeColor = (e: Event) => {
 
 watch(
   () => currentThemeColor.value,
-  () => {
-    setStoreState("styles", "themeColor", currentThemeColor.value);
-    onStylesUpdate(store.state.styles);
-  }
+  () => setStyle("themeColor", currentThemeColor.value)
 );
 </script>

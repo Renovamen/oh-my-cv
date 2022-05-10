@@ -1,3 +1,7 @@
+import { useStyleStore } from "~/store";
+import { handlePageBreak } from "~/utils";
+import type { Font } from "~/types";
+
 export const fontLoader = (fonts: string | Array<string>) => {
   const observers = [];
 
@@ -8,22 +12,28 @@ export const fontLoader = (fonts: string | Array<string>) => {
 };
 
 export const resolveFonts = () => {
-  const store = useStore();
+  const { styles, setStyle } = useStyleStore();
 
   const fontFamilyEN = computed(
-    () => store.state.styles.fontEN.fontFamily || store.state.styles.fontEN.name
+    () => styles.fontEN.fontFamily || styles.fontEN.name
   );
   const fontFamilyCN = computed(
-    () => store.state.styles.fontCN.fontFamily || store.state.styles.fontCN.name
+    () => styles.fontCN.fontFamily || styles.fontCN.name
   );
 
   const onFontLoaded = computed(() =>
     fontLoader([fontFamilyEN.value, fontFamilyCN.value])
   );
 
+  const toggleFont = (lang: "fontCN" | "fontEN", font: Font) => {
+    setStyle(lang, font);
+    onFontLoaded.value.then(() => handlePageBreak());
+  };
+
   return {
     fontFamilyEN,
     fontFamilyCN,
-    onFontLoaded
+    onFontLoaded,
+    toggleFont
   };
 };

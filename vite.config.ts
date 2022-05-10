@@ -23,7 +23,7 @@ export default {
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ["vue", "vuex", "vue-router", "vue-i18n", "@vueuse/core"],
+      imports: ["vue", "vue-router", "vue-i18n", "@vueuse/core"],
       dts: "src/auto-imports.d.ts"
     }),
 

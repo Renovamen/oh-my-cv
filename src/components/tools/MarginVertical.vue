@@ -19,19 +19,13 @@
 <script lang="ts" setup>
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
-import { setStoreState } from "~/store";
-import { onStylesUpdate } from "~/utils";
+import { useStyleStore } from "~/store";
 
-const store = useStore();
 const { t } = useI18n();
+const { styles, setStyle } = useStyleStore();
 
 const marginV = computed({
-  get() {
-    return store.state.styles.marginV;
-  },
-  set(value: number) {
-    setStoreState("styles", "marginV", value);
-    onStylesUpdate(store.state.styles);
-  }
+  get: () => styles.marginV,
+  set: (value: number) => setStyle("marginV", value)
 });
 </script>

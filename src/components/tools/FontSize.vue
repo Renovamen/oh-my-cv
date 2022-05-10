@@ -21,19 +21,13 @@
 <script lang="ts" setup>
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
-import { setStoreState } from "~/store";
-import { onStylesUpdate } from "~/utils";
+import { useStyleStore } from "~/store";
 
-const store = useStore();
 const { t } = useI18n();
+const { styles, setStyle } = useStyleStore();
 
 const fontSize = computed({
-  get() {
-    return store.state.styles.fontSize;
-  },
-  set(value: number) {
-    setStoreState("styles", "fontSize", value);
-    onStylesUpdate(store.state.styles);
-  }
+  get: () => styles.fontSize,
+  set: (value: number) => setStyle("fontSize", value)
 });
 </script>

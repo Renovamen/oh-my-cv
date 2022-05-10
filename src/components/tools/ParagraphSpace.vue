@@ -24,19 +24,13 @@
 <script lang="ts" setup>
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
-import { setStoreState } from "~/store";
-import { onStylesUpdate } from "~/utils";
+import { useStyleStore } from "~/store";
 
-const store = useStore();
 const { t } = useI18n();
+const { styles, setStyle } = useStyleStore();
 
 const paragraphSpace = computed({
-  get() {
-    return store.state.styles.paragraphSpace;
-  },
-  set(value: number) {
-    setStoreState("styles", "paragraphSpace", value);
-    onStylesUpdate(store.state.styles);
-  }
+  get: () => styles.paragraphSpace,
+  set: (value: number) => setStyle("paragraphSpace", value)
 });
 </script>

@@ -1,21 +1,23 @@
+import { useStyleStore } from "~/store";
 import { CHROME_PRINT_BOTTOM, PAPER, getPreviewW } from "./constants";
-import type { ResumeStyles } from "~/types";
 
-const pageMarginCss = (state: ResumeStyles) => {
-  const bottom = Math.max(state.marginV - 10, CHROME_PRINT_BOTTOM);
-  return `.preview-page { padding: ${state.marginV}px ${state.marginH}px ${bottom}px }`;
+const { styles } = useStyleStore();
+
+const pageMarginCss = () => {
+  const bottom = Math.max(styles.marginV - 10, CHROME_PRINT_BOTTOM);
+  return `.preview-page { padding: ${styles.marginV}px ${styles.marginH}px ${bottom}px }`;
 };
 
-const themeColorCss = (state: ResumeStyles) => {
+const themeColorCss = () => {
   return (
-    `.preview a:not(.preview-header-link) { color: ${state.themeColor} }` +
-    `.preview h1, .preview h2, .preview h3 { color: ${state.themeColor} }` +
-    `.preview h2 { border-bottom-color: ${state.themeColor} }`
+    `.preview a:not(.preview-header-link) { color: ${styles.themeColor} }` +
+    `.preview h1, .preview h2, .preview h3 { color: ${styles.themeColor} }` +
+    `.preview h2 { border-bottom-color: ${styles.themeColor} }`
   );
 };
 
-const lineHeightCss = (state: ResumeStyles) => {
-  const lineHeight = state.lineHeight / 100;
+const lineHeightCss = () => {
+  const lineHeight = styles.lineHeight / 100;
   return (
     `.preview p, .preview li { line-height: ${lineHeight.toFixed(2)} }` +
     `.preview h2, .preview h3 { line-height: ${(lineHeight * 1.154).toFixed(
@@ -25,25 +27,25 @@ const lineHeightCss = (state: ResumeStyles) => {
   );
 };
 
-const paragraphSpaceCss = (state: ResumeStyles) => {
-  return `.preview h2 { margin-top: ${state.paragraphSpace}px }`;
+const paragraphSpaceCss = () => {
+  return `.preview h2 { margin-top: ${styles.paragraphSpace}px }`;
 };
 
-const fontFamilyCss = (state: ResumeStyles) => {
-  const fontEN = state.fontEN.fontFamily || state.fontEN.name;
-  const fontCN = state.fontCN.fontFamily || state.fontCN.name;
+const fontFamilyCss = () => {
+  const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
+  const fontCN = styles.fontCN.fontFamily || styles.fontCN.name;
   return `.preview { font-family: ${fontEN}, ${fontCN} }`;
 };
 
-const fontSizeCss = (state: ResumeStyles) => {
-  return `.preview { font-size: ${state.fontSize}px }`;
+const fontSizeCss = () => {
+  return `.preview { font-size: ${styles.fontSize}px }`;
 };
 
-const paperCss = (state: ResumeStyles) => {
+const paperCss = () => {
   return (
-    `.preview-page { width: ${PAPER[state.paper].w}mm }` +
-    `.preview { width: ${getPreviewW(state.paper)}px }` +
-    `@media print { @page { size: ${state.paper}; } }`
+    `.preview-page { width: ${PAPER[styles.paper].w}mm }` +
+    `.preview { width: ${getPreviewW(styles.paper)}px }` +
+    `@media print { @page { size: ${styles.paper}; } }`
   );
 };
 
@@ -59,15 +61,15 @@ const supportsConstructedSheet = (() => {
 let styleSheet = undefined as CSSStyleSheet | HTMLStyleElement | undefined;
 
 // Borrowed from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
-export const updateStyles = (state: ResumeStyles) => {
+export const updateStyles = () => {
   const content =
-    pageMarginCss(state) +
-    fontFamilyCss(state) +
-    fontSizeCss(state) +
-    themeColorCss(state) +
-    paragraphSpaceCss(state) +
-    lineHeightCss(state) +
-    paperCss(state);
+    pageMarginCss() +
+    fontFamilyCss() +
+    fontSizeCss() +
+    themeColorCss() +
+    paragraphSpaceCss() +
+    lineHeightCss() +
+    paperCss();
 
   if (supportsConstructedSheet) {
     // Use constructed sheet if supported

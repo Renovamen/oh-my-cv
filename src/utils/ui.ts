@@ -1,21 +1,22 @@
-import { setStoreState } from "~/store";
+import { useUIStore, useStyleStore } from "~/store";
 import { getPreviewW } from "./constants";
-import type { PaperType } from "~/types";
 
-export const updatePreviewScale = (paper: PaperType) => {
+export const updatePreviewScale = () => {
   const { width } = useWindowSize();
+  const { setUI } = useUIStore();
+  const { styles } = useStyleStore();
 
   const pane = document.querySelector(".preview-pane") as HTMLElement;
   const paneW = pane.clientWidth;
 
   const preview = document.querySelector(".preview") as HTMLElement;
   const previewH = preview.clientHeight;
-  const previewW = getPreviewW(paper);
+  const previewW = getPreviewW(styles.paper);
 
   const previewScale =
     paneW >= previewW
       ? 1
       : (width.value <= previewW + 5 ? width.value : paneW) / previewW;
-  setStoreState("ui", "previewScale", previewScale);
-  setStoreState("ui", "previewBottom", -(1 - previewScale) * previewH);
+  setUI("previewScale", previewScale);
+  setUI("previewBottom", -(1 - previewScale) * previewH);
 };

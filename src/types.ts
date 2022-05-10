@@ -27,8 +27,6 @@ export type UIData = {
   previewBottom: number;
 };
 
-export type StoreStates = ResumeStyles & SystemData & UIData;
-
 export type ResumeHeaderItem = {
   text: string;
   link?: string;

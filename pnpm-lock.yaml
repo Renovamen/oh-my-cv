@@ -24,6 +24,7 @@ specifiers:
   markdown-it: ^13.0.1
   markdown-it-deflist: ^2.1.0
   monaco-editor: ^0.33.0
+  pinia: ^2.0.14
   prettier: ^2.6.2
   splitpanes: ^3.1.1
   typescript: ^4.6.4
@@ -35,7 +36,6 @@ specifiers:
   vue: ^3.2.33
   vue-i18n: ^9.1.10
   vue-router: ^4.0.15
-  vuex: ^4.0.2
 
 dependencies:
   '@vueform/slider': 2.0.9
@@ -44,11 +44,11 @@ dependencies:
   js-yaml: 4.1.0
   katex: 0.15.3
   monaco-editor: 0.33.0
+  pinia: 2.0.14_ytvqwwdyss532bvoq2clv4ed5m
   splitpanes: 3.1.1
   vue: 3.2.33
   vue-i18n: 9.1.10_vue@3.2.33
   vue-router: 4.0.15_vue@3.2.33
-  vuex: 4.0.2_vue@3.2.33
 
 devDependencies:
   '@intlify/vite-plugin-vue-i18n': 3.4.0_vite@2.9.8+vue-i18n@9.1.10
@@ -2209,6 +2209,24 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
+  /pinia/2.0.14_ytvqwwdyss532bvoq2clv4ed5m:
+    resolution: {integrity: sha512-0nPuZR4TetT/WcLN+feMSjWJku3SQU7dBbXC6uw+R6FLQJCsg+/0pzXyD82T1FmAYe0lsx+jnEDQ1BLgkRKlxA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.1.4
+      typescript: 4.6.4
+      vue: 3.2.33
+      vue-demi: 0.12.5_vue@3.2.33
+    dev: false
+
   /postcss-selector-parser/6.0.10:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
     engines: {node: '>=4'}
@@ -2730,15 +2748,6 @@ packages:
       '@vue/runtime-dom': 3.2.33
       '@vue/server-renderer': 3.2.33_vue@3.2.33
       '@vue/shared': 3.2.33
-    dev: false
-
-  /vuex/4.0.2_vue@3.2.33:
-    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
-    peerDependencies:
-      vue: ^3.0.2
-    dependencies:
-      '@vue/devtools-api': 6.1.4
-      vue: 3.2.33
     dev: false
 
   /web-streams-polyfill/3.2.1:
