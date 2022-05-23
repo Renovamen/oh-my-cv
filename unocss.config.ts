@@ -9,13 +9,14 @@ import {
 export default defineConfig({
   shortcuts: [
     ["flex-center", "flex items-center justify-center"],
+    ["hstack", "flex items-center"],
     [
       "btn",
-      "relative flex items-center justify-center h-7 pc:h-8 rounded cursor-pointer capitalize"
+      "relative flex-center h-7 pc:h-8 rounded cursor-pointer capitalize"
     ],
     [
       "menu-li",
-      "flex items-center space-x-0.5 pc:space-x-1.5 px-3 h-8 text-xs pc:text-sm capitalize truncate cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
+      "hstack space-x-0.5 pc:space-x-1.5 px-3 h-8 text-xs pc:text-sm capitalize truncate cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
     ]
   ],
   theme: {

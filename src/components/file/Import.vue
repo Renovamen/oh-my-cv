@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="bg-gray-200 flex-1 flex items-center px-4 rounded-b">
+    <div class="bg-gray-200 flex-1 hstack px-4 rounded-b">
       <input
         v-if="clickedButton === 0"
         class="text-xs"
