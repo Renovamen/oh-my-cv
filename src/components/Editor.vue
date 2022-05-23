@@ -30,6 +30,8 @@ onMounted(() => {
       setData("mdContent", editor!.getModel()!.getValue());
     });
 
+    monaco.editor.setTheme(isDark.value ? "vs-dark" : "vs");
+
     watch(isDark, (val) => {
       monaco.editor.setTheme(val ? "vs-dark" : "vs");
     });
