@@ -1,3 +1,4 @@
+import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
 import Unocss from "unocss/vite";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
@@ -6,7 +7,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import Pages from "vite-plugin-pages";
 import path from "path";
 
-export default {
+export default defineConfig({
   resolve: {
     alias: {
       "~/": `${path.resolve(__dirname, "src")}/`
@@ -17,13 +18,17 @@ export default {
     Vue(),
 
     // https://github.com/hannoeru/vite-plugin-pages
-    Pages({
-      extensions: ["vue"]
-    }),
+    Pages(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ["vue", "vue-router", "vue-i18n", "@vueuse/core"],
+      imports: [
+        "vue",
+        "vue-router",
+        "vue-i18n",
+        "@vueuse/head",
+        "@vueuse/core"
+      ],
       dts: "src/auto-imports.d.ts"
     }),
 
@@ -43,4 +48,4 @@ export default {
       include: [path.resolve(__dirname, "src/i18n/translations/**")]
     })
   ]
-};
+});
