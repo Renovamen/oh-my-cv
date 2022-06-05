@@ -27,7 +27,6 @@
 <script lang="ts" setup>
 import Slider from "@vueform/slider";
 import "@vueform/slider/themes/default.css";
-import { useStyleStore } from "~/store";
 
 const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();

@@ -35,7 +35,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStyleStore } from "~/store";
 import { DEFAULT_THEME_COLORS } from "~/utils";
 
 const { t } = useI18n();

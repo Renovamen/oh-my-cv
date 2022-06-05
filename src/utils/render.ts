@@ -1,6 +1,5 @@
 import { updatePreviewScale } from ".";
 import { CHROME_PRINT_BOTTOM, getPaperPx } from "./constants";
-import { useStyleStore } from "~/store";
 
 const removeElements = (parent: HTMLElement, selector: string) => {
   const elements = Array.from(parent.querySelectorAll(selector));

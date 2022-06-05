@@ -25,7 +25,7 @@
       p="x-2 y-1"
       top="8 pc:10"
       text="xs pc:sm white dark:black"
-      bg="black opacity-80 dark:(gray-300 opacity-90)"
+      bg="black/80 dark:gray-300/90"
     >
       {{ props.tip }}
     </span>

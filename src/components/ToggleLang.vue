@@ -1,5 +1,5 @@
 <template>
-  <Button :text="SUPPORT_LOCALES[locale].name" :tip="t('lang')">
+  <Button :text="SUPPORT_LOCALES[locale as LocaleType].name" :tip="t('lang')">
     <template #icon>
       <span class="iconify" text="sm pc:base" data-icon="ic:round-translate" />
     </template>
@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import { switchLocalePath } from "~/composables";
 import { SUPPORT_LOCALES, LocaleType } from "~/i18n";
 
 const { availableLocales, locale, t } = useI18n();

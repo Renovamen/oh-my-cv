@@ -15,7 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStyleStore } from "~/store";
 import { PAPER } from "~/utils";
 import type { PaperType } from "~/types";
 

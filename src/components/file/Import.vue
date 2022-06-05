@@ -67,7 +67,6 @@
 <script lang="ts" setup>
 import { OnClickOutside } from "@vueuse/components";
 import { fetchFile, uploadFile } from "~/utils";
-import { useDataStore } from "~/store";
 
 const { t } = useI18n();
 const { setData } = useDataStore();

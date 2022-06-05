@@ -8,7 +8,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { isDark, toggleDark } from "~/composables";
-</script>

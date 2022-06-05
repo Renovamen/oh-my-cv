@@ -1,4 +1,3 @@
-import { useUIStore, useStyleStore } from "~/store";
 import { getPreviewW } from "./constants";
 
 export const updatePreviewScale = () => {

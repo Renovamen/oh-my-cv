@@ -4,9 +4,7 @@
 
 <script lang="ts" setup>
 import * as monaco from "monaco-editor";
-import { useDataStore } from "~/store";
 import { fetchFile } from "~/utils";
-import { isDark } from "~/composables";
 
 const { data, setData } = useDataStore();
 

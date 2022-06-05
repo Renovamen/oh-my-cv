@@ -15,7 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStyleStore } from "~/store";
 import { EN_FONTS } from "~/utils";
 
 const { t } = useI18n();

@@ -26,13 +26,7 @@
 <script lang="ts" setup>
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { useUIStore } from "~/store";
 import { updatePreviewScale, updateStyles } from "~/utils";
-import {
-  watchLocalePath,
-  resolveWindowSize,
-  usePreviewHTML
-} from "~/composables";
 
 const { ui } = useUIStore();
 

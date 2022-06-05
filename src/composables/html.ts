@@ -2,7 +2,6 @@ import MarkdownIt from "markdown-it";
 import type Token from "markdown-it/lib/token";
 import MarkdownItDeflist from "markdown-it-deflist";
 import { MarkdownItKatex, extractFrontMatter, resolvePageBreak } from "~/utils";
-import { useDataStore, useStyleStore } from "~/store";
 import type { ResumeFrontMatter } from "~/types";
 
 const markdown = (() => {

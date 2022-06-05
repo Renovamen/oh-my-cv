@@ -1,4 +1,3 @@
-import { useStyleStore } from "~/store";
 import { CHROME_PRINT_BOTTOM, PAPER, getPreviewW } from "./constants";
 import type { ResumeStyles } from "~/types";
 
