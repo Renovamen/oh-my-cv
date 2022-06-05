@@ -4,7 +4,7 @@
     border="b gray-300 dark:gray-600"
   >
     <div class="hstack space-x-1" text="black dark:white">
-      <OhCV class="text-xl lt-pc:hidden" />
+      <OhCV class="text-lg lt-pc:hidden" />
       <h1 font="bold" text="base pc:lg dark:gray-100">Oh, CV!</h1>
     </div>
 
