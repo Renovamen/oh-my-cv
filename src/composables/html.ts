@@ -1,32 +1,22 @@
 import MarkdownIt from "markdown-it";
-import type Token from "markdown-it/lib/token";
 import MarkdownItDeflist from "markdown-it-deflist";
+import LinkAttributes from "markdown-it-link-attributes";
 import { MarkdownItKatex, extractFrontMatter, resolvePageBreak } from "~/utils";
 import type { ResumeFrontMatter } from "~/types";
 
 const markdown = (() => {
-  const md = new MarkdownIt({ html: true })
-    .use(MarkdownItDeflist)
-    .use(MarkdownItKatex);
+  const md = new MarkdownIt({ html: true });
 
-  // remember old renderer, if overridden, or proxy to default renderer
-  const defaultRender =
-    md.renderer.rules.link_open ||
-    function (tokens, idx, options, env, self) {
-      return self.renderToken(tokens, idx, options);
-    };
+  md.use(MarkdownItDeflist);
+  md.use(MarkdownItKatex);
 
-  md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-    // if you are sure other plugins can't add `target` - drop check below
-    const aIndex = tokens[idx].attrIndex("target");
-    if (aIndex < 0) {
-      tokens[idx].attrPush(["target", "_blank"]); // add new attribute
-    } else {
-      (tokens[idx] as Token).attrs![aIndex][1] = "_blank"; // replace value of existing attr
+  md.use(LinkAttributes, {
+    matcher: (link: string) => /^https?:\/\//.test(link),
+    attrs: {
+      target: "_blank",
+      rel: "noopener"
     }
-    // pass token to default renderer.
-    return defaultRender(tokens, idx, options, env, self);
-  };
+  });
 
   return md;
 })();
@@ -93,13 +83,11 @@ export const usePreviewHTML = () => {
 
   // Resolve page break after HTML changing
   onMounted(() => {
-    watch(
-      () => html.value,
-      () =>
-        nextTick(() =>
-          onFontLoaded().then(() => setTimeout(() => resolvePageBreak(), 50))
-        )
-    );
+    watch(html, () => {
+      nextTick(() =>
+        onFontLoaded().then(() => setTimeout(() => resolvePageBreak(), 50))
+      );
+    });
   });
 
   return html;

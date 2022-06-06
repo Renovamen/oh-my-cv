@@ -5,6 +5,7 @@ specifiers:
   '@types/js-yaml': ^4.0.5
   '@types/katex': ^0.14.0
   '@types/markdown-it': ^12.2.3
+  '@types/markdown-it-link-attributes': ^3.0.1
   '@types/node': ^17.0.39
   '@types/splitpanes': ^2.2.1
   '@typescript-eslint/eslint-plugin': ^5.27.0
@@ -23,6 +24,7 @@ specifiers:
   katex: ^0.15.6
   markdown-it: ^13.0.1
   markdown-it-deflist: ^2.1.0
+  markdown-it-link-attributes: ^4.0.0
   monaco-editor: ^0.33.0
   pinia: ^2.0.14
   prettier: ^2.6.2
@@ -56,6 +58,7 @@ devDependencies:
   '@types/js-yaml': 4.0.5
   '@types/katex': 0.14.0
   '@types/markdown-it': 12.2.3
+  '@types/markdown-it-link-attributes': 3.0.1
   '@types/node': 17.0.39
   '@types/splitpanes': 2.2.1
   '@typescript-eslint/eslint-plugin': 5.27.0_kor2e3kwnnzugzo3aovmfcq2la
@@ -68,6 +71,7 @@ devDependencies:
   eslint-plugin-vue: 9.1.0_eslint@8.17.0
   markdown-it: 13.0.1
   markdown-it-deflist: 2.1.0
+  markdown-it-link-attributes: 4.0.0
   prettier: 2.6.2
   typescript: 4.7.3
   unocss: 0.37.4_vite@2.9.9
@@ -295,6 +299,12 @@ packages:
 
   /@types/linkify-it/3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
+    dev: true
+
+  /@types/markdown-it-link-attributes/3.0.1:
+    resolution: {integrity: sha512-K8RnNb1q8j7rDOJbMF7AnlhCC/45BjrQ8z3WZWOrvkBIl8u9RXvmBdG/hfpnmK1JhhEZcmFEKWt+ilW1Mly+2Q==}
+    dependencies:
+      '@types/markdown-it': 12.2.3
     dev: true
 
   /@types/markdown-it/12.2.3:
@@ -1998,6 +2008,10 @@ packages:
 
   /markdown-it-deflist/2.1.0:
     resolution: {integrity: sha512-3OuqoRUlSxJiuQYu0cWTLHNhhq2xtoSFqsZK8plANg91+RJQU1ziQ6lA2LzmFAEes18uPBsHZpcX6We5l76Nzg==}
+    dev: true
+
+  /markdown-it-link-attributes/4.0.0:
+    resolution: {integrity: sha512-ssjxSLlLfQBkX6BvAx1rCPrx7ZoK91llQQvS3P7KXvlbnVD34OUkfXwWecN7su/7mrI/HOW0RI5szdJOIqYC3w==}
     dev: true
 
   /markdown-it/13.0.1:

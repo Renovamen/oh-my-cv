@@ -62,8 +62,5 @@ const customizeColor = (e: Event) => {
   customColor.value = (e.target as HTMLInputElement).value;
 };
 
-watch(
-  () => currentThemeColor.value,
-  () => setStyle("themeColor", currentThemeColor.value)
-);
+watch(currentThemeColor, () => setStyle("themeColor", currentThemeColor.value));
 </script>

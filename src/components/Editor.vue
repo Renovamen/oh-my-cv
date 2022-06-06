@@ -11,12 +11,11 @@ const { data, setData } = useDataStore();
 const editorRef = ref<HTMLDivElement>();
 let editor: monaco.editor.IStandaloneCodeEditor | undefined;
 
+// Setup
 onMounted(() => {
-  fetchFile("/example.md").then((text: string) => {
-    setData("mdContent", text);
-
-    /* eslint-disable @typescript-eslint/no-non-null-assertion */
-    editor = monaco.editor.create(editorRef.value!, {
+  // Monaco editor
+  if (editorRef.value && !editor) {
+    editor = monaco.editor.create(editorRef.value, {
       value: data.mdContent,
       language: "markdown",
       wordWrap: "on",
@@ -25,7 +24,7 @@ onMounted(() => {
     });
 
     editor.onDidChangeModelContent(() => {
-      setData("mdContent", editor!.getModel()!.getValue());
+      setData("mdContent", editor!.getValue());
     });
 
     monaco.editor.setTheme(isDark.value ? "vs-dark" : "vs");
@@ -33,18 +32,22 @@ onMounted(() => {
     watch(isDark, (val) => {
       monaco.editor.setTheme(val ? "vs-dark" : "vs");
     });
+  }
+
+  // Load example markdown content
+  fetchFile("/example.md").then((text: string) => {
+    setData("mdContent", text);
+    editor!.setValue(text);
   });
 });
 
-onBeforeUnmount(() => {
-  editor?.dispose();
-});
+onBeforeUnmount(() => editor?.dispose());
 
 // Update editor content after uploading a file
 watch(
   () => data.fileImported,
   () => {
-    editor!.getModel()!.setValue(data.mdContent);
+    editor?.setValue(data.mdContent);
     setData("fileImported", false);
   }
 );

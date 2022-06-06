@@ -5,10 +5,7 @@ export const resolveWindowSize = () => {
 
   const isMobile = computed(() => width.value <= 810);
 
-  watch(
-    () => width.value,
-    () => setTimeout(() => updatePreviewScale(), 50)
-  );
+  watch(width, () => setTimeout(() => updatePreviewScale(), 50));
 
   return {
     width,
