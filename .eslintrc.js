@@ -18,6 +18,7 @@ module.exports = {
   ignorePatterns: [
     "node_modules/",
     "dist/",
+    "scripts/",
     "auto-imports.d.ts",
     "components.d.ts"
   ]

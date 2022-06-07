@@ -84,9 +84,7 @@ export const usePreviewHTML = () => {
   // Resolve page break after HTML changing
   onMounted(() => {
     watch(html, () => {
-      nextTick(() =>
-        onFontLoaded().then(() => setTimeout(() => resolvePageBreak(), 50))
-      );
+      nextTick(() => onFontLoaded().then(() => resolvePageBreak()));
     });
   });
 

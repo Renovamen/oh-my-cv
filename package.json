@@ -2,7 +2,7 @@
   "name": "oh-cv",
   "private": true,
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/i18n.js",
     "dev": "vite --host",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "serve": "vite preview --port 8000 --host"
@@ -37,6 +37,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.1.0",
+    "fs-extra": "^10.1.0",
     "markdown-it": "^13.0.1",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-link-attributes": "^4.0.0",
@@ -46,6 +47,7 @@
     "unplugin-auto-import": "^0.8.7",
     "unplugin-vue-components": "^0.19.6",
     "vite": "^2.9.9",
-    "vite-plugin-pages": "^0.23.0"
+    "vite-plugin-pages": "^0.23.0",
+    "yaml": "^2.1.1"
   }
 }
