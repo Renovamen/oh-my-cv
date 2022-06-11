@@ -8,8 +8,8 @@ header:
     link: https://github.com/Renovamen
   - text: <span class="iconify" data-icon="tabler:brand-linkedin"></span> xiaohan-zou
     link: https://www.linkedin.com/in/xiaohan-zou/
-  - text: <span class="iconify" data-icon="bx:world"></span> zxh.io
-    link: https://zxh.io/about
+  - text: <span class="iconify" data-icon="charm:person"></span> zxh.io
+    link: https://zxh.io
   - text: <span class="iconify" data-icon="ic:outline-location-on"></span> 1234 Abc Street, Boston, MA 02215
     newLine: true
 ---

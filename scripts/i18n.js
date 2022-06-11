@@ -10,6 +10,7 @@ const i18n = fs.readdirSync(i18nFolder).map((item) => {
 });
 
 const dist = "dist";
+
 const enContent = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 const enDesc = i18n.find(item => item[0] === "en")[1].desc;
 
