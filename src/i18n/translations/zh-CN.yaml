@@ -1,5 +1,6 @@
 lang: 语言
 desc: 在线用 Markdown 写简历！
+resume: 简历
 tooltip:
   font_cn: 中文字体
   font_en: 英文字体

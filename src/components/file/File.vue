@@ -35,7 +35,18 @@ const items = computed(() => [
   {
     text: t("file.export.pdf"),
     icon: "mdi:progress-download",
-    function: () => window.print()
+    function: () => {
+      const title = document.title;
+
+      const container = document.querySelector(".preview-page");
+      const name = container?.querySelector("h1")?.innerHTML;
+
+      if (name)
+        document.title = name.trim().replace(/\s+/g, "-") + "-" + t("resume");
+
+      window.print();
+      document.title = title;
+    }
   }
 ]);
 </script>
