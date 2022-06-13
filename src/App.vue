@@ -12,14 +12,9 @@ useHead({
       rel: "icon",
       type: "image/svg+xml",
       href: computed(() =>
-        preferredDark.value ? "/logo/favicon-dark.svg" : "/logo/favicon.svg"
-      )
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      href: computed(() =>
-        preferredDark.value ? "/logo/favicon-dark.png" : "/logo/favicon.png"
+        preferredDark.value
+          ? "/favicon/favicon-dark.svg"
+          : "/favicon/favicon.svg"
       )
     }
   ]

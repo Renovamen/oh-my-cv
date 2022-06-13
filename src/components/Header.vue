@@ -3,10 +3,7 @@
     class="header relative flex justify-between dark:bg-dark-400 pl-4 pr-1.5"
     border="b gray-300 dark:gray-600"
   >
-    <div class="hstack space-x-1" text="black dark:white">
-      <OhCV class="text-lg lt-pc:hidden" />
-      <h1 font="bold" text="base pc:lg dark:gray-100">Oh, CV!</h1>
-    </div>
+    <OhCV text="lg pc:xl dark:gray-100" />
 
     <div class="hstack space-x-1.5 text-gray-600 dark:text-gray-300">
       <Toolbar />
