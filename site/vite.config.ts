@@ -1,11 +1,13 @@
+import path from "path";
 import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
-import Unocss from "unocss/vite";
-import VueI18n from "@intlify/vite-plugin-vue-i18n";
+import Pages from "vite-plugin-pages";
+import generateSitemap from "vite-ssg-sitemap";
+import Layouts from "vite-plugin-vue-layouts";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
-import Pages from "vite-plugin-pages";
-import path from "path";
+import VueI18n from "@intlify/vite-plugin-vue-i18n";
+import Unocss from "unocss/vite";
 
 export default defineConfig({
   resolve: {
@@ -15,10 +17,15 @@ export default defineConfig({
   },
 
   plugins: [
-    Vue(),
+    Vue({
+      reactivityTransform: true
+    }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
+
+    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
+    Layouts(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
@@ -26,6 +33,7 @@ export default defineConfig({
         "vue",
         "vue-router",
         "vue-i18n",
+        "vue/macros",
         "@vueuse/head",
         "@vueuse/core"
       ],
@@ -49,5 +57,18 @@ export default defineConfig({
       compositionOnly: true,
       include: [path.resolve(__dirname, "src/i18n/translations/**")]
     })
-  ]
+  ],
+
+  // https://github.com/antfu/vite-ssg
+  ssgOptions: {
+    script: "async",
+    formatting: "minify",
+    onFinished: () => generateSitemap(),
+    includedRoutes: () => ["/", "/zh-CN/"]
+  },
+
+  // @ts-expect-error using experimental API
+  ssr: {
+    noExternal: ["splitpanes"]
+  }
 });

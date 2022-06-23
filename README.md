@@ -50,7 +50,7 @@ Highly recommend using Chrome.
 
 ## Development
 
-It's powered by [Vue 3](https://v3.vuejs.org/), [Vite](https://vitejs.dev/) and [UnoCSS](https://github.com/unocss/unocss).
+It's built on [Vitesse](https://github.com/antfu/vitesse), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite 2](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
 
 Clone the repo and install dependencies:
 
@@ -58,7 +58,13 @@ Clone the repo and install dependencies:
 pnpm install
 ```
 
-Start dev server / building:
+Build some [packages](packages):
+
+```bash
+pnpm build:pkg
+```
+
+Start developing / building the site:
 
 ```bash
 pnpm dev

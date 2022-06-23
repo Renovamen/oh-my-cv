@@ -1,4 +1,5 @@
 import MarkdownIt from "markdown-it";
+// @ts-expect-error missing types
 import MarkdownItDeflist from "markdown-it-deflist";
 import LinkAttributes from "markdown-it-link-attributes";
 import MarkdownItKatex from "@renovamen/markdown-it-katex";

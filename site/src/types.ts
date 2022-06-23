@@ -1,7 +1,7 @@
-import type { App } from "vue";
+import type { ViteSSGContext } from "vite-ssg";
 import { PAPER } from "~/utils";
 
-export type UserModule = (ctx: App<Element>) => void;
+export type UserModule = (ctx: ViteSSGContext) => void;
 
 export type PaperType = keyof typeof PAPER;
 
@@ -36,13 +36,6 @@ export type ResumeHeaderItem = {
 export type ResumeFrontMatter = {
   name?: string;
   header?: Array<ResumeHeaderItem>;
-};
-
-export type FrontMatterResults<T> = {
-  readonly attributes: T;
-  readonly body: string;
-  readonly bodyBegin: number;
-  readonly frontmatter?: string;
 };
 
 export type Font = {

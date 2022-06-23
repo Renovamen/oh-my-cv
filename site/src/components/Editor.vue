@@ -3,18 +3,21 @@
 </template>
 
 <script lang="ts" setup>
-import * as monaco from "monaco-editor";
-import { fetchFile } from "~/utils";
+import type * as Monaco from "monaco-editor";
+import { fetchFile, isClient } from "~/utils";
+import { setupMonaco } from "~/monaco";
 
 const { data, setData } = useDataStore();
 
 const editorRef = ref<HTMLDivElement>();
-let editor: monaco.editor.IStandaloneCodeEditor | undefined;
+let editor: Monaco.editor.IStandaloneCodeEditor | undefined;
 
 // Setup
-onMounted(() => {
+onMounted(async () => {
   // Monaco editor
-  if (editorRef.value && !editor) {
+  if (isClient && editorRef.value && !editor) {
+    const { monaco } = await setupMonaco();
+
     editor = monaco.editor.create(editorRef.value, {
       value: data.mdContent,
       language: "markdown",
@@ -23,7 +26,7 @@ onMounted(() => {
       automaticLayout: true
     });
 
-    editor.onDidChangeModelContent(() => {
+    editor!.onDidChangeModelContent(() => {
       setData("mdContent", editor!.getValue());
     });
 
@@ -37,7 +40,7 @@ onMounted(() => {
   // Load example markdown content
   fetchFile("/example.md").then((text: string) => {
     setData("mdContent", text);
-    editor!.setValue(text);
+    editor?.setValue(text);
   });
 });
 

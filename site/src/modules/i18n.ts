@@ -3,6 +3,8 @@ import type { UserModule } from "~/types";
 
 // Import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
+//
+// Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
 const messages = Object.fromEntries(
   Object.entries(import.meta.globEager("../i18n/translations/*.y(a)?ml")).map(
     ([key, value]) => {
@@ -12,7 +14,7 @@ const messages = Object.fromEntries(
   )
 );
 
-export const install: UserModule = (app) => {
+export const install: UserModule = ({ app }) => {
   const i18n = createI18n({
     legacy: false,
     locale: "en",
