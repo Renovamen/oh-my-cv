@@ -1,0 +1,57 @@
+import { injectCSS } from "dynamic-css";
+import { getPreviewW } from "./constants";
+import type { ResumeStyles } from "~/types";
+
+const themeColorCss = (styles: ResumeStyles) => {
+  return (
+    `.preview a:not(.preview-header-link) { color: ${styles.themeColor} }` +
+    `.preview h1, .preview h2, .preview h3 { color: ${styles.themeColor} }` +
+    `.preview h2 { border-bottom-color: ${styles.themeColor} }`
+  );
+};
+
+const lineHeightCss = (styles: ResumeStyles) => {
+  const lineHeight = styles.lineHeight / 100;
+  return (
+    `.preview p, .preview li { line-height: ${lineHeight.toFixed(2)} }` +
+    `.preview h2, .preview h3 { line-height: ${(lineHeight * 1.154).toFixed(
+      2
+    )} }` +
+    `.preview dl { line-height: ${(lineHeight * 1.038).toFixed(2)} }`
+  );
+};
+
+const paragraphSpaceCss = (styles: ResumeStyles) => {
+  return `.preview h2 { margin-top: ${styles.paragraphSpace}px }`;
+};
+
+const fontFamilyCss = (styles: ResumeStyles) => {
+  const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
+  const fontCN = styles.fontCN.fontFamily || styles.fontCN.name;
+  return `.preview { font-family: ${fontEN}, ${fontCN} }`;
+};
+
+const fontSizeCss = (styles: ResumeStyles) => {
+  return `.preview { font-size: ${styles.fontSize}px }`;
+};
+
+const paperCss = (styles: ResumeStyles) => {
+  return (
+    `.preview { width: ${getPreviewW(styles.paper)}px }` +
+    `@media print { @page { size: ${styles.paper}; } }`
+  );
+};
+
+export const updateStyles = () => {
+  const { styles } = useStyleStore();
+
+  const content =
+    fontFamilyCss(styles) +
+    fontSizeCss(styles) +
+    themeColorCss(styles) +
+    paragraphSpaceCss(styles) +
+    lineHeightCss(styles) +
+    paperCss(styles);
+
+  injectCSS(content, "oh-cv");
+};

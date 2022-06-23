@@ -1,25 +1,4 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client"
-    ],
-    "paths": {
-      "~/*": ["src/*"]
-    }
-  },
+  "extends": "./tsconfig.base.json",
   "exclude": ["dist", "node_modules"]
 }

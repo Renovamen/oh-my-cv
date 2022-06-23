@@ -1,0 +1,50 @@
+{
+  "name": "@renovamen/markdown-it-katex",
+  "version": "0.1.0",
+  "description": "Fast math support for markdown-it with KaTeX",
+  "keywords": [
+    "markdown",
+    "KaTeX",
+    "math",
+    "LaTeX",
+    "markdown-it-plugin",
+    "markdown-it"
+  ],
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/markdown-it-katex",
+  "bugs": {
+    "url": "https://github.com/Renovamen/oh-cv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renovamen/oh-cv.git",
+    "directory": "packages/markdown-it-katex"
+  },
+  "license": "MIT",
+  "author": "Renovamen <renovamenzxh@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
+    "build:pkg": "pnpm run build-fast:pkg --dts"
+  },
+  "dependencies": {
+    "katex": "^0.16.0"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.14.0",
+    "@types/markdown-it": "^12.2.3",
+    "markdown-it": "^13.0.1",
+    "tsup": "^6.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

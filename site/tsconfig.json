@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": [
+      "vite/client",
+      "vite-plugin-pages/client"
+    ],
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  }
+}

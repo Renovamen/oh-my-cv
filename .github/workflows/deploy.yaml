@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NODE_VERSION: '16'
+      NODE_VERSION: 16
 
     steps:
       - uses: actions/checkout@v3
@@ -20,8 +20,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        with:
-          version: 6
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -33,11 +31,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build site
-        run: pnpm build
+        run: pnpm release
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: site/dist
           cname: ohcv.zxh.io
