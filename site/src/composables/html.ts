@@ -48,20 +48,23 @@ const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
   if (frontmatter.name) header += `<h1>${frontmatter.name}</h1>\n`;
 
   if (frontmatter.header) {
-    for (let i = 0; i < frontmatter.header.length; i++) {
+    const n = frontmatter.header.length;
+
+    for (let i = 0; i < n; i++) {
       const item = frontmatter.header[i];
       if (!item) continue;
-      header += item.newLine ? "<br>" : "";
+
+      header += item.newLine ? "<br>\n" : "";
+
+      header += `<span class="preview-header-item${
+        i === n - 1 || frontmatter.header[i + 1].newLine ? " no-separator" : ""
+      }">`;
+
       if (item.link)
-        header += `<a class="preview-header-link" href="${
-          item.link
-        }" target="_blank" rel="noopener noreferrer">${
-          i === 0 || item.newLine ? "" : "<span> | </span>"
-        }<span>${item.text}</span></a>\n`;
-      else
-        header += `<span>${
-          i === 0 || item.newLine ? "" : "<span> | </span>"
-        }<span>${item.text}</span></span>\n`;
+        header += `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.text}</a>`;
+      else header += item.text;
+
+      header += `</span>\n`;
     }
   }
 

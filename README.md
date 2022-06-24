@@ -22,7 +22,7 @@ Highly recommend using Chrome.
 
 - Write your resume in Markdown and preview it in real-time online
 - Export to A4 and US Letter size PDFs
-- Automatic page break
+- Automatically breaking pages
 - Neat template
 - Customize: page margins, theme colors, line heights, fonts, etc.
 - Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))

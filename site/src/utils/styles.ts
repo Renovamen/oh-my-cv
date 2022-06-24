@@ -4,7 +4,7 @@ import type { ResumeStyles } from "~/types";
 
 const themeColorCss = (styles: ResumeStyles) => {
   return (
-    `.preview a:not(.preview-header-link) { color: ${styles.themeColor} }` +
+    `.preview :not(.preview-header-item) > a { color: ${styles.themeColor} }` +
     `.preview h1, .preview h2, .preview h3 { color: ${styles.themeColor} }` +
     `.preview h2 { border-bottom-color: ${styles.themeColor} }`
   );

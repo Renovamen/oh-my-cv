@@ -89,12 +89,8 @@
   margin-bottom: 8px;
 }
 
-.preview-header a {
-  color: black;
-}
-
-.dark .preview-header a {
-  color: #e5e7eb;
+.preview-header-item:not(.no-separator)::after {
+  content: " | ";
 }
 
 @media print {
