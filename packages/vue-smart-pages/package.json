@@ -31,9 +31,6 @@
     "dynamic-css": "workspace:*",
     "vue": "^3.2.37"
   },
-  "devDependencies": {
-    "tsup": "^6.1.2"
-  },
   "publishConfig": {
     "access": "public"
   }

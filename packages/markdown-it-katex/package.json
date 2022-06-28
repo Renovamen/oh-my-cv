@@ -41,8 +41,7 @@
   "devDependencies": {
     "@types/katex": "^0.14.0",
     "@types/markdown-it": "^12.2.3",
-    "markdown-it": "^13.0.1",
-    "tsup": "^6.1.2"
+    "markdown-it": "^13.0.1"
   },
   "publishConfig": {
     "access": "public"
