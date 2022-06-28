@@ -6,16 +6,16 @@
   height: 50px;
 }
 
-.resume-main {
+.workspace {
   height: calc(100% - 50px) !important;
 }
 
-.editor {
+.editor-pane {
   @apply h-full;
 }
 
 .preview-pane {
-  overflow-y: scroll !important;
+  @apply !overflow-y-scroll;
 }
 
 .preview {
@@ -59,7 +59,7 @@
   }
 
   .header,
-  .editor,
+  .editor-pane,
   .splitpanes__splitter {
     display: none;
   }
@@ -80,6 +80,8 @@
     border: none;
     margin: 0;
     padding-bottom: 0 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .vue-smart-page-break {

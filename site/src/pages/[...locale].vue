@@ -2,11 +2,11 @@
   <Header />
 
   <splitpanes
-    class="resume-main default-theme"
+    class="workspace default-theme"
     :horizontal="isMobile"
     @resize="updatePreviewScale"
   >
-    <pane class="editor">
+    <pane class="editor-pane">
       <Editor />
     </pane>
     <pane class="preview-pane" min-size="30">
