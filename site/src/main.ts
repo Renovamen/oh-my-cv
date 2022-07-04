@@ -2,11 +2,13 @@ import { ViteSSG } from "vite-ssg";
 import { setupLayouts } from "virtual:generated-layouts";
 import App from "./App.vue";
 import generatedRoutes from "~pages";
-import VueSlider from "vue-slider-component";
+// @ts-expect-error: missing types
+import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
 
 import "@unocss/reset/tailwind.css";
 import "uno.css";
 import "katex/dist/katex.min.css";
+import "vue-slider-component/dist-css/vue-slider-component.css";
 import "vue-slider-component/theme/default.css";
 import "~/styles/index.css";
 

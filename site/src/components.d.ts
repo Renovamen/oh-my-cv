@@ -3,6 +3,8 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
+export {}
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AutoComplete: typeof import('./components/base/AutoComplete.vue')['default']
@@ -27,6 +29,5 @@ declare module '@vue/runtime-core' {
     Toolbar: typeof import('./components/Toolbar.vue')['default']
     ToolItem: typeof import('./components/tools/ToolItem.vue')['default']
   }
-}
 
-export {}
+}
