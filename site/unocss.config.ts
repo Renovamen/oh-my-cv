@@ -31,7 +31,7 @@ export default defineConfig({
     presetAttributify(),
     presetWebFonts({
       fonts: {
-        ui: "DM Sans:400,700"
+        ui: "Lato:400,700"
       }
     })
   ],

@@ -13,16 +13,6 @@ tool:
   margin: 页边距
   vertical: 上下
   horizontal: 左右
-tooltip:
-  font_cn: 中文字体
-  font_en: 英文字体
-  theme: 主题色
-  paragraph: 段间距
-  line: 行间距
-  font_size: 字号
-  margin_v: 上下页边距
-  margin_h: 左右页边距
-  paper: 纸张尺寸
 file:
   btn: 文件
   import: 导入 MD 文件

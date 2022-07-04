@@ -13,16 +13,6 @@ tool:
   margin: Margins
   vertical: Top & Bottom
   horizontal: Left & Right
-tooltip:
-  font_cn: 中文字体
-  font_en: Font
-  theme: Theme color
-  paragraph: Paragraph spacing
-  line: Line spacing
-  font_size: Font size
-  margin_v: Margins (top & bottom)
-  margin_h: Margins (left & right)
-  paper: Pape size
 file:
   btn: File
   import: Import MD
