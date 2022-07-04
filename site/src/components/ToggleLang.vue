@@ -1,19 +1,16 @@
 <template>
-  <Button :text="SUPPORT_LOCALES[locale as LocaleType].name" :tip="t('lang')">
-    <template #icon>
-      <span class="iconify" text="sm pc:base" data-icon="ic:round-translate" />
-    </template>
-
-    <template #dropdown>
-      <Dropdown :items="items" />
-    </template>
-  </Button>
+  <NavItem
+    :text="SUPPORT_LOCALES[locale as LocaleType].name"
+    icon="ic:round-translate"
+  >
+    <Dropdown :items="items" />
+  </NavItem>
 </template>
 
 <script lang="ts" setup>
 import { SUPPORT_LOCALES, LocaleType } from "~/i18n";
 
-const { availableLocales, locale, t } = useI18n();
+const { availableLocales, locale } = useI18n();
 
 const items = computed(() =>
   availableLocales.map((item: string) => ({

@@ -2,6 +2,7 @@ import {
   defineConfig,
   presetAttributify,
   presetUno,
+  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
@@ -11,12 +12,13 @@ export default defineConfig({
     ["flex-center", "flex items-center justify-center"],
     ["hstack", "flex items-center"],
     [
-      "btn",
-      "relative flex-center h-7 pc:h-8 rounded cursor-pointer capitalize"
+      "nav-item",
+      "relative flex-center h-full cursor-pointer capitalize space-x-1 whitespace-nowrap"
     ],
+    ["border-c", "border-gray-300 dark:border-gray-600"],
     [
-      "menu-li",
-      "hstack space-x-0.5 pc:space-x-1.5 px-3 h-8 text-xs pc:text-sm capitalize truncate cursor-pointer bg-transparent hover:bg-gray-100 dark:hover:bg-dark-200"
+      "dropdown-li",
+      "hstack space-x-1.5 px-3 h-8 capitalize truncate cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-200"
     ]
   ],
   theme: {
@@ -24,6 +26,14 @@ export default defineConfig({
       pc: "769px"
     }
   },
-  presets: [presetUno(), presetAttributify()],
+  presets: [
+    presetUno(),
+    presetAttributify(),
+    presetWebFonts({
+      fonts: {
+        ui: "DM Sans:400,700"
+      }
+    })
+  ],
   transformers: [transformerDirectives(), transformerVariantGroup()]
 });

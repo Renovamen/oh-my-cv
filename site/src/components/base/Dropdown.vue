@@ -1,46 +1,36 @@
 <template>
-  <ul>
+  <ul bg="white dark:dark-400" text-sm rounded>
     <li
       v-for="(item, i) in items"
       :key="`locale-${i}-${item}`"
-      class="menu-li"
+      class="dropdown-li"
       :class="[i === 0 && 'rounded-t', i === items.length - 1 && 'rounded-b']"
       @click="
-        item.function
-          ? item.function({ text: item.text, i: i })
-          : item.link
-          ? toLink(item.link)
-          : () => {}
+        () => {
+          item.function
+            ? item.function({ text: item.text, i: i })
+            : item.link
+            ? toLink(item.link)
+            : null;
+          $emit('select', item.text);
+        }
       "
     >
-      <span
-        v-if="item.icon"
-        class="iconify"
-        text="sm pc:base"
-        :data-icon="item.icon"
-      />
+      <span v-if="item.icon" class="iconify text-base" :data-icon="item.icon" />
       <span>{{ item.text }}</span>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
 import { isExternal } from "~/utils";
+import type { DropdownItem } from "./types";
 
-type Item = {
-  text: string;
-  icon?: string;
-  link?: string;
-  function?: ({ text, i }: { text: string; i: number }) => void;
-};
+defineProps<{
+  items: Array<DropdownItem>;
+}>();
 
-defineProps({
-  items: {
-    type: Array as PropType<Array<Item>>,
-    required: true
-  }
-});
+defineEmits(["select"]);
 
 const router = useRouter();
 

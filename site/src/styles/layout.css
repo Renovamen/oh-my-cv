@@ -30,6 +30,10 @@
   @apply border-t-2 border-black;
 }
 
+.splitpanes.default-theme .toolbar-pane {
+  @apply !bg-white;
+}
+
 /* Dark mode */
 
 .dark .vue-smart-pages,
@@ -37,8 +41,12 @@
   @apply border-gray-200;
 }
 
-.dark .splitpanes.default-theme .splitpanes__pane {
+.dark .splitpanes.default-theme .preview-pane {
   @apply bg-dark-100;
+}
+
+.dark .splitpanes.default-theme .toolbar-pane {
+  @apply !bg-dark-400;
 }
 
 .dark .splitpanes.default-theme .splitpanes__splitter {
@@ -60,6 +68,7 @@
 
   .header,
   .editor-pane,
+  .toolbar-pane,
   .splitpanes__splitter {
     display: none;
   }

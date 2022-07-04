@@ -11,13 +11,11 @@ const themeColorCss = (styles: ResumeStyles) => {
 };
 
 const lineHeightCss = (styles: ResumeStyles) => {
-  const lineHeight = styles.lineHeight / 100;
+  const height = styles.lineHeight;
   return (
-    `.preview p, .preview li { line-height: ${lineHeight.toFixed(2)} }` +
-    `.preview h2, .preview h3 { line-height: ${(lineHeight * 1.154).toFixed(
-      2
-    )} }` +
-    `.preview dl { line-height: ${(lineHeight * 1.038).toFixed(2)} }`
+    `.preview p, .preview li { line-height: ${height.toFixed(2)} }` +
+    `.preview h2, .preview h3 { line-height: ${(height * 1.154).toFixed(2)} }` +
+    `.preview dl { line-height: ${(height * 1.038).toFixed(2)} }`
   );
 };
 

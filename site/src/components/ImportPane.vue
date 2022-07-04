@@ -1,6 +1,8 @@
 <template>
   <OnClickOutside
-    class="import-pane z-30 fixed h-40 w-full pc:w-96 left-0 right-0 top-0 bottom-0 flex flex-col bg-white border border-gray-400 rounded shadow"
+    class="!m-auto z-30 fixed h-40 w-full pc:w-96 left-0 right-0 top-0 bottom-0 flex flex-col shadow"
+    bg="white dark:dark-400"
+    border="1 gray-400 dark:gray-500 rounded"
     @trigger="$emit('closeImport')"
   >
     <div>
@@ -15,9 +17,10 @@
 
       <div class="pt-3 flex text-sm">
         <button
-          class="px-2 py-0.5 border-l border-r border-t rounded-t-sm"
+          class="px-2 py-0.5"
+          border="l r t rounded-t-sm"
           :class="[
-            clickedButton === 0 && 'ml-4 bg-gray-200 border-gray-400',
+            clickedButton === 0 && 'ml-4 bg-gray-200 dark:bg-dark-100 border-c',
             clickedButton !== 0 && 'ml-2 border-transparent'
           ]"
           @click="clickedButton = 0"
@@ -25,9 +28,10 @@
           {{ t("import.from_local") }}
         </button>
         <button
-          class="px-2 py-0.5 border-l border-r border-t rounded-t-sm"
+          class="px-2 py-0.5"
+          border="l r t rounded-t-sm"
           :class="[
-            clickedButton === 1 && 'bg-gray-200 border-gray-400',
+            clickedButton === 1 && 'bg-gray-200 dark:bg-dark-100 border-c',
             clickedButton !== 1 && 'border-transparent'
           ]"
           @click="clickedButton = 1"
@@ -37,7 +41,7 @@
       </div>
     </div>
 
-    <div class="bg-gray-200 flex-1 hstack px-4 rounded-b">
+    <div class="flex-1 hstack px-4 rounded-b" bg="gray-200 dark:dark-100">
       <input
         v-if="clickedButton === 0"
         class="text-xs"
@@ -48,7 +52,7 @@
 
       <div v-if="clickedButton === 1" class="flex w-full">
         <input
-          class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none"
+          class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none dark:bg-dark-400"
           :value="pastedURL"
           @change="pastedURL = ($event.target as HTMLTextAreaElement).value"
           @keyup.enter="uploadFileFromURL"
@@ -95,9 +99,3 @@ const uploadFileFromLocal = (e: Event) => {
   });
 };
 </script>
-
-<style scoped>
-.import-pane {
-  margin: auto !important;
-}
-</style>

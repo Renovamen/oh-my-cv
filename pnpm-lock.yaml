@@ -70,7 +70,6 @@ importers:
       '@types/nprogress': ^0.2.0
       '@types/splitpanes': ^2.2.1
       '@vitejs/plugin-vue': ^2.3.3
-      '@vueform/slider': ^2.0.10
       '@vueuse/components': ^8.6.0
       '@vueuse/core': ^8.6.0
       '@vueuse/head': ^0.7.6
@@ -96,9 +95,9 @@ importers:
       vue-demi: ^0.13.1
       vue-i18n: ^9.1.10
       vue-router: ^4.0.16
+      vue-slider-component: ^4.1.0-beta.0
       vue-smart-pages: workspace:*
     dependencies:
-      '@vueform/slider': 2.0.10
       '@vueuse/components': 8.7.5_vue@3.2.37
       '@vueuse/core': 8.7.5_vue@3.2.37
       '@vueuse/head': 0.7.6_vue@3.2.37
@@ -111,6 +110,7 @@ importers:
       vue-demi: 0.13.1_vue@3.2.37
       vue-i18n: 9.1.10_vue@3.2.37
       vue-router: 4.0.16_vue@3.2.37
+      vue-slider-component: 4.1.0-beta.0
     devDependencies:
       '@intlify/vite-plugin-vue-i18n': 4.0.0_jg524lrp6mwbliyl7dcdb54k4a
       '@renovamen/front-matter': link:../packages/front-matter
@@ -765,10 +765,6 @@ packages:
 
   /@vue/shared/3.2.37:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
-
-  /@vueform/slider/2.0.10:
-    resolution: {integrity: sha512-FRFKEdICDWWrK7P+rzQiqryFlAnDgy+ZYha9zaFg8Z/9dsSby5DAF4TaaqnUxezkAT22j7O0Ho7Eft+oaViieA==}
-    dev: false
 
   /@vueuse/components/8.7.5_vue@3.2.37:
     resolution: {integrity: sha512-hlERb/d/meyJXMzMKEhvRaxggBoU/Y2FE97PREHfLxfnM0sip7YvS+k1HgEyx1sYo7pX39XVqd9UZIvXJ2+93Q==}
@@ -3667,6 +3663,10 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.1.4
       vue: 3.2.37
+
+  /vue-slider-component/4.1.0-beta.0:
+    resolution: {integrity: sha512-lYP5cz5dHNNuglzDyCFyu9fs0IGd4Os9NtnuyCt3IV/7kPyMgUiOc/SOFwxgRdj8CQWzZmQmrn9JxbwIIl31uQ==}
+    dev: false
 
   /vue/2.6.14:
     resolution: {integrity: sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==}

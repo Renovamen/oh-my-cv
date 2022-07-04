@@ -1,33 +1,15 @@
 <template>
-  <Button :tip="t('tooltip.line')">
-    <template #icon>
-      <span
-        class="iconify"
-        text="base pc:lg"
-        data-icon="ic:round-format-line-spacing"
-      />
-    </template>
-
-    <template #dropdown>
-      <div class="w-7 pc:w-8 py-3">
-        <Slider
-          v-model="lineHeight"
-          :min="100"
-          :max="200"
-          :step="5"
-          :format="(value: number) => value / 100"
-          orientation="vertical"
-          class="mx-auto"
-        />
-      </div>
-    </template>
-  </Button>
+  <ToolItem :text="t('tool.line')" icon="ic:round-format-line-spacing">
+    <vue-slider v-model="lineHeight" :min="1" :max="2" :interval="0.05" />
+    <div flex justify-between text-gray-500>
+      <span>1</span>
+      <span>1.5</span>
+      <span>2</span>
+    </div>
+  </ToolItem>
 </template>
 
 <script lang="ts" setup>
-import Slider from "@vueform/slider";
-import "@vueform/slider/themes/default.css";
-
 const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 

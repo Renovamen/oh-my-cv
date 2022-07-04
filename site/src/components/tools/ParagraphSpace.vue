@@ -1,30 +1,18 @@
 <template>
-  <Button :tip="t('tooltip.paragraph')">
-    <template #icon>
-      <span
-        class="iconify"
-        text="sm pc:base"
-        data-icon="icon-park-outline:paragraph-break-two"
-      />
-    </template>
-
-    <template #dropdown>
-      <div class="w-7 pc:w-8 py-3">
-        <Slider
-          v-model="paragraphSpace"
-          :max="50"
-          orientation="vertical"
-          class="mx-auto"
-        />
-      </div>
-    </template>
-  </Button>
+  <ToolItem
+    :text="t('tool.paragraph')"
+    icon="icon-park-outline:paragraph-break-two"
+  >
+    <vue-slider v-model="paragraphSpace" :max="50" />
+    <div flex justify-between text-gray-500>
+      <span>0px</span>
+      <span>25px</span>
+      <span>50px</span>
+    </div>
+  </ToolItem>
 </template>
 
 <script lang="ts" setup>
-import Slider from "@vueform/slider";
-import "@vueform/slider/themes/default.css";
-
 const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 

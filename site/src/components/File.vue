@@ -1,19 +1,9 @@
 <template>
-  <Button
-    :tip="t('file.btn')"
-    styles="bg-blue-500 text-white"
-    active-styles="bg-blue-600 text-white"
-  >
-    <template #icon>
-      <span class="iconify" text="sm pc:base" data-icon="mdi:file-outline" />
-    </template>
+  <NavItem :text="t('file.btn')" icon="mdi:file-outline">
+    <Dropdown :items="items" />
+  </NavItem>
 
-    <template #dropdown>
-      <Dropdown :items="items" />
-    </template>
-  </Button>
-
-  <Import v-if="isImportOpen" @close-import="toggleImport(false)" />
+  <ImportPane v-if="isImportOpen" @close-import="toggleImport(false)" />
 </template>
 
 <script lang="ts" setup>

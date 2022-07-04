@@ -15,7 +15,7 @@ export const useStyleStore = defineStore("style", () => {
   const styles = reactive<ResumeStyles>({
     marginV: 45,
     marginH: 45,
-    lineHeight: 130,
+    lineHeight: 1.3,
     paragraphSpace: 5,
     themeColor: "#377bb5",
     fontCN: {

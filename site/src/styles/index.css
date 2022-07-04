@@ -2,17 +2,10 @@
 @import "./layout.css";
 @import "./cv.css";
 
-:root {
-  --slider-vertical-height: 150px;
-  --slider-height: 4px;
-  --slider-handle-width: 12px;
-  --slider-handle-height: 12px;
-}
-
 svg.iconify {
   display: inline-block;
 }
 
-.slider-vertical .slider-handle {
-  right: calc(-1 * (var(--slider-handle-height, 16px)  - var(--slider-height, 6px)) / 2);
+.dark .vue-slider-rail {
+  @apply bg-gray-500;
 }

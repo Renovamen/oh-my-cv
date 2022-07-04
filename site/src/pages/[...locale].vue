@@ -9,7 +9,7 @@
     <pane class="editor-pane">
       <Editor />
     </pane>
-    <pane class="preview-pane" min-size="30">
+    <pane class="preview-pane" min-size="20">
       <div
         class="preview"
         :style="{
@@ -31,6 +31,9 @@
           :watch-delay="[styles.fontCN, styles.fontEN]"
         />
       </div>
+    </pane>
+    <pane class="toolbar-pane" size="18" min-size="15" max-size="40">
+      <Toolbar />
     </pane>
   </splitpanes>
 </template>

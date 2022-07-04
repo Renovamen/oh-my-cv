@@ -1,10 +1,10 @@
 <template>
-  <div class="btn w-7 pc:w-8 text-white bg-indigo-500" @click="toggleDark()">
+  <div cursor-pointer @click="toggleDark()">
     <div v-show="isDark.value" class="w-full h-full flex-center">
-      <span class="iconify" text="sm pc:base" data-icon="ph:moon-bold" />
+      <span class="iconify pc:text-lg" data-icon="ph:moon-bold" />
     </div>
     <div v-show="!isDark.value" class="w-full h-full flex-center">
-      <span class="iconify" text="sm pc:base" data-icon="ph:sun-bold" />
+      <span class="iconify pc:text-lg" data-icon="ph:sun-bold" />
     </div>
   </div>
 </template>
