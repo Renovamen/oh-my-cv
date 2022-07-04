@@ -25,6 +25,7 @@ export type SystemData = {
 export type UIData = {
   previewScale: number;
   previewBottom: number;
+  openToolbar: boolean;
 };
 
 export type ResumeHeaderItem = {

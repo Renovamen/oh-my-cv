@@ -1,5 +1,5 @@
 <template>
-  <ul bg="white dark:dark-400" text-sm rounded>
+  <ul bg="white dark:dark-400" text="xs pc:sm" rounded>
     <li
       v-for="(item, i) in items"
       :key="`locale-${i}-${item}`"

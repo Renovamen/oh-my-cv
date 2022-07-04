@@ -5,12 +5,12 @@
   >
     <div class="flex hstack space-x-2 w-full mb-2">
       <AutoComplete flex-1 :items="cnFonts" :default="styles.fontCN.name" />
-      <span w-16>{{ t("tool.cn") }}</span>
+      <span w-13>{{ t("tool.cn") }}</span>
     </div>
 
     <div class="flex hstack space-x-2 w-full">
       <AutoComplete flex-1 :items="enFonts" :default="styles.fontEN.name" />
-      <span w-16>{{ t("tool.en") }}</span>
+      <span w-13>{{ t("tool.en") }}</span>
     </div>
   </ToolItem>
 </template>

@@ -1,11 +1,12 @@
 <template>
   <header
-    class="header relative flex justify-between dark:bg-dark-400 px-4 border border-c"
+    class="header relative flex justify-between dark:bg-dark-400 px-4 border-b border-c"
   >
     <OhCV text="lg pc:xl dark:gray-100" />
 
     <div class="hstack space-x-3 text-gray-600 dark:text-gray-300">
       <ToggleLang />
+      <ToggleToolbar />
       <File />
       <ToggleDark />
       <a

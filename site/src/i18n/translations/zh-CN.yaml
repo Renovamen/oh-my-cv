@@ -2,6 +2,7 @@ lang: 语言
 desc: 在线用 Markdown 写简历！
 resume: 简历
 tool:
+  nav: 工具栏
   paper: 纸张尺寸
   font_family: 字体
   font_size: 字号
@@ -14,7 +15,7 @@ tool:
   vertical: 上下
   horizontal: 左右
 file:
-  btn: 文件
+  nav: 文件
   import: 导入 MD 文件
   export:
     pdf: 导出为 PDF

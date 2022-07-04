@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full overflow-y-scroll dark:text-gray-300">
+  <div class="toolbar" bg="white dark:dark-400" text="dark:gray-300">
     <Paper />
     <ThemeColor />
     <FontFamily />

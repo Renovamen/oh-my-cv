@@ -3,12 +3,13 @@
 
   <splitpanes
     class="workspace default-theme"
-    :horizontal="isMobile"
+    :horizontal="isLayoutMobile"
     @resize="updatePreviewScale"
   >
     <pane class="editor-pane">
       <Editor />
     </pane>
+
     <pane class="preview-pane" min-size="20">
       <div
         class="preview"
@@ -32,10 +33,22 @@
         />
       </div>
     </pane>
-    <pane class="toolbar-pane" size="18" min-size="15" max-size="40">
+
+    <pane
+      v-if="!isToolbarMobile && ui.openToolbar"
+      class="toolbar-pane"
+      size="18"
+      min-size="15"
+      max-size="40"
+    >
       <Toolbar />
     </pane>
   </splitpanes>
+
+  <Toolbar
+    v-if="isToolbarMobile && ui.openToolbar"
+    class="fixed z-10 right-0 top-12 h-full w-60 overflow-y-scroll pb-10 border-l border-c"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -55,7 +68,8 @@ onMounted(() => updateStyles());
 const html = usePreviewHTML();
 
 // Handle window size changing
-const { isMobile } = resolveWindowSize();
+const { isLayoutMobile, isToolbarMobile } = useMobile();
+watchWindowSize();
 
 // Handle languages
 const props = defineProps<{ locale: string[] | string }>();

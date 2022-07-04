@@ -3,19 +3,29 @@
 }
 
 .header {
-  height: 50px;
+  height: 48px;
 }
 
 .workspace {
-  height: calc(100% - 50px) !important;
+  height: calc(100% - 48px) !important;
 }
 
 .editor-pane {
   @apply h-full;
 }
 
-.preview-pane {
+.preview-pane,
+.toolbar-pane {
   @apply !overflow-y-scroll;
+}
+
+.toolbar-pane {
+  @apply !bg-white;
+}
+
+.preview-pane::-webkit-scrollbar,
+.toolbar-pane::-webkit-scrollbar {
+  @apply hidden;
 }
 
 .preview {
@@ -30,32 +40,32 @@
   @apply border-t-2 border-black;
 }
 
-.splitpanes.default-theme .toolbar-pane {
-  @apply !bg-white;
-}
-
 /* Dark mode */
+
+.dark body {
+  @apply bg-dark-400;
+}
 
 .dark .vue-smart-pages,
 .dark .vue-smart-page-break {
   @apply border-gray-200;
 }
 
-.dark .splitpanes.default-theme .preview-pane {
-  @apply bg-dark-100;
+.dark .preview-pane {
+  @apply !bg-dark-100;
 }
 
-.dark .splitpanes.default-theme .toolbar-pane {
+.dark .toolbar-pane {
   @apply !bg-dark-400;
 }
 
-.dark .splitpanes.default-theme .splitpanes__splitter {
-  @apply bg-dark-400 border-gray-600;
+.dark .splitpanes__splitter {
+  @apply !bg-dark-400 !border-gray-600;
 }
 
-.dark .splitpanes.default-theme .splitpanes__splitter:before,
-.dark .splitpanes.default-theme .splitpanes__splitter:after {
-  @apply bg-gray-500;
+.dark .splitpanes__splitter:before,
+.dark .splitpanes__splitter:after {
+  @apply !bg-gray-500;
 }
 
 

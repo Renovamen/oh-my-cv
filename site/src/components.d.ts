@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     ThemeColor: typeof import('./components/tools/ThemeColor.vue')['default']
     ToggleDark: typeof import('./components/ToggleDark.vue')['default']
     ToggleLang: typeof import('./components/ToggleLang.vue')['default']
+    ToggleToolbar: typeof import('./components/ToggleToolbar.vue')['default']
     Toolbar: typeof import('./components/Toolbar.vue')['default']
     ToolItem: typeof import('./components/tools/ToolItem.vue')['default']
   }

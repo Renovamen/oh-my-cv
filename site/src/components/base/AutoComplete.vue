@@ -22,16 +22,18 @@
         class="w-full rounded outline-none bg-transparent capitalize"
         @input="editTimes++"
       />
-      <div v-show="isFocus">
-        <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
-      </div>
-      <div v-show="!isFocus">
-        <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-down" />
+      <div text-gray-500>
+        <div v-show="isFocus">
+          <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
+        </div>
+        <div v-show="!isFocus">
+          <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-down" />
+        </div>
       </div>
     </div>
     <Dropdown
       v-show="isFocus && filteredItems.length > 0"
-      class="absolute z-10 w-full border border-c rounded"
+      class="absolute z-20 w-full border border-c rounded"
       :items="filteredItems"
       @select="handleSelect"
     />

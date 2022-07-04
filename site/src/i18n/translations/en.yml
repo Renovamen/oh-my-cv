@@ -2,6 +2,7 @@ lang: Language
 desc: Write your curriculum vitae / resume in Markdown online!
 resume: Resume
 tool:
+  nav: Toolbar
   paper: Pape Size
   font_family: Font Family
   font_size: Font Size
@@ -10,11 +11,11 @@ tool:
   theme_color: Theme Color
   paragraph: Paragraph Spacing
   line: Line Spacing
-  margin: Margins
+  margin: Margin
   vertical: Top & Bottom
   horizontal: Left & Right
 file:
-  btn: File
+  nav: File
   import: Import MD
   export:
     pdf: Export PDF

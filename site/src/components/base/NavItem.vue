@@ -3,8 +3,6 @@
     class="cursor-pointer relative"
     @click="isDropDownOpen = !isDropDownOpen"
     @trigger="isDropDownOpen = false"
-    @mouseenter="isTipOpen = true"
-    @mouseleave="isTipOpen = false"
   >
     <div class="nav-item">
       <span v-if="icon" class="iconify pc:text-lg" :data-icon="icon" />
@@ -14,7 +12,7 @@
     <!-- Dropdown -->
     <div
       v-show="isDropDownOpen"
-      class="absolute z-10 shadow border border-c rounded top-6.5 pc:top-8.5 right-0"
+      class="absolute z-20 shadow border border-c rounded top-6.5 right-0"
       bg="white dark:dark-400"
       @click="(e: Event) => e.stopPropagation()"
     >
@@ -32,5 +30,4 @@ defineProps<{
 }>();
 
 const isDropDownOpen = ref(false);
-const isTipOpen = ref(false);
 </script>
