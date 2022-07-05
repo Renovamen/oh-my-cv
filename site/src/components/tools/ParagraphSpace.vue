@@ -1,6 +1,6 @@
 <template>
   <ToolItem
-    :text="t('tool.paragraph')"
+    :text="t('toolbar.paragraph')"
     icon="icon-park-outline:paragraph-break-two"
   >
     <vue-slider v-model="paragraphSpace" :max="50" />

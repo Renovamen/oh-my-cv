@@ -1,8 +1,23 @@
 lang: Language
 desc: Write your curriculum vitae / resume in Markdown online!
 resume: Resume
-tool:
-  nav: Toolbar
+
+nav:
+  toolbar: Toolbar
+  file: File
+  toggle_dark: Toggle dark mode
+
+file:
+  import: Import MD
+  export:
+    pdf: Export PDF
+
+import:
+  title: Import a Markdown file
+  from_local: Upload a file
+  from_url: Paste file URL
+
+toolbar:
   paper: Pape Size
   font_family: Font Family
   font_size: Font Size
@@ -14,12 +29,3 @@ tool:
   margin: Margin
   vertical: Top & Bottom
   horizontal: Left & Right
-file:
-  nav: File
-  import: Import MD
-  export:
-    pdf: Export PDF
-import:
-  title: Import a Markdown file
-  from_local: Upload a file
-  from_url: Paste file URL

@@ -1,9 +1,9 @@
 <template>
-  <ToolItem :text="t('tool.margin')" icon="radix-icons:margin">
+  <ToolItem :text="t('toolbar.margin')" icon="radix-icons:margin">
     <div mb-4 text-gray-500>
       <div flex hstack space-x-1 justify-end>
         <span class="iconify" data-icon="icon-park-outline:margin-one" />
-        <span>{{ t("tool.vertical") }}</span>
+        <span>{{ t("toolbar.vertical") }}</span>
       </div>
       <vue-slider v-model="marginV" />
       <div flex justify-between>
@@ -16,7 +16,7 @@
     <div text-gray-500>
       <div flex hstack space-x-1 justify-end>
         <span class="iconify" data-icon="icon-park-outline:margin" />
-        <span>{{ t("tool.horizontal") }}</span>
+        <span>{{ t("toolbar.horizontal") }}</span>
       </div>
       <vue-slider v-model="marginH" />
       <div flex justify-between>

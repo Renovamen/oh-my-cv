@@ -1,6 +1,6 @@
 <template>
   <ToolItem
-    :text="t('tool.theme_color')"
+    :text="t('toolbar.theme_color')"
     icon="material-symbols:palette-outline"
   >
     <ul class="flex justify-between mb-4">

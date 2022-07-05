@@ -1,5 +1,5 @@
 <template>
-  <ToolItem :text="t('tool.paper')" icon="majesticons:paper-fold-line">
+  <ToolItem :text="t('toolbar.paper')" icon="majesticons:paper-fold-line">
     <AutoComplete
       :items="Object.keys(PAPER).map((paper) => ({ text: paper }))"
       :default="styles.paper"

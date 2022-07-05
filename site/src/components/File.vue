@@ -1,5 +1,5 @@
 <template>
-  <NavItem :text="t('file.nav')" icon="mdi:file-outline">
+  <NavItem :text="t('nav.file')" icon="mdi:file-outline">
     <Dropdown :items="items" />
   </NavItem>
 

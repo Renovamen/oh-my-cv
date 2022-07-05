@@ -1,8 +1,23 @@
 lang: 语言
 desc: 在线用 Markdown 写简历！
 resume: 简历
-tool:
-  nav: 工具栏
+
+nav:
+  toolbar: 工具栏
+  file: 文件
+  toggle_dark: 切换深色模式
+
+file:
+  import: 导入 MD 文件
+  export:
+    pdf: 导出为 PDF
+
+import:
+  title: 上传一个 Markdown 文件
+  from_local: 上传文件
+  from_url: 粘贴文件 URL
+
+toolbar:
   paper: 纸张尺寸
   font_family: 字体
   font_size: 字号
@@ -14,12 +29,3 @@ tool:
   margin: 页边距
   vertical: 上下
   horizontal: 左右
-file:
-  nav: 文件
-  import: 导入 MD 文件
-  export:
-    pdf: 导出为 PDF
-import:
-  title: 上传一个 Markdown 文件
-  from_local: 上传文件
-  from_url: 粘贴文件 URL
