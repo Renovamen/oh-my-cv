@@ -35,7 +35,7 @@ export const useStyleStore = defineStore("style", () => {
   ) => {
     styles[key] = value;
     // vue-smart-pages will handle margins, height and width
-    if (!["marginV", "marginH", "paper"].includes(key)) updateStyles();
+    if (!["marginV", "marginH"].includes(key)) updateStyles();
   };
 
   const onFontLoaded = () =>
