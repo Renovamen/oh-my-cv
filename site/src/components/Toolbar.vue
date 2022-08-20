@@ -1,5 +1,6 @@
 <template>
   <div class="toolbar" bg="white dark:dark-400" text="dark:gray-300">
+    <File />
     <Paper />
     <ThemeColor />
     <FontFamily />

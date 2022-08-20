@@ -4,13 +4,7 @@ resume: Resume
 
 nav:
   toolbar: Toolbar
-  file: File
   toggle_dark: Toggle dark mode
-
-file:
-  import: Import MD
-  export:
-    pdf: Export PDF
 
 import:
   title: Import a Markdown file
@@ -18,6 +12,10 @@ import:
   from_url: Paste file URL
 
 toolbar:
+  file:
+    text: File
+    import: Import Markdown
+    export_pdf: Export PDF
   paper: Pape Size
   font_family: Font Family
   font_size: Font Size

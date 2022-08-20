@@ -7,7 +7,6 @@
     <div class="hstack space-x-3 text-gray-600 dark:text-gray-300">
       <ToggleLang />
       <ToggleToolbar />
-      <File />
       <ToggleDark />
       <a
         class="nav-item"

@@ -6,7 +6,7 @@
   >
     <div class="nav-item">
       <span v-if="icon" class="iconify pc:text-lg" :data-icon="icon" />
-      <span text="sm pc:base">{{ text }}</span>
+      <span v-if="text" text="sm pc:base">{{ text }}</span>
     </div>
 
     <!-- Dropdown -->
@@ -25,7 +25,7 @@
 import { OnClickOutside } from "@vueuse/components";
 
 defineProps<{
-  text: string;
+  text?: string;
   icon?: string;
 }>();
 

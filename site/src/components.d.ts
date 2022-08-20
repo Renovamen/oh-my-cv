@@ -8,13 +8,14 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AutoComplete: typeof import('./components/base/AutoComplete.vue')['default']
+    CvName: typeof import('./components/CvName.vue')['default']
     Dropdown: typeof import('./components/base/Dropdown.vue')['default']
     Editor: typeof import('./components/Editor.vue')['default']
-    File: typeof import('./components/File.vue')['default']
+    File: typeof import('./components/tools/File.vue')['default']
     FontFamily: typeof import('./components/tools/FontFamily.vue')['default']
     FontSize: typeof import('./components/tools/FontSize.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
-    ImportPane: typeof import('./components/ImportPane.vue')['default']
+    ImportPane: typeof import('./components/tools/ImportPane.vue')['default']
     LineHeight: typeof import('./components/tools/LineHeight.vue')['default']
     Margins: typeof import('./components/tools/Margins.vue')['default']
     NavItem: typeof import('./components/base/NavItem.vue')['default']

@@ -4,21 +4,19 @@
       <div v-show="ui.openToolbar" flex-center>
         <span
           class="iconify pc:text-lg"
-          data-icon="tabler:layout-sidebar-right-expand"
+          data-icon="tabler:layout-sidebar-right-collapse"
         />
       </div>
       <div v-show="!ui.openToolbar" flex-center>
         <span
           class="iconify pc:text-lg"
-          data-icon="tabler:layout-sidebar-right-collapse"
+          data-icon="tabler:layout-sidebar-right-expand"
         />
       </div>
     </div>
-    <span text="sm pc:base">{{ t("nav.toolbar") }}</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-const { t } = useI18n();
 const { ui } = useUIStore();
 </script>
