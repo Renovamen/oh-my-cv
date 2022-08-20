@@ -50,7 +50,7 @@ Highly recommend using Chrome.
 
 ## Development
 
-It's built on [Vitesse](https://github.com/antfu/vitesse), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite 2](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
+It's built on [Vitesse](https://github.com/antfu/vitesse), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite 3](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
 
 Clone the repo and install dependencies:
 

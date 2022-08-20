@@ -4,6 +4,7 @@ import App from "./App.vue";
 import generatedRoutes from "~pages";
 // @ts-expect-error: missing types
 import VueSlider from "vue-slider-component/dist-css/vue-slider-component.umd.min.js";
+import type { UserModule } from "./types";
 
 import "@unocss/reset/tailwind.css";
 import "uno.css";
@@ -20,9 +21,11 @@ export const createApp = ViteSSG(
   { routes, base: import.meta.env.BASE_URL },
   (ctx) => {
     // install all modules under `modules/`
-    Object.values(import.meta.globEager("./modules/*.ts")).forEach((i) =>
-      i.install?.(ctx)
-    );
+    Object.values(
+      import.meta.glob<{ install: UserModule }>("./modules/*.ts", {
+        eager: true
+      })
+    ).forEach((i) => i.install?.(ctx));
 
     // vue slider component
     ctx.app.component("VueSlider", VueSlider);

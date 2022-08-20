@@ -30,5 +30,4 @@ declare module '@vue/runtime-core' {
     Toolbar: typeof import('./components/Toolbar.vue')['default']
     ToolItem: typeof import('./components/tools/ToolItem.vue')['default']
   }
-
 }

@@ -6,7 +6,7 @@ import generateSitemap from "vite-ssg-sitemap";
 import Layouts from "vite-plugin-vue-layouts";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
-import VueI18n from "@intlify/vite-plugin-vue-i18n";
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Unocss from "unocss/vite";
 
 export default defineConfig({
@@ -67,8 +67,7 @@ export default defineConfig({
     includedRoutes: () => ["/", "/zh-CN/"]
   },
 
-  // @ts-expect-error using experimental API
   ssr: {
-    noExternal: ["splitpanes"]
+    noExternal: ["splitpanes", "workbox-window", /vue-i18n/]
   }
 });

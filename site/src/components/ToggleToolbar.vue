@@ -14,7 +14,7 @@
         />
       </div>
     </div>
-    <span text="sm pc:base">{{ t('nav.toolbar') }}</span>
+    <span text="sm pc:base">{{ t("nav.toolbar") }}</span>
   </div>
 </template>
 

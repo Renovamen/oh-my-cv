@@ -1,7 +1,7 @@
 {
   "name": "oh-cv",
   "private": true,
-  "packageManager": "pnpm@7.5.0",
+  "packageManager": "pnpm@7.9.3",
   "scripts": {
     "build": "pnpm --filter=site build",
     "build:pkg": "pnpm -r --stream build:pkg",
@@ -9,21 +9,23 @@
     "dev": "pnpm --filter=site dev",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "release": "pnpm build:pkg && pnpm build",
-    "serve": "pnpm --filter=site serve"
+    "serve": "pnpm --filter=site serve",
+    "up": "taze minor -r"
   },
   "prettier": {
     "trailingComma": "none"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.30.4",
-    "@typescript-eslint/parser": "^5.30.4",
-    "eslint": "^8.19.0",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^9.1.1",
-    "pnpm": "^7.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.3.0",
+    "pnpm": "^7.9.3",
     "prettier": "^2.7.1",
-    "tsup": "^6.1.3",
+    "taze": "^0.7.6",
+    "tsup": "^6.2.2",
     "typescript": "^4.7.4"
   }
 }
