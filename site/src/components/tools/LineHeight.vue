@@ -1,7 +1,7 @@
 <template>
   <ToolItem :text="t('toolbar.line')" icon="ic:round-format-line-spacing">
     <vue-slider v-model="lineHeight" :min="1" :max="2" :interval="0.05" />
-    <div flex justify-between text-gray-500>
+    <div flex justify-between text-light-c>
       <span>1</span>
       <span>1.5</span>
       <span>2</span>

@@ -4,7 +4,7 @@
     icon="icon-park-outline:paragraph-break-two"
   >
     <vue-slider v-model="paragraphSpace" :max="50" />
-    <div flex justify-between text-gray-500>
+    <div flex justify-between text-light-c>
       <span>0px</span>
       <span>25px</span>
       <span>50px</span>

@@ -43,7 +43,7 @@
 /* Dark mode */
 
 .dark body {
-  @apply bg-dark-400;
+  @apply bg-gray-700;
 }
 
 .dark .vue-smart-pages,
@@ -56,11 +56,11 @@
 }
 
 .dark .toolbar-pane {
-  @apply !bg-dark-400;
+  @apply !bg-gray-700;
 }
 
 .dark .splitpanes__splitter {
-  @apply !bg-dark-400 !border-gray-600;
+  @apply !bg-gray-700 !border-gray-600;
 }
 
 .dark .splitpanes__splitter:before,

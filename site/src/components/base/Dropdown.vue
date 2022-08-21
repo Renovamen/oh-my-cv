@@ -1,5 +1,5 @@
 <template>
-  <ul bg="white dark:dark-400" text="xs pc:sm" rounded overflow-hidden>
+  <ul text="xs pc:sm" bg-c rounded overflow-hidden>
     <li
       v-for="(item, i) in items"
       :key="`locale-${i}-${item}`"

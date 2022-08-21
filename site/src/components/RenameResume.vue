@@ -5,10 +5,10 @@
     icon="bx:edit"
     @close="emit('closeRename')"
   >
-    <div class="flex-1 flex p-4" bg="gray-200 dark:dark-100">
+    <div flex-1 flex p-4 bg-hover-c>
       <input
         v-model="inputName"
-        class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none dark:bg-dark-400"
+        class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none bg-c"
       />
       <button
         class="flex-center w-8 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"

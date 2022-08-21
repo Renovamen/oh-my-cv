@@ -6,23 +6,18 @@
     @close="emit('closeSwitch')"
   >
     <ul
-      class="flex-1 mx-4 mt-2 mb-3 overflow-y-scroll"
-      border="t gray-300 dark:gray-600"
+      class="flex-1 mx-4 mt-2 mb-3 overflow-y-scroll border-t border-c text-sm text-light-c"
     >
       <li
         v-for="(item, i) in resumeList"
         :key="`switch-${item}`"
-        class="px-1.5 py-2 cursor-pointer hstack justify-between"
-        :class="[
-          data.curResumeId === item.id && 'bg-gray-100 dark:bg-dark-300'
-        ]"
-        bg="hover:(gray-100 dark:dark-300)"
-        text="sm gray-400 dark:gray-500"
+        class="px-1.5 py-2 cursor-pointer hstack justify-between hover:bg-hover-c"
+        :class="[data.curResumeId === item.id && 'bg-hover-c']"
         @click="switchResume(item.id)"
       >
         <div hstack flex-1 overflow-hidden>
           <span w-7>{{ i + 1 }}</span>
-          <span truncate text="gray-600 dark:gray-300">{{ item.name }}</span>
+          <span truncate text-c>{{ item.name }}</span>
         </div>
         <div w-20 text-right>{{ getDateStr(item.id) }}</div>
       </li>

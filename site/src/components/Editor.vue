@@ -30,10 +30,22 @@ onMounted(async () => {
       setData("mdContent", editor!.getValue());
     });
 
-    monaco.editor.setTheme(isDark.value ? "vs-dark" : "vs");
+    monaco.editor.defineTheme("vs-dark-dimmed", {
+      base: "vs-dark",
+      inherit: true,
+      rules: [],
+      colors: {
+        "editor.background": "#374151",
+        "editor.lineHighlightBorder": "#4b5563",
+        "dropdown.background": "#4b5563",
+        "menu.separatorBackground": "#6b7280"
+      }
+    });
+
+    monaco.editor.setTheme(isDark.value ? "vs-dark-dimmed" : "vs");
 
     watch(isDark, (val) => {
-      monaco.editor.setTheme(val ? "vs-dark" : "vs");
+      monaco.editor.setTheme(val ? "vs-dark-dimmed" : "vs");
     });
   }
 

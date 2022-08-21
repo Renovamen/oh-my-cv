@@ -1,7 +1,6 @@
 <template>
   <header
-    class="header relative flex justify-between dark:bg-dark-400 px-4 border-b border-c"
-    text="gray-600 dark:gray-300"
+    class="header relative flex justify-between px-4 border-b border-c bg-c text-c"
   >
     <OhCV text="lg pc:xl black dark:gray-100" />
 

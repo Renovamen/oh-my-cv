@@ -10,7 +10,7 @@
         class="px-2 py-0.5"
         border="l r t rounded-t-sm"
         :class="[
-          clickedButton === 0 && 'ml-4 bg-gray-200 dark:bg-dark-100 border-c',
+          clickedButton === 0 && 'ml-4 bg-hover-c border-c',
           clickedButton !== 0 && 'ml-2 border-transparent'
         ]"
         @click="clickedButton = 0"
@@ -21,7 +21,7 @@
         class="px-2 py-0.5"
         border="l r t rounded-t-sm"
         :class="[
-          clickedButton === 1 && 'bg-gray-200 dark:bg-dark-100 border-c',
+          clickedButton === 1 && 'bg-hover-c border-c',
           clickedButton !== 1 && 'border-transparent'
         ]"
         @click="clickedButton = 1"
@@ -30,7 +30,7 @@
       </button>
     </div>
 
-    <div class="flex-1 hstack px-4" bg="gray-200 dark:dark-100">
+    <div flex-1 hstack px-4 bg-hover-c>
       <input
         v-if="clickedButton === 0"
         class="text-xs"
@@ -41,7 +41,7 @@
 
       <div v-if="clickedButton === 1" class="flex w-full">
         <input
-          class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none dark:bg-dark-400"
+          class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none bg-c"
           :value="pastedURL"
           @change="pastedURL = ($event.target as HTMLTextAreaElement).value"
           @keyup.enter="uploadFileFromURL"

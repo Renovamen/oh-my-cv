@@ -12,17 +12,14 @@
   >
     <div
       class="flex hstack h-9 space-x-2 px-2 py-1 rounded border"
-      :class="[
-        isFocus && 'border-black dark:border-white',
-        !isFocus && 'border-c'
-      ]"
+      :class="[isFocus && 'border-dark-c', !isFocus && 'border-c']"
     >
       <input
         v-model="searchTerm"
         class="w-full rounded outline-none bg-transparent capitalize"
         @input="editTimes++"
       />
-      <div text-gray-500>
+      <div text-light-c>
         <div v-show="isFocus">
           <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
         </div>

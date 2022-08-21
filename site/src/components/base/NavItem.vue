@@ -18,7 +18,6 @@
     <div
       v-show="isDropDownOpen"
       class="absolute z-20 shadow border border-c rounded top-6.5 right-0"
-      bg="white dark:dark-400"
       @click="(e: Event) => e.stopPropagation()"
     >
       <slot />
