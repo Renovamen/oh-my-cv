@@ -1,10 +1,9 @@
 <template>
-  <ul bg="white dark:dark-400" text="xs pc:sm" rounded>
+  <ul bg="white dark:dark-400" text="xs pc:sm" rounded overflow-hidden>
     <li
       v-for="(item, i) in items"
       :key="`locale-${i}-${item}`"
       class="dropdown-li"
-      :class="[i === 0 && 'rounded-t', i === items.length - 1 && 'rounded-b']"
       @click="
         () => {
           item.function

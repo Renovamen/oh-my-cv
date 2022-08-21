@@ -57,6 +57,11 @@ const editTimes = ref(0);
 const searchTerm = ref<string>(props.default || props.items[0].text);
 const lastSearchTerm = ref(searchTerm.value);
 
+watch(
+  () => props.default,
+  () => (searchTerm.value = props.default || props.items[0].text)
+);
+
 const handleSelect = (text: string) => {
   searchTerm.value = text;
   lastSearchTerm.value = text;

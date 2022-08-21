@@ -1,10 +1,13 @@
 lang: 语言
 desc: 在线用 Markdown 写简历！
-resume: 简历
 
-nav:
-  toolbar: 工具栏
-  toggle_dark: 切换深色模式
+toggle_dark: 切换深色模式
+
+resume_name:
+  rename: 重命名
+  open: 打开
+  new: 新建
+  delete: 删除
 
 import:
   title: 上传一个 Markdown 文件
@@ -13,7 +16,7 @@ import:
 
 toolbar:
   file:
-    text: 文件
+    text: 导入 / 导出
     import: 导入 Markdown
     export_pdf: 导出为 PDF
   paper: 纸张尺寸

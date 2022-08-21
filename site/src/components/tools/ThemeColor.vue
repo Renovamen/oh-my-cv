@@ -50,12 +50,19 @@ const { styles, setStyle } = useStyleStore();
 
 const isFocus = ref(false);
 
-const defaultColorId = DEFAULT_THEME_COLORS.findIndex(
-  (item) => item === styles.themeColor
-);
+const pickedColorId = ref(-1);
+const customColor = ref("");
 
-const pickedColorId = ref(defaultColorId);
-const customColor = ref(DEFAULT_THEME_COLORS[defaultColorId]);
+const resetDisplayColor = () => {
+  const colorId = DEFAULT_THEME_COLORS.findIndex(
+    (item) => item === styles.themeColor
+  );
+  pickedColorId.value = colorId;
+  customColor.value = DEFAULT_THEME_COLORS[colorId];
+};
+
+resetDisplayColor();
+
 const currentThemeColor = computed(() =>
   pickedColorId.value === -1
     ? customColor.value
@@ -73,4 +80,9 @@ const customizeColor = (e: Event) => {
 };
 
 watch(currentThemeColor, () => setStyle("themeColor", currentThemeColor.value));
+
+watch(
+  () => styles.themeColor,
+  () => resetDisplayColor()
+);
 </script>

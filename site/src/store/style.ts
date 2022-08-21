@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { updateStyles } from "~/utils";
+import { updateStyles, DEFAULT_STYLES } from "~/utils";
 import type { ResumeStyles } from "~/types";
 
 const fontLoader = (fonts: string | Array<string>) => {
@@ -12,22 +12,8 @@ const fontLoader = (fonts: string | Array<string>) => {
 };
 
 export const useStyleStore = defineStore("style", () => {
-  const styles = reactive<ResumeStyles>({
-    marginV: 45,
-    marginH: 45,
-    lineHeight: 1.3,
-    paragraphSpace: 5,
-    themeColor: "#377bb5",
-    fontCN: {
-      name: "思源黑体",
-      fontFamily: "Noto Sans SC"
-    },
-    fontEN: {
-      name: "CMU Sans Serif"
-    },
-    fontSize: 15,
-    paper: "A4"
-  });
+  const copiedStyles = JSON.parse(JSON.stringify(DEFAULT_STYLES));
+  const styles = reactive<ResumeStyles>(copiedStyles);
 
   const setStyle = <T extends keyof ResumeStyles>(
     key: T,

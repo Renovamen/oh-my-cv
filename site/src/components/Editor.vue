@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import type * as Monaco from "monaco-editor";
-import { fetchFile, isClient } from "~/utils";
+import { isClient, fallToFirstResume } from "~/utils";
 import { setupMonaco } from "~/monaco";
 
 const { data, setData } = useDataStore();
@@ -37,11 +37,8 @@ onMounted(async () => {
     });
   }
 
-  // Load example markdown content
-  fetchFile("/example.md").then((text: string) => {
-    setData("mdContent", text);
-    editor?.setValue(text);
-  });
+  // Load saved resume from localStorage
+  fallToFirstResume();
 });
 
 onBeforeUnmount(() => editor?.dispose());

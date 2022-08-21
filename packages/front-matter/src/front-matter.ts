@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // Adapted from https://github.com/jxson/front-matter
 
 import * as yaml from "js-yaml";

@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-item" @click="ui.openToolbar = !ui.openToolbar">
+  <button cursor-pointer @click="ui.openToolbar = !ui.openToolbar">
     <div>
       <div v-show="ui.openToolbar" flex-center>
         <span
@@ -14,7 +14,7 @@
         />
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <script lang="ts" setup>

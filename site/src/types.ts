@@ -20,6 +20,8 @@ export type ResumeStyles = {
 export type SystemData = {
   mdContent: string;
   fileImported: boolean;
+  curResumeId: string | null;
+  curResumeName: string;
 };
 
 export type UIData = {
@@ -42,4 +44,14 @@ export type ResumeFrontMatter = {
 export type Font = {
   readonly name: string;
   readonly fontFamily?: string;
+};
+
+export type ResumeStorageItem = {
+  name: string;
+  content: string;
+  styles: ResumeStyles;
+};
+
+export type ResumeStorage = {
+  [id: string]: ResumeStorageItem;
 };

@@ -25,13 +25,12 @@ const toggleImport = (to?: boolean): void => {
 };
 
 const exportPDF = () => {
+  const { data } = useDataStore();
+
   const title = document.title;
+  const name = data.curResumeName;
 
-  const container = document.querySelector(".vue-smart-pages");
-  const name = container?.querySelector("h1")?.innerHTML;
-
-  if (name)
-    document.title = name.trim().replace(/\s+/g, "-") + "-" + t("resume");
+  if (name) document.title = name.trim().replace(/\s+/g, "_");
 
   window.print();
   document.title = title;

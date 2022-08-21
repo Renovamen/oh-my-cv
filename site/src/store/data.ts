@@ -1,10 +1,13 @@
 import { defineStore } from "pinia";
+import { DEFAULT_NAME } from "~/utils";
 import type { SystemData } from "~/types";
 
 export const useDataStore = defineStore("data", () => {
   const data = reactive<SystemData>({
     mdContent: "",
-    fileImported: false
+    fileImported: false,
+    curResumeId: null,
+    curResumeName: DEFAULT_NAME
   });
 
   const setData = <T extends keyof SystemData>(
