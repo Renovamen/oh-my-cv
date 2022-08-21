@@ -243,6 +243,7 @@ declare global {
   const useTitle: typeof import('@vueuse/core')['useTitle']
   const useToNumber: typeof import('@vueuse/core')['useToNumber']
   const useToString: typeof import('@vueuse/core')['useToString']
+  const useToastStore: typeof import('./store/toast')['useToastStore']
   const useToggle: typeof import('@vueuse/core')['useToggle']
   const useTransition: typeof import('@vueuse/core')['useTransition']
   const useUIStore: typeof import('./store/ui')['useUIStore']
@@ -272,6 +273,7 @@ declare global {
   const watchPostEffect: typeof import('vue')['watchPostEffect']
   const watchSyncEffect: typeof import('vue')['watchSyncEffect']
   const watchThrottled: typeof import('@vueuse/core')['watchThrottled']
+  const watchToast: typeof import('./composables/toast')['watchToast']
   const watchTriggerable: typeof import('@vueuse/core')['watchTriggerable']
   const watchWindowSize: typeof import('./composables/window')['watchWindowSize']
   const watchWithFilter: typeof import('@vueuse/core')['watchWithFilter']
@@ -523,6 +525,7 @@ declare module '@vue/runtime-core' {
     readonly useTitle: UnwrapRef<typeof import('@vueuse/core')['useTitle']>
     readonly useToNumber: UnwrapRef<typeof import('@vueuse/core')['useToNumber']>
     readonly useToString: UnwrapRef<typeof import('@vueuse/core')['useToString']>
+    readonly useToastStore: UnwrapRef<typeof import('./store/toast')['useToastStore']>
     readonly useToggle: UnwrapRef<typeof import('@vueuse/core')['useToggle']>
     readonly useTransition: UnwrapRef<typeof import('@vueuse/core')['useTransition']>
     readonly useUIStore: UnwrapRef<typeof import('./store/ui')['useUIStore']>
@@ -552,6 +555,7 @@ declare module '@vue/runtime-core' {
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
     readonly watchSyncEffect: UnwrapRef<typeof import('vue')['watchSyncEffect']>
     readonly watchThrottled: UnwrapRef<typeof import('@vueuse/core')['watchThrottled']>
+    readonly watchToast: UnwrapRef<typeof import('./composables/toast')['watchToast']>
     readonly watchTriggerable: UnwrapRef<typeof import('@vueuse/core')['watchTriggerable']>
     readonly watchWindowSize: UnwrapRef<typeof import('./composables/window')['watchWindowSize']>
     readonly watchWithFilter: UnwrapRef<typeof import('@vueuse/core')['watchWithFilter']>

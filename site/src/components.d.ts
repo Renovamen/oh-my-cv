@@ -8,7 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AutoComplete: typeof import('./components/base/AutoComplete.vue')['default']
-    CvName: typeof import('./components/CvName.vue')['default']
     Dropdown: typeof import('./components/base/Dropdown.vue')['default']
     Editor: typeof import('./components/Editor.vue')['default']
     File: typeof import('./components/tools/File.vue')['default']
@@ -24,7 +23,6 @@ declare module '@vue/runtime-core' {
     Paper: typeof import('./components/tools/Paper.vue')['default']
     ParagraphSpace: typeof import('./components/tools/ParagraphSpace.vue')['default']
     RenameResume: typeof import('./components/RenameResume.vue')['default']
-    ResumeName: typeof import('./components/ResumeName.vue')['default']
     ResumeOptions: typeof import('./components/ResumeOptions.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

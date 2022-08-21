@@ -74,4 +74,7 @@ watchWindowSize();
 // Handle languages
 const props = defineProps<{ locale: string[] | string }>();
 watchLocalePath(props);
+
+// Handle notifications
+watchToast();
 </script>

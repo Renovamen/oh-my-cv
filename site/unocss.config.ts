@@ -13,7 +13,7 @@ export default defineConfig({
     ["hstack", "flex items-center"],
     [
       "nav-item",
-      "relative flex-center h-full cursor-pointer capitalize space-x-1 whitespace-nowrap"
+      "relative flex-center h-full cursor-pointer space-x-1 whitespace-nowrap"
     ],
     ["border-c", "border-gray-300 dark:border-gray-600"],
     [

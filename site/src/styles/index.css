@@ -9,3 +9,15 @@ svg.iconify {
 .dark .vue-slider-rail {
   @apply bg-gray-500;
 }
+
+.Vue-Toastification__toast {
+  @apply px-5 py-3 min-h-0;
+}
+
+.Vue-Toastification__icon {
+  @apply w-4 mr-3;
+}
+
+.Vue-Toastification__toast-body {
+  @apply margin-auto;
+}

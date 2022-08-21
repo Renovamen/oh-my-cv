@@ -30,6 +30,13 @@ export type UIData = {
   openToolbar: boolean;
 };
 
+export type ToastFlagData = {
+  save: boolean;
+  delete: boolean;
+  switch: boolean;
+  new: boolean;
+};
+
 export type ResumeHeaderItem = {
   text: string;
   link?: string;

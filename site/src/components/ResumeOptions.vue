@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { deleteResume, setDefaultResume } from "~/utils";
+import { deleteResume, newResume } from "~/utils";
 
 const { t } = useI18n();
 const { data } = useDataStore();
@@ -33,7 +33,7 @@ const items = computed(() => [
   {
     text: t("resume_name.new"),
     icon: "material-symbols:note-add-outline-rounded",
-    function: setDefaultResume
+    function: newResume
   },
   {
     text: t("resume_name.delete"),

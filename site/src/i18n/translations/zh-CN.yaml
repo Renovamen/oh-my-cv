@@ -30,3 +30,9 @@ toolbar:
   margin: 页边距
   vertical: 上下
   horizontal: 左右
+
+notification:
+  save: 保存成功
+  switch: 已切换到简历
+  delete: 删除成功
+  new: 新建成功

@@ -15,10 +15,10 @@ export const setResumeStyles = (styles: ResumeStyles) => {
 };
 
 export const setResumeContent = (content: string) => {
-  const { setData } = useDataStore();
+  const { setData, toggleImportedFlag } = useDataStore();
 
   setData("mdContent", content);
-  setData("fileImported", true);
+  toggleImportedFlag(true);
 };
 
 export const setResume = (id: string, resume: ResumeStorageItem) => {
@@ -30,8 +30,11 @@ export const setResume = (id: string, resume: ResumeStorageItem) => {
   setResumeStyles(resume.styles);
 };
 
-export const setDefaultResume = () => {
+export const newResume = () => {
+  // New a resume using default styles and content
+
   const { setData } = useDataStore();
+  const { openToastFlag } = useToastStore();
 
   // Generate a new id
   const id = new Date().getTime().toString();
@@ -44,23 +47,27 @@ export const setDefaultResume = () => {
   // Load example markdown content
   fetchFile("/example.md").then((text: string) => {
     setResumeContent(text);
+    openToastFlag("new");
     saveResume();
   });
 };
 
 export const fallToFirstResume = () => {
+  const { openToastFlag } = useToastStore();
+
   getStorage().then((storage) => {
     if (storage && Object.keys(storage).length > 0) {
       const id = Object.keys(storage).sort((a, b) => b.localeCompare(a))[0];
       setResume(id, storage[id]);
-      console.log("Fall to the first resume.");
-    } else setDefaultResume();
+      openToastFlag("switch");
+    } else newResume();
   });
 };
 
 export const saveResume = () => {
   const { data } = useDataStore();
   const { styles } = useStyleStore();
+  const { openToastFlag } = useToastStore();
 
   const resume = {
     name: data.curResumeName,
@@ -72,31 +79,36 @@ export const saveResume = () => {
     if (storage === null) storage = {};
     storage[data.curResumeId!] = resume;
 
-    localForage
-      .setItem(OHCV_KEY, storage)
-      .then(() => console.log("Saved successfully!"));
+    localForage.setItem(OHCV_KEY, storage).then(() => openToastFlag("save"));
   });
 };
 
 export const deleteResume = () => {
   const { data } = useDataStore();
+  const { openToastFlag } = useToastStore();
+
   const id = data.curResumeId!;
 
   getStorage().then((storage) => {
     if (storage && storage[id]) delete storage[id];
 
     localForage.setItem(OHCV_KEY, storage).then(() => {
-      console.log("Deleted successfully!");
+      openToastFlag("delete");
       fallToFirstResume();
     });
   });
 };
 
 export const switchResume = (id: string) => {
+  const { data } = useDataStore();
+  const { openToastFlag } = useToastStore();
+
+  if (id === data.curResumeId) return;
+
   getStorage().then((storage) => {
     if (storage && storage[id]) {
       setResume(id, storage[id]);
-      console.log("Switched successfully!");
+      openToastFlag("switch");
     }
   });
 };

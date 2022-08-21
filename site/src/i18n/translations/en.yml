@@ -30,3 +30,9 @@ toolbar:
   margin: Margin
   vertical: Top & Bottom
   horizontal: Left & Right
+
+notification:
+  save: Your changes have been saved
+  switch: Switched to resume
+  delete: Your resume has been deleted
+  new: New resume created

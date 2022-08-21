@@ -68,6 +68,11 @@ export default defineConfig({
   },
 
   ssr: {
-    noExternal: ["splitpanes", "workbox-window", /vue-i18n/]
+    noExternal: [
+      "splitpanes",
+      "vue-toastification",
+      "workbox-window",
+      /vue-i18n/
+    ]
   }
 });

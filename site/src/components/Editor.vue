@@ -7,7 +7,7 @@ import type * as Monaco from "monaco-editor";
 import { isClient, fallToFirstResume } from "~/utils";
 import { setupMonaco } from "~/monaco";
 
-const { data, setData } = useDataStore();
+const { data, setData, toggleImportedFlag } = useDataStore();
 
 const editorRef = ref<HTMLDivElement>();
 let editor: Monaco.editor.IStandaloneCodeEditor | undefined;
@@ -47,8 +47,10 @@ onBeforeUnmount(() => editor?.dispose());
 watch(
   () => data.fileImported,
   () => {
-    editor?.setValue(data.mdContent);
-    setData("fileImported", false);
+    if (data.fileImported) {
+      editor?.setValue(data.mdContent);
+      toggleImportedFlag(false);
+    }
   }
 );
 </script>

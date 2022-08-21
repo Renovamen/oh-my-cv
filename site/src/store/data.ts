@@ -17,8 +17,13 @@ export const useDataStore = defineStore("data", () => {
     data[key] = value;
   };
 
+  const toggleImportedFlag = (to: boolean) => {
+    data.fileImported = to;
+  };
+
   return {
     data,
-    setData
+    setData,
+    toggleImportedFlag
   };
 });
