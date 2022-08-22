@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./components/Header.vue')['default']
     ImportPane: typeof import('./components/tools/ImportPane.vue')['default']
     LineHeight: typeof import('./components/tools/LineHeight.vue')['default']
+    Logo: typeof import('./components/icons/Logo.vue')['default']
     Margins: typeof import('./components/tools/Margins.vue')['default']
     NavItem: typeof import('./components/base/NavItem.vue')['default']
     OhCV: typeof import('./components/icons/OhCV.vue')['default']

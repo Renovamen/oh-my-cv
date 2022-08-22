@@ -2,7 +2,10 @@
   <header
     class="header relative flex justify-between px-4 border-b border-c bg-c text-c"
   >
-    <OhCV text="lg pc:xl black dark:gray-100" />
+    <div hstack cursor-pointer text="gray-900 dark:gray-100">
+      <Logo hidden pc:block mr-2 text="sm pc:base" />
+      <h1 font="logo" text="base pc:lg">Oh, CV!</h1>
+    </div>
 
     <ResumeOptions />
 

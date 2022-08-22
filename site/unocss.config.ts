@@ -36,7 +36,8 @@ export default defineConfig({
     presetAttributify(),
     presetWebFonts({
       fonts: {
-        ui: "Lato:400,700"
+        ui: "Lato:400,700",
+        logo: "Orbitron:700"
       }
     })
   ],

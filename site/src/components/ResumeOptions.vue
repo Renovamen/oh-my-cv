@@ -1,13 +1,11 @@
 <template>
-  <div hstack>
-    <NavItem
-      :text="data.curResumeName"
-      icon="ic:outline-arrow-drop-down"
-      :reverse="true"
-    >
-      <Dropdown :items="items" />
-    </NavItem>
-  </div>
+  <NavItem
+    :text="data.curResumeName"
+    icon="ic:outline-arrow-drop-down"
+    :reverse="true"
+  >
+    <Dropdown :items="items" />
+  </NavItem>
 
   <SwitchResume v-if="isSwitchOpen" @close-switch="toggleSwitch(false)" />
   <RenameResume v-if="isRenameOpen" @close-rename="toggleRename(false)" />
