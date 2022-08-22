@@ -34,7 +34,7 @@ export const newResume = () => {
   // New a resume using default styles and content
 
   const { setData } = useDataStore();
-  const { openToastFlag } = useToastStore();
+  const { setToastFlag } = useToastStore();
 
   // Generate a new id
   const id = new Date().getTime().toString();
@@ -47,19 +47,19 @@ export const newResume = () => {
   // Load example markdown content
   fetchFile("/example.md").then((text: string) => {
     setResumeContent(text);
-    openToastFlag("new");
+    setToastFlag("new", true);
     saveResume();
   });
 };
 
 export const fallToFirstResume = () => {
-  const { openToastFlag } = useToastStore();
+  const { setToastFlag } = useToastStore();
 
   getStorage().then((storage) => {
     if (storage && Object.keys(storage).length > 0) {
       const id = Object.keys(storage).sort((a, b) => b.localeCompare(a))[0];
       setResume(id, storage[id]);
-      openToastFlag("switch");
+      setToastFlag("switch", storage[id].name);
     } else newResume();
   });
 };
@@ -67,7 +67,7 @@ export const fallToFirstResume = () => {
 export const saveResume = () => {
   const { data } = useDataStore();
   const { styles } = useStyleStore();
-  const { openToastFlag } = useToastStore();
+  const { setToastFlag } = useToastStore();
 
   const resume = {
     name: data.curResumeName,
@@ -79,21 +79,24 @@ export const saveResume = () => {
     if (storage === null) storage = {};
     storage[data.curResumeId!] = resume;
 
-    localForage.setItem(OHCV_KEY, storage).then(() => openToastFlag("save"));
+    localForage
+      .setItem(OHCV_KEY, storage)
+      .then(() => setToastFlag("save", true));
   });
 };
 
 export const deleteResume = () => {
   const { data } = useDataStore();
-  const { openToastFlag } = useToastStore();
+  const { setToastFlag } = useToastStore();
 
   const id = data.curResumeId!;
+  const name = data.curResumeName;
 
   getStorage().then((storage) => {
     if (storage && storage[id]) delete storage[id];
 
     localForage.setItem(OHCV_KEY, storage).then(() => {
-      openToastFlag("delete");
+      setToastFlag("delete", name);
       fallToFirstResume();
     });
   });
@@ -101,14 +104,14 @@ export const deleteResume = () => {
 
 export const switchResume = (id: string) => {
   const { data } = useDataStore();
-  const { openToastFlag } = useToastStore();
+  const { setToastFlag } = useToastStore();
 
   if (id === data.curResumeId) return;
 
   getStorage().then((storage) => {
     if (storage && storage[id]) {
       setResume(id, storage[id]);
-      openToastFlag("switch");
+      setToastFlag("switch", storage[id].name);
     }
   });
 };

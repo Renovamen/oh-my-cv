@@ -33,6 +33,6 @@ toolbar:
 
 notification:
   save: 保存成功
-  switch: 已切换到简历
-  delete: 删除成功
+  switch: 已切换到简历 "{msg}"
+  delete: 已删除简历 "{msg}"
   new: 新建成功

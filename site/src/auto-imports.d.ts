@@ -275,7 +275,6 @@ declare global {
   const watchThrottled: typeof import('@vueuse/core')['watchThrottled']
   const watchToast: typeof import('./composables/toast')['watchToast']
   const watchTriggerable: typeof import('@vueuse/core')['watchTriggerable']
-  const watchWindowSize: typeof import('./composables/window')['watchWindowSize']
   const watchWithFilter: typeof import('@vueuse/core')['watchWithFilter']
   const whenever: typeof import('@vueuse/core')['whenever']
 }
@@ -557,7 +556,6 @@ declare module '@vue/runtime-core' {
     readonly watchThrottled: UnwrapRef<typeof import('@vueuse/core')['watchThrottled']>
     readonly watchToast: UnwrapRef<typeof import('./composables/toast')['watchToast']>
     readonly watchTriggerable: UnwrapRef<typeof import('@vueuse/core')['watchTriggerable']>
-    readonly watchWindowSize: UnwrapRef<typeof import('./composables/window')['watchWindowSize']>
     readonly watchWithFilter: UnwrapRef<typeof import('@vueuse/core')['watchWithFilter']>
     readonly whenever: UnwrapRef<typeof import('@vueuse/core')['whenever']>
   }

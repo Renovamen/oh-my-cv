@@ -4,13 +4,12 @@ export const watchToast = () => {
   const toast = useToast();
   const { t } = useI18n();
   const { toastFlag, closeToastFlag } = useToastStore();
-  const { data } = useDataStore();
 
   watch(
     () => toastFlag.switch,
     () => {
       if (toastFlag.switch) {
-        toast.info(`${t("notification.switch")} "${data.curResumeName}"`);
+        toast.info(t("notification.switch", { msg: toastFlag.switch }));
         closeToastFlag("switch");
       }
     }
@@ -20,7 +19,7 @@ export const watchToast = () => {
     () => toastFlag.delete,
     () => {
       if (toastFlag.delete) {
-        toast.error(t("notification.delete"));
+        toast.error(t("notification.delete", { msg: toastFlag.delete }));
         closeToastFlag("delete");
       }
     }

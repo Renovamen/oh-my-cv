@@ -31,10 +31,10 @@ export type UIData = {
 };
 
 export type ToastFlagData = {
-  save: boolean;
-  delete: boolean;
-  switch: boolean;
-  new: boolean;
+  save: boolean | string;
+  delete: boolean | string;
+  switch: boolean | string;
+  new: boolean | string;
 };
 
 export type ResumeHeaderItem = {

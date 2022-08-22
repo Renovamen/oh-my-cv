@@ -33,6 +33,6 @@ toolbar:
 
 notification:
   save: Your changes have been saved
-  switch: Switched to resume
-  delete: Your resume has been deleted
+  switch: Switched to resume "{msg}"
+  delete: Resume "{msg}" has been deleted
   new: New resume created

@@ -16,17 +16,13 @@ export const useToastStore = defineStore("toast", () => {
     toastFlag[key] = value;
   };
 
-  const openToastFlag = <T extends keyof ToastFlagData>(key: T) => {
-    setToastFlag(key, true);
-  };
-
   const closeToastFlag = <T extends keyof ToastFlagData>(key: T) => {
     setToastFlag(key, false);
   };
 
   return {
     toastFlag,
-    openToastFlag,
+    setToastFlag,
     closeToastFlag
   };
 });
