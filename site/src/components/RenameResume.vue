@@ -9,6 +9,7 @@
       <input
         v-model="inputName"
         class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none bg-c"
+        @keyup.enter="rename"
       />
       <button
         class="flex-center w-8 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"

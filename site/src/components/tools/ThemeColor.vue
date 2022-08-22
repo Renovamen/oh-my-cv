@@ -18,7 +18,7 @@
     </ul>
 
     <OnClickOutside
-      class="relative flex hstack h-9 space-x-2 px-2 py-1 rounded border"
+      class="relative flex hstack h-9 space-x-2 px-2 py-1 rounded border uppercase"
       :class="[isFocus && 'border-dark-c', !isFocus && 'border-c']"
       @click="isFocus = true"
       @trigger="isFocus = false"
@@ -50,11 +50,11 @@ const isFocus = ref(false);
 const pickedColorId = ref(-1);
 const customColor = ref("");
 
+const getColorId = (color: string) =>
+  DEFAULT_THEME_COLORS.findIndex((item) => item === color);
+
 const resetDisplayColor = () => {
-  const colorId = DEFAULT_THEME_COLORS.findIndex(
-    (item) => item === styles.themeColor
-  );
-  pickedColorId.value = colorId;
+  pickedColorId.value = getColorId(styles.themeColor);
   customColor.value = styles.themeColor;
 };
 
@@ -72,8 +72,8 @@ const pickColor = (i: number) => {
 };
 
 const customizeColor = (e: Event) => {
-  pickedColorId.value = -1;
   customColor.value = (e.target as HTMLInputElement).value;
+  pickedColorId.value = getColorId(customColor.value);
 };
 
 watch(currentThemeColor, () => setStyle("themeColor", currentThemeColor.value));

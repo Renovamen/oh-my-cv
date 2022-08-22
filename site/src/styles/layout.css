@@ -48,7 +48,7 @@
 
 .dark .vue-smart-pages,
 .dark .vue-smart-page-break {
-  @apply border-gray-200;
+  @apply border-gray-300;
 }
 
 .dark .preview-pane {
