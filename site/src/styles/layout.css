@@ -79,14 +79,13 @@
   .header,
   .editor-pane,
   .toolbar-pane,
-  .splitpanes__splitter {
+  .toolbar-mobile,
+  .splitpanes__splitter,
+  .Vue-Toastification__container {
     display: none;
   }
 
-  .splitpanes,
-  .splitpanes__pane,
-  .preview,
-  .vue-smart-pages {
+  .splitpanes__pane {
     width: 100% !important;
   }
 

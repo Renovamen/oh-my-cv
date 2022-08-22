@@ -37,9 +37,9 @@
     <pane
       v-if="!isToolbarMobile && ui.openToolbar"
       class="toolbar-pane"
-      size="18"
-      min-size="15"
-      max-size="40"
+      :size="size"
+      :min-size="minSize"
+      :max-size="maxSize"
     >
       <Toolbar />
     </pane>
@@ -47,7 +47,7 @@
 
   <Toolbar
     v-if="isToolbarMobile && ui.openToolbar"
-    class="fixed z-10 right-0 top-12 h-full w-60 overflow-y-scroll pb-10 border-l border-c"
+    class="toolbar-mobile fixed z-10 right-0 top-12 h-full w-60 overflow-y-scroll pb-10 border-l border-c"
   />
 </template>
 
@@ -60,6 +60,7 @@ import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
 
 const { ui } = useUIStore();
 const { styles, onFontLoaded } = useStyleStore();
+const { width } = useWindowSize();
 
 // Initialize styles
 onMounted(() => updateStyles());
@@ -69,7 +70,7 @@ const html = usePreviewHTML();
 
 // Handle window size changing
 const { isLayoutMobile, isToolbarMobile } = useMobile();
-watchWindowSize();
+watch(width, () => setTimeout(() => updatePreviewScale(), 50));
 
 // Handle languages
 const props = defineProps<{ locale: string[] | string }>();
@@ -77,4 +78,9 @@ watchLocalePath(props);
 
 // Handle notifications
 watchToast();
+
+// Splitpane sizes
+const size = ~~((270 / width.value) * 100);
+const minSize = computed(() => ~~((200 / width.value) * 100));
+const maxSize = computed(() => ~~((350 / width.value) * 100));
 </script>
