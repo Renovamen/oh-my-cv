@@ -55,7 +55,7 @@ const resetDisplayColor = () => {
     (item) => item === styles.themeColor
   );
   pickedColorId.value = colorId;
-  customColor.value = DEFAULT_THEME_COLORS[colorId];
+  customColor.value = styles.themeColor;
 };
 
 resetDisplayColor();
@@ -78,8 +78,5 @@ const customizeColor = (e: Event) => {
 
 watch(currentThemeColor, () => setStyle("themeColor", currentThemeColor.value));
 
-watch(
-  () => styles.themeColor,
-  () => resetDisplayColor()
-);
+watch(() => styles.themeColor, resetDisplayColor);
 </script>

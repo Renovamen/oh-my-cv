@@ -51,13 +51,17 @@ const emit = defineEmits(["select"]);
 const isFocus = ref(false);
 const editTimes = ref(0);
 
-const searchTerm = ref<string>(props.default || props.items[0].text);
-const lastSearchTerm = ref(searchTerm.value);
+const searchTerm = ref("");
+const lastSearchTerm = ref("");
 
-watch(
-  () => props.default,
-  () => (searchTerm.value = props.default || props.items[0].text)
-);
+const resetSearchTerm = () => {
+  searchTerm.value = props.default || props.items[0].text;
+  lastSearchTerm.value = searchTerm.value;
+};
+
+resetSearchTerm();
+
+watch(() => props.default, resetSearchTerm);
 
 const handleSelect = (text: string) => {
   searchTerm.value = text;

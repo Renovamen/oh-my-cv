@@ -21,11 +21,6 @@ const { data } = useDataStore();
 
 const items = computed(() => [
   {
-    text: t("resume_name.rename"),
-    icon: "bx:edit",
-    function: () => toggleRename(true)
-  },
-  {
     text: t("resume_name.open"),
     icon: "material-symbols:folder-open-outline-rounded",
     function: () => toggleSwitch(true)
@@ -34,6 +29,11 @@ const items = computed(() => [
     text: t("resume_name.new"),
     icon: "material-symbols:note-add-outline-rounded",
     function: newResume
+  },
+  {
+    text: t("resume_name.rename"),
+    icon: "bx:edit",
+    function: () => toggleRename(true)
   },
   {
     text: t("resume_name.delete"),
