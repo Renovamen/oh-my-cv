@@ -1,6 +1,6 @@
 <template>
   <header
-    class="header relative flex justify-between px-4 border-b border-c bg-c text-c"
+    class="header relative hstack justify-between px-4 border-b border-c bg-c text-c"
   >
     <div hstack cursor-pointer text="gray-900 dark:gray-100">
       <Logo hidden pc:block mr-2 text="sm pc:base" />
@@ -9,7 +9,7 @@
 
     <ResumeOptions />
 
-    <div class="hstack space-x-2 pc:space-x-3">
+    <div hstack space-x-2 pc:space-x-3>
       <ToggleLang w-4 pc:w-26 />
       <SaveResume />
       <ToggleToolbar />

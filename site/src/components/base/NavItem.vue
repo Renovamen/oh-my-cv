@@ -1,14 +1,19 @@
 <template>
   <OnClickOutside
-    class="cursor-pointer relative"
+    relative
     @click="isDropDownOpen = !isDropDownOpen"
     @trigger="isDropDownOpen = false"
   >
-    <div class="nav-item float-right" :class="reverse && 'flex-row-reverse'">
+    <div
+      class="nav-item float-right"
+      :class="reverse && 'flex-row-reverse'"
+      role="button"
+      tabindex="0"
+    >
       <span v-if="icon" class="iconify pc:text-lg" :data-icon="icon" />
       <span
         v-if="text"
-        text-base
+        class="text-base truncate max-w-[7rem] sm:max-w-xs"
         :class="[hideTextOnMobile && 'hidden pc:block']"
         >{{ text }}</span
       >

@@ -95,7 +95,7 @@ export default defineComponent({
             const fn = props.beforeBreakPage();
 
             if (fn && typeof fn.then === "function") {
-              fn.then(() => resolvePages());
+              fn.then(resolvePages);
               return;
             }
           }
@@ -114,23 +114,20 @@ export default defineComponent({
             const fn = props.beforeBreakPage();
 
             if (fn && typeof fn.then === "function") {
-              fn.then(() => setTimeout(() => resolvePages(), 50));
+              fn.then(() => setTimeout(resolvePages, 50));
               return;
             }
           }
 
-          setTimeout(() => resolvePages(), 50);
+          setTimeout(resolvePages, 50);
         }
       )
     );
 
     // Initialize styles
-    onMounted(() => updateCSS());
+    onMounted(updateCSS);
 
-    watch(
-      () => [props.top, props.bottom, props.left, props.right],
-      () => updateCSS()
-    );
+    watch(() => [props.top, props.bottom, props.left, props.right], updateCSS);
 
     return (): VNode =>
       h("div", {

@@ -4,13 +4,16 @@
     border="1 gray-400 dark:gray-500 rounded"
     @trigger="$emit('close')"
   >
-    <div hstack justify-between p="x-4 t-3 b-1">
+    <div hstack justify-between h-7 pl-4 pr-3 mt-2>
       <div hstack font-medium>
         <span class="iconify" :data-icon="icon" />
         <span mx-2 text="sm light-c">/</span>
         <span text-sm>{{ text }}</span>
       </div>
-      <button hstack @click="$emit('close')">
+      <button
+        class="hstack p-1 rounded-full duration-100 hover:(bg-hover-c rotate-90)"
+        @click="$emit('close')"
+      >
         <span class="iconify" data-icon="ic:baseline-close" />
       </button>
     </div>

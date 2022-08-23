@@ -41,8 +41,8 @@ export const newResume = () => {
   setData("curResumeId", id);
 
   // Default styles and name
-  setResumeStyles(DEFAULT_STYLES);
   setData("curResumeName", DEFAULT_NAME);
+  setResumeStyles(DEFAULT_STYLES);
 
   // Load example markdown content
   fetchFile("/example.md").then((text: string) => {

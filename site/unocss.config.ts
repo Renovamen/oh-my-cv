@@ -11,10 +11,7 @@ export default defineConfig({
   shortcuts: [
     ["flex-center", "flex items-center justify-center"],
     ["hstack", "flex items-center"],
-    [
-      "nav-item",
-      "relative flex-center h-full cursor-pointer space-x-1 whitespace-nowrap"
-    ],
+    ["nav-item", "relative flex-center cursor-pointer space-x-1"],
     ["text-c", "text-gray-600 dark:text-gray-300"],
     ["text-light-c", "text-gray-500 dark:text-gray-400"],
     ["bg-c", "bg-white dark:bg-gray-700"],
@@ -28,6 +25,7 @@ export default defineConfig({
   ],
   theme: {
     breakpoints: {
+      sm: "640px",
       pc: "769px"
     }
   },

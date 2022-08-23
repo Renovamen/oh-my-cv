@@ -55,22 +55,19 @@
 import SmartPages from "vue-smart-pages";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { updatePreviewScale, updateStyles } from "~/utils";
+import { updatePreviewScale } from "~/utils";
 import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
 
 const { ui } = useUIStore();
 const { styles, onFontLoaded } = useStyleStore();
 const { width } = useWindowSize();
 
-// Initialize styles
-onMounted(() => updateStyles());
-
 // Render HTML for previewing
 const html = usePreviewHTML();
 
 // Handle window size changing
 const { isLayoutMobile, isToolbarMobile } = useMobile();
-watch(width, () => setTimeout(() => updatePreviewScale(), 50));
+watch(width, () => setTimeout(updatePreviewScale, 50));
 
 // Handle languages
 const props = defineProps<{ locale: string[] | string }>();

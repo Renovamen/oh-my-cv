@@ -16,7 +16,7 @@
         @click="switchResume(item.id)"
       >
         <div hstack flex-1 overflow-hidden>
-          <span w-7>{{ i + 1 }}</span>
+          <span w-7 shrink-0>{{ i + 1 }}</span>
           <span truncate text-c>{{ item.name }}</span>
         </div>
         <div w-20 text-right>{{ getDateStr(item.id) }}</div>
