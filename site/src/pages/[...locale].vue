@@ -45,10 +45,12 @@
     </pane>
   </splitpanes>
 
-  <Toolbar
+  <div
     v-if="isToolbarMobile && ui.openToolbar"
-    class="toolbar-mobile fixed z-10 right-0 top-12 h-full w-60 overflow-y-scroll pb-10 border-l border-c"
-  />
+    class="toolbar-mobile fixed z-10 right-0 top-12 h-full w-60 border-l border-c"
+  >
+    <Toolbar class="overflow-y-scroll h-full pb-10" />
+  </div>
 </template>
 
 <script lang="ts" setup>
