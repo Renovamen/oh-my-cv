@@ -127,7 +127,10 @@ export default defineComponent({
     // Initialize styles
     onMounted(updateCSS);
 
-    watch(() => [props.top, props.bottom, props.left, props.right], updateCSS);
+    watch(
+      () => [props.top, props.bottom, props.left, props.right, props.width],
+      updateCSS
+    );
 
     return (): VNode =>
       h("div", {

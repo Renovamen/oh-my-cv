@@ -56,17 +56,17 @@ export const CN_FONTS: Font[] = [
 
 export const PAPER = {
   A4: {
-    h: 297,
+    h: 297 + 2,
     w: 210
   },
   letter: {
-    h: 279,
-    w: 216
+    h: 279.4 + 3,
+    w: 215.9
   }
 };
 
 export const getPaperPx = (paper: keyof typeof PAPER, v: "h" | "w") =>
-  +(PAPER[paper][v] * 3.82).toFixed(0);
+  ~~(PAPER[paper][v] * 3.78);
 
 export const getPreviewW = (paper: keyof typeof PAPER) =>
-  getPaperPx(paper, "w") + 2;
+  getPaperPx(paper, "w") + 10;

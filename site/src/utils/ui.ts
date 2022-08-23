@@ -15,7 +15,8 @@ export const updatePreviewScale = () => {
   const previewScale =
     paneW >= previewW
       ? 1
-      : (width.value <= previewW + 5 ? width.value : paneW) / previewW;
+      : (width.value <= previewW ? width.value : paneW) / previewW;
+
   setUI("previewScale", previewScale);
   setUI("previewBottom", -(1 - previewScale) * previewH);
 };
