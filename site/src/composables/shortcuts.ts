@@ -29,9 +29,11 @@ export const watchShortcuts = (keys: string, cb: () => void) => {
       if (flag) e.preventDefault();
     }
   });
+
   const shortcuts = magic[newKeys];
+  const { current } = magic;
 
   watch(shortcuts, (v) => {
-    if (v) cb();
+    if (v && current.size === newKeys.split("+").length) cb();
   });
 };

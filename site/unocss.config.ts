@@ -20,10 +20,7 @@ export default defineConfig({
     ["border-c", "border-gray-300 dark:border-gray-500"],
     ["border-dark-c", "border-black dark:border-gray-200"],
     ["shadow-c", "shadow dark:shadow-gray-600"],
-    [
-      "dropdown-li",
-      "hstack px-3 h-8 capitalize truncate cursor-pointer hover:bg-hover-c"
-    ]
+    ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-hover-c"]
   ],
   theme: {
     breakpoints: {

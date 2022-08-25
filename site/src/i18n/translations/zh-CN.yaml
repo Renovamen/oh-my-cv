@@ -7,6 +7,7 @@ resume_opt:
   open: 打开
   new: 新建
   save: 保存
+  saveas: 另存为...
   duplicate: 创建副本
   rename: 重命名
   delete: 删除
@@ -21,6 +22,7 @@ toolbar:
     text: 导入 / 导出
     import: 导入 Markdown
     export_pdf: 导出为 PDF
+    export_md: 导出为 Markdown
   paper: 纸张尺寸
   font_family: 字体
   font_size: 字号

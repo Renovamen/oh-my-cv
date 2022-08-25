@@ -4,7 +4,7 @@
     icon="ic:outline-arrow-drop-down"
     :reverse="true"
   >
-    <Dropdown w-auto pc:w-40 :items="items" />
+    <Dropdown w-auto pc:w-48 :items="items" />
   </NavItem>
 
   <SwitchResume v-if="isSwitchOpen" @close-switch="toggleSwitch(false)" />
@@ -12,7 +12,14 @@
 </template>
 
 <script lang="ts" setup>
-import { deleteResume, newResume, saveResume, duplicateResume, isMac } from "~/utils";
+import {
+  deleteResume,
+  newResume,
+  saveResume,
+  duplicateResume,
+  saveResumesToLocal,
+  isMac
+} from "~/utils";
 
 const { t } = useI18n();
 const { data } = useDataStore();
@@ -34,7 +41,13 @@ const items = computed(() => [
     text: t("resume_opt.save"),
     icon: "ic:baseline-save",
     function: saveResume,
-    note: `${isMac ? "Cmd" : "Ctrl"}+S`,
+    note: `${isMac ? "Cmd" : "Ctrl"}+S`
+  },
+  {
+    text: t("resume_opt.saveas"),
+    icon: "ic:baseline-save-as",
+    function: saveResumesToLocal,
+    note: `Shift+${isMac ? "Cmd" : "Ctrl"}+S`,
     border: true
   },
   {
@@ -70,4 +83,5 @@ const toggleRename = (to?: boolean): void => {
 // Handle shortcuts
 watchShortcuts("ctrl+o", () => toggleSwitch(true));
 watchShortcuts("ctrl+s", saveResume);
+watchShortcuts("shift+ctrl+s", saveResumesToLocal);
 </script>

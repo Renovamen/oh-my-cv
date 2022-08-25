@@ -1,6 +1,7 @@
 <template>
   <ToolItem :text="t('toolbar.paper')" icon="majesticons:paper-fold-line">
     <AutoComplete
+      capitalize
       :items="Object.keys(PAPER).map((paper) => ({ text: paper }))"
       :default="styles.paper"
       @select="(text) => setStyle('paper', text)"

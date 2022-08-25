@@ -1,7 +1,7 @@
 import * as localForage from "localforage";
 import { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 import { DEFAULT_STYLES, DEFAULT_NAME } from "./constants";
-import { fetchFile, copy } from ".";
+import { fetchFile, downloadFile, copy } from ".";
 
 const OHCV_KEY = "ohcv_data";
 
@@ -81,7 +81,14 @@ export const saveResume = async () => {
   storage[data.curResumeId] = resume;
 
   await localForage.setItem(OHCV_KEY, storage);
-  setToastFlag("save", true)
+  setToastFlag("save", true);
+};
+
+export const saveResumesToLocal = async () => {
+  await saveResume();
+
+  const storage = (await getStorage()) || {};
+  downloadFile("ohcv_data.json", JSON.stringify(storage));
 };
 
 export const deleteResume = async (id: string | null) => {
