@@ -20,15 +20,19 @@ Highly recommend using Chrome.
 
 ## Features
 
-- Write your resume in Markdown and preview it in real-time online
+- Write your resume in Markdown and preview it in real-time online, it's smooth!
 - Export to A4 and US Letter size PDFs
+- Customize: page margins, theme colors, line heights, fonts, etc.
+- Add icons easily via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
+- Tex support ([Katex](https://github.com/KaTeX/KaTeX))
 - Automatically breaking pages
 - Neat template
-- Customize: page margins, theme colors, line heights, fonts, etc.
-- Add icons via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
-- Tex support ([Katex](https://github.com/KaTeX/KaTeX))
+- Manage multiple resumes
+- Your data in your hands:
+  - Data are saved locally within your browser, see [here](https://localforage.github.io/localForage/) for details
+  - Open-source static website hosted on [Github Pages](https://pages.github.com/), which doesn't (have the ability to) collect your data
+  - No user tracking, no ads
 - Dark mode
-- Open-source static website hosted on [Github Pages](https://pages.github.com/) which doesn't (have the ability to) collect your data
 
 
 &nbsp;
@@ -38,7 +42,7 @@ Highly recommend using Chrome.
 - [ ] Export to:
 
   - [x] PDF
-  - [ ] Markdown
+  - [x] Markdown
   - [ ] HTML
 
 - [ ] Pick any fonts from [Google Fonts](https://fonts.google.com/)
