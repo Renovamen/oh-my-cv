@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { updateStyles, DEFAULT_STYLES } from "~/utils";
+import { copy, updateStyles, DEFAULT_STYLES } from "~/utils";
 import type { ResumeStyles } from "~/types";
 
 const fontLoader = (fonts: string | Array<string>) => {
@@ -12,7 +12,7 @@ const fontLoader = (fonts: string | Array<string>) => {
 };
 
 export const useStyleStore = defineStore("style", () => {
-  const copiedStyles = JSON.parse(JSON.stringify(DEFAULT_STYLES));
+  const copiedStyles = copy(DEFAULT_STYLES);
   const styles = reactive<ResumeStyles>(copiedStyles);
 
   const setStyle = <T extends keyof ResumeStyles>(

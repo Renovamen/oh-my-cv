@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { deleteResume, newResume, saveResume, isMac } from "~/utils";
+import { deleteResume, newResume, saveResume, duplicateResume, isMac } from "~/utils";
 
 const { t } = useI18n();
 const { data } = useDataStore();
@@ -43,9 +43,15 @@ const items = computed(() => [
     function: () => toggleRename(true)
   },
   {
+    text: t("resume_opt.duplicate"),
+    icon: "ion:duplicate",
+    function: () => duplicateResume(data.curResumeId),
+    border: true
+  },
+  {
     text: t("resume_opt.delete"),
     icon: "material-symbols:delete-outline-rounded",
-    function: deleteResume
+    function: () => deleteResume(data.curResumeId)
   }
 ]);
 

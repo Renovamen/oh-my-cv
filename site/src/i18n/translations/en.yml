@@ -8,6 +8,7 @@ resume_opt:
   new: New
   save: Save
   rename: Rename
+  duplicate: Duplicate
   delete: Delete
 
 import:
@@ -37,3 +38,4 @@ notification:
   switch: Switched to resume "{msg}"
   delete: Resume "{msg}" has been deleted
   new: New resume created
+  duplicate: Created resume "{old}"'s duplication "{new}"

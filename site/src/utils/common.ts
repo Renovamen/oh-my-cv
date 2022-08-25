@@ -8,3 +8,5 @@ export const isExternal = (path: string) => {
   const outboundRE = /^(https?:|mailto:|tel:)/;
   return outboundRE.test(path);
 };
+
+export const copy = (obj: any) => JSON.parse(JSON.stringify(obj));

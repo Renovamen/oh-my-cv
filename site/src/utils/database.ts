@@ -1,11 +1,12 @@
 import * as localForage from "localforage";
 import { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 import { DEFAULT_STYLES, DEFAULT_NAME } from "./constants";
-import { fetchFile } from ".";
+import { fetchFile, copy } from ".";
 
 const OHCV_KEY = "ohcv_data";
 
-export const getStorage = () => localForage.getItem<ResumeStorage>(OHCV_KEY);
+export const getStorage = async () =>
+  localForage.getItem<ResumeStorage>(OHCV_KEY);
 
 export const setResumeStyles = (styles: ResumeStyles) => {
   const { setStyle } = useStyleStore();
@@ -30,7 +31,7 @@ export const setResume = (id: string, resume: ResumeStorageItem) => {
   setResumeStyles(resume.styles);
 };
 
-export const newResume = () => {
+export const newResume = async () => {
   // New a resume using default styles and content
 
   const { setData } = useDataStore();
@@ -52,22 +53,23 @@ export const newResume = () => {
   });
 };
 
-export const fallToFirstResume = () => {
+export const fallToFirstResume = async () => {
   const { setToastFlag } = useToastStore();
+  const storage = await getStorage();
 
-  getStorage().then((storage) => {
-    if (storage && Object.keys(storage).length > 0) {
-      const id = Object.keys(storage).sort((a, b) => b.localeCompare(a))[0];
-      setResume(id, storage[id]);
-      setToastFlag("switch", storage[id].name);
-    } else newResume();
-  });
+  if (storage && Object.keys(storage).length > 0) {
+    const id = Object.keys(storage).sort((a, b) => b.localeCompare(a))[0];
+    setResume(id, storage[id]);
+    setToastFlag("switch", storage[id].name);
+  } else newResume();
 };
 
-export const saveResume = () => {
+export const saveResume = async () => {
   const { data } = useDataStore();
   const { styles } = useStyleStore();
   const { setToastFlag } = useToastStore();
+
+  if (!data.curResumeId) return;
 
   const resume = {
     name: data.curResumeName,
@@ -75,43 +77,65 @@ export const saveResume = () => {
     styles: toRaw(styles)
   } as ResumeStorageItem;
 
-  getStorage().then((storage) => {
-    if (storage === null) storage = {};
-    storage[data.curResumeId!] = resume;
+  const storage = (await getStorage()) || {};
+  storage[data.curResumeId] = resume;
 
-    localForage
-      .setItem(OHCV_KEY, storage)
-      .then(() => setToastFlag("save", true));
-  });
+  await localForage.setItem(OHCV_KEY, storage);
+  setToastFlag("save", true)
 };
 
-export const deleteResume = () => {
+export const deleteResume = async (id: string | null) => {
+  if (!id) return;
+
+  const { setToastFlag } = useToastStore();
+  const storage = await getStorage();
+
+  if (storage && storage[id]) {
+    const name = storage[id].name;
+    delete storage[id];
+
+    await localForage.setItem(OHCV_KEY, storage);
+
+    setToastFlag("delete", name);
+    fallToFirstResume();
+  }
+};
+
+export const switchResume = async (id: string | null) => {
   const { data } = useDataStore();
   const { setToastFlag } = useToastStore();
 
-  const id = data.curResumeId!;
-  const name = data.curResumeName;
+  if (!id || id === data.curResumeId) return;
 
-  getStorage().then((storage) => {
-    if (storage && storage[id]) delete storage[id];
+  const storage = await getStorage();
 
-    localForage.setItem(OHCV_KEY, storage).then(() => {
-      setToastFlag("delete", name);
-      fallToFirstResume();
-    });
-  });
+  if (storage && storage[id]) {
+    setResume(id, storage[id]);
+    setToastFlag("switch", storage[id].name);
+  }
 };
 
-export const switchResume = (id: string) => {
-  const { data } = useDataStore();
+export const duplicateResume = async (id: string | null) => {
+  if (!id) return;
+
   const { setToastFlag } = useToastStore();
 
-  if (id === data.curResumeId) return;
+  await saveResume();
 
-  getStorage().then((storage) => {
-    if (storage && storage[id]) {
-      setResume(id, storage[id]);
-      setToastFlag("switch", storage[id].name);
-    }
-  });
+  const storage = await getStorage();
+
+  if (storage && storage[id]) {
+    // Generate an id and name for duplicated resume
+    const resume = copy(storage[id]);
+    const newId = new Date().getTime().toString();
+    const oldName = resume.name;
+
+    resume.name = oldName + " Copy";
+    storage[newId] = resume;
+
+    await localForage.setItem(OHCV_KEY, storage);
+    setToastFlag("duplicate", oldName);
+
+    switchResume(newId);
+  }
 };

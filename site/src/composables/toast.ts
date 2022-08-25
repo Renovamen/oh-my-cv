@@ -44,4 +44,17 @@ export const watchToast = () => {
       }
     }
   );
+
+  watch(
+    () => toastFlag.duplicate,
+    () => {
+      if (toastFlag.duplicate) {
+        toast.success(t("notification.duplicate", {
+          old: toastFlag.duplicate,
+          new: toastFlag.duplicate + " Copy"
+        }));
+        closeToastFlag("duplicate");
+      }
+    }
+  );
 };
