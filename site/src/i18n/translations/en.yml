@@ -3,10 +3,11 @@ desc: Write your curriculum vitae / resume in Markdown online!
 
 toggle_dark: Toggle dark mode
 
-resume_name:
-  rename: Rename
+resume_opt:
   open: Open
-  new: new
+  new: New
+  save: Save
+  rename: Rename
   delete: Delete
 
 import:

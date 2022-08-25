@@ -30,7 +30,7 @@
     </div>
     <Dropdown
       v-show="isFocus && filteredItems.length > 0"
-      class="absolute z-20 w-full border border-c rounded"
+      class="absolute z-20 w-full"
       :items="filteredItems"
       @select="handleSelect"
     />

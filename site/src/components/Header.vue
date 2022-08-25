@@ -11,7 +11,6 @@
 
     <div hstack space-x-2 pc:space-x-3>
       <ToggleLang w-4 pc:w-26 />
-      <SaveResume />
       <ToggleToolbar />
       <ToggleDark />
       <a

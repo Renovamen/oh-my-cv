@@ -1,11 +1,11 @@
 <template>
   <ToolItem :text="t('toolbar.file.text')" icon="mdi:file-outline">
-    <li class="dropdown-li rounded" @click="toggleImport(true)">
+    <li class="dropdown-li space-x-1.5 rounded" @click="toggleImport(true)">
       <span class="iconify text-base" data-icon="mdi:upload" />
       <span>{{ t("toolbar.file.import") }}</span>
     </li>
 
-    <li class="dropdown-li rounded" @click="exportPDF">
+    <li class="dropdown-li space-x-1.5 rounded" @click="exportPDF">
       <span class="iconify text-base" data-icon="bi:file-earmark-pdf-fill" />
       <span>{{ t("toolbar.file.export_pdf") }}</span>
     </li>

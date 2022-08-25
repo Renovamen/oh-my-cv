@@ -14,13 +14,15 @@ export default defineConfig({
     ["nav-item", "relative flex-center cursor-pointer space-x-1"],
     ["text-c", "text-gray-600 dark:text-gray-300"],
     ["text-light-c", "text-gray-500 dark:text-gray-400"],
+    ["text-lighter-c", "text-gray-400 dark:text-gray-500"],
     ["bg-c", "bg-white dark:bg-gray-700"],
     ["bg-hover-c", "bg-gray-100 dark:bg-gray-600"],
     ["border-c", "border-gray-300 dark:border-gray-500"],
     ["border-dark-c", "border-black dark:border-gray-200"],
+    ["shadow-c", "shadow dark:shadow-gray-600"],
     [
       "dropdown-li",
-      "hstack space-x-1.5 px-3 h-8 capitalize truncate cursor-pointer hover:bg-hover-c"
+      "hstack px-3 h-8 capitalize truncate cursor-pointer hover:bg-hover-c"
     ]
   ],
   theme: {

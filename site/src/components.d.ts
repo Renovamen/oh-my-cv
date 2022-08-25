@@ -26,7 +26,6 @@ declare module '@vue/runtime-core' {
     ResumeOptions: typeof import('./components/ResumeOptions.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SaveResume: typeof import('./components/SaveResume.vue')['default']
     SwitchResume: typeof import('./components/SwitchResume.vue')['default']
     ThemeColor: typeof import('./components/tools/ThemeColor.vue')['default']
     ToggleDark: typeof import('./components/ToggleDark.vue')['default']

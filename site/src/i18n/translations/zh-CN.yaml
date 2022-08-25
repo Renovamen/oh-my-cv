@@ -3,10 +3,11 @@ desc: 在线用 Markdown 写简历！
 
 toggle_dark: 切换深色模式
 
-resume_name:
-  rename: 重命名
+resume_opt:
   open: 打开
   new: 新建
+  save: 保存
+  rename: 重命名
   delete: 删除
 
 import:

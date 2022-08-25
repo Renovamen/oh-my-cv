@@ -1,6 +1,6 @@
 <template>
   <OnClickOutside
-    class="!m-auto z-30 fixed bg-c flex flex-col left-0 right-0 top-0 bottom-0 shadow overflow-hidden"
+    class="!m-auto z-30 fixed bg-c flex flex-col left-0 right-0 top-0 bottom-0 overflow-hidden shadow-c"
     border="1 gray-400 dark:gray-500 rounded"
     @trigger="$emit('close')"
   >

@@ -271,6 +271,7 @@ declare global {
   const watchOnce: typeof import('@vueuse/core')['watchOnce']
   const watchPausable: typeof import('@vueuse/core')['watchPausable']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
+  const watchShortcuts: typeof import('./composables/shortcuts')['watchShortcuts']
   const watchSyncEffect: typeof import('vue')['watchSyncEffect']
   const watchThrottled: typeof import('@vueuse/core')['watchThrottled']
   const watchToast: typeof import('./composables/toast')['watchToast']
@@ -552,6 +553,7 @@ declare module '@vue/runtime-core' {
     readonly watchOnce: UnwrapRef<typeof import('@vueuse/core')['watchOnce']>
     readonly watchPausable: UnwrapRef<typeof import('@vueuse/core')['watchPausable']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
+    readonly watchShortcuts: UnwrapRef<typeof import('./composables/shortcuts')['watchShortcuts']>
     readonly watchSyncEffect: UnwrapRef<typeof import('vue')['watchSyncEffect']>
     readonly watchThrottled: UnwrapRef<typeof import('@vueuse/core')['watchThrottled']>
     readonly watchToast: UnwrapRef<typeof import('./composables/toast')['watchToast']>

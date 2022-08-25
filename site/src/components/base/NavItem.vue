@@ -13,16 +13,18 @@
       <span v-if="icon" class="iconify pc:text-lg" :data-icon="icon" />
       <span
         v-if="text"
-        class="text-base truncate max-w-[7rem] sm:max-w-xs"
+        class="truncate max-w-[7rem] sm:max-w-xs"
         :class="[hideTextOnMobile && 'hidden pc:block']"
-        >{{ text }}</span
+        text="sm pc:base"
       >
+        {{ text }}
+      </span>
     </div>
 
     <!-- Dropdown -->
     <div
       v-show="isDropDownOpen"
-      class="absolute z-20 shadow border border-c rounded top-6.5 right-0"
+      class="absolute z-20 top-6.5 right-0"
       @click="(e: Event) => e.stopPropagation()"
     >
       <slot />

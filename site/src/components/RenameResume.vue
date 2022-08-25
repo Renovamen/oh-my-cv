@@ -1,7 +1,7 @@
 <template>
   <Pane
     class="h-25 w-full pc:w-96"
-    :text="t('resume_name.rename')"
+    :text="t('resume_opt.rename')"
     icon="bx:edit"
     @close="emit('closeRename')"
   >

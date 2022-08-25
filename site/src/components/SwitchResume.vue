@@ -1,12 +1,12 @@
 <template>
   <Pane
     class="h-56 w-full pc:w-96"
-    :text="t('resume_name.open')"
+    :text="t('resume_opt.open')"
     icon="material-symbols:folder-open-outline-rounded"
     @close="emit('closeSwitch')"
   >
     <ul
-      class="flex-1 mx-4 mt-2 mb-3 overflow-y-scroll border-t border-c text-sm text-light-c"
+      class="flex-1 mx-4 mt-2 mb-3 overflow-y-scroll border-t border-c text-sm text-lighter-c"
     >
       <li
         v-for="(item, i) in resumeList"
