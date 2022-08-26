@@ -11,10 +11,3 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
-
-// https://wicg.github.io/ua-client-hints/#navigatorua
-declare interface NavigatorUA {
-  readonly userAgentData?: NavigatorUAData;
-}
-
-declare interface Navigator extends NavigatorUA {}

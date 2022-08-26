@@ -1,4 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "./node_modules/user-agent-data-types"
+    ]
+  },
   "include": ["./src"]
 }

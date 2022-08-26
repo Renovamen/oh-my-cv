@@ -22,16 +22,12 @@ export const injectCSS = (cssText: string, id?: string) => {
 
     if (!styleSheet) {
       styleSheet = new CSSStyleSheet();
-      // @ts-expect-error: using experimental API
       styleSheet.replaceSync(cssText);
-      // @ts-expect-error: using experimental API
       document.adoptedStyleSheets = [
-        // @ts-expect-error: using experimental API
         ...document.adoptedStyleSheets,
         styleSheet
       ];
     } else {
-      // @ts-expect-error: using experimental API
       styleSheet.replaceSync(cssText);
     }
   } else {
