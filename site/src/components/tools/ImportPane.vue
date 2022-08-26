@@ -58,7 +58,8 @@
 </template>
 
 <script lang="ts" setup>
-import { fetchFile, uploadFile, setResumeContent } from "~/utils";
+import { fetchFile, uploadFile } from "@renovamen/utils";
+import { setResumeContent } from "~/utils";
 
 const { t } = useI18n();
 

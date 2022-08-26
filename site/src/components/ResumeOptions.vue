@@ -12,13 +12,14 @@
 </template>
 
 <script lang="ts" setup>
+import { isMac } from "@renovamen/utils";
+import { useShortcuts } from "@renovamen/vue-shortcuts";
 import {
   deleteResume,
   newResume,
   saveResume,
   duplicateResume,
-  saveResumesToLocal,
-  isMac
+  saveResumesToLocal
 } from "~/utils";
 
 const { t } = useI18n();
@@ -81,7 +82,7 @@ const toggleRename = (to?: boolean): void => {
 };
 
 // Handle shortcuts
-watchShortcuts("ctrl+o", () => toggleSwitch(true));
-watchShortcuts("ctrl+s", saveResume);
-watchShortcuts("shift+ctrl+s", saveResumesToLocal);
+useShortcuts("ctrl+o", () => toggleSwitch(true));
+useShortcuts("ctrl+s", saveResume);
+useShortcuts("shift+ctrl+s", saveResumesToLocal);
 </script>

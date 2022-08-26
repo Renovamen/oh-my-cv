@@ -1,12 +1,11 @@
-export const fetchFile = (url: string) => {
-  return fetch(url)
-    .then((res) => {
-      if (!res.ok) throw Error("Request error: " + res);
-      return res.text();
-    })
-    .catch((error) => {
-      return Promise.reject(error);
-    });
+export const fetchFile = async (url: string) => {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw Error("Request error: " + res);
+    return res.text();
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 export const uploadFile = (e: Event, callback: (content: string) => void) => {

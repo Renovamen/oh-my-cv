@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@vueuse/components": "^9.1.0",
-    "@vueuse/core": "^9.1.0",
+    "@vueuse/core": "^9.1.1",
     "@vueuse/head": "^0.7.9",
     "katex": "^0.16.0",
     "localforage": "^1.10.0",
@@ -27,6 +27,8 @@
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@renovamen/front-matter": "workspace:*",
     "@renovamen/markdown-it-katex": "workspace:*",
+    "@renovamen/utils": "workspace:*",
+    "@renovamen/vue-shortcuts": "workspace:*",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
     "@types/splitpanes": "^2.2.1",

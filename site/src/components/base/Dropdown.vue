@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { isExternal } from "~/utils";
+import { isExternal } from "@renovamen/utils";
 import type { DropdownItem } from "./types";
 
 defineProps<{

@@ -55,6 +55,19 @@ importers:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
 
+  packages/utils:
+    specifiers: {}
+
+  packages/vue-shortcuts:
+    specifiers:
+      '@renovamen/utils': workspace:*
+      '@vueuse/core': ^9.1.1
+      vue: ^3.2.37
+    dependencies:
+      '@renovamen/utils': link:../utils
+      '@vueuse/core': 9.1.1_vue@3.2.37
+      vue: 3.2.37
+
   packages/vue-smart-pages:
     specifiers:
       dynamic-css: workspace:*
@@ -68,12 +81,14 @@ importers:
       '@intlify/vite-plugin-vue-i18n': ^6.0.1
       '@renovamen/front-matter': workspace:*
       '@renovamen/markdown-it-katex': workspace:*
+      '@renovamen/utils': workspace:*
+      '@renovamen/vue-shortcuts': workspace:*
       '@types/markdown-it-link-attributes': ^3.0.1
       '@types/nprogress': ^0.2.0
       '@types/splitpanes': ^2.2.1
       '@vitejs/plugin-vue': 3.0.3
       '@vueuse/components': ^9.1.0
-      '@vueuse/core': ^9.1.0
+      '@vueuse/core': ^9.1.1
       '@vueuse/head': ^0.7.9
       critters: ^0.0.16
       dynamic-css: workspace:*
@@ -102,7 +117,7 @@ importers:
       vue-toastification: ^2.0.0-rc.5
     dependencies:
       '@vueuse/components': 9.1.0_vue@3.2.37
-      '@vueuse/core': 9.1.0_vue@3.2.37
+      '@vueuse/core': 9.1.1_vue@3.2.37
       '@vueuse/head': 0.7.9_vue@3.2.37
       katex: 0.16.0
       localforage: 1.10.0
@@ -120,6 +135,8 @@ importers:
       '@intlify/vite-plugin-vue-i18n': 6.0.1_vite@3.0.3+vue-i18n@9.2.2
       '@renovamen/front-matter': link:../packages/front-matter
       '@renovamen/markdown-it-katex': link:../packages/markdown-it-katex
+      '@renovamen/utils': link:../packages/utils
+      '@renovamen/vue-shortcuts': link:../packages/vue-shortcuts
       '@types/markdown-it-link-attributes': 3.0.1
       '@types/nprogress': 0.2.0
       '@types/splitpanes': 2.2.1
@@ -129,7 +146,7 @@ importers:
       markdown-it-deflist: 2.1.0
       markdown-it-link-attributes: 4.0.1
       unocss: 0.45.8_vite@3.0.3
-      unplugin-auto-import: 0.11.2_fupg6k7n6y2tx5bfpvz2y2r2l4
+      unplugin-auto-import: 0.11.2_vjoyv4ke7baqlk6imkte7xrcci
       unplugin-vue-components: 0.22.4_vite@3.0.3+vue@3.2.37
       vite: 3.0.3
       vite-plugin-pages: 0.25.0_vite@3.0.3
@@ -933,6 +950,18 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: false
+
+  /@vueuse/core/9.1.1_vue@3.2.37:
+    resolution: {integrity: sha512-QfuaNWRDMQcCUwXylCyYhPC3ScS9Tiiz4J0chdwr3vOemBwRToSywq8MP+ZegKYFnbETzRY8G/5zC+ca30wrRQ==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.15
+      '@vueuse/metadata': 9.1.1
+      '@vueuse/shared': 9.1.1_vue@3.2.37
+      vue-demi: 0.13.8_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   /@vueuse/head/0.7.9_vue@3.2.37:
     resolution: {integrity: sha512-5wnRiH2XIUSLLXJDLDDTcpvAg5QXgTIVZl46AU7to/T91KHsdBLHSE4WhRO7kP0jbkAhlxnx64E29cQtwBrMjg==}
@@ -943,9 +972,22 @@ packages:
 
   /@vueuse/metadata/9.1.0:
     resolution: {integrity: sha512-8OEhlog1iaAGTD3LICZ8oBGQdYeMwByvXetOtAOZCJOzyCRSwqwdggTsmVZZ1rkgYIEqgUBk942AsAPwM21s6A==}
+    dev: false
+
+  /@vueuse/metadata/9.1.1:
+    resolution: {integrity: sha512-XZ2KtSW+85LLHB/IdGILPAtbIVHasPsAW7aqz3BRMzJdAQWRiM/FGa1OKBwLbXtUw/AmjKYFlZJo7eOFIBXRog==}
 
   /@vueuse/shared/9.1.0_vue@3.2.37:
     resolution: {integrity: sha512-pB/3njQu4tfJJ78ajELNda0yMG6lKfpToQW7Soe09CprF1k3QuyoNi1tBNvo75wBDJWD+LOnr+c4B5HZ39jY/Q==}
+    dependencies:
+      vue-demi: 0.13.8_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/shared/9.1.1_vue@3.2.37:
+    resolution: {integrity: sha512-c+IfcOYmHiHqoEa3ED1Tbpue5GHmoUmTp8PtO4YbczthtY155Rt6DmWhjxMLXBF1Bcidagxljmp/7xtAzEHXLw==}
     dependencies:
       vue-demi: 0.13.8_vue@3.2.37
     transitivePeerDependencies:
@@ -4488,7 +4530,7 @@ packages:
       - vite
     dev: true
 
-  /unplugin-auto-import/0.11.2_fupg6k7n6y2tx5bfpvz2y2r2l4:
+  /unplugin-auto-import/0.11.2_vjoyv4ke7baqlk6imkte7xrcci:
     resolution: {integrity: sha512-1+VwBfn9dtiYv9SQLKP1AvZolUbK9xTVeAT+iOcEk4EHSFUlmIqBVLEKI76cifSQTLOJ3rZyPrEgptf3SZNLlQ==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4499,7 +4541,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.2
       '@rollup/pluginutils': 4.2.1
-      '@vueuse/core': 9.1.0_vue@3.2.37
+      '@vueuse/core': 9.1.1_vue@3.2.37
       local-pkg: 0.4.2
       magic-string: 0.26.2
       unimport: 0.6.7_vite@3.0.3

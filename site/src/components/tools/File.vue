@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { downloadFile } from "~/utils";
+import { downloadFile } from "@renovamen/utils";
 
 const { t } = useI18n();
 const { data } = useDataStore();

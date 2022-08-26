@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-import { copy, updateStyles, DEFAULT_STYLES } from "~/utils";
+import { copy } from "@renovamen/utils";
+import { updateStyles, DEFAULT_STYLES } from "~/utils";
 import type { ResumeStyles } from "~/types";
 
 const fontLoader = (fonts: string | Array<string>) => {

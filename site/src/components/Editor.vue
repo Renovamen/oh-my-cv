@@ -4,7 +4,8 @@
 
 <script lang="ts" setup>
 import type * as Monaco from "monaco-editor";
-import { isClient, fallToFirstResume } from "~/utils";
+import { isClient } from "@renovamen/utils";
+import { fallToFirstResume } from "~/utils";
 import { setupMonaco } from "~/monaco";
 
 const { data, setData, toggleImportedFlag } = useDataStore();

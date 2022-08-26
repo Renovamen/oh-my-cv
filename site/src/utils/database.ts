@@ -1,7 +1,7 @@
 import * as localForage from "localforage";
+import { fetchFile, downloadFile, copy } from "@renovamen/utils";
 import { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
-import { DEFAULT_STYLES, DEFAULT_NAME } from "./constants";
-import { fetchFile, downloadFile, copy } from ".";
+import { DEFAULT_STYLES, DEFAULT_NAME } from ".";
 
 const OHCV_KEY = "ohcv_data";
 

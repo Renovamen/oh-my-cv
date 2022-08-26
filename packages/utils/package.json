@@ -1,15 +1,15 @@
 {
-  "name": "dynamic-css",
+  "name": "@renovamen/utils",
   "version": "0.1.0",
-  "description": "Dynamically inject global CSS.",
-  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/dynamic-css",
+  "description": "Utility functions for cool Renovamen.",
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/utils",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-cv"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renovamen/oh-cv.git",
-    "directory": "packages/dynamic-css"
+    "directory": "packages/utils"
   },
   "license": "MIT",
   "author": "Renovamen <renovamenzxh@gmail.com>",

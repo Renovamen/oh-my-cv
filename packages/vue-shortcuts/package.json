@@ -1,15 +1,15 @@
 {
-  "name": "dynamic-css",
+  "name": "@renovamen/vue-shortcuts",
   "version": "0.1.0",
-  "description": "Dynamically inject global CSS.",
-  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/dynamic-css",
+  "description": "Use keyboard shortcuts in Vue.",
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/vue-shortcuts",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-cv"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renovamen/oh-cv.git",
-    "directory": "packages/dynamic-css"
+    "directory": "packages/vue-shortcuts"
   },
   "license": "MIT",
   "author": "Renovamen <renovamenzxh@gmail.com>",
@@ -26,6 +26,11 @@
   "scripts": {
     "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
     "build:pkg": "pnpm run build-fast:pkg --dts"
+  },
+  "dependencies": {
+    "@renovamen/utils": "workspace:*",
+    "@vueuse/core": "^9.1.1",
+    "vue": "^3.2.37"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,8 @@
-import { isMac } from "~/utils";
+import { watch } from "vue";
+import { useMagicKeys } from "@vueuse/core";
+import { isMac } from "@renovamen/utils";
 
-export const watchShortcuts = (keys: string, cb: () => void) => {
+export const useShortcuts = (keys: string, cb: () => void) => {
   const newKeys = keys.replace("ctrl", isMac ? "meta" : "ctrl");
 
   const magic = useMagicKeys({
@@ -37,3 +39,5 @@ export const watchShortcuts = (keys: string, cb: () => void) => {
     if (v && current.size === newKeys.split("+").length) cb();
   });
 };
+
+export default useShortcuts;
