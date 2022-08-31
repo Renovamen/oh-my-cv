@@ -47,6 +47,10 @@
   list-style-type: circle;
 }
 
+.preview ol {
+  list-style-type: decimal;
+}
+
 .preview p,
 .preview li,
 .preview dl {
