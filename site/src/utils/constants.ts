@@ -5,7 +5,7 @@ export const CHROME_PRINT_BOTTOM = 10;
 export const DEFAULT_NAME = "New Resume";
 
 export const DEFAULT_STYLES = {
-  marginV: 45,
+  marginV: 50,
   marginH: 45,
   lineHeight: 1.3,
   paragraphSpace: 5,

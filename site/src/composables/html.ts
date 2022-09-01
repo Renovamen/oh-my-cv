@@ -3,6 +3,7 @@ import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
 import LinkAttributes from "markdown-it-link-attributes";
 import MarkdownItKatex from "@renovamen/markdown-it-katex";
+import MarkdownItCite from "@renovamen/markdown-it-cite";
 import frontmatter from "@renovamen/front-matter";
 import type { ResumeFrontMatter } from "~/types";
 
@@ -11,6 +12,7 @@ const markdown = (() => {
 
   md.use(MarkdownItDeflist);
   md.use(MarkdownItKatex);
+  md.use(MarkdownItCite);
 
   md.use(LinkAttributes, {
     matcher: (link: string) => /^https?:\/\//.test(link),

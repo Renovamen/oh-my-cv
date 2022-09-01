@@ -79,6 +79,8 @@
   max-width: 100%;
 }
 
+/* Header */
+
 .preview-header {
   text-align: center;
 }
@@ -96,6 +98,27 @@
 .preview-header-item:not(.no-separator)::after {
   content: " | ";
 }
+
+/* Citations */
+
+.preview ul.cite-list {
+  padding-left: 1.2em;
+}
+
+.preview li.cite-item p {
+  margin-left: 0.5em;
+}
+
+.preview li.cite-item::marker {
+  content: attr(data-caption);
+}
+
+.preview sup.cite-ref {
+  font-size: 100%;
+  top: 0;
+}
+
+/* Print */
 
 @media print {
   .vue-smart-pages {

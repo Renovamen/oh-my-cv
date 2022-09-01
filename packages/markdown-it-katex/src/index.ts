@@ -2,9 +2,10 @@
 
 import Katex, { KatexOptions } from "katex";
 import type MarkdownIt from "markdown-it";
-import type StateBlock from "markdown-it/lib/rules_block/state_block";
 import type StateInline from "markdown-it/lib/rules_inline/state_inline";
-import type Token from "markdown-it/lib/token";
+import type { RenderRule } from "markdown-it/lib/renderer";
+import type { RuleBlock } from "markdown-it/lib/parser_block";
+import type { RuleInline } from "markdown-it/lib/parser_inline";
 import { htmlEscape } from "./utils";
 
 const isValidDelim = (
@@ -38,7 +39,7 @@ const isValidDelim = (
   };
 };
 
-const mathInline = (state: StateInline, silent?: boolean): boolean => {
+const mathInline: RuleInline = (state, silent) => {
   let match, token, res, pos;
 
   if (state.src[state.pos] !== "$") return false;
@@ -109,12 +110,7 @@ const mathInline = (state: StateInline, silent?: boolean): boolean => {
   return true;
 };
 
-const mathBlock = (
-  state: StateBlock,
-  start: number,
-  end: number,
-  silent: boolean
-): boolean => {
+const mathBlock: RuleBlock = (state, start, end, silent) => {
   let firstLine;
   let lastLine;
   let next;
@@ -206,11 +202,11 @@ export const MarkdownItKatex = (
     }
   };
 
-  const inlineRenderer = (tokens: Token[], idx: number): string => {
+  const inlineRenderer: RenderRule = (tokens, idx): string => {
     return katexInline(tokens[idx].content);
   };
 
-  const blockRenderer = (tokens: Token[], idx: number): string => {
+  const blockRenderer: RenderRule = (tokens, idx): string => {
     return katexBlock(tokens[idx].content) + "\n";
   };
 

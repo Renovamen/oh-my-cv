@@ -1,0 +1,42 @@
+{
+  "name": "@renovamen/markdown-it-cite",
+  "version": "0.1.0",
+  "description": "MarkdownIt plugin for cross-reference.",
+  "keywords": [
+    "markdown",
+    "markdown-it-plugin",
+    "markdown-it"
+  ],
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/markdown-it-cite",
+  "bugs": {
+    "url": "https://github.com/Renovamen/oh-cv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renovamen/oh-cv.git",
+    "directory": "packages/markdown-it-cite"
+  },
+  "license": "MIT",
+  "author": "Renovamen <renovamenzxh@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
+    "build:pkg": "pnpm run build-fast:pkg --dts"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^12.2.3",
+    "markdown-it": "^13.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

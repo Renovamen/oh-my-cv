@@ -26,6 +26,7 @@
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@renovamen/front-matter": "workspace:*",
+    "@renovamen/markdown-it-cite": "workspace:*",
     "@renovamen/markdown-it-katex": "workspace:*",
     "@renovamen/utils": "workspace:*",
     "@renovamen/vue-shortcuts": "workspace:*",
