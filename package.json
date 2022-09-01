@@ -10,22 +10,22 @@
     "lint": "eslint --ext .js,.ts,.vue ./",
     "release": "pnpm build:pkg && pnpm build",
     "serve": "pnpm --filter=site serve",
-    "up": "taze minor -r"
+    "taze": "taze minor -r && taze -w -r"
   },
   "prettier": {
     "trailingComma": "none"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.35.1",
-    "@typescript-eslint/parser": "^5.35.1",
-    "eslint": "^8.22.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.4.0",
     "pnpm": "^7.9.5",
     "prettier": "^2.7.1",
     "taze": "^0.7.6",
-    "tsup": "^6.2.2",
+    "tsup": "^6.2.3",
     "typescript": "^4.8.2"
   }
 }

@@ -30,7 +30,7 @@
   "dependencies": {
     "@renovamen/utils": "workspace:*",
     "@vueuse/core": "^9.1.1",
-    "vue": "^3.2.37"
+    "vue": "^3.2.38"
   },
   "publishConfig": {
     "access": "public"
