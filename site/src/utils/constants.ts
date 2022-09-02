@@ -11,8 +11,8 @@ export const DEFAULT_STYLES = {
   paragraphSpace: 5,
   themeColor: "#377bb5",
   fontCN: {
-    name: "思源黑体",
-    fontFamily: "Noto Sans SC"
+    name: "华康宋体",
+    fontFamily: "HKST"
   },
   fontEN: {
     name: "CMU Sans Serif"
@@ -36,10 +36,17 @@ export const EN_FONTS: Font[] = [
   },
   {
     name: "Times Newer Roman"
+  },
+  {
+    name: "Minion Pro"
   }
 ];
 
 export const CN_FONTS: Font[] = [
+  {
+    name: "华康宋体",
+    fontFamily: "HKST"
+  },
   {
     name: "思源黑体",
     fontFamily: "Noto Sans SC"

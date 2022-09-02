@@ -32,28 +32,56 @@
   font-family: "Times Newer Roman";
   font-style: normal;
   font-weight: normal;
-  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-regular.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: normal;
   font-weight: bold;
-  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-bold.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: italic;
   font-weight: normal;
-  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-italic.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/italic.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Times Newer Roman";
   font-style: italic;
   font-weight: bold;
-  src: url("~/assets/fonts/times-newer-roman/times-newer-roman-bolditalic.otf") format("opentype");
+  src: url("~/assets/fonts/times-newer-roman/bolditalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Minion Pro";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/minion-pro/regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Minion Pro";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/minion-pro/bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Minion Pro";
+  font-style: italic;
+  font-weight: normal;
+  src: url("~/assets/fonts/minion-pro/italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Minion Pro";
+  font-style: italic;
+  font-weight: bold;
+  src: url("~/assets/fonts/minion-pro/bolditalic.otf") format("opentype");
 }
 
 /* Chinese */
@@ -62,40 +90,55 @@
   font-family: "Noto Serif SC";
   font-style: normal;
   font-weight: normal;
-  src: url("~/assets/fonts/noto-serif-sc/noto-serif-sc-regular.otf") format("opentype");
+  src: url("~/assets/fonts/noto-serif-sc/regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Noto Serif SC";
   font-style: normal;
   font-weight: bold;
-  src: url("~/assets/fonts/noto-serif-sc/noto-serif-sc-bold.otf") format("opentype");
+  src: url("~/assets/fonts/noto-serif-sc/bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Noto Sans SC";
   font-style: normal;
   font-weight: normal;
-  src: url("~/assets/fonts/noto-sans-sc/noto-sans-sc-regular.otf") format("opentype");
+  src: url("~/assets/fonts/noto-sans-sc/regular.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Noto Sans SC";
   font-style: normal;
   font-weight: bold;
-  src: url("~/assets/fonts/noto-sans-sc/noto-sans-sc-bold.otf") format("opentype");
+  src: url("~/assets/fonts/noto-sans-sc/bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "LXGW WenKai";
   font-style: normal;
   font-weight: normal;
-  src: url("~/assets/fonts/lxgw-wen-kai/lxgw-wen-kai-regular.ttf") format("opentype");
+  src: url("~/assets/fonts/lxgw-wen-kai/regular.ttf") format("opentype");
 }
 
 @font-face {
   font-family: "LXGW WenKai";
   font-style: normal;
   font-weight: bold;
-  src: url("~/assets/fonts/lxgw-wen-kai/lxgw-zhen-kai.ttf") format("opentype");
+  src: url("~/assets/fonts/lxgw-wen-kai/bold.ttf") format("opentype");
+}
+
+
+@font-face {
+  font-family: "HKST";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/hkst/w7.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "HKST";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/hkst/w9.ttf") format("opentype");
 }
