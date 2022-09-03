@@ -1,7 +1,7 @@
 import * as localForage from "localforage";
-import { fetchFile, downloadFile, copy } from "@renovamen/utils";
+import { downloadFile, copy } from "@renovamen/utils";
 import { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
-import { DEFAULT_STYLES, DEFAULT_NAME } from ".";
+import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT } from ".";
 
 const OHCV_KEY = "ohcv_data";
 
@@ -41,16 +41,13 @@ export const newResume = async () => {
   const id = new Date().getTime().toString();
   setData("curResumeId", id);
 
-  // Default styles and name
+  // Default markdown content, content, and styles
   setData("curResumeName", DEFAULT_NAME);
   setResumeStyles(DEFAULT_STYLES);
+  setResumeContent(DEFAULT_MD_CONTENT);
 
-  // Load example markdown content
-  fetchFile("/example.md").then((text: string) => {
-    setResumeContent(text);
-    setToastFlag("new", true);
-    saveResume();
-  });
+  setToastFlag("new", true);
+  saveResume();
 };
 
 export const fallToFirstResume = async () => {

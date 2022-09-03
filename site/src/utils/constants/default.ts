@@ -1,4 +1,25 @@
----
+import type { ResumeStyles } from "~/types";
+
+export const DEFAULT_NAME = "New Resume";
+
+export const DEFAULT_STYLES = {
+  marginV: 50,
+  marginH: 45,
+  lineHeight: 1.3,
+  paragraphSpace: 5,
+  themeColor: "#377bb5",
+  fontCN: {
+    name: "华康宋体",
+    fontFamily: "HKST"
+  },
+  fontEN: {
+    name: "CMU Sans Serif"
+  },
+  fontSize: 15,
+  paper: "A4"
+} as ResumeStyles;
+
+export const DEFAULT_MD_CONTENT = `---
 name: Haha Ha
 header:
   - text: <span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
@@ -26,13 +47,13 @@ Shanghai, China
   ~ **Huangdu Institute of Technology**
 
 09/2016 - 07/2020
-  ~ B.Eng. in Software Engineering 
+  ~ B.Eng. in Software Engineering
 
 
 ## Publications
 
 [~P1]: **Eating is All You Need**
-    
+
     <u>Haha Ha</u>, San Zhang
 
     *Conference on Neural Information Processing Systems (NeurIPS), 2099*
@@ -41,7 +62,7 @@ Shanghai, China
 
     <u>Haha Ha</u>, San Zhang, Si Li, Wu Wang
 
-    *Computer Vision and Pattern Recognition Conference (CVPR), 2077 **(Best Paper Honorable Mention)*** 
+    *Computer Vision and Pattern Recognition Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
 
 
 ## Research Experience
@@ -95,3 +116,4 @@ Shanghai, China
 **Tools and Frameworks:** Git, PyTorch, Keras, scikit-learn, Linux, Vue, React, Django, $\LaTeX$
 
 **Languages:** Chinese (native), English (proficient)
+`;

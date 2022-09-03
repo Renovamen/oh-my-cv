@@ -1,27 +1,8 @@
-import type { Font, ResumeStyles } from "~/types";
+import type { Font } from "~/types";
 
 export const CHROME_PRINT_BOTTOM = 10;
 
-export const DEFAULT_NAME = "New Resume";
-
-export const DEFAULT_STYLES = {
-  marginV: 50,
-  marginH: 45,
-  lineHeight: 1.3,
-  paragraphSpace: 5,
-  themeColor: "#377bb5",
-  fontCN: {
-    name: "华康宋体",
-    fontFamily: "HKST"
-  },
-  fontEN: {
-    name: "CMU Sans Serif"
-  },
-  fontSize: 15,
-  paper: "A4"
-} as ResumeStyles;
-
-export const DEFAULT_THEME_COLORS = [
+export const THEME_COLORS = [
   "#000000",
   "#377bb5",
   "#ca3832",

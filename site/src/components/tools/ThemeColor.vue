@@ -5,7 +5,7 @@
   >
     <ul class="flex justify-between mb-4">
       <li
-        v-for="(color, i) in DEFAULT_THEME_COLORS"
+        v-for="(color, i) in THEME_COLORS"
         :key="`${i}-color`"
         class="w-6 h-6 rounded text-white"
         :style="{ backgroundColor: color }"
@@ -40,7 +40,7 @@
 
 <script lang="ts" setup>
 import { OnClickOutside } from "@vueuse/components";
-import { DEFAULT_THEME_COLORS } from "~/utils";
+import { THEME_COLORS } from "~/utils";
 
 const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
@@ -51,7 +51,7 @@ const pickedColorId = ref(-1);
 const customColor = ref("");
 
 const getColorId = (color: string) =>
-  DEFAULT_THEME_COLORS.findIndex((item) => item === color);
+  THEME_COLORS.findIndex((item) => item === color);
 
 const resetDisplayColor = () => {
   pickedColorId.value = getColorId(styles.themeColor);
@@ -63,7 +63,7 @@ resetDisplayColor();
 const currentThemeColor = computed(() =>
   pickedColorId.value === -1
     ? customColor.value
-    : DEFAULT_THEME_COLORS[pickedColorId.value]
+    : THEME_COLORS[pickedColorId.value]
 );
 
 const pickColor = (i: number) => {
