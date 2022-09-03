@@ -8,6 +8,7 @@
     <Margins />
     <ParagraphSpace />
     <LineHeight />
+    <CorrectCase />
   </div>
 </template>
 

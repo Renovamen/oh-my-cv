@@ -34,6 +34,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/splitpanes": "^2.2.1",
     "@vitejs/plugin-vue": "3.0.3",
+    "correct-case": "workspace:0.1.0",
     "critters": "^0.0.16",
     "dynamic-css": "workspace:0.1.0",
     "markdown-it-deflist": "^2.1.0",

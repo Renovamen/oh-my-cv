@@ -59,4 +59,20 @@ export const watchToast = () => {
       }
     }
   );
+
+  watch(
+    () => toastFlag.correct,
+    () => {
+      if (toastFlag.correct) {
+        if (toastFlag.correct === true)
+          toast.info(t("notification.correct.no"));
+        else
+          toast.success(
+            t("notification.correct.yes", { num: toastFlag.correct })
+          );
+
+        closeToastFlag("correct");
+      }
+    }
+  );
 };

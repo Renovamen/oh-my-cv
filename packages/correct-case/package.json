@@ -1,0 +1,36 @@
+{
+  "name": "correct-case",
+  "version": "0.1.0",
+  "description": "Make the case correct (dictionaries are from `case-police`).",
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/correct-case",
+  "bugs": {
+    "url": "https://github.com/Renovamen/oh-cv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renovamen/oh-cv.git",
+    "directory": "packages/correct-case"
+  },
+  "license": "MIT",
+  "author": "Renovamen <renovamenzxh@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
+    "build:pkg": "pnpm run build-fast:pkg --dts"
+  },
+  "dependencies": {
+    "case-police": "^0.5.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

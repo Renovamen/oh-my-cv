@@ -23,6 +23,10 @@ toolbar:
     import: 导入 Markdown
     export_pdf: 导出为 PDF
     export_md: 导出为 Markdown
+  correct_case:
+    text: 专有名词大小写修正
+    desc: 如 "Github" → "GitHub"，但不会对全为大写字母或小写字母（如 "GITHUB" 或 "github"）的单词进行修正。
+    btn : 修正
   paper: 纸张尺寸
   font_family: 字体
   font_size: 字号
@@ -41,3 +45,6 @@ notification:
   delete: 已删除简历 "{msg}"
   new: 新建成功
   duplicate: 已创建简历 "{old}" 的副本 "{new}"
+  correct:
+    yes: 成功修正 {num} 个单词
+    no : 您的所有拼写都是正确的！

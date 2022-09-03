@@ -80,6 +80,6 @@ watchToast();
 
 // Splitpane sizes
 const size = ~~((270 / width.value) * 100);
-const minSize = computed(() => ~~((200 / width.value) * 100));
+const minSize = computed(() => ~~((215 / width.value) * 100));
 const maxSize = computed(() => ~~((350 / width.value) * 100));
 </script>

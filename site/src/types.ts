@@ -36,6 +36,7 @@ export type ToastFlagData = {
   switch: boolean | string;
   new: boolean;
   duplicate: boolean | string;
+  correct: boolean | number;
 };
 
 export type ResumeHeaderItem = {

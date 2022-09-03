@@ -23,6 +23,10 @@ toolbar:
     import: Import Markdown
     export_pdf: Export PDF
     export_md: Export Markdown
+  correct_case:
+    text: Correct Case
+    desc: Just like "Github" → "GitHub", while the words only including uppercase or lowercase ("GITHUB" or "github") will be left untouched.
+    btn : Correct it!
   paper: Pape Size
   font_family: Font Family
   font_size: Font Size
@@ -41,3 +45,6 @@ notification:
   delete: Resume "{msg}" has been deleted
   new: New resume created
   duplicate: Created resume "{old}"'s duplication "{new}"
+  correct:
+    yes: Corrected {num} words
+    no : All case are correct!

@@ -28,6 +28,7 @@ Highly recommend using Chrome.
 - Automatically breaking pages
 - Neat template
 - Manage multiple resumes
+- Case correction (e.g. `Github` -> `GitHub`)
 - Cross-reference (would be useful for an academic CV)
 - Your data in your hands:
   - Data are saved locally within your browser, see [here](https://localforage.github.io/localForage/) for details

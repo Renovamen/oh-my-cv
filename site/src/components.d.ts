@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AutoComplete: typeof import('./components/base/AutoComplete.vue')['default']
+    CorrectCase: typeof import('./components/tools/CorrectCase.vue')['default']
     Dropdown: typeof import('./components/base/Dropdown.vue')['default']
     Editor: typeof import('./components/Editor.vue')['default']
     File: typeof import('./components/tools/File.vue')['default']
