@@ -37,11 +37,11 @@ export const MarkdownItCite = (md: MarkdownIt) => {
     const start = state.bMarks[startLine] + state.tShift[startLine];
     const max = state.eMarks[startLine];
 
-    // line should be at least 5 chars - "[^x]:"
+    // line should be at least 5 chars - "[~x]:"
     if (start + 4 > max) return false;
 
     if (state.src.charCodeAt(start) !== 0x5b /* [ */) return false;
-    if (state.src.charCodeAt(start + 1) !== 0x5e /* ^ */) return false;
+    if (state.src.charCodeAt(start + 1) !== 0x7e /* ~ */) return false;
 
     let pos, offset;
 
@@ -53,6 +53,7 @@ export const MarkdownItCite = (md: MarkdownIt) => {
     if (pos === start + 2) return false; // no empty cite labels
     if (pos + 1 >= max || state.src.charCodeAt(++pos) !== 0x3a /* : */)
       return false;
+
     if (silent) return true;
 
     pos++;
@@ -114,17 +115,17 @@ export const MarkdownItCite = (md: MarkdownIt) => {
     return true;
   };
 
-  // Process cite references ([^...])
+  // Process cite references ([~...])
   const citeReference: RuleInline = (state, silent) => {
     const max = state.posMax;
     const start = state.pos;
 
-    // should be at least 4 chars - "[^x]"
+    // should be at least 4 chars - "[~x]"
     if (start + 3 > max) return false;
 
     if (!state.env.cites || !state.env.cites.refs) return false;
     if (state.src.charCodeAt(start) !== 0x5b /* [ */) return false;
-    if (state.src.charCodeAt(start + 1) !== 0x5e /* ^ */) return false;
+    if (state.src.charCodeAt(start + 1) !== 0x7e /* ~ */) return false;
 
     let pos;
 

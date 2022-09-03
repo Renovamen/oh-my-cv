@@ -28,7 +28,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "@renovamen/utils": "workspace:*",
+    "@renovamen/utils": "workspace:0.1.0",
     "@vueuse/core": "^9.1.1",
     "vue": "^3.2.38"
   },

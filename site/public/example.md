@@ -31,13 +31,13 @@ Shanghai, China
 
 ## Publications
 
-[^P1]: **Eating is All You Need**
+[~P1]: **Eating is All You Need**
     
     <u>Haha Ha</u>, San Zhang
 
     *Conference on Neural Information Processing Systems (NeurIPS), 2099*
 
-[^P2]: **You Only Cook Once: Unified, Real-Time Mapo Tofu Recipe**
+[~P2]: **You Only Cook Once: Unified, Real-Time Mapo Tofu Recipe**
 
     <u>Haha Ha</u>, San Zhang, Si Li, Wu Wang
 
@@ -50,7 +50,7 @@ Shanghai, China
   ~ **Machine Learning Engineer Intern**, Slow Feet Technology, Beijing
 
 - Devised a new food-agnostic formulation for fine-grained cross-ingredient meal cooking and subsumed the recent popular works into the proposed scheme
-- Proposed a cream of mushroom soup recipe which is competitive when compared with the SOTA recipes with complex steps by only altering the way of cutting mushroom, **published in NeurIPS 2099** (see [^P1])
+- Proposed a cream of mushroom soup recipe which is competitive when compared with the SOTA recipes with complex steps by only altering the way of cutting mushroom, **published in NeurIPS 2099** (see [~P1])
 - Developed a pan for meal cooking which is benefiting the group members' research work
 
 
@@ -58,7 +58,7 @@ Shanghai, China
   ~ **Reseach Intern**, Paddling University, Beijing
 
 - Designed an efficient method for mapo tofu quality estimation via thermometer
-- Proposed a fast stir frying algorithm for tofu cooking problems, which specifies the amount of the hot sauce instead of using terms like "as much as you can", **published in CVPR 2077** (see [^P2])
+- Proposed a fast stir frying algorithm for tofu cooking problems, which specifies the amount of the hot sauce instead of using terms like "as much as you can", **published in CVPR 2077** (see [~P2])
 - Outperformed SOTA methods while cooking much more efficient in experiments on popular tofu
 
 

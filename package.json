@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.ts,.vue ./",
     "release": "pnpm build:pkg && pnpm build",
     "serve": "pnpm --filter=site serve",
-    "taze": "taze minor -r && taze -w -r"
+    "up": "taze major -I"
   },
   "prettier": {
     "trailingComma": "none"
