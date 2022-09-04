@@ -48,6 +48,9 @@ importers:
       '@types/js-yaml': 4.0.5
       '@types/node': 18.7.14
 
+  packages/gfonts-loader:
+    specifiers: {}
+
   packages/markdown-it-cite:
     specifiers:
       '@types/markdown-it': ^12.2.3
@@ -111,6 +114,7 @@ importers:
       correct-case: workspace:0.1.0
       critters: ^0.0.16
       dynamic-css: workspace:0.1.0
+      gfonts-loader: workspace:0.1.0
       katex: ^0.16.2
       localforage: ^1.10.0
       markdown-it-deflist: ^2.1.0
@@ -164,6 +168,7 @@ importers:
       correct-case: link:../packages/correct-case
       critters: 0.0.16
       dynamic-css: link:../packages/dynamic-css
+      gfonts-loader: link:../packages/gfonts-loader
       markdown-it-deflist: 2.1.0
       markdown-it-link-attributes: 4.0.1
       unocss: 0.45.14_vite@3.0.3

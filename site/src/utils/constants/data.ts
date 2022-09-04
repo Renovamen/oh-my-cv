@@ -1,3 +1,4 @@
+import type { Subset } from "gfonts-loader";
 import type { Font } from "~/types";
 
 export const CHROME_PRINT_BOTTOM = 10;
@@ -23,23 +24,36 @@ export const EN_FONTS: Font[] = [
   }
 ];
 
-export const CN_FONTS: Font[] = [
+export const CJK_FONTS: Font[] = [
   {
     name: "华康宋体",
     fontFamily: "HKST"
   },
   {
-    name: "思源黑体",
-    fontFamily: "Noto Sans SC"
-  },
-  {
-    name: "思源宋体",
-    fontFamily: "Noto Serif SC"
-  },
-  {
     name: "霞鹜文楷",
     fontFamily: "LXGW WenKai"
   }
+];
+
+export const CJK_SUBSETS = [
+  "chinese-simplified",
+  "chinese-traditional",
+  "japanese",
+  "korean"
+] as Subset[];
+
+export const CJK_NAME_MAP = {
+  "Noto Sans SC": "思源黑体（简）",
+  "Noto Sans TC": "思源黑体（繁）",
+  "Noto Serif SC": "思源宋体（简）",
+  "Noto Serif TC": "思源宋体（繁）"
+} as Record<string, string>;
+
+export const CJK_FIRST = [
+  "思源黑体（简）",
+  "思源黑体（繁）",
+  "思源宋体（简）",
+  "思源宋体（繁）"
 ];
 
 export const PAPER = {

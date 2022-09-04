@@ -1,5 +1,8 @@
 <template>
-  <ul text="xs pc:sm" bg-c border border-c rounded shadow-c overflow-hidden>
+  <ul
+    text="xs pc:sm"
+    class="bg-c border border-c rounded shadow-c overflow-x-hidden overflow-y-scroll"
+  >
     <li
       v-for="(item, i) in items"
       :key="`locale-${i}-${item}`"
@@ -33,7 +36,7 @@
 
 <script setup lang="ts">
 import { isExternal } from "@renovamen/utils";
-import type { DropdownItem } from "./types";
+import type { DropdownItem } from "~/types";
 
 defineProps<{
   items: Array<DropdownItem>;

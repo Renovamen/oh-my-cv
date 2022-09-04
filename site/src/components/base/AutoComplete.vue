@@ -30,7 +30,7 @@
     </div>
     <Dropdown
       v-show="isFocus && filteredItems.length > 0"
-      class="absolute z-20 w-full"
+      class="absolute z-20 w-full max-h-60"
       :items="filteredItems"
       @select="handleSelect"
     />
@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
 import { OnClickOutside } from "@vueuse/components";
-import type { DropdownItem } from "./types";
+import type { DropdownItem } from "~/types";
 
 const props = defineProps<{
   items: Array<DropdownItem>;
@@ -71,7 +71,11 @@ const handleSelect = (text: string) => {
 
 const filteredItems = computed(() =>
   editTimes.value > 0
-    ? props.items.filter((item) => item.text.includes(searchTerm.value))
+    ? props.items.filter((item) =>
+        item.text
+          .toLocaleLowerCase()
+          .includes(searchTerm.value.toLocaleLowerCase())
+      )
     : props.items
 );
 </script>

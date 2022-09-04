@@ -11,7 +11,7 @@ export type ResumeStyles = {
   lineHeight: number;
   paragraphSpace: number;
   themeColor: string;
-  fontCN: Font;
+  fontCJK: Font;
   fontEN: Font;
   fontSize: number;
   paper: PaperType;
@@ -40,14 +40,14 @@ export type ToastFlagData = {
 };
 
 export type ResumeHeaderItem = {
-  text: string;
-  link?: string;
-  newLine?: boolean;
+  readonly text: string;
+  readonly link?: string;
+  readonly newLine?: boolean;
 };
 
 export type ResumeFrontMatter = {
-  name?: string;
-  header?: Array<ResumeHeaderItem>;
+  readonly name?: string;
+  readonly header?: Array<ResumeHeaderItem>;
 };
 
 export type Font = {
@@ -63,4 +63,13 @@ export type ResumeStorageItem = {
 
 export type ResumeStorage = {
   [id: string]: ResumeStorageItem;
+};
+
+export type DropdownItem = {
+  readonly text: string;
+  readonly note?: string;
+  readonly icon?: string;
+  readonly link?: string;
+  readonly function?: ({ text, i }: { text: string; i: number }) => void;
+  readonly border?: boolean;
 };

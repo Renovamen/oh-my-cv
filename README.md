@@ -23,6 +23,7 @@ Highly recommend using Chrome.
 - Write your resume in Markdown and preview it in real-time online, it's smooth!
 - Export to A4 and US Letter size PDFs
 - Customize: page margins, theme colors, line heights, fonts, etc.
+- Pick any fonts from [Google Fonts](https://fonts.google.com/)
 - Add icons easily via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 - Tex support ([KaTeX](https://github.com/KaTeX/KaTeX))
 - Automatically breaking pages
@@ -47,7 +48,7 @@ Highly recommend using Chrome.
   - [x] Markdown
   - [ ] HTML
 
-- [ ] Pick any fonts from [Google Fonts](https://fonts.google.com/)
+- [x] Pick any fonts from [Google Fonts](https://fonts.google.com/)
 
 - [ ] Custom CSS
 
@@ -68,6 +69,12 @@ Build some [packages](packages):
 
 ```bash
 pnpm build:pkg
+```
+
+To enable picking fonts from [Google Fonts](https://fonts.google.com/), you will need to generate a [Google Fonts Developer API Key](https://developers.google.com/fonts/docs/developer_api#APIKey). Then, create a `.env` file in [`site`](site/) folder and put:
+
+```
+VITE_GOOGLE_FONTS_KEY="YOUR_API_KEY"
 ```
 
 Start developing / building the site:

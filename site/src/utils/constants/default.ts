@@ -8,7 +8,7 @@ export const DEFAULT_STYLES = {
   lineHeight: 1.3,
   paragraphSpace: 5,
   themeColor: "#377bb5",
-  fontCN: {
+  fontCJK: {
     name: "华康宋体",
     fontFamily: "HKST"
   },

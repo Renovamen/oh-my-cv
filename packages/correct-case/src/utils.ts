@@ -16,19 +16,10 @@ const dict: Record<string, string> = {
 
 const IGNORE_REGEX = /@correct-case-ignore\s+([^\s]+)/g;
 
-const UTF8_RANGE = "[\u0080-\uFFFF]";
-
 const buildRegex = (dictionary: Record<string, string>): RegExp => {
   const keys = Object.keys(dictionary);
   const regex = new RegExp(`\\b(${keys.join("|")})\\b`, "gi");
   return regex;
-};
-
-const containsUTF8 = (code: string, key: string, index: number) => {
-  const utf8Regex = new RegExp(`${UTF8_RANGE}`);
-  const head = code.charAt(index - 1);
-  const tail = code.charAt(index + key.length);
-  return utf8Regex.test(head) || utf8Regex.test(tail);
 };
 
 type Result = {
@@ -55,7 +46,7 @@ export const replace = async (
   const regex = buildRegex(dict);
   const changedWords = [] as Result[];
 
-  const newText = text.replace(regex, (_, key: string, index: number) => {
+  const newText = text.replace(regex, (_, key: string) => {
     if (!key.match(/[A-Z]/) || !key.match(/[a-z]/)) return _;
 
     const lower = key.toLowerCase();

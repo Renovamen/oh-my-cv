@@ -30,7 +30,7 @@ toolbar:
   paper: Pape Size
   font_family: Font Family
   font_size: Font Size
-  cn: Chinese
+  cn: CJK
   en: English
   theme_color: Theme Color
   paragraph: Paragraph Spacing

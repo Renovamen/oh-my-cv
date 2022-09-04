@@ -32,6 +32,8 @@ jobs:
 
       - name: Build site
         run: pnpm release
+        env:
+          VITE_GOOGLE_FONTS_KEY: ${{ secrets.GOOGLE_FONTS_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

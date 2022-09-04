@@ -25,8 +25,8 @@ const paragraphSpaceCss = (styles: ResumeStyles) => {
 
 const fontFamilyCss = (styles: ResumeStyles) => {
   const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
-  const fontCN = styles.fontCN.fontFamily || styles.fontCN.name;
-  return `.preview { font-family: ${fontEN}, ${fontCN} }`;
+  const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name;
+  return `.preview { font-family: ${fontEN}, ${fontCJK} }`;
 };
 
 const fontSizeCss = (styles: ResumeStyles) => {

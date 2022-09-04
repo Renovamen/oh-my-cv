@@ -1,0 +1,37 @@
+{
+  "name": "gfonts-loader",
+  "version": "0.1.0",
+  "description": "Extract YAML front matter from a string",
+  "keywords": [
+    "google fonts",
+    "fonts"
+  ],
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/gfonts-loader",
+  "bugs": {
+    "url": "https://github.com/Renovamen/oh-cv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renovamen/oh-cv.git",
+    "directory": "packages/gfonts-loader"
+  },
+  "license": "MIT",
+  "author": "Renovamen <renovamenzxh@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
+    "build:pkg": "pnpm run build-fast:pkg --dts"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

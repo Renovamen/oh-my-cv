@@ -4,3 +4,5 @@ node_modules/
 *.log
 .DS_Store
 *.zip
+.env
+.env.local

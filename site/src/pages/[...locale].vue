@@ -29,7 +29,7 @@
           :before-break-page="onFontLoaded"
           :after-break-page="updatePreviewScale"
           :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize]"
-          :watch-delay="[styles.fontCN, styles.fontEN]"
+          :watch-delay="[styles.fontCJK, styles.fontEN]"
         />
       </div>
     </pane>
