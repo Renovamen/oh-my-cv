@@ -37,17 +37,17 @@ header:
 
 ## Education
 
-Boston, MA
-  ~ **University of Charles River**
+**University of Charles River**
+  ~ Boston, MA
 
-09/2021 - 01/2023
-  ~ M.S. in Computer Science
+M.S. in Computer Science
+  ~ 09/2021 - 01/2023
 
-Shanghai, China
-  ~ **Huangdu Institute of Technology**
+**Huangdu Institute of Technology**
+  ~ Shanghai, China
 
-09/2016 - 07/2020
-  ~ B.Eng. in Software Engineering
+B.Eng. in Software Engineering
+  ~ 09/2016 - 07/2020
 
 
 ## Publications
@@ -65,26 +65,29 @@ Shanghai, China
     *Computer Vision and Pattern Recognition Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
 
 
-## Research Experience
+## Experience
 
-07/2021 - Present
-  ~ **Machine Learning Engineer Intern**, Slow Feet Technology, Beijing
+**Machine Learning Engineer Intern**
+  ~ Slow Feet Technology
+  ~ 07/2021 - Present
 
 - Devised a new food-agnostic formulation for fine-grained cross-ingredient meal cooking and subsumed the recent popular works into the proposed scheme
-- Proposed a cream of mushroom soup recipe which is competitive when compared with the SOTA recipes with complex steps by only altering the way of cutting mushroom, **published in NeurIPS 2099** (see [~P1])
+- Proposed a cream of mushroom soup recipe which is competitive when compared with the SOTA recipes with complex steps by only altering the way of cutting mushroom, published in NeurIPS 2099 (see [~P1])
 - Developed a pan for meal cooking which is benefiting the group members' research work
 
 
-08/2020 - Present
-  ~ **Reseach Intern**, Paddling University, Beijing
+**Reseach Intern**
+  ~ Paddling University
+  ~ 08/2020 - Present
 
 - Designed an efficient method for mapo tofu quality estimation via thermometer
-- Proposed a fast stir frying algorithm for tofu cooking problems, which specifies the amount of the hot sauce instead of using terms like "as much as you can", **published in CVPR 2077** (see [~P2])
+- Proposed a fast stir frying algorithm for tofu cooking problems, which specifies the amount of the hot sauce instead of using terms like "as much as you can", published in CVPR 2077 (see [~P2])
 - Outperformed SOTA methods while cooking much more efficient in experiments on popular tofu
 
 
-03/2020 - 06/2020
-  ~ **Research Assistant**, Huangdu Institute of Technology, Shanghai
+**Research Assistant**
+  ~ Huangdu Institute of Technology
+  ~ 03/2020 - 06/2020
 
 - Proposed a novel framework consisting of a spoon and a pair of chopsticks for eating mapo toufu
 - Designed a tofu filtering strategy inspired by beans grinding method for building a dataset for this new task
@@ -92,8 +95,9 @@ Shanghai, China
 - Outperformed baselines and existed methods substantially in terms of diversity, novelty and coherence
 
 
-07/2018 - 08/2018
-  ~ **Reseach Intern**, Paddling University, Beijing
+**Reseach Intern**
+  ~ Paddling University
+  ~ 07/2018 - 08/2018
 
 - Designed two sandwiches consisting of breads and meat of two traditional bacon cheese burgers to make use of unused ingredients
 - Utilized the structure duality to boost the cooking speed of two dual tasks based on shared ingredients
@@ -102,18 +106,18 @@ Shanghai, China
 
 ## Awards and Honors
 
-2018
-  ~ **Gold**, International Collegiate Catching Fish Contest (ICCFC)
+**Gold**, International Collegiate Catching Fish Contest (ICCFC)
+  ~ 2018
 
-2017, 2018
-  ~ **First Prize**, China National Scholarship for Outstanding Dragons
+**First Prize**, China National Scholarship for Outstanding Dragons
+  ~ 2017, 2018
 
 
 ## Skills
 
 **Programming Languages:** <span class="iconify" data-icon="vscode-icons:file-type-python"></span> Python, <span class="iconify" data-icon="vscode-icons:file-type-js-official"></span> JavaScript / <span class="iconify" data-icon="vscode-icons:file-type-typescript-official"></span> TypeScript, <span class="iconify" data-icon="vscode-icons:file-type-html"></span> HTML / <span class="iconify" data-icon="vscode-icons:file-type-css"></span> CSS, <span class="iconify" data-icon="logos:java" data-inline="false"></span> Java
 
-**Tools and Frameworks:** Git, PyTorch, Keras, scikit-learn, Linux, Vue, React, Django, $\LaTeX$
+**Tools and Frameworks:** Git, PyTorch, Keras, scikit-learn, Linux, Vue, React, Django, $LaTeX$
 
 **Languages:** Chinese (native), English (proficient)
 `;

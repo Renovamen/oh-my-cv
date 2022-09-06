@@ -32,12 +32,7 @@ const resolveDeflist = (html: string) => {
   if (dlList === null) return html;
 
   for (const dl of dlList) {
-    const dtReg = /<dt>([\s\S]*?)<\/dt>/g;
-    const dtList = dl.match(dtReg);
-
-    if (!dtList || dtList?.length === 1) continue;
-
-    const newDl = dl.replace(/<\/dd>/g, "</dd>\n</dl>\n<dl>");
+    const newDl = dl.replace(/<\/dd>\n<dt>/g, "</dd>\n</dl>\n<dl>\n<dt>")
     html = html.replace(dl, newDl);
   }
 

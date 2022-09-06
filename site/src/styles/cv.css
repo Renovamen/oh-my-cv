@@ -1,3 +1,5 @@
+/* Dark mode */
+
 .vue-smart-pages {
   background-color: white;
   color: black;
@@ -8,6 +10,8 @@
   color: #e5e7eb;
 }
 
+/* Basic */
+
 .preview {
   text-align: justify;
   -moz-hyphens: auto;
@@ -15,6 +19,14 @@
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+
+.preview p,
+.preview li,
+.preview dl {
+  margin: 0;
+}
+
+/* Headings */
 
 .preview h1,
 .preview h2,
@@ -37,6 +49,8 @@
   border-bottom-width: 1px;
 }
 
+/* Lists */
+
 .preview ul,
 .preview ol {
   padding-left: 1.5em;
@@ -51,25 +65,24 @@
   list-style-type: decimal;
 }
 
-.preview p,
-.preview li,
-.preview dl {
-  margin: 0;
-}
+/* Definition Lists */
 
 .preview dl {
   display: flex;
-  flex-direction: row-reverse;
 }
 
-.preview dl dd {
+.preview dl dt,
+.preview dl dd:not(:last-child) {
   flex: 1;
-  margin-inline-start: 0;
 }
+
+/* Tex */
 
 .preview :not(span.katex-display) > span.katex {
   font-size: 1em !important;
 }
+
+/* SVG & Images */
 
 .preview svg.iconify {
   vertical-align: -0.2em;
