@@ -45,12 +45,10 @@
     </pane>
   </splitpanes>
 
-  <div
+  <Toolbar
     v-if="isToolbarMobile && ui.openToolbar"
-    class="toolbar-mobile fixed z-10 right-0 top-12 h-full w-60 border-l border-c"
-  >
-    <Toolbar class="overflow-y-scroll h-full pb-10" />
-  </div>
+    class="toolbar-mobile fixed z-10 right-0 top-12 w-68 max-w-full pb-10 border-l border-c"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -79,7 +77,7 @@ watchLocalePath(props);
 watchToast();
 
 // Splitpane sizes
-const size = ~~((270 / width.value) * 100);
-const minSize = computed(() => ~~((215 / width.value) * 100));
+const size = ~~((300 / width.value) * 100);
+const minSize = computed(() => ~~((250 / width.value) * 100));
 const maxSize = computed(() => ~~((350 / width.value) * 100));
 </script>

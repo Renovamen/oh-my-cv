@@ -14,8 +14,7 @@
   @apply h-full;
 }
 
-.preview-pane,
-.toolbar-pane {
+.preview-pane {
   @apply !overflow-y-scroll;
 }
 
@@ -24,7 +23,7 @@
 }
 
 .preview-pane::-webkit-scrollbar,
-.toolbar-pane::-webkit-scrollbar {
+#toolbar::-webkit-scrollbar {
   @apply hidden;
 }
 

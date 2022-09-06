@@ -1,6 +1,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 import Pages from "vite-plugin-pages";
 import generateSitemap from "vite-ssg-sitemap";
 import Layouts from "vite-plugin-vue-layouts";
@@ -20,6 +21,8 @@ export default defineConfig({
     Vue({
       reactivityTransform: true
     }),
+
+    vueJsx(),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),

@@ -3,6 +3,9 @@ module.exports = {
   parserOptions: {
     parser: "@typescript-eslint/parser", // Specifies the ESLint parser
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+    ecmaFeatures: {
+      jsx: true
+    },
     sourceType: "module" // Allows for the use of imports
   },
   extends: [
