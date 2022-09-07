@@ -16,13 +16,13 @@
     "trailingComma": "none"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.4.0",
-    "pnpm": "^7.9.5",
+    "pnpm": "^7.11.0",
     "prettier": "^2.7.1",
     "taze": "^0.7.6",
     "tsup": "^6.2.3",

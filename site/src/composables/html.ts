@@ -4,6 +4,7 @@ import MarkdownItDeflist from "markdown-it-deflist";
 import LinkAttributes from "markdown-it-link-attributes";
 import MarkdownItKatex from "@renovamen/markdown-it-katex";
 import MarkdownItCite from "@renovamen/markdown-it-cite";
+import MarkdownItLineBreak from "markdown-it-line-break";
 import frontmatter from "@renovamen/front-matter";
 import type { ResumeFrontMatter } from "~/types";
 
@@ -13,6 +14,7 @@ const markdown = (() => {
   md.use(MarkdownItDeflist);
   md.use(MarkdownItKatex);
   md.use(MarkdownItCite);
+  md.use(MarkdownItLineBreak);
 
   md.use(LinkAttributes, {
     matcher: (link: string) => /^https?:\/\//.test(link),
@@ -32,7 +34,7 @@ const resolveDeflist = (html: string) => {
   if (dlList === null) return html;
 
   for (const dl of dlList) {
-    const newDl = dl.replace(/<\/dd>\n<dt>/g, "</dd>\n</dl>\n<dl>\n<dt>")
+    const newDl = dl.replace(/<\/dd>\n<dt>/g, "</dd>\n</dl>\n<dl>\n<dt>");
     html = html.replace(dl, newDl);
   }
 

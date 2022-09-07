@@ -1,20 +1,20 @@
 {
-  "name": "@renovamen/front-matter",
+  "name": "markdown-it-line-break",
   "version": "0.1.0",
-  "description": "Extract YAML front matter from a string",
+  "description": "Add line break to Markdown just like in LaTeX.",
   "keywords": [
-    "yaml",
-    "front matter",
-    "meta data"
+    "markdown",
+    "markdown-it-plugin",
+    "markdown-it"
   ],
-  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/front-matter",
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/markdown-it-line-break",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-cv"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renovamen/oh-cv.git",
-    "directory": "packages/front-matter"
+    "directory": "packages/markdown-it-line-break"
   },
   "license": "MIT",
   "author": "Renovamen <renovamenzxh@gmail.com>",
@@ -32,12 +32,9 @@
     "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
-  "dependencies": {
-    "js-yaml": "^4.1.0"
-  },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.5",
-    "@types/node": "^18.7.15"
+    "@types/markdown-it": "^12.2.3",
+    "markdown-it": "^13.0.1"
   },
   "publishConfig": {
     "access": "public"

@@ -26,11 +26,12 @@ Highly recommend using Chrome.
 - Pick any fonts from [Google Fonts](https://fonts.google.com/)
 - Add icons easily via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 - Tex support ([KaTeX](https://github.com/KaTeX/KaTeX))
+- Cross-reference (would be useful for an academic CV)
+- Case correction (e.g. `Github` -> `GitHub`)
+- Add line breaks just like in LaTeX: `\\[10px]`
 - Automatically breaking pages
 - Neat template
 - Manage multiple resumes
-- Case correction (e.g. `Github` -> `GitHub`)
-- Cross-reference (would be useful for an academic CV)
 - Your data in your hands:
   - Data are saved locally within your browser, see [here](https://localforage.github.io/localForage/) for details
   - Open-source static website hosted on [Github Pages](https://pages.github.com/), which doesn't (have the ability to) collect your data
