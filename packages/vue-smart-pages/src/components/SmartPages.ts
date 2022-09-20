@@ -1,6 +1,6 @@
 import { defineComponent, h, onMounted, watch } from "vue";
 import type { VNode } from "vue";
-import { injectCSS } from "dynamic-css";
+import { injectCSS } from "@renovamen/dynamic-css";
 import { breakPage } from "../utils";
 
 export default defineComponent({

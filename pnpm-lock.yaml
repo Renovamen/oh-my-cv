@@ -100,15 +100,16 @@ importers:
 
   packages/vue-smart-pages:
     specifiers:
-      dynamic-css: workspace:0.1.0
+      '@renovamen/dynamic-css': workspace:0.1.0
       vue: ^3.2.39
     dependencies:
-      dynamic-css: link:../dynamic-css
+      '@renovamen/dynamic-css': link:../dynamic-css
       vue: 3.2.39
 
   site:
     specifiers:
       '@intlify/vite-plugin-vue-i18n': ^6.0.1
+      '@renovamen/dynamic-css': workspace:0.1.0
       '@renovamen/front-matter': workspace:0.1.0
       '@renovamen/markdown-it-katex': workspace:0.1.0
       '@renovamen/utils': workspace:0.1.0
@@ -123,7 +124,6 @@ importers:
       '@vueuse/head': ^0.7.12
       correct-case: workspace:0.1.0
       critters: ^0.0.16
-      dynamic-css: workspace:0.1.0
       gfonts-loader: workspace:0.1.0
       katex: ^0.16.2
       localforage: ^1.10.0
@@ -168,6 +168,7 @@ importers:
       vue-toastification: 2.0.0-rc.5_vue@3.2.39
     devDependencies:
       '@intlify/vite-plugin-vue-i18n': 6.0.1_vite@3.0.3+vue-i18n@9.2.2
+      '@renovamen/dynamic-css': link:../packages/dynamic-css
       '@renovamen/front-matter': link:../packages/front-matter
       '@renovamen/markdown-it-katex': link:../packages/markdown-it-katex
       '@renovamen/utils': link:../packages/utils
@@ -179,7 +180,6 @@ importers:
       '@vitejs/plugin-vue-jsx': 2.0.1_vite@3.0.3+vue@3.2.39
       correct-case: link:../packages/correct-case
       critters: 0.0.16
-      dynamic-css: link:../packages/dynamic-css
       gfonts-loader: link:../packages/gfonts-loader
       markdown-it-cross-ref: link:../packages/markdown-it-cross-ref
       markdown-it-deflist: 2.1.0

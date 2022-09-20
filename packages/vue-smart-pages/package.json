@@ -28,7 +28,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "dynamic-css": "workspace:0.1.0",
+    "@renovamen/dynamic-css": "workspace:0.1.0",
     "vue": "^3.2.39"
   },
   "publishConfig": {

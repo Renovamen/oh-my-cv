@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-css",
+  "name": "@renovamen/dynamic-css",
   "version": "0.1.0",
   "description": "Dynamically inject global CSS.",
   "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/dynamic-css",

@@ -36,7 +36,7 @@
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "correct-case": "workspace:0.1.0",
     "critters": "^0.0.16",
-    "dynamic-css": "workspace:0.1.0",
+    "@renovamen/dynamic-css": "workspace:0.1.0",
     "gfonts-loader": "workspace:0.1.0",
     "markdown-it-cross-ref": "workspace:0.1.0",
     "markdown-it-deflist": "^2.1.0",
