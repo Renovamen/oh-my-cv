@@ -51,7 +51,7 @@ importers:
   packages/gfonts-loader:
     specifiers: {}
 
-  packages/markdown-it-cite:
+  packages/markdown-it-cross-ref:
     specifiers:
       '@types/markdown-it': ^12.2.3
       markdown-it: ^13.0.1
@@ -108,7 +108,6 @@ importers:
     specifiers:
       '@intlify/vite-plugin-vue-i18n': ^6.0.1
       '@renovamen/front-matter': workspace:0.1.0
-      '@renovamen/markdown-it-cite': workspace:0.1.0
       '@renovamen/markdown-it-katex': workspace:0.1.0
       '@renovamen/utils': workspace:0.1.0
       '@renovamen/vue-shortcuts': workspace:0.1.0
@@ -126,6 +125,7 @@ importers:
       gfonts-loader: workspace:0.1.0
       katex: ^0.16.2
       localforage: ^1.10.0
+      markdown-it-cross-ref: workspace:0.1.0
       markdown-it-deflist: ^2.1.0
       markdown-it-line-break: workspace:0.1.0
       markdown-it-link-attributes: ^4.0.1
@@ -167,7 +167,6 @@ importers:
     devDependencies:
       '@intlify/vite-plugin-vue-i18n': 6.0.1_vite@3.0.3+vue-i18n@9.2.2
       '@renovamen/front-matter': link:../packages/front-matter
-      '@renovamen/markdown-it-cite': link:../packages/markdown-it-cite
       '@renovamen/markdown-it-katex': link:../packages/markdown-it-katex
       '@renovamen/utils': link:../packages/utils
       '@renovamen/vue-shortcuts': link:../packages/vue-shortcuts
@@ -180,6 +179,7 @@ importers:
       critters: 0.0.16
       dynamic-css: link:../packages/dynamic-css
       gfonts-loader: link:../packages/gfonts-loader
+      markdown-it-cross-ref: link:../packages/markdown-it-cross-ref
       markdown-it-deflist: 2.1.0
       markdown-it-line-break: link:../packages/markdown-it-line-break
       markdown-it-link-attributes: 4.0.1

@@ -3,7 +3,7 @@ import MarkdownIt from "markdown-it";
 import MarkdownItDeflist from "markdown-it-deflist";
 import LinkAttributes from "markdown-it-link-attributes";
 import MarkdownItKatex from "@renovamen/markdown-it-katex";
-import MarkdownItCite from "@renovamen/markdown-it-cite";
+import MarkdownItCite from "markdown-it-cross-ref";
 import MarkdownItLineBreak from "markdown-it-line-break";
 import frontmatter from "@renovamen/front-matter";
 import type { ResumeFrontMatter } from "~/types";

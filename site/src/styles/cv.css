@@ -110,19 +110,19 @@
 
 /* Citations */
 
-.preview ul.cite-list {
+.preview ul.crossref-list {
   padding-left: 1.2em;
 }
 
-.preview li.cite-item p {
+.preview li.crossref-item p {
   margin-left: 0.5em;
 }
 
-.preview li.cite-item::marker {
+.preview li.crossref-item::marker {
   content: attr(data-caption);
 }
 
-.preview sup.cite-ref {
+.preview sup.crossref-ref {
   font-size: 100%;
   top: 0;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@renovamen/markdown-it-cite",
+  "name": "markdown-it-cross-ref",
   "version": "0.1.0",
   "description": "MarkdownIt plugin for cross-reference.",
   "keywords": [
@@ -7,14 +7,14 @@
     "markdown-it-plugin",
     "markdown-it"
   ],
-  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/markdown-it-cite",
+  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/markdown-it-cross-ref",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-cv"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renovamen/oh-cv.git",
-    "directory": "packages/markdown-it-cite"
+    "directory": "packages/markdown-it-cross-ref"
   },
   "license": "MIT",
   "author": "Renovamen <renovamenzxh@gmail.com>",

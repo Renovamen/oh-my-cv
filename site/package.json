@@ -26,7 +26,6 @@
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@renovamen/front-matter": "workspace:0.1.0",
-    "@renovamen/markdown-it-cite": "workspace:0.1.0",
     "@renovamen/markdown-it-katex": "workspace:0.1.0",
     "@renovamen/utils": "workspace:0.1.0",
     "@renovamen/vue-shortcuts": "workspace:0.1.0",
@@ -39,6 +38,7 @@
     "critters": "^0.0.16",
     "dynamic-css": "workspace:0.1.0",
     "gfonts-loader": "workspace:0.1.0",
+    "markdown-it-cross-ref": "workspace:0.1.0",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-line-break": "workspace:0.1.0",
     "markdown-it-link-attributes": "^4.0.1",
