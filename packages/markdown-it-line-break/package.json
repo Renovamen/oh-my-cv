@@ -1,7 +1,7 @@
 {
   "name": "markdown-it-line-break",
   "version": "0.1.0",
-  "description": "Add line break to Markdown just like in LaTeX.",
+  "description": "Add line breaks to Markdown just like in LaTeX.",
   "keywords": [
     "markdown",
     "markdown-it-plugin",

@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "dynamic-css": "workspace:0.1.0",
-    "vue": "^3.2.38"
+    "vue": "^3.2.39"
   },
   "publishConfig": {
     "access": "public"
