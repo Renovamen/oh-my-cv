@@ -72,7 +72,10 @@ const tools = (
 );
 
 const navbar = (
-  <div class="flex-center flex-col flex-none space-y-1 w-9 pc:w-12 border-l border-c">
+  <div
+    class="flex-center flex-col flex-none space-y-1 w-9 pc:w-10"
+    border="l c dashed"
+  >
     {sections.map((item) => (
       <button
         class="w-7 h-7 pc:(w-8 h-8) flex-center rounded-full hover:bg-hover-c"

@@ -1,7 +1,7 @@
 {
   "name": "oh-cv",
   "private": true,
-  "packageManager": "pnpm@7.9.5",
+  "packageManager": "pnpm@7.12.1",
   "scripts": {
     "build": "pnpm --filter=site build",
     "build:pkg": "pnpm -r --stream build:pkg",
@@ -9,6 +9,9 @@
     "dev": "pnpm --filter=site dev",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "release": "pnpm build:pkg && pnpm build",
+    "release:pkg": "pnpm release:pkg:check && pnpm release:pkg:version && pnpm -r publish",
+    "release:pkg:check": "pnpm lint && pnpm build:pkg",
+    "release:pkg:version": "bumpp package.json packages/*/package.json --commit \"build: publish v%s\" --all --tag --push",
     "serve": "pnpm --filter=site serve",
     "up": "taze major -I"
   },
@@ -18,6 +21,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "bumpp": "^8.2.1",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -27,5 +31,6 @@
     "taze": "^0.7.6",
     "tsup": "^6.2.3",
     "typescript": "^4.8.3"
-  }
+  },
+  "version": "0.1.0"
 }
