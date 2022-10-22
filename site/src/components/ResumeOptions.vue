@@ -19,13 +19,15 @@ import {
   newResume,
   saveResume,
   duplicateResume,
-  saveResumesToLocal
+  saveResumesToLocal,
+  importResumesFromLocal
 } from "~/utils";
+import type { DropdownItem } from "~/types";
 
 const { t } = useI18n();
 const { data } = useDataStore();
 
-const items = computed(() => [
+const items = computed<DropdownItem[]>(() => [
   {
     text: t("resume_opt.open"),
     icon: "material-symbols:folder-open-outline-rounded",
@@ -48,7 +50,12 @@ const items = computed(() => [
     text: t("resume_opt.saveas"),
     icon: "ic:baseline-save-as",
     function: saveResumesToLocal,
-    note: `Shift+${isMac ? "Cmd" : "Ctrl"}+S`,
+    note: `Shift+${isMac ? "Cmd" : "Ctrl"}+S`
+  },
+  {
+    text: t("resume_opt.import"),
+    icon: "ic:round-upload-file",
+    function: importResumesFromLocal,
     border: true
   },
   {

@@ -8,6 +8,7 @@ resume_opt:
   new: 新建
   save: 保存
   saveas: 另存为...
+  import: 从...导入
   duplicate: 创建副本
   rename: 重命名
   delete: 删除
@@ -48,3 +49,6 @@ notification:
   correct:
     yes: 成功修正 {num} 个单词
     no : 您的所有拼写都是正确的！
+  import:
+    yes: 已成功导入数据！
+    no : 数据格式不正确

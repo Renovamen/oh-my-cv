@@ -8,6 +8,7 @@ resume_opt:
   new: New
   save: Save
   saveas: Save as...
+  import: Import from
   rename: Rename
   duplicate: Duplicate
   delete: Delete
@@ -48,3 +49,6 @@ notification:
   correct:
     yes: Corrected {num} words
     no : All case are correct!
+  import:
+    yes: Data has been successfully imported!
+    no : Data format is invalid.

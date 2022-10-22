@@ -75,4 +75,18 @@ export const watchToast = () => {
       }
     }
   );
+
+  watch(
+    () => toastFlag.import,
+    () => {
+      if (toastFlag.import) {
+        if (toastFlag.import === "yes")
+          toast.success(t("notification.import.yes"));
+        else if (toastFlag.import === "no")
+          toast.error(t("notification.import.no"));
+
+        closeToastFlag("import");
+      }
+    }
+  );
 };

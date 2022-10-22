@@ -18,7 +18,8 @@ export default defineConfig({
     ["bg-c", "bg-white dark:bg-gray-700"],
     ["bg-hover-c", "bg-gray-100 dark:bg-gray-600"],
     ["border-c", "border-gray-300 dark:border-gray-500"],
-    ["border-dark-c", "border-black dark:border-gray-200"],
+    ["border-dark-c", "border-gray-500 dark:border-gray-400"],
+    ["border-darker-c", "border-black dark:border-gray-200"],
     ["shadow-c", "shadow dark:shadow-gray-600"],
     ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-hover-c"],
     [

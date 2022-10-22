@@ -31,13 +31,15 @@
     </div>
 
     <div flex-1 hstack px-4 bg-hover-c>
-      <input
-        v-if="clickedButton === 0"
-        class="text-xs"
-        accept=".md"
-        type="file"
-        @change="uploadFileFromLocal"
-      />
+      <div v-if="clickedButton === 0" class="flex text-xs hstack space-x-1.5">
+        <button
+          class="px-1.5 py-0.5 rounded-[3px] border border-dark-c hover:(bg-gray-200 dark:bg-gray-700)"
+          @click="uploadFileFromLocal"
+        >
+          Choose File
+        </button>
+        <span>No file choosen</span>
+      </div>
 
       <div v-if="clickedButton === 1" class="flex w-full">
         <input
@@ -78,10 +80,10 @@ const uploadFileFromURL = () => {
   });
 };
 
-const uploadFileFromLocal = (e: Event) => {
-  uploadFile(e, (content: string) => {
+const uploadFileFromLocal = () => {
+  uploadFile((content: string) => {
     setResumeContent(content);
     emit("closeImport");
-  });
+  }, ".md");
 };
 </script>

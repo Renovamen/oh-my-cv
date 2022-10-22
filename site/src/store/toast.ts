@@ -8,7 +8,8 @@ export const useToastStore = defineStore("toast", () => {
     switch: false,
     new: false,
     duplicate: false,
-    correct: false
+    correct: false,
+    import: false
   });
 
   const setToastFlag = <T extends keyof ToastFlagData>(

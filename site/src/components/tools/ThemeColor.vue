@@ -19,7 +19,7 @@
 
     <OnClickOutside
       class="relative flex hstack h-9 space-x-2 px-2 py-1 rounded border uppercase"
-      :class="[isFocus && 'border-dark-c', !isFocus && 'border-c']"
+      :class="[isFocus && 'border-darker-c', !isFocus && 'border-c']"
       @click="isFocus = true"
       @trigger="isFocus = false"
     >

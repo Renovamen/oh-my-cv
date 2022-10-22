@@ -1,5 +1,5 @@
 import * as localForage from "localforage";
-import { downloadFile, copy } from "@renovamen/utils";
+import { downloadFile, uploadFile, copy } from "@renovamen/utils";
 import { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT } from ".";
 
@@ -86,6 +86,62 @@ export const saveResumesToLocal = async () => {
 
   const storage = (await getStorage()) || {};
   downloadFile("ohcv_data.json", JSON.stringify(storage));
+};
+
+export const importResumesFromLocal = async () => {
+  const { setToastFlag } = useToastStore();
+
+  const check = (data: ResumeStorage) => {
+    for (const resume of Object.values(data)) {
+      if (typeof resume.name !== "string") return false;
+      if (typeof resume.content !== "string") return false;
+      if (typeof resume.styles !== "object") return false;
+
+      const styles = resume.styles;
+
+      if (typeof styles.fontSize !== "number") return false;
+      if (typeof styles.lineHeight !== "number") return false;
+      if (typeof styles.marginH !== "number") return false;
+      if (typeof styles.marginV !== "number") return false;
+      if (typeof styles.paper !== "string") return false;
+      if (typeof styles.paragraphSpace !== "number") return false;
+      if (typeof styles.themeColor !== "string") return false;
+
+      if (
+        typeof styles.fontCJK !== "object" ||
+        typeof styles.fontCJK.name !== "string"
+      )
+        return false;
+      if (
+        typeof styles.fontEN !== "object" ||
+        typeof styles.fontEN.name !== "string"
+      )
+        return false;
+    }
+
+    return true;
+  };
+
+  const storage = (await getStorage()) || {};
+
+  const merge = async (content: string) => {
+    const data = JSON.parse(content) as ResumeStorage;
+
+    if (!check(data)) {
+      setToastFlag("import", "no");
+      return;
+    }
+
+    const newStorage = {
+      ...storage,
+      ...data
+    };
+
+    await localForage.setItem(OHCV_KEY, newStorage);
+    setToastFlag("import", "yes");
+  };
+
+  uploadFile(merge, ".json");
 };
 
 export const deleteResume = async (id: string | null) => {
