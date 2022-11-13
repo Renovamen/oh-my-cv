@@ -19,17 +19,17 @@
     "trailingComma": "none"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
-    "@typescript-eslint/parser": "^5.40.1",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
     "bumpp": "^8.2.1",
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^9.6.0",
-    "pnpm": "^7.13.6",
+    "eslint-plugin-vue": "^9.7.0",
+    "pnpm": "^7.15.0",
     "prettier": "^2.7.1",
     "taze": "^0.8.3",
-    "tsup": "^6.3.0",
+    "tsup": "^6.4.0",
     "typescript": "^4.8.4"
   },
   "version": "0.1.0"
