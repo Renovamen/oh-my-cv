@@ -21,6 +21,9 @@ export const EN_FONTS: Font[] = [
   },
   {
     name: "Minion Pro"
+  },
+  {
+    name: "Tex Gyre Pagella"
   }
 ];
 

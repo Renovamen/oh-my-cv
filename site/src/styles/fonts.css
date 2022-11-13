@@ -84,6 +84,34 @@
   src: url("~/assets/fonts/minion-pro/bolditalic.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Tex Gyre Pagella";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/tex-gyre-pagella/regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tex Gyre Pagella";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/tex-gyre-pagella/bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tex Gyre Pagella";
+  font-style: italic;
+  font-weight: normal;
+  src: url("~/assets/fonts/tex-gyre-pagella/italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tex Gyre Pagella";
+  font-style: italic;
+  font-weight: bold;
+  src: url("~/assets/fonts/tex-gyre-pagella/bolditalic.otf") format("opentype");
+}
+
 /* Chinese */
 
 @font-face {
