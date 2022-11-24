@@ -14,19 +14,19 @@ export const THEME_COLORS = [
 
 export const EN_FONTS: Font[] = [
   {
-    name: "CMU Sans Serif"
+    name: "Adobe Garamond Pro"
   },
   {
-    name: "Times Newer Roman"
+    name: "CMU Sans Serif"
   },
   {
     name: "Minion Pro"
   },
   {
-    name: "Adobe Garamond Pro"
+    name: "Tex Gyre Pagella"
   },
   {
-    name: "Tex Gyre Pagella"
+    name: "Times Newer Roman"
   }
 ];
 
@@ -61,6 +61,29 @@ export const CJK_FIRST = [
   "思源宋体（简）",
   "思源宋体（繁）"
 ];
+
+export const IGNORE_FONTS = [
+  "Baloo 2",
+  "Baloo Bhai 2",
+  "Baloo Bhaijaan 2",
+  "Baloo Bhaina 2",
+  "Baloo Chettan 2",
+  "Baloo Da 2",
+  "Baloo Paaji 2",
+  "Baloo Tamma 2",
+  "Baloo Tammudu 2",
+  "Baloo Thambi 2",
+  "Brygada 1918",
+  "Exo 2",
+  "M PLUS 1",
+  "M PLUS 1 Code",
+  "M PLUS 1p",
+  "M PLUS 2",
+  "M PLUS Rounded 1c",
+  "Shippori Mincho",
+  "Source Sans 3",
+  "Source Serif 4"
+]
 
 export const PAPER = {
   A4: {

@@ -9,7 +9,8 @@ import {
   DEFAULT_STYLES,
   EN_FONTS,
   CJK_FONTS,
-  CJK_SUBSETS
+  CJK_SUBSETS,
+  IGNORE_FONTS
 } from "~/utils";
 import type { ResumeStyles, Font } from "~/types";
 
@@ -38,7 +39,8 @@ export const useStyleStore = defineStore("style", () => {
   const key = import.meta.env.VITE_GOOGLE_FONTS_KEY;
   const gLoader = key
     ? new GoogleFontsLoader(key, {
-        variants: ["regular", "700"]
+        variants: ["regular", "700"],
+        filter: (font: GoogleFont) => !IGNORE_FONTS.includes(font.family)
       })
     : null;
 
