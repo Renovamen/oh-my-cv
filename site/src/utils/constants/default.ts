@@ -3,7 +3,7 @@ import type { ResumeStyles } from "~/types";
 export const DEFAULT_NAME = "New Resume";
 
 export const DEFAULT_STYLES = {
-  marginV: 50,
+  marginV: 55,
   marginH: 45,
   lineHeight: 1.3,
   paragraphSpace: 5,
@@ -13,7 +13,7 @@ export const DEFAULT_STYLES = {
     fontFamily: "HKST"
   },
   fontEN: {
-    name: "CMU Sans Serif"
+    name: "Minion Pro"
   },
   fontSize: 15,
   paper: "A4"

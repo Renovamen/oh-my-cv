@@ -112,6 +112,34 @@
   src: url("~/assets/fonts/tex-gyre-pagella/bolditalic.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Adobe Garamond Pro";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/adobe-garamond-pro/regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Adobe Garamond Pro";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/adobe-garamond-pro/bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Adobe Garamond Pro";
+  font-style: italic;
+  font-weight: normal;
+  src: url("~/assets/fonts/adobe-garamond-pro/italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Adobe Garamond Pro";
+  font-style: italic;
+  font-weight: bold;
+  src: url("~/assets/fonts/adobe-garamond-pro/bolditalic.ttf") format("opentype");
+}
+
 /* Chinese */
 
 @font-face {
