@@ -83,7 +83,7 @@ export const IGNORE_FONTS = [
   "Shippori Mincho",
   "Source Sans 3",
   "Source Serif 4"
-]
+];
 
 export const PAPER = {
   A4: {
