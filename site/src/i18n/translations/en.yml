@@ -26,7 +26,7 @@ toolbar:
     export_md: Export Markdown
   correct_case:
     text: Correct Case
-    desc: Just like "Github" → "GitHub", while the words only including uppercase or lowercase ("GITHUB" or "github") will be left untouched.
+    desc: "Example: \"Github\" → \"GitHub\" <br> Note: the words only including uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched"
     btn : Correct it!
   paper: Pape Size
   font_family: Font Family

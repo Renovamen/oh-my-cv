@@ -3,9 +3,7 @@
     :text="t('toolbar.correct_case.text')"
     icon="icon-park-outline:check-correct"
   >
-    <div bg-hover-c rounded py-2 px-3>
-      {{ t("toolbar.correct_case.desc") }}
-    </div>
+    <div bg-hover-c rounded py-2 px-3 v-html="t('toolbar.correct_case.desc')" />
 
     <button btn ml-auto @click="correct">
       <span class="iconify" data-icon="carbon:rocket" />

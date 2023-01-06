@@ -27,10 +27,10 @@ type Result = {
   after: string;
 };
 
-export const replace = async (
+export const replace = (
   text: string,
   _ignore: string[] = []
-): Promise<{ text: string; correctedWords: Result[] | false }> => {
+): { text: string; correctedWords: Result[] | false } => {
   const ignore = _ignore.slice();
 
   Array.from(text.matchAll(IGNORE_REGEX)).forEach((match) => {
