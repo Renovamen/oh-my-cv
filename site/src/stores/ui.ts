@@ -5,6 +5,8 @@ export const useUIStore = defineStore("ui", () => {
   const ui = reactive<UIData>({
     previewScale: 1,
     previewBottom: 0,
+    previewLeft: 0,
+    previewRight: 0,
     openToolbar: true
   });
 

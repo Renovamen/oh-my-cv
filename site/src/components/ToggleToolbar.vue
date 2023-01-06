@@ -3,13 +3,13 @@
     <div>
       <div v-show="ui.openToolbar" flex-center>
         <span
-          class="iconify pc:text-lg"
+          class="iconify md:text-lg"
           data-icon="tabler:layout-sidebar-right-collapse"
         />
       </div>
       <div v-show="!ui.openToolbar" flex-center>
         <span
-          class="iconify pc:text-lg"
+          class="iconify md:text-lg"
           data-icon="tabler:layout-sidebar-right-expand"
         />
       </div>

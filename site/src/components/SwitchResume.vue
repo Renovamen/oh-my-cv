@@ -1,6 +1,6 @@
 <template>
   <Pane
-    class="h-56 w-full pc:w-96"
+    class="h-56 w-full md:w-96"
     :text="t('resume_opt.open')"
     icon="material-symbols:folder-open-outline-rounded"
     @close="emit('closeSwitch')"

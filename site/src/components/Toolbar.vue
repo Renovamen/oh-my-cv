@@ -73,15 +73,15 @@ const tools = (
 
 const navbar = (
   <div
-    class="flex-center flex-col flex-none space-y-1 w-9 pc:w-10"
+    class="flex-center flex-col flex-none space-y-1 w-9 md:w-10"
     border="l c dashed"
   >
     {sections.map((item) => (
       <button
-        class="w-7 h-7 pc:(w-8 h-8) flex-center rounded-full hover:bg-hover-c"
+        class="w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-hover-c"
         onClick={() => scrollTo(item.name)}
       >
-        <span class="iconify" text="sm pc:base" data-icon={item.icon} />
+        <span class="iconify" text="sm md:base" data-icon={item.icon} />
       </button>
     ))}
   </div>

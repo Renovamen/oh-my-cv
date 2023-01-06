@@ -29,8 +29,9 @@ export default defineConfig({
   ],
   theme: {
     breakpoints: {
-      sm: "640px",
-      pc: "769px"
+      sm: "641px",
+      md: "769px",
+      lg: "1025px"
     }
   },
   presets: [

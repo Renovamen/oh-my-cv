@@ -10,12 +10,12 @@
       role="button"
       tabindex="0"
     >
-      <span v-if="icon" class="iconify pc:text-lg" :data-icon="icon" />
+      <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
       <span
         v-if="text"
         class="truncate max-w-[7rem] sm:max-w-xs"
-        :class="[hideTextOnMobile && 'hidden pc:block']"
-        text="sm pc:base"
+        :class="[hideTextOnMobile && 'hidden md:block']"
+        text="sm md:base"
       >
         {{ text }}
       </span>

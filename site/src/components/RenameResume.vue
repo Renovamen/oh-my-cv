@@ -1,6 +1,6 @@
 <template>
   <Pane
-    class="h-25 w-full pc:w-96"
+    class="h-25 w-full md:w-96"
     :text="t('resume_opt.rename')"
     icon="bx:edit"
     @close="emit('closeRename')"

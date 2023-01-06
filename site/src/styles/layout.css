@@ -15,7 +15,7 @@
 }
 
 .preview-pane {
-  @apply !overflow-y-scroll;
+  @apply !overflow-scroll
 }
 
 .toolbar-pane {
@@ -80,6 +80,7 @@
   .toolbar-pane,
   .toolbar-mobile,
   .splitpanes__splitter,
+  .zoom-bar,
   .Vue-Toastification__container {
     display: none;
   }
@@ -90,7 +91,7 @@
 
   .preview {
     transform: scale(1) !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
   }
 
   .vue-smart-pages {

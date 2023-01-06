@@ -3,7 +3,7 @@
 
   <splitpanes
     class="workspace default-theme"
-    :horizontal="isLayoutMobile"
+    :horizontal="isMobile"
     @resize="updatePreviewScale"
   >
     <pane class="editor-pane">
@@ -15,7 +15,9 @@
         class="preview"
         :style="{
           transform: `scale(${ui.previewScale})`,
-          marginBottom: `${ui.previewBottom}px`
+          marginBottom: `${ui.previewBottom}px`,
+          marginLeft: `${ui.previewLeft}px`,
+          marginRight: `${ui.previewRight}px`
         }"
       >
         <SmartPages
@@ -32,10 +34,11 @@
           :watch-delay="[styles.fontCJK, styles.fontEN]"
         />
       </div>
+      <Zoom />
     </pane>
 
     <pane
-      v-if="!isToolbarMobile && ui.openToolbar"
+      v-if="!isMobile && ui.openToolbar"
       class="toolbar-pane"
       :size="size"
       :min-size="minSize"
@@ -46,7 +49,7 @@
   </splitpanes>
 
   <Toolbar
-    v-if="isToolbarMobile && ui.openToolbar"
+    v-if="isMobile && ui.openToolbar"
     class="toolbar-mobile fixed z-10 right-0 top-12 w-68 max-w-full pb-10 border-l border-c"
   />
 </template>
@@ -55,7 +58,7 @@
 import SmartPages from "vue-smart-pages";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { updatePreviewScale } from "~/utils";
+import { fitPreviewWidth, updatePreviewScale } from "~/utils";
 import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
 
 const { ui } = useUIStore();
@@ -65,9 +68,11 @@ const { width } = useWindowSize();
 // Render HTML for previewing
 const html = usePreviewHTML();
 
-// Handle window size changing
-const { isLayoutMobile, isToolbarMobile } = useMobile();
-watch(width, () => setTimeout(updatePreviewScale, 50));
+// Initialize preview scale
+onMounted(() => setTimeout(fitPreviewWidth, 50));
+
+// Responsize
+const isMobile = useMobile();
 
 // Handle languages
 const props = defineProps<{ locale: string[] | string }>();

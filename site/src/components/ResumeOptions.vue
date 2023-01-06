@@ -4,7 +4,7 @@
     icon="ic:outline-arrow-drop-down"
     :reverse="true"
   >
-    <Dropdown w-auto pc:w-48 :items="items" />
+    <Dropdown w-auto md:w-48 :items="items" />
   </NavItem>
 
   <SwitchResume v-if="isSwitchOpen" @close-switch="toggleSwitch(false)" />

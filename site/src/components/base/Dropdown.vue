@@ -1,6 +1,6 @@
 <template>
   <ul
-    text="xs pc:sm"
+    text="xs md:sm"
     class="bg-c border border-c rounded shadow-c overflow-x-hidden overflow-y-scroll"
   >
     <li
@@ -27,7 +27,7 @@
         />
         <span>{{ item.text }}</span>
       </div>
-      <span v-if="item.note" text="lighter-c xs" class="hidden pc:block">
+      <span v-if="item.note" text="lighter-c xs" class="hidden md:block">
         {{ item.note }}
       </span>
     </li>

@@ -1,10 +1,10 @@
 <template>
   <button cursor-pointer :title="t('toggle_dark')" @click="toggleDark()">
     <div v-show="isDark" flex-center>
-      <span class="iconify pc:text-lg" data-icon="ph:moon-bold" />
+      <span class="iconify md:text-lg" data-icon="ph:moon-bold" />
     </div>
     <div v-show="!isDark" flex-center>
-      <span class="iconify pc:text-lg" data-icon="ph:sun-bold" />
+      <span class="iconify md:text-lg" data-icon="ph:sun-bold" />
     </div>
   </button>
 </template>

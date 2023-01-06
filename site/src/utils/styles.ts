@@ -1,5 +1,5 @@
 import { injectCSS } from "@renovamen/dynamic-css";
-import { getPreviewW } from "./constants";
+import { getPaperW } from "./constants";
 import type { ResumeStyles } from "~/types";
 
 const themeColorCss = (styles: ResumeStyles) => {
@@ -35,7 +35,7 @@ const fontSizeCss = (styles: ResumeStyles) => {
 
 const paperCss = (styles: ResumeStyles) => {
   return (
-    `.preview { width: ${getPreviewW(styles.paper)}px }` +
+    `.preview { width: ${getPaperW(styles.paper)}px }` +
     `@media print { @page { size: ${styles.paper}; } }`
   );
 };

@@ -1,6 +1,6 @@
 <template>
   <Pane
-    class="h-40 w-full pc:w-96"
+    class="h-40 w-full md:w-96"
     :text="t('import.title')"
     icon="mdi:upload"
     @close="emit('closeImport')"

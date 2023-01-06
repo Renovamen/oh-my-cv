@@ -27,6 +27,8 @@ export type SystemData = {
 export type UIData = {
   previewScale: number;
   previewBottom: number;
+  previewLeft: number;
+  previewRight: number;
   openToolbar: boolean;
 };
 
