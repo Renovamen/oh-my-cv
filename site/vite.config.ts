@@ -7,7 +7,7 @@ import generateSitemap from "vite-ssg-sitemap";
 import Layouts from "vite-plugin-vue-layouts";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
-import VueI18n from "@intlify/vite-plugin-vue-i18n";
+import VueI18n from "@intlify/unplugin-vue-i18n/vite";
 import Unocss from "unocss/vite";
 
 export default defineConfig({
@@ -41,7 +41,7 @@ export default defineConfig({
         "@vueuse/core"
       ],
       dts: "src/auto-imports.d.ts",
-      dirs: ["src/composables", "src/store"],
+      dirs: ["src/composables", "src/stores"],
       vueTemplate: true
     }),
 

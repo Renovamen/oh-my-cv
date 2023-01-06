@@ -39,7 +39,7 @@
     "katex": "^0.16.4"
   },
   "devDependencies": {
-    "@types/katex": "^0.14.0",
+    "@types/katex": "^0.16.0",
     "@types/markdown-it": "^12.2.3",
     "markdown-it": "^13.0.1"
   },
