@@ -1,4 +1,4 @@
-import type MarkdownIt from "markdown-it";
+import type { PluginSimple } from "markdown-it";
 import type { RenderRule } from "markdown-it/lib/renderer";
 import type { RuleInline } from "markdown-it/lib/parser_inline";
 
@@ -59,7 +59,7 @@ const lineBreak: RuleInline = (state, silent) => {
   return true;
 };
 
-export const MarkdownItLineBreak = (md: MarkdownIt) => {
+export const MarkdownItLineBreak: PluginSimple = (md) => {
   md.renderer.rules.renderLineBreak = renderLineBreak;
   md.inline.ruler.after("emphasis", "lineBreak", lineBreak);
 };

@@ -1,9 +1,8 @@
 // Adapted from https://github.com/waylonflinn/markdown-it-katex
 
-import Katex, { KatexOptions } from "katex";
-import type MarkdownIt from "markdown-it";
+import Katex, { type KatexOptions } from "katex";
+import type { PluginWithOptions } from "markdown-it";
 import type StateInline from "markdown-it/lib/rules_inline/state_inline";
-import type { RenderRule } from "markdown-it/lib/renderer";
 import type { RuleBlock } from "markdown-it/lib/parser_block";
 import type { RuleInline } from "markdown-it/lib/parser_inline";
 import { htmlEscape } from "./utils";
@@ -167,20 +166,18 @@ const mathBlock: RuleBlock = (state, start, end, silent) => {
   return true;
 };
 
-export const MarkdownItKatex = (
-  md: MarkdownIt,
-  options: KatexOptions = { throwOnError: false }
-): void => {
-  const katexOptions: KatexOptions = { ...options, output: "html" };
-
+export const MarkdownItKatex: PluginWithOptions<KatexOptions> = (
+  md,
+  options = { throwOnError: false }
+) => {
   // set KaTeX as the renderer for markdown-it-simplemath
-  const katexInline = (tex: string): string => {
-    katexOptions.displayMode = false;
+  const katexInline = (tex: string, options: KatexOptions): string => {
+    options.displayMode = false;
 
     try {
-      return Katex.renderToString(tex, katexOptions);
+      return Katex.renderToString(tex, options);
     } catch (error) {
-      if (katexOptions.throwOnError) console.warn(error);
+      if (options.throwOnError) console.warn(error);
 
       return `<span title='${htmlEscape(
         (error as Error).toString()
@@ -188,26 +185,18 @@ export const MarkdownItKatex = (
     }
   };
 
-  const katexBlock = (tex: string): string => {
-    katexOptions.displayMode = true;
+  const katexBlock = (tex: string, options: KatexOptions): string => {
+    options.displayMode = true;
 
     try {
-      return `<p>${Katex.renderToString(tex, katexOptions)}</p>`;
+      return `<p>${Katex.renderToString(tex, options)}</p>\n`;
     } catch (error) {
-      if (katexOptions.throwOnError) console.warn(error);
+      if (options.throwOnError) console.warn(error);
 
       return `<p class='katex-error' title='${htmlEscape(
         (error as Error).toString()
-      )}'>${htmlEscape(tex)}</p>`;
+      )}'>${htmlEscape(tex)}</p>\n`;
     }
-  };
-
-  const inlineRenderer: RenderRule = (tokens, idx): string => {
-    return katexInline(tokens[idx].content);
-  };
-
-  const blockRenderer: RenderRule = (tokens, idx): string => {
-    return katexBlock(tokens[idx].content) + "\n";
   };
 
   md.inline.ruler.after("escape", "mathInline", mathInline);
@@ -216,8 +205,10 @@ export const MarkdownItKatex = (
     alt: ["paragraph", "reference", "blockquote", "list"]
   });
 
-  md.renderer.rules.mathInline = inlineRenderer;
-  md.renderer.rules.mathBlock = blockRenderer;
+  md.renderer.rules.mathInline = (tokens, idx): string =>
+    katexInline(tokens[idx].content, options);
+  md.renderer.rules.mathBlock = (tokens, idx): string =>
+    katexBlock(tokens[idx].content, options);
 };
 
 export default MarkdownItKatex;

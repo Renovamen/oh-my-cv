@@ -65,13 +65,13 @@ const scrollTo = (name: string) => {
   });
 };
 
-const tools = (
+const tools = () => (
   <div class="h-full overflow-y-scroll" id="toolbar">
     {sections.map((item) => item.component)}
   </div>
 );
 
-const navbar = (
+const navbar = () => (
   <div
     class="flex-center flex-col flex-none space-y-1 w-9 md:w-10"
     border="l c dashed"
