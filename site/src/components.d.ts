@@ -35,5 +35,6 @@ declare module '@vue/runtime-core' {
     Toolbar: typeof import('./components/Toolbar.vue')['default']
     ToolItem: typeof import('./components/tools/ToolItem.vue')['default']
     Zoom: typeof import('./components/Zoom.vue')['default']
+    ZoomCom: typeof import('./components/ZoomCom.vue')['default']
   }
 }

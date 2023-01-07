@@ -1,18 +1,8 @@
-/* Dark mode */
-
-.vue-smart-pages {
-  background-color: white;
-  color: black;
-}
-
-.dark .vue-smart-pages {
-  background-color: #374151;
-  color: #e5e7eb;
-}
-
 /* Basic */
 
 .preview {
+  background-color: white;
+  color: black;
   text-align: justify;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -127,15 +117,20 @@
   top: 0;
 }
 
-/* Print */
+/* Dark & print mode */
+
+.dark .preview {
+  background-color: #374151;
+  color: #e5e7eb;
+}
 
 @media print {
-  .vue-smart-pages {
+  .preview {
     background-color: white !important;
     color: black !important;
   }
 
-  .dark .preview-header a {
+  .dark .preview a {
     color: black !important;
   }
 }

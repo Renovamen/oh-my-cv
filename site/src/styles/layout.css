@@ -28,11 +28,7 @@
 }
 
 .preview {
-  @apply mx-auto origin-top-left;
-}
-
-.vue-smart-pages {
-  @apply my-1 mx-auto border border-black;
+  @apply border border-black;
 }
 
 .vue-smart-page-break {
@@ -45,7 +41,7 @@
   @apply bg-gray-700;
 }
 
-.dark .vue-smart-pages,
+.dark .preview,
 .dark .vue-smart-page-break {
   @apply border-gray-300;
 }
@@ -89,14 +85,17 @@
     width: 100% !important;
   }
 
-  .preview {
+  .zoom-container {
+    padding: 0;
+  }
+
+  .zoom-area {
     transform: scale(1) !important;
     margin: 0 !important;
   }
 
-  .vue-smart-pages {
+  .preview {
     border: none;
-    margin: 0;
     padding-bottom: 0 !important;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;

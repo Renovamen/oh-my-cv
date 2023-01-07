@@ -32,10 +32,4 @@ useHead({
     }
   ]
 });
-
-// Initialize toolbar on mobile
-const { ui } = useUIStore();
-const isMobile = useMobile();
-
-if (isMobile.value) ui.openToolbar = false;
 </script>

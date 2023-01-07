@@ -98,9 +98,3 @@ export const PAPER = {
 
 export const getPaperPx = (paper: keyof typeof PAPER, v: "h" | "w") =>
   ~~(PAPER[paper][v] * 3.78);
-
-export const getPaperW = (paper: keyof typeof PAPER) =>
-  getPaperPx(paper, "w") + 10;
-
-export const getPaperH = (paper: keyof typeof PAPER) =>
-  getPaperPx(paper, "h") + 8;
