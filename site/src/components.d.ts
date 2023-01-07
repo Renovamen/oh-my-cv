@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     Pane: typeof import('./components/base/Pane.vue')['default']
     Paper: typeof import('./components/toolbar/Paper.vue')['default']
     ParagraphSpace: typeof import('./components/toolbar/ParagraphSpace.vue')['default']
+    PopupPane: typeof import('./components/base/PopupPane.vue')['default']
     RenameResume: typeof import('./components/header/RenameResume.vue')['default']
     ResumeOptions: typeof import('./components/header/ResumeOptions.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

@@ -1,5 +1,5 @@
 <template>
-  <Pane
+  <PopupPane
     class="h-40 w-full md:w-96"
     :text="t('import.title')"
     icon="mdi:upload"
@@ -56,7 +56,7 @@
         </button>
       </div>
     </div>
-  </Pane>
+  </PopupPane>
 </template>
 
 <script lang="ts" setup>

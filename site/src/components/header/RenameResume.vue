@@ -1,5 +1,5 @@
 <template>
-  <Pane
+  <PopupPane
     class="h-25 w-full md:w-96"
     :text="t('resume_opt.rename')"
     icon="bx:edit"
@@ -19,7 +19,7 @@
         <span class="iconify" data-icon="line-md:confirm" />
       </button>
     </div>
-  </Pane>
+  </PopupPane>
 </template>
 
 <script lang="ts" setup>

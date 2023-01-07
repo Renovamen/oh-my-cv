@@ -1,5 +1,5 @@
 <template>
-  <Pane
+  <PopupPane
     class="h-56 w-full md:w-96"
     :text="t('resume_opt.open')"
     icon="material-symbols:folder-open-outline-rounded"
@@ -22,7 +22,7 @@
         <div w-20 text-right>{{ getDateStr(item.id) }}</div>
       </li>
     </ul>
-  </Pane>
+  </PopupPane>
 </template>
 
 <script lang="ts" setup>
