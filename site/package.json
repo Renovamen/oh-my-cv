@@ -32,6 +32,7 @@
     "@renovamen/markdown-it-katex": "workspace:0.1.0",
     "@renovamen/utils": "workspace:0.1.0",
     "@renovamen/vue-shortcuts": "workspace:0.1.0",
+    "@renovamen/vue-zoom": "workspace:0.1.0",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
     "@types/splitpanes": "^2.2.1",

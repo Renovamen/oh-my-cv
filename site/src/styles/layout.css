@@ -85,11 +85,11 @@
     width: 100% !important;
   }
 
-  .zoom-container {
+  .vue-zoom-container {
     padding: 0;
   }
 
-  .zoom-area {
+  .vue-zoom {
     transform: scale(1) !important;
     margin: 0 !important;
   }

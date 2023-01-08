@@ -7,21 +7,7 @@
     </pane>
 
     <pane class="preview-pane" min-size="20">
-      <Zoom>
-        <SmartPages
-          class="preview"
-          :content="html"
-          :height="getPaperPx(styles.paper, 'h')"
-          :width="PAPER[styles.paper].w"
-          :top="styles.marginV"
-          :bottom="Math.max(styles.marginV - 10, CHROME_PRINT_BOTTOM)"
-          :left="styles.marginH"
-          :right="styles.marginH"
-          :before-break-page="onFontLoaded"
-          :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize]"
-          :watch-delay="[styles.fontCJK, styles.fontEN]"
-        />
-      </Zoom>
+      <Preview />
     </pane>
 
     <pane
@@ -42,17 +28,11 @@
 </template>
 
 <script lang="ts" setup>
-import SmartPages from "vue-smart-pages";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
 
 const { ui } = useUIStore();
-const { styles, onFontLoaded } = useStyleStore();
 const { width } = useWindowSize();
-
-// Render HTML for previewing
-const html = usePreviewHTML();
 
 // Responsize
 const isMobile = useMobile();

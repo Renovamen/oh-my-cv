@@ -20,10 +20,10 @@ declare module '@vue/runtime-core' {
     Logo: typeof import('./components/icons/Logo.vue')['default']
     Margins: typeof import('./components/toolbar/Margins.vue')['default']
     NavItem: typeof import('./components/base/NavItem.vue')['default']
-    Pane: typeof import('./components/base/Pane.vue')['default']
     Paper: typeof import('./components/toolbar/Paper.vue')['default']
     ParagraphSpace: typeof import('./components/toolbar/ParagraphSpace.vue')['default']
     PopupPane: typeof import('./components/base/PopupPane.vue')['default']
+    Preview: typeof import('./components/Preview.vue')['default']
     RenameResume: typeof import('./components/header/RenameResume.vue')['default']
     ResumeOptions: typeof import('./components/header/ResumeOptions.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -35,7 +35,5 @@ declare module '@vue/runtime-core' {
     ToggleToolbar: typeof import('./components/header/ToggleToolbar.vue')['default']
     Toolbar: typeof import('./components/Toolbar.vue')['default']
     ToolItem: typeof import('./components/toolbar/ToolItem.vue')['default']
-    Zoom: typeof import('./components/Zoom.vue')['default']
-    ZoomCom: typeof import('./components/ZoomCom.vue')['default']
   }
 }
