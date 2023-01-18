@@ -45,7 +45,10 @@ defineProps<{
 defineEmits(["select"]);
 
 const router = useRouter();
+const route = useRoute();
 
 const toLink = (path: string) =>
-  isExternal(path) ? window.open(path) : router.push(path);
+  isExternal(path)
+    ? window.open(path)
+    : router.push({ path: path, query: route.query });
 </script>

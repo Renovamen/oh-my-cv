@@ -5,7 +5,10 @@
   >
     <div bg-hover-c rounded py-2 px-3 v-html="t('toolbar.correct_case.desc')" />
 
-    <button btn ml-auto @click="correct">
+    <button
+      class="hstack space-x-1 mt-3 ml-auto px-2 py-1.5 rounded text-white bg-blue-500 hover:(bg-blue-600 dark:bg-blue-400)"
+      @click="correct"
+    >
       <span class="iconify" data-icon="carbon:rocket" />
       <span>{{ t("toolbar.correct_case.btn") }}</span>
     </button>

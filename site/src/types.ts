@@ -24,10 +24,6 @@ export type SystemData = {
   curResumeName: string;
 };
 
-export type UIData = {
-  openToolbar: boolean;
-};
-
 export type ToastFlagData = {
   save: boolean;
   delete: boolean | string;
@@ -63,6 +59,10 @@ export type ResumeStorageItem = {
 export type ResumeStorage = {
   [id: string]: ResumeStorageItem;
 };
+
+export interface ResumeListItem extends ResumeStorageItem {
+  id: string;
+}
 
 export type DropdownItem = {
   readonly text: string;

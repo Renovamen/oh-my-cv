@@ -1,6 +1,6 @@
 const defaultLocale = "en";
 
-export const watchLocalePath = (props: { locale: string[] | string }) => {
+export const watchLocale = (props: { locale: string[] | string }) => {
   const { availableLocales, locale } = useI18n();
 
   const checkLocale = (toLocale: string) => {
@@ -20,7 +20,7 @@ export const watchLocalePath = (props: { locale: string[] | string }) => {
   );
 };
 
-export const switchLocalePath = (toLocale: string) => {
+export const switchLocale = (toLocale: string) => {
   const { locale } = useI18n();
   const route = useRoute();
 
@@ -32,4 +32,9 @@ export const switchLocalePath = (toLocale: string) => {
   const toPath =
     toLocale === defaultLocale ? basePath : `/${toLocale}${basePath}`;
   return toPath;
+};
+
+export const switchPath = (path: string, locale: string) => {
+  const prefix = locale === defaultLocale ? "" : `/${locale}`;
+  return `${prefix}${path[0] === "/" ? "" : "/"}${path}`;
 };

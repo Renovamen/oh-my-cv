@@ -4,12 +4,7 @@
     @click="isDropDownOpen = !isDropDownOpen"
     @trigger="isDropDownOpen = false"
   >
-    <div
-      class="nav-item float-right"
-      :class="reverse && 'flex-row-reverse'"
-      role="button"
-      tabindex="0"
-    >
+    <div class="nav-item float-right" role="button" tabindex="0">
       <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
       <span
         v-if="text"
@@ -38,7 +33,6 @@ import { OnClickOutside } from "@vueuse/components";
 defineProps<{
   text?: string;
   icon?: string;
-  reverse?: boolean;
   hideTextOnMobile?: boolean;
 }>();
 

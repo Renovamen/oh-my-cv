@@ -1,0 +1,29 @@
+<template>
+  <SmartPages
+    :id="id"
+    class="resume-render"
+    :content="renderMarkdown(content)"
+    :height="getPaperPx(styles.paper, 'h')"
+    :width="PAPER[styles.paper].w"
+    :top="styles.marginV"
+    :bottom="Math.max(styles.marginV - 10, CHROME_PRINT_BOTTOM)"
+    :left="styles.marginH"
+    :right="styles.marginH"
+    :before-break-page="() => onFontLoaded(styles)"
+    :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize]"
+    :watch-delay="[styles.fontCJK, styles.fontEN]"
+  />
+</template>
+
+<script lang="ts" setup>
+import SmartPages from "vue-smart-pages";
+import { renderMarkdown, onFontLoaded } from "~/utils";
+import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
+import type { ResumeStyles } from "~/types";
+
+defineProps<{
+  id: string;
+  content: string;
+  styles: ResumeStyles;
+}>();
+</script>

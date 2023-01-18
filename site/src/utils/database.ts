@@ -1,12 +1,22 @@
 import * as localForage from "localforage";
 import { downloadFile, uploadFile, copy } from "@renovamen/utils";
-import { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT } from ".";
+import type { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 
 const OHCV_KEY = "ohcv_data";
 
 export const getStorage = async () =>
   localForage.getItem<ResumeStorage>(OHCV_KEY);
+
+export const getResumeList = async () => {
+  const storage = (await getStorage()) || {};
+  return Object.keys(storage)
+    .map((i) => ({
+      id: i,
+      ...storage[i]
+    }))
+    .sort((a, b) => b.id.localeCompare(a.id));
+};
 
 export const setResumeStyles = (styles: ResumeStyles) => {
   const { setStyle } = useStyleStore();
@@ -22,6 +32,12 @@ export const setResumeContent = (content: string) => {
   toggleImportedFlag(true);
 };
 
+/**
+ * Overwrite data for a given resume to local storage
+ *
+ * @param id resume id
+ * @param resume resume data
+ */
 export const setResume = (id: string, resume: ResumeStorageItem) => {
   const { setData } = useDataStore();
 
@@ -31,64 +47,55 @@ export const setResume = (id: string, resume: ResumeStorageItem) => {
   setResumeStyles(resume.styles);
 };
 
-export const newResume = async () => {
-  // New a resume using default styles and content
-
-  const { setData } = useDataStore();
+/**
+ * Save changes to a certain resume
+ *
+ * @param id resume id
+ * @param resume resume data
+ */
+export const saveResume = async (id: string, resume: ResumeStorageItem) => {
   const { setToastFlag } = useToastStore();
-
-  // Generate a new id
-  const id = new Date().getTime().toString();
-  setData("curResumeId", id);
-
-  // Default markdown content, content, and styles
-  setData("curResumeName", DEFAULT_NAME);
-  setResumeStyles(DEFAULT_STYLES);
-  setResumeContent(DEFAULT_MD_CONTENT);
-
-  setToastFlag("new", true);
-  saveResume();
-};
-
-export const fallToFirstResume = async () => {
-  const { setToastFlag } = useToastStore();
-  const storage = await getStorage();
-
-  if (storage && Object.keys(storage).length > 0) {
-    const id = Object.keys(storage).sort((a, b) => b.localeCompare(a))[0];
-    setResume(id, storage[id]);
-    setToastFlag("switch", storage[id].name);
-  } else newResume();
-};
-
-export const saveResume = async () => {
-  const { data } = useDataStore();
-  const { styles } = useStyleStore();
-  const { setToastFlag } = useToastStore();
-
-  if (!data.curResumeId) return;
-
-  const resume = {
-    name: data.curResumeName,
-    content: data.mdContent,
-    styles: toRaw(styles)
-  } as ResumeStorageItem;
 
   const storage = (await getStorage()) || {};
-  storage[data.curResumeId] = resume;
+  storage[id] = resume;
 
   await localForage.setItem(OHCV_KEY, storage);
   setToastFlag("save", true);
 };
 
-export const saveResumesToLocal = async () => {
-  await saveResume();
+/**
+ * New a resume using default styles and content
+ */
+export const newResume = async () => {
+  const { setToastFlag } = useToastStore();
 
+  const id = new Date().getTime().toString(); // generate a new id
+  const resume = {
+    name: DEFAULT_NAME,
+    content: DEFAULT_MD_CONTENT,
+    styles: DEFAULT_STYLES
+  } as ResumeStorageItem;
+
+  await saveResume(id, resume);
+  setToastFlag("new", true);
+
+  return id;
+};
+
+/**
+ * Download data for all resumes to a .json file
+ */
+export const saveResumesToLocal = async () => {
   const storage = (await getStorage()) || {};
   downloadFile("ohcv_data.json", JSON.stringify(storage));
 };
 
-export const importResumesFromLocal = async () => {
+/**
+ * Import resumes from a local .json file
+ *
+ * @param callback A callback function to be excuted after importing finished
+ */
+export const importResumesFromLocal = async (callback?: () => void) => {
   const { setToastFlag } = useToastStore();
 
   const check = (data: ResumeStorage) => {
@@ -139,14 +146,14 @@ export const importResumesFromLocal = async () => {
 
     await localForage.setItem(OHCV_KEY, newStorage);
     setToastFlag("import", "yes");
+
+    callback && callback();
   };
 
   uploadFile(merge, ".json");
 };
 
-export const deleteResume = async (id: string | null) => {
-  if (!id) return;
-
+export const deleteResume = async (id: string) => {
   const { setToastFlag } = useToastStore();
   const storage = await getStorage();
 
@@ -157,31 +164,24 @@ export const deleteResume = async (id: string | null) => {
     await localForage.setItem(OHCV_KEY, storage);
 
     setToastFlag("delete", name);
-    fallToFirstResume();
   }
 };
 
-export const switchResume = async (id: string | null) => {
-  const { data } = useDataStore();
+export const switchResume = async (id: string) => {
   const { setToastFlag } = useToastStore();
-
-  if (!id || id === data.curResumeId) return;
-
   const storage = await getStorage();
 
   if (storage && storage[id]) {
     setResume(id, storage[id]);
     setToastFlag("switch", storage[id].name);
+    return true;
   }
+
+  return false;
 };
 
-export const duplicateResume = async (id: string | null) => {
-  if (!id) return;
-
+export const duplicateResume = async (id: string) => {
   const { setToastFlag } = useToastStore();
-
-  await saveResume();
-
   const storage = await getStorage();
 
   if (storage && storage[id]) {
@@ -195,7 +195,15 @@ export const duplicateResume = async (id: string | null) => {
 
     await localForage.setItem(OHCV_KEY, storage);
     setToastFlag("duplicate", oldName);
-
-    switchResume(newId);
   }
+};
+
+export const renameResume = async (id: string, name: string) => {
+  const { setToastFlag } = useToastStore();
+
+  const storage = (await getStorage()) || {};
+  storage[id].name = name;
+
+  await localForage.setItem(OHCV_KEY, storage);
+  setToastFlag("save", true);
 };

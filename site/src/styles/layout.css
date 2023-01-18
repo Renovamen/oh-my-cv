@@ -27,11 +27,11 @@
   @apply hidden;
 }
 
-.preview {
+#vue-smart-pages-preview {
   @apply border border-black;
 }
 
-.vue-smart-page-break {
+#vue-smart-pages-preview .vue-smart-page-break {
   @apply border-t-2 border-black;
 }
 
@@ -41,8 +41,8 @@
   @apply bg-gray-700;
 }
 
-.dark .preview,
-.dark .vue-smart-page-break {
+.dark #vue-smart-pages-preview,
+.dark #vue-smart-pages-preview .vue-smart-page-break {
   @apply border-gray-300;
 }
 
@@ -94,7 +94,7 @@
     margin: 0 !important;
   }
 
-  .preview {
+  #vue-smart-pages-preview {
     border: none;
     padding-bottom: 0 !important;
     print-color-adjust: exact;

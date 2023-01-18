@@ -7,6 +7,10 @@ export default defineComponent({
   name: "SmartPages",
 
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     content: {
       type: String,
       required: false,
@@ -63,21 +67,46 @@ export default defineComponent({
   },
 
   setup(props) {
-    const resolvePages = () => {
-      breakPage(props.height, props.top, props.bottom, props.left, props.right);
-      if (props.afterBreakPage) props.afterBreakPage();
-    };
+    const id = `vue-smart-pages-${props.id}`;
 
     const updateCSS = () =>
       injectCSS(
-        `.vue-smart-pages {
+        `#${id} {
           padding: ${props.top}px ${props.right}px ${props.bottom}px ${props.left}px;
           width: ${props.width}mm;
         }`,
-        "vue-smart-pages"
+        id
       );
 
-    onMounted(() =>
+    const resolvePages = (timeout?: number) => {
+      const func = () => {
+        breakPage(
+          id,
+          props.height,
+          props.top,
+          props.bottom,
+          props.left,
+          props.right
+        );
+        if (props.afterBreakPage) props.afterBreakPage();
+      };
+
+      if (props.beforeBreakPage) {
+        // Resolve page break after beforeBreakPage() being excuted
+        const fn = props.beforeBreakPage();
+
+        if (fn && typeof fn.then === "function") {
+          if (timeout) fn.then(() => setTimeout(func, timeout));
+          else fn.then(func);
+          return;
+        }
+      }
+
+      if (timeout) setTimeout(func, timeout);
+      else func();
+    };
+
+    onMounted(() => {
       watch(
         () => [
           props.content,
@@ -89,44 +118,23 @@ export default defineComponent({
           props.right,
           ...props.watch
         ],
-        () => {
-          if (props.beforeBreakPage) {
-            // Resolve page break after beforeBreakPage() being excuted
-            const fn = props.beforeBreakPage();
+        () => resolvePages()
+      );
 
-            if (fn && typeof fn.then === "function") {
-              fn.then(resolvePages);
-              return;
-            }
-          }
-
-          resolvePages();
-        }
-      )
-    );
-
-    // Handle font update or something
-    onMounted(() =>
+      // Handle font update or something
       watch(
         () => props.watchDelay,
-        () => {
-          if (props.beforeBreakPage) {
-            const fn = props.beforeBreakPage();
+        () => resolvePages(100)
+      );
 
-            if (fn && typeof fn.then === "function") {
-              fn.then(() => setTimeout(resolvePages, 50));
-              return;
-            }
-          }
-
-          setTimeout(resolvePages, 50);
-        }
-      )
-    );
+      // Initialize page breaking
+      resolvePages();
+    });
 
     // Initialize styles
     onMounted(updateCSS);
 
+    // Update styles
     watch(
       () => [props.top, props.bottom, props.left, props.right, props.width],
       updateCSS
@@ -135,6 +143,7 @@ export default defineComponent({
     return (): VNode =>
       h("div", {
         class: "vue-smart-pages",
+        id: id,
         innerHTML: props.content
       });
   }

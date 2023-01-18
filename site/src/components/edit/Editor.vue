@@ -5,7 +5,6 @@
 <script lang="ts" setup>
 import type * as Monaco from "monaco-editor";
 import { isClient } from "@renovamen/utils";
-import { fallToFirstResume } from "~/utils";
 import { setupMonaco } from "~/monaco";
 
 const { data, setData, toggleImportedFlag } = useDataStore();
@@ -49,9 +48,6 @@ onMounted(async () => {
       monaco.editor.setTheme(val ? "vs-dark-dimmed" : "vs");
     });
   }
-
-  // Load saved resume from localStorage
-  fallToFirstResume();
 });
 
 onBeforeUnmount(() => editor?.dispose());

@@ -16,11 +16,17 @@
 </template>
 
 <script lang="ts" setup>
-import { CJK_FONTS, EN_FONTS, CJK_NAME_MAP, CJK_FIRST } from "~/utils";
+import { getGoogleFonts } from "~/utils";
+import {
+  CJK_FONTS,
+  EN_FONTS,
+  CJK_NAME_MAP,
+  CJK_FIRST
+} from "~/utils/constants";
 import type { DropdownItem } from "~/types";
 
 const { t } = useI18n();
-const { styles, setStyle, getGoogleFonts } = useStyleStore();
+const { styles, setStyle } = useStyleStore();
 
 const enFonts = computed(() => {
   const en = EN_FONTS.map(

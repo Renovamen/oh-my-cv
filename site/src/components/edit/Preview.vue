@@ -1,18 +1,6 @@
 <template>
   <Zoom ref="zoom" :scale="scale" p-1>
-    <SmartPages
-      class="preview"
-      :content="html"
-      :height="getPaperPx(styles.paper, 'h')"
-      :width="PAPER[styles.paper].w"
-      :top="styles.marginV"
-      :bottom="Math.max(styles.marginV - 10, CHROME_PRINT_BOTTOM)"
-      :left="styles.marginH"
-      :right="styles.marginH"
-      :before-break-page="onFontLoaded"
-      :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize]"
-      :watch-delay="[styles.fontCJK, styles.fontEN]"
-    />
+    <ResumeRender id="preview" :content="data.mdContent" :styles="styles" />
   </Zoom>
 
   <div
@@ -34,16 +22,15 @@
 </template>
 
 <script lang="ts" setup>
-import SmartPages from "vue-smart-pages";
 import Zoom from "@renovamen/vue-zoom";
-import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
+import { getPaperPx } from "~/utils";
 
 const scale = ref(1);
-const zoom = ref<HTMLElement>();
+const zoom = ref<InstanceType<typeof Zoom>>();
 
-const html = usePreviewHTML();
 const { width, height } = useElementSize(zoom);
-const { styles, onFontLoaded } = useStyleStore();
+const { styles } = useStyleStore();
+const { data } = useDataStore();
 
 const fitWidth = () => {
   scale.value = width.value / getPaperPx(styles.paper, "w");
@@ -53,7 +40,7 @@ const fitHeight = () => {
   scale.value = height.value / getPaperPx(styles.paper, "h");
 };
 
-setTimeout(fitWidth, 300);
+setTimeout(fitWidth, 100);
 </script>
 
 <style scoped>

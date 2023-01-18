@@ -96,5 +96,7 @@ export const PAPER = {
   }
 };
 
+export const MM_TO_PX = 3.78;
+
 export const getPaperPx = (paper: keyof typeof PAPER, v: "h" | "w") =>
-  ~~(PAPER[paper][v] * 3.78);
+  ~~(PAPER[paper][v] * MM_TO_PX);

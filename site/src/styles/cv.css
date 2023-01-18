@@ -1,6 +1,6 @@
 /* Basic */
 
-.preview {
+.resume-render {
   background-color: white;
   color: black;
   text-align: justify;
@@ -10,127 +10,127 @@
   hyphens: auto;
 }
 
-.preview p,
-.preview li,
-.preview dl {
+.resume-render p,
+.resume-render li,
+.resume-render dl {
   margin: 0;
 }
 
 /* Headings */
 
-.preview h1,
-.preview h2,
-.preview h3 {
+.resume-render h1,
+.resume-render h2,
+.resume-render h3 {
   font-weight: bold;
 }
 
-.preview h1 {
+.resume-render h1 {
   font-size: 2.13em;
 }
 
-.preview h2,
-.preview h3 {
+.resume-render h2,
+.resume-render h3 {
   margin-bottom: 5px;
   font-size: 1.2em;
 }
 
-.preview h2 {
+.resume-render h2 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
 }
 
 /* Lists */
 
-.preview ul,
-.preview ol {
+.resume-render ul,
+.resume-render ol {
   padding-left: 1.5em;
   margin: 0.2em 0;
 }
 
-.preview ul {
+.resume-render ul {
   list-style-type: circle;
 }
 
-.preview ol {
+.resume-render ol {
   list-style-type: decimal;
 }
 
 /* Definition Lists */
 
-.preview dl {
+.resume-render dl {
   display: flex;
 }
 
-.preview dl dt,
-.preview dl dd:not(:last-child) {
+.resume-render dl dt,
+.resume-render dl dd:not(:last-child) {
   flex: 1;
 }
 
 /* Tex */
 
-.preview :not(span.katex-display) > span.katex {
+.resume-render :not(span.katex-display) > span.katex {
   font-size: 1em !important;
 }
 
 /* SVG & Images */
 
-.preview svg.iconify {
+.resume-render svg.iconify {
   vertical-align: -0.2em;
 }
 
-.preview img {
+.resume-render img {
   max-width: 100%;
 }
 
 /* Header */
 
-.preview-header {
+.resume-header {
   text-align: center;
 }
 
-.preview-header h1 {
+.resume-header h1 {
   text-align: center;
   line-height: 1;
   margin-bottom: 8px;
 }
 
-.preview-header-item:not(.no-separator)::after {
+.resume-header-item:not(.no-separator)::after {
   content: " | ";
 }
 
 /* Citations */
 
-.preview ul.crossref-list {
+.resume-render ul.crossref-list {
   padding-left: 1.2em;
 }
 
-.preview li.crossref-item p {
+.resume-render li.crossref-item p {
   margin-left: 0.5em;
 }
 
-.preview li.crossref-item::marker {
+.resume-render li.crossref-item::marker {
   content: attr(data-caption);
 }
 
-.preview sup.crossref-ref {
+.resume-render sup.crossref-ref {
   font-size: 100%;
   top: 0;
 }
 
 /* Dark & print mode */
 
-.dark .preview {
+.dark .resume-render {
   background-color: #374151;
   color: #e5e7eb;
 }
 
 @media print {
-  .preview {
+  .resume-render {
     background-color: white !important;
     color: black !important;
   }
 
-  .dark .preview a {
+  .dark .resume-render a {
     color: black !important;
   }
 }

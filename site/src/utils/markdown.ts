@@ -55,7 +55,7 @@ const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
 
       header += item.newLine ? "<br>\n" : "";
 
-      header += `<span class="preview-header-item${
+      header += `<span class="resume-header-item${
         i === n - 1 || frontmatter.header[i + 1].newLine ? " no-separator" : ""
       }">`;
 
@@ -67,21 +67,15 @@ const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
     }
   }
 
-  return `<div class="preview-header">${header}</div>` + html;
+  return `<div class="resume-header">${header}</div>` + html;
 };
 
-export const usePreviewHTML = () => {
-  const { data } = useDataStore();
+export const renderMarkdown = (md: string) => {
+  const { body, attributes } = frontmatter(md);
 
-  const html = computed(() => {
-    const { body, attributes } = frontmatter(data.mdContent);
-
-    let html = markdown.render(body);
-    html = resolveDeflist(html);
-    html = resolveHeader(html, attributes);
-
-    return html;
-  });
+  let html = markdown.render(body);
+  html = resolveDeflist(html);
+  html = resolveHeader(html, attributes);
 
   return html;
 };

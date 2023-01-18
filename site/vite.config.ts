@@ -67,7 +67,7 @@ export default defineConfig({
     script: "async",
     formatting: "minify",
     onFinished: generateSitemap,
-    includedRoutes: () => ["/", "/zh-CN/"]
+    includedRoutes: () => ["/", "/zh-cn/", "/edit", "/zh-cn/edit"]
   },
 
   ssr: {

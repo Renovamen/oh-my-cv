@@ -15,7 +15,7 @@ const { availableLocales, locale } = useI18n();
 
 const items = computed(() =>
   availableLocales.map((item: string) => ({
-    link: switchLocalePath(item),
+    link: switchLocale(item),
     text: SUPPORT_LOCALES[item as LocaleType].name,
     icon: SUPPORT_LOCALES[item as LocaleType].icon
   }))

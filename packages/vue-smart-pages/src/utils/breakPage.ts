@@ -5,13 +5,14 @@ const removeElements = (parent: HTMLElement, selector: string) => {
 };
 
 export const breakPage = (
+  id: string,
   height: number,
   top: number,
   bottom: number,
   left: number,
   right: number
 ) => {
-  const page = document.querySelector(".vue-smart-pages") as HTMLDivElement;
+  const page = document.querySelector(`#${id}`) as HTMLDivElement;
   removeElements(page, ".vue-smart-page-break");
 
   const contentH = height - top - bottom;
