@@ -1,5 +1,7 @@
 <template>
-  <div ref="editorRef" class="h-full" />
+  <div class="pane-container">
+    <div ref="editorRef" h-full />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -35,7 +37,7 @@ onMounted(async () => {
       inherit: true,
       rules: [],
       colors: {
-        "editor.background": "#374151",
+        "editor.background": "#334155",
         "editor.lineHighlightBorder": "#4b5563",
         "dropdown.background": "#4b5563",
         "menu.separatorBackground": "#6b7280"

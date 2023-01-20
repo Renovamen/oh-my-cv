@@ -11,7 +11,7 @@
         <span text-sm>{{ text }}</span>
       </div>
       <button
-        class="hstack p-1 rounded-full duration-100 hover:(bg-hover-c rotate-90)"
+        class="hstack p-1 rounded-full duration-100 hover:(bg-dark-c rotate-90)"
         @click="$emit('close')"
       >
         <span class="iconify" data-icon="ic:baseline-close" />

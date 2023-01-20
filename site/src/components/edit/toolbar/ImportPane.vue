@@ -10,7 +10,7 @@
         class="px-2 py-0.5"
         border="l r t rounded-t-sm"
         :class="[
-          clickedButton === 0 && 'ml-4 bg-hover-c border-c',
+          clickedButton === 0 && 'ml-4 bg-dark-c border-c',
           clickedButton !== 0 && 'ml-2 border-transparent'
         ]"
         @click="clickedButton = 0"
@@ -21,7 +21,7 @@
         class="px-2 py-0.5"
         border="l r t rounded-t-sm"
         :class="[
-          clickedButton === 1 && 'bg-hover-c border-c',
+          clickedButton === 1 && 'bg-dark-c border-c',
           clickedButton !== 1 && 'border-transparent'
         ]"
         @click="clickedButton = 1"
@@ -30,7 +30,7 @@
       </button>
     </div>
 
-    <div flex-1 hstack px-4 bg-hover-c>
+    <div flex-1 hstack px-4 bg-dark-c>
       <div v-if="clickedButton === 0" class="flex text-xs hstack space-x-1.5">
         <button
           class="px-1.5 py-0.5 rounded-[3px] border border-dark-c hover:(bg-gray-200 dark:bg-gray-700)"

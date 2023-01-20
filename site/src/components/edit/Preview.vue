@@ -1,23 +1,31 @@
 <template>
-  <Zoom ref="zoom" :scale="scale" p-1>
-    <ResumeRender id="preview" :content="data.mdContent" :styles="styles" />
-  </Zoom>
+  <div class="pane-container">
+    <Zoom ref="zoom" :scale="scale">
+      <ResumeRender id="preview" :content="data.mdContent" :styles="styles" />
+    </Zoom>
 
-  <div
-    class="zoom-bar hstack fixed bottom-3 lg:(bottom-auto top-15) ml-3 shadow-c rounded-full overflow-hidden text-white bg-blue-500 lg:opacity-0 hover:opacity-100"
-  >
-    <button @click="scale *= 1.1">
-      <span class="iconify" data-icon="lucide:zoom-in" />
-    </button>
-    <button @click="scale /= 1.1">
-      <span class="iconify" data-icon="lucide:zoom-out" />
-    </button>
-    <button @click="fitWidth">
-      <span class="iconify" data-icon="fluent:arrow-autofit-width-20-filled" />
-    </button>
-    <button @click="fitHeight">
-      <span class="iconify" data-icon="fluent:arrow-autofit-height-20-filled" />
-    </button>
+    <div
+      class="zoom-bar hstack fixed bottom-4 lg:(bottom-auto top-15) ml-2 shadow-c rounded-full overflow-hidden text-white bg-blue-500 lg:opacity-0 hover:opacity-100"
+    >
+      <button @click="scale *= 1.1">
+        <span class="iconify" data-icon="lucide:zoom-in" />
+      </button>
+      <button @click="scale /= 1.1">
+        <span class="iconify" data-icon="lucide:zoom-out" />
+      </button>
+      <button @click="fitWidth">
+        <span
+          class="iconify"
+          data-icon="fluent:arrow-autofit-width-20-filled"
+        />
+      </button>
+      <button @click="fitHeight">
+        <span
+          class="iconify"
+          data-icon="fluent:arrow-autofit-height-20-filled"
+        />
+      </button>
+    </div>
   </div>
 </template>
 

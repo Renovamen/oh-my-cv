@@ -27,7 +27,7 @@
         />
         <span>{{ item.text }}</span>
       </div>
-      <span v-if="item.note" text="lighter-c xs" class="hidden md:block">
+      <span v-if="item.note" class="text-lighter-c text-xs hide-on-mobile">
         {{ item.note }}
       </span>
     </li>

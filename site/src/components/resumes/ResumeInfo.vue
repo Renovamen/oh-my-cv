@@ -1,7 +1,7 @@
 <template>
   <div text-center>
     <DisplayInput
-      class="w-50 mx-auto"
+      class="w-53 mx-auto"
       :text="inputName"
       :on-entered="() => renameResume(resume.id, inputName.trim())"
       @change="(text) => (inputName = text)"

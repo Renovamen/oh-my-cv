@@ -2,7 +2,6 @@
   <NavItem
     :text="SUPPORT_LOCALES[locale as LocaleType].name"
     icon="ic:round-translate"
-    :hide-text-on-mobile="true"
   >
     <Dropdown :items="items" />
   </NavItem>

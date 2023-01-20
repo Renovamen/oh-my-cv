@@ -1,20 +1,22 @@
 <template>
-  <Header />
+  <div class="resumes-page">
+    <Header />
 
-  <div class="max-w-306 mx-auto px-5 py-16 text-dark-c">
-    <div class="space-y-2 md:(hstack justify-between)">
-      <h1 font-bold text-3xl>{{ t("resumes.my_resume") }}</h1>
-      <FileOptions @update="loadResumes" />
-    </div>
+    <div class="max-w-306 mx-auto px-5 py-16 text-dark-c">
+      <div class="space-y-2 md:(hstack justify-between)">
+        <h1 font-bold text-2xl sm:text-3xl>{{ t("resumes.my_resume") }}</h1>
+        <FileOptions @update="loadResumes" />
+      </div>
 
-    <div class="flex flex-wrap gap-x-4 gap-y-8 mt-8">
-      <ResumeItem
-        v-for="resume in list"
-        :key="resume.id"
-        class="resume-item"
-        :resume="resume"
-        @update="loadResumes"
-      />
+      <div class="flex flex-wrap gap-x-4 gap-y-8 mt-8">
+        <ResumeItem
+          v-for="resume in list"
+          :key="resume.id"
+          class="resume-item"
+          :resume="resume"
+          @update="loadResumes"
+        />
+      </div>
     </div>
   </div>
 </template>

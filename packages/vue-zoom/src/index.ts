@@ -22,9 +22,6 @@ export default defineComponent({
     const left = computed(() =>
       Math.max(0, (sizeC.width.value - props.scale * sizeZ.width.value) / 2)
     );
-    const right = computed(() =>
-      Math.min(0, (props.scale - 1) * sizeZ.width.value)
-    );
 
     return (): VNode =>
       h(
@@ -46,8 +43,7 @@ export default defineComponent({
                 width: "fit-content",
                 transformOrigin: "top left",
                 transform: `scale(${props.scale})`,
-                marginLeft: `${left.value}px`,
-                marginRight: `${right.value}px`
+                marginLeft: `${left.value}px`
               }
             },
             [slots.default!()]

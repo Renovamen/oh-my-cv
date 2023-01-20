@@ -1,5 +1,5 @@
 <template>
-  <button cursor-pointer flex-center @click="save">
+  <button class="round-btn" @click="save">
     <span class="iconify md:text-lg" data-icon="ic:baseline-save" />
   </button>
 </template>

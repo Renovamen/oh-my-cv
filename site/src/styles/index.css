@@ -1,9 +1,17 @@
 @import "./fonts.css";
-@import "./layout.css";
+@import "./edit.css";
 @import "./cv.css";
 
+body {
+  @apply bg-dark-c;
+}
+
+.header {
+  @apply h-12;  /* 48px */
+}
+
 svg.iconify {
-  display: inline-block;
+  @apply inline-block;
 }
 
 .dark .vue-slider-rail {

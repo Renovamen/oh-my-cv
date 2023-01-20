@@ -1,6 +1,6 @@
 <template>
   <DisplayInput
-    class="w-50"
+    class="w-36 sm:w-50"
     :text="inputName"
     :on-entered="() => renameResume(data.curResumeId!, inputName.trim())"
     @change="(text) => (inputName = text)"

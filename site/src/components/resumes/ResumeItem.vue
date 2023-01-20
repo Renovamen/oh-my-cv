@@ -2,7 +2,7 @@
   <div>
     <div w-56 h-80>
       <div
-        class="resume-card relative block cursor-pointer mx-auto overflow-hidden rounded border border-c duration-150 hover:(-translate-y-3 drop-shadow-xl)"
+        class="resume-card relative block cursor-pointer mx-auto overflow-hidden rounded-md border border-c duration-150 hover:(-translate-y-3 drop-shadow-xl)"
         :style="{
           width: `${width}px`,
           height: `${height}px`

@@ -1,5 +1,5 @@
 <template>
-  <div flex text-c bg-c h-full>
+  <div flex text-c h-full>
     <tools />
     <navbar />
   </div>
@@ -66,7 +66,7 @@ const scrollTo = (name: string) => {
 };
 
 const tools = () => (
-  <div class="h-full overflow-y-scroll" id="toolbar">
+  <div class="pane-container" id="toolbar">
     {sections.map((item) => item.component)}
   </div>
 );
@@ -74,13 +74,10 @@ const tools = () => (
 const navbar = () => (
   <div
     class="flex-center flex-col flex-none space-y-1 w-9 md:w-10"
-    border="l c dashed"
+    border="l c dashed lg:none"
   >
     {sections.map((item) => (
-      <button
-        class="w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-hover-c"
-        onClick={() => scrollTo(item.name)}
-      >
+      <button class="round-btn" onClick={() => scrollTo(item.name)}>
         <span class="iconify" text="sm md:base" data-icon={item.icon} />
       </button>
     ))}

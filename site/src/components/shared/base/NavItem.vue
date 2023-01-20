@@ -4,14 +4,13 @@
     @click="isDropDownOpen = !isDropDownOpen"
     @trigger="isDropDownOpen = false"
   >
-    <div class="nav-item float-right" role="button" tabindex="0">
+    <div
+      class="relative float-right hstack cursor-pointer space-x-1"
+      role="button"
+      tabindex="0"
+    >
       <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
-      <span
-        v-if="text"
-        class="truncate max-w-[7rem] sm:max-w-xs"
-        :class="[hideTextOnMobile && 'hidden md:block']"
-        text="sm md:base"
-      >
+      <span v-if="text" class="truncate max-w-xs hide-on-mobile">
         {{ text }}
       </span>
     </div>
@@ -33,7 +32,6 @@ import { OnClickOutside } from "@vueuse/components";
 defineProps<{
   text?: string;
   icon?: string;
-  hideTextOnMobile?: boolean;
 }>();
 
 const isDropDownOpen = ref(false);

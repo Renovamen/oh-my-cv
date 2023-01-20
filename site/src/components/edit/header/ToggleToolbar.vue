@@ -1,5 +1,5 @@
 <template>
-  <button cursor-pointer @click="$emit('toggleToolbar')">
+  <button class="round-btn" @click="$emit('toggleToolbar')">
     <div v-show="isToolbarOpen" flex-center>
       <span
         class="iconify md:text-lg"

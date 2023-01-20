@@ -1,41 +1,40 @@
 <template>
-  <Header>
-    <template #middle>
-      <RenameResume />
-    </template>
-    <template #tail>
-      <SaveResume />
-      <ToggleToolbar
-        :is-toolbar-open="isToolbarOpen"
-        @toggle-toolbar="isToolbarOpen = !isToolbarOpen"
-      />
-    </template>
-  </Header>
+  <div class="edit-page">
+    <Header>
+      <template #middle>
+        <RenameResume />
+      </template>
+      <template #tail>
+        <SaveResume />
+        <ToggleToolbar
+          :is-toolbar-open="isToolbarOpen"
+          @toggle-toolbar="isToolbarOpen = !isToolbarOpen"
+        />
+      </template>
+    </Header>
 
-  <splitpanes class="workspace default-theme" :horizontal="isMobile">
-    <pane class="editor-pane">
-      <Editor />
-    </pane>
+    <splitpanes class="workspace default-theme" :horizontal="isMobile">
+      <pane class="editor-pane px-2 lg:(pl-2 pr-1)">
+        <Editor />
+      </pane>
 
-    <pane class="preview-pane" min-size="20">
-      <Preview />
-    </pane>
+      <pane class="preview-pane px-2 pt-1 lg:(px-1 pt-0)" min-size="20">
+        <Preview />
+      </pane>
 
-    <pane
-      v-if="!isMobile && isToolbarOpen"
-      class="toolbar-pane"
-      :size="size"
-      :min-size="minSize"
-      :max-size="maxSize"
-    >
-      <Toolbar />
-    </pane>
-  </splitpanes>
+      <pane
+        v-if="!isMobile && isToolbarOpen"
+        class="toolbar-pane pl-1"
+        :size="size"
+        :min-size="minSize"
+        :max-size="maxSize"
+      >
+        <Toolbar />
+      </pane>
+    </splitpanes>
 
-  <Toolbar
-    v-if="isMobile && isToolbarOpen"
-    class="toolbar-mobile fixed z-10 right-0 top-12 w-68 max-w-full pb-10 border-l border-c"
-  />
+    <Toolbar v-if="isMobile && isToolbarOpen" class="toolbar-mobile" />
+  </div>
 </template>
 
 <script lang="ts" setup>

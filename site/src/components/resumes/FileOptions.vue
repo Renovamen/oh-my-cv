@@ -11,14 +11,14 @@
       <span>{{ t("resumes.new") }}</span>
     </button>
     <button
-      class="border border-dark-c hover:bg-hover-c"
+      class="border border-dark-c hover:bg-darker-c"
       @click="saveResumesToLocal"
     >
       <span class="iconify" data-icon="ic:baseline-save-as" />
       <span>{{ t("resumes.saveas") }}</span>
     </button>
     <button
-      class="border border-dark-c hover:bg-hover-c"
+      class="border border-dark-c hover:bg-darker-c"
       @click="() => importResumesFromLocal(() => $emit('update'))"
     >
       <span class="iconify" data-icon="ic:round-upload-file" />
@@ -49,10 +49,10 @@ useShortcuts("shift+ctrl+s", saveResumesToLocal);
 
 <style scoped>
 .file-options button {
-  @apply hstack space-x-1.5 px-2.5 py-1.5 rounded;
+  @apply hstack rounded text-sm space-x-1 px-2 py-1 sm:(text-base space-x-1.5 px-2.5 py-1.5);
 }
 
 .file-options button .iconify {
-  @apply w-5 h-5;
+  @apply w-4 h-4 sm:(w-5 h-5);
 }
 </style>
