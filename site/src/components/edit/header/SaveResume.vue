@@ -14,10 +14,12 @@ const { styles } = useStyleStore();
 
 const save = () => {
   const id = data.curResumeId;
+  const update = new Date().getTime().toString(); // record update time
   const resume = {
     name: data.curResumeName,
     content: data.mdContent,
-    styles: toRaw(styles)
+    styles: toRaw(styles),
+    update: update
   } as ResumeStorageItem;
 
   saveResume(id!, resume);

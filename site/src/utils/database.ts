@@ -15,7 +15,7 @@ export const getResumeList = async () => {
       id: i,
       ...storage[i]
     }))
-    .sort((a, b) => b.id.localeCompare(a.id));
+    .sort((a, b) => b.update.localeCompare(a.update));
 };
 
 export const setResumeStyles = (styles: ResumeStyles) => {
@@ -73,7 +73,8 @@ export const newResume = async () => {
   const resume = {
     name: DEFAULT_NAME,
     content: DEFAULT_MD_CONTENT,
-    styles: DEFAULT_STYLES
+    styles: DEFAULT_STYLES,
+    update: id
   } as ResumeStorageItem;
 
   await saveResume(id, resume);
@@ -102,6 +103,7 @@ export const importResumesFromLocal = async (callback?: () => void) => {
     for (const resume of Object.values(data)) {
       if (typeof resume.name !== "string") return false;
       if (typeof resume.content !== "string") return false;
+      if (typeof resume.update !== "string") return false;
       if (typeof resume.styles !== "object") return false;
 
       const styles = resume.styles;
@@ -191,6 +193,7 @@ export const duplicateResume = async (id: string) => {
     const oldName = resume.name;
 
     resume.name = oldName + " Copy";
+    resume.update = newId;
     storage[newId] = resume;
 
     await localForage.setItem(OHCV_KEY, storage);

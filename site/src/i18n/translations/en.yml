@@ -6,6 +6,7 @@ toggle_dark: Toggle dark mode
 resumes:
   my_resume: My Resumes
   created: "Created: "
+  updated: "Updated: "
   new: New
   save: Save
   saveas: Save as...

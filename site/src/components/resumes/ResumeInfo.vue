@@ -6,7 +6,12 @@
       :on-entered="() => renameResume(resume.id, inputName.trim())"
       @change="(text) => (inputName = text)"
     />
-    <div text-xs text-light-c mt-1.5>{{ t("resumes.created") }}{{ date }}</div>
+    <div text-xs text-light-c mt-1.5>
+      {{ t("resumes.updated") }}{{ updated }}
+    </div>
+    <div text-xs text-light-c mt-0.5>
+      {{ t("resumes.created") }}{{ created }}
+    </div>
   </div>
 </template>
 
@@ -23,6 +28,15 @@ const { t } = useI18n();
 // Rename
 const inputName = ref(props.resume.name);
 
-// Create date
-const date = new Date(parseInt(props.resume.id)).toLocaleString();
+// Date
+const formatDate = (date: string) => {
+  return new Date(parseInt(date))
+    .toISOString()
+    .substring(0, 19)
+    .replace("T", " ")
+    .replaceAll("-", "/");
+};
+
+const created = formatDate(props.resume.id);
+const updated = formatDate(props.resume.update);
 </script>

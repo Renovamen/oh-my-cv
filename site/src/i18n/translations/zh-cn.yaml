@@ -6,6 +6,7 @@ toggle_dark: 切换深色模式
 resumes:
   my_resume: 我的简历
   created: 创建于：
+  updated: 更新于：
   new: 新建
   save: 保存
   saveas: 另存为...

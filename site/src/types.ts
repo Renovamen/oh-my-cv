@@ -54,6 +54,7 @@ export type ResumeStorageItem = {
   name: string;
   content: string;
   styles: ResumeStyles;
+  update: string;
 };
 
 export type ResumeStorage = {
