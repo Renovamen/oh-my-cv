@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <ResumeInfo :resume="resume" />
+    <ResumeInfo :resume="resume" @update="emit('update')" />
   </div>
 </template>
 

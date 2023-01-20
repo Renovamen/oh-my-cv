@@ -1,9 +1,8 @@
 <template>
   <DisplayInput
     class="w-36 sm:w-50"
-    :text="inputName"
-    :on-entered="() => renameResume(data.curResumeId!, inputName.trim())"
-    @change="(text) => (inputName = text)"
+    :text="data.curResumeName"
+    :on-entered="rename"
   />
 </template>
 
@@ -11,5 +10,9 @@
 import { renameResume } from "~/utils";
 
 const { data } = useDataStore();
-const inputName = ref(data.curResumeName);
+
+const rename = (text: string) => {
+  data.curResumeName = text;
+  renameResume(data.curResumeId!, text);
+};
 </script>

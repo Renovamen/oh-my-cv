@@ -2,9 +2,8 @@
   <div text-center>
     <DisplayInput
       class="w-53 mx-auto"
-      :text="inputName"
-      :on-entered="() => renameResume(resume.id, inputName.trim())"
-      @change="(text) => (inputName = text)"
+      :text="resume.name"
+      :on-entered="rename"
     />
     <div text-xs text-light-c mt-1.5>
       {{ t("resumes.updated") }}{{ updated }}
@@ -23,12 +22,17 @@ const props = defineProps<{
   resume: ResumeListItem;
 }>();
 
+const emit = defineEmits<{
+  (e: "update"): void;
+}>();
+
+const rename = async (text: string) => {
+  await renameResume(props.resume.id, text);
+  emit("update");
+};
+
 const { t } = useI18n();
 
-// Rename
-const inputName = ref(props.resume.name);
-
-// Date
 const formatDate = (date: string) => {
   return new Date(parseInt(date))
     .toISOString()
