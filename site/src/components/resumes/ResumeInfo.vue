@@ -5,7 +5,7 @@
       :text="resume.name"
       :on-entered="rename"
     />
-    <div text-xs text-light-c mt-1.5>
+    <div v-if="updated" text-xs text-light-c mt-1.5>
       {{ t("resumes.updated") }}{{ updated }}
     </div>
     <div text-xs text-light-c mt-0.5>
@@ -33,14 +33,17 @@ const rename = async (text: string) => {
 
 const { t } = useI18n();
 
-const formatDate = (date: string) => {
-  return new Date(parseInt(date))
-    .toISOString()
-    .substring(0, 19)
-    .replace("T", " ")
-    .replaceAll("-", "/");
+const formatDate = (date?: string) => {
+  return (
+    date &&
+    new Date(parseInt(date))
+      .toISOString()
+      .substring(0, 19)
+      .replace("T", " ")
+      .replaceAll("-", "/")
+  );
 };
 
-const created = formatDate(props.resume.id);
-const updated = formatDate(props.resume.update);
+const created = computed(() => formatDate(props.resume.id));
+const updated = computed(() => formatDate(props.resume.update));
 </script>

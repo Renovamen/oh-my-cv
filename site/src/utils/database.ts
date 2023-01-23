@@ -15,7 +15,7 @@ export const getResumeList = async () => {
       id: i,
       ...storage[i]
     }))
-    .sort((a, b) => b.update.localeCompare(a.update));
+    .sort((a, b) => (b.update || b.id).localeCompare(a.update || a.id));
 };
 
 export const setResumeStyles = (styles: ResumeStyles) => {
@@ -103,8 +103,8 @@ export const importResumesFromLocal = async (callback?: () => void) => {
     for (const resume of Object.values(data)) {
       if (typeof resume.name !== "string") return false;
       if (typeof resume.content !== "string") return false;
-      if (typeof resume.update !== "string") return false;
       if (typeof resume.styles !== "object") return false;
+      if (!["string", "undefined"].includes(typeof resume.update)) return false;
 
       const styles = resume.styles;
 
