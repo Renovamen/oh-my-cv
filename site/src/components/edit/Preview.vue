@@ -48,7 +48,7 @@ const fitHeight = () => {
   scale.value = height.value / getPaperPx(styles.paper, "h");
 };
 
-setTimeout(fitWidth, 100);
+setTimeout(fitWidth, 0);
 </script>
 
 <style scoped>

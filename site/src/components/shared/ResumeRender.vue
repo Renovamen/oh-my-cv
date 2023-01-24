@@ -10,8 +10,13 @@
     :left="styles.marginH"
     :right="styles.marginH"
     :before-break-page="() => onFontLoaded(styles)"
-    :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize]"
-    :watch-delay="[styles.fontCJK, styles.fontEN]"
+    :watch="[
+      styles.lineHeight,
+      styles.paragraphSpace,
+      styles.fontSize,
+      styles.fontCJK,
+      styles.fontEN
+    ]"
   />
 </template>
 

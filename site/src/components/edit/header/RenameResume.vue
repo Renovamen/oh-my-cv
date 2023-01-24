@@ -1,6 +1,6 @@
 <template>
   <DisplayInput
-    class="w-36 sm:w-50"
+    class="w-36 sm:w-50 text-sm md:text-base"
     :text="data.curResumeName"
     :on-entered="rename"
   />

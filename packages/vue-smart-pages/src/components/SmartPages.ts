@@ -49,11 +49,6 @@ export default defineComponent({
       required: false,
       default: () => []
     },
-    watchDelay: {
-      type: Array,
-      required: false,
-      default: () => []
-    },
     beforeBreakPage: {
       type: Function,
       required: false,
@@ -78,8 +73,8 @@ export default defineComponent({
         id
       );
 
-    const resolvePages = (timeout?: number) => {
-      const func = () => {
+    const resolvePages = () => {
+      const resolveBreak = () => {
         breakPage(
           id,
           props.height,
@@ -96,49 +91,30 @@ export default defineComponent({
         const fn = props.beforeBreakPage();
 
         if (fn && typeof fn.then === "function") {
-          if (timeout) fn.then(() => setTimeout(func, timeout));
-          else fn.then(func);
+          fn.then(resolveBreak);
           return;
         }
       }
 
-      if (timeout) setTimeout(func, timeout);
-      else func();
+      resolveBreak();
     };
 
     onMounted(() => {
+      // Update styles
       watch(
-        () => [
-          props.content,
-          props.height,
-          props.width,
-          props.top,
-          props.bottom,
-          props.left,
-          props.right,
-          ...props.watch
-        ],
-        () => resolvePages()
+        () => [props.top, props.bottom, props.left, props.right, props.width],
+        () => {
+          updateCSS();
+          resolvePages();
+        }
       );
 
-      // Handle font update or something
-      watch(
-        () => props.watchDelay,
-        () => resolvePages(100)
-      );
+      watch(() => [props.content, props.height, ...props.watch], resolvePages);
 
-      // Initialize page breaking
-      resolvePages();
+      // Initialize styles
+      updateCSS();
+      setTimeout(resolvePages, 100);
     });
-
-    // Initialize styles
-    onMounted(updateCSS);
-
-    // Update styles
-    watch(
-      () => [props.top, props.bottom, props.left, props.right, props.width],
-      updateCSS
-    );
 
     return (): VNode =>
       h("div", {
