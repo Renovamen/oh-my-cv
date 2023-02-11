@@ -28,9 +28,11 @@ export const googleFontsLoader = async () => {
 };
 
 export const resolveGoogleFont = async (font: Font) => {
-  const loader = await googleFontsLoader();
-  if (isGoogleFont(font) && loader) {
-    loader.setActiveFont(font.fontFamily || font.name);
+  if (isGoogleFont(font)) {
+    const loader = await googleFontsLoader();
+    if (loader) {
+      await loader.setActiveFont(font.fontFamily || font.name);
+    }
   }
 };
 

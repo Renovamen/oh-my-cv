@@ -101,9 +101,11 @@ importers:
   packages/vue-smart-pages:
     specifiers:
       '@renovamen/dynamic-css': workspace:0.1.0
+      ts-debounce: ^4.0.0
       vue: ^3.2.47
     dependencies:
       '@renovamen/dynamic-css': link:../dynamic-css
+      ts-debounce: 4.0.0
       vue: 3.2.47
 
   packages/vue-zoom:
@@ -5259,6 +5261,10 @@ packages:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
     hasBin: true
     dev: true
+
+  /ts-debounce/4.0.0:
+    resolution: {integrity: sha512-+1iDGY6NmOGidq7i7xZGA4cm8DAa6fqdYcvO5Z6yBevH++Bdo9Qt/mN0TzHUgcCcKv1gmh9+W5dHqz8pMWbCbg==}
+    dev: false
 
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}

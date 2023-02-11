@@ -16,6 +16,7 @@
         >
           <ResumeRender
             :id="resume.id"
+            ref="render"
             :content="resume.content"
             :styles="resume.styles"
             :style="{
@@ -33,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { setDynamicCss, PAPER, MM_TO_PX } from "~/utils";
+import { setDynamicCss, resolveGoogleFont, PAPER, MM_TO_PX } from "~/utils";
 import type { ResumeListItem } from "~/types";
 
 const props = defineProps<{
@@ -49,7 +50,17 @@ const { locale } = useI18n();
 const width = PAPER[props.resume.styles.paper].w;
 const height = PAPER[props.resume.styles.paper].h;
 
-setDynamicCss(props.resume.styles, props.resume.id);
+const render = ref();
+
+onMounted(async () => {
+  // load Google fonts
+  await resolveGoogleFont(props.resume.styles.fontEN);
+  await resolveGoogleFont(props.resume.styles.fontCJK);
+  // set resume styles
+  setDynamicCss(props.resume.styles, props.resume.id);
+  // force update SmartPage
+  render.value.forceUpdate();
+});
 </script>
 
 <style scoped>

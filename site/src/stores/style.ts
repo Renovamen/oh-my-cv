@@ -7,13 +7,16 @@ export const useStyleStore = defineStore("style", () => {
   const copiedStyles = copy(DEFAULT_STYLES);
   const styles = reactive<ResumeStyles>(copiedStyles);
 
-  const setStyle = <T extends keyof ResumeStyles>(
+  const setStyle = async <T extends keyof ResumeStyles>(
     key: T,
     value: ResumeStyles[T]
   ) => {
+    // handle Google fonts
+    if (["fontCJK", "fontEN"].includes(key))
+      await resolveGoogleFont(value as Font);
+    // update styles for the current resume
     styles[key] = value;
-    // Handle Google Fonts
-    if (["fontCJK", "fontEN"].includes(key)) resolveGoogleFont(value as Font);
+    // update CSS
     // vue-smart-pages will handle margins, height and width
     if (!["marginV", "marginH"].includes(key)) setDynamicCss(styles, "preview");
   };
