@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@renovamen/dynamic-css": "workspace:0.1.0",
-    "vue": "^3.2.45"
+    "vue": "^3.2.47"
   },
   "publishConfig": {
     "access": "public"

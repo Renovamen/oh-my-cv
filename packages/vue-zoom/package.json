@@ -28,8 +28,8 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "@vueuse/core": "^9.11.0",
-    "vue": "^3.2.45"
+    "@vueuse/core": "^9.12.0",
+    "vue": "^3.2.47"
   },
   "publishConfig": {
     "access": "public"
