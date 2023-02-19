@@ -1,7 +1,12 @@
 <template>
   <div class="pane-container">
     <Zoom ref="zoom" :scale="scale">
-      <ResumeRender id="preview" :content="data.mdContent" :styles="styles" />
+      <ResumeRender
+        id="preview"
+        :markdown="data.mdContent"
+        :css="data.cssContent"
+        :styles="styles"
+      />
     </Zoom>
 
     <div

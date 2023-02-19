@@ -19,7 +19,9 @@ export type ResumeStyles = {
 
 export type SystemData = {
   mdContent: string;
-  fileImported: boolean;
+  cssContent: string;
+  mdFlag: boolean;
+  cssFlag: boolean;
   curResumeId: string | null;
   curResumeName: string;
 };
@@ -52,7 +54,8 @@ export type Font = {
 
 export type ResumeStorageItem = {
   name: string;
-  content: string;
+  markdown: string;
+  css: string;
   styles: ResumeStyles;
   update: string;
 };

@@ -1,5 +1,29 @@
 <template>
   <div class="pane-container">
+    <div
+      class="hstack h-9 text-sm md:(h-10 text-base) w-full text-c bg-c border-b border-c px-4 space-x-2"
+    >
+      <button
+        class="relative leading-9 md:leading-10 px-2"
+        @click="activateMarkdown"
+      >
+        Markdown
+        <span
+          v-show="!activatedTab"
+          class="absolute w-full h-0.4 bg-blue-500 dark:bg-blue-400 left-0 bottom-0 rounded"
+        />
+      </button>
+      <button
+        class="relative leading-9 md:leading-10 px-2"
+        @click="activateCSS"
+      >
+        CSS
+        <span
+          v-show="activatedTab"
+          class="absolute w-full h-0.4 bg-blue-500 dark:bg-blue-400 left-0 bottom-0 rounded"
+        />
+      </button>
+    </div>
     <div ref="editorRef" h-full />
   </div>
 </template>
@@ -7,61 +31,67 @@
 <script lang="ts" setup>
 import type * as Monaco from "monaco-editor";
 import { isClient } from "@renovamen/utils";
-import { setupMonaco } from "~/monaco";
-
-const { data, setData, toggleImportedFlag } = useDataStore();
+import { setupMonacoEditor } from "~/monaco";
 
 const editorRef = ref<HTMLDivElement>();
-let editor: Monaco.editor.IStandaloneCodeEditor | undefined;
 
-// Setup
+let editor:
+  | {
+      editor: Monaco.editor.IStandaloneCodeEditor;
+      models: {
+        [key: string]: {
+          getModel: () => Monaco.editor.ITextModel;
+          activate: () => void;
+          dispose: () => void;
+        };
+      };
+      dispose: () => void;
+    }
+  | undefined;
+
+// Setup Monaco editor
 onMounted(async () => {
-  // Monaco editor
   if (isClient && editorRef.value && !editor) {
-    const { monaco } = await setupMonaco();
-
-    editor = monaco.editor.create(editorRef.value, {
-      value: data.mdContent,
-      language: "markdown",
-      wordWrap: "on",
-      fontSize: 13,
-      automaticLayout: true
-    });
-
-    editor!.onDidChangeModelContent(() => {
-      setData("mdContent", editor!.getValue());
-    });
-
-    monaco.editor.defineTheme("vs-dark-dimmed", {
-      base: "vs-dark",
-      inherit: true,
-      rules: [],
-      colors: {
-        "editor.background": "#334155",
-        "editor.lineHighlightBorder": "#4b5563",
-        "dropdown.background": "#4b5563",
-        "menu.separatorBackground": "#6b7280"
-      }
-    });
-
-    monaco.editor.setTheme(isDark.value ? "vs-dark-dimmed" : "vs");
-
-    watch(isDark, (val) => {
-      monaco.editor.setTheme(val ? "vs-dark-dimmed" : "vs");
-    });
+    editor = await setupMonacoEditor(editorRef.value);
+    activateMarkdown();
   }
 });
 
 onBeforeUnmount(() => editor?.dispose());
 
-// Update editor content after uploading a file
+// Watch the updates of editor content on other places
+const { data, toggleMdFlag, toggleCssFlag } = useDataStore();
+
 watch(
-  () => data.fileImported,
+  () => data.mdFlag,
   () => {
-    if (data.fileImported) {
-      editor?.setValue(data.mdContent);
-      toggleImportedFlag(false);
+    if (data.mdFlag) {
+      editor?.models["markdown"].getModel().setValue(data.mdContent);
+      toggleMdFlag(false);
     }
   }
 );
+
+watch(
+  () => data.cssFlag,
+  () => {
+    if (data.cssFlag) {
+      editor?.models["css"].getModel().setValue(data.cssContent);
+      toggleCssFlag(false);
+    }
+  }
+);
+
+// Change model
+const activatedTab = ref(0);
+
+const activateMarkdown = () => {
+  editor?.models["markdown"].activate();
+  activatedTab.value = 0;
+};
+
+const activateCSS = () => {
+  editor?.models["css"].activate();
+  activatedTab.value = 1;
+};
 </script>

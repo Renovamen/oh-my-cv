@@ -22,6 +22,7 @@
   @apply bg-darker-c border-4 border-light-c;
 }
 
+.editor-pane .pane-container,
 .toolbar-pane .pane-container {
   @apply bg-c;
 }

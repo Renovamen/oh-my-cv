@@ -17,7 +17,8 @@ const save = () => {
   const update = new Date().getTime().toString(); // record update time
   const resume = {
     name: data.curResumeName,
-    content: data.mdContent,
+    markdown: data.mdContent,
+    css: data.cssContent,
     styles: toRaw(styles),
     update: update
   } as ResumeStorageItem;

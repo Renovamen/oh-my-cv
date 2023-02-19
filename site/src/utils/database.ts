@@ -1,6 +1,11 @@
 import * as localForage from "localforage";
 import { downloadFile, uploadFile, copy } from "@renovamen/utils";
-import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT } from ".";
+import {
+  DEFAULT_STYLES,
+  DEFAULT_NAME,
+  DEFAULT_MD_CONTENT,
+  DEFAULT_CSS_CONTENT
+} from ".";
 import type { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 
 const OHCV_KEY = "ohcv_data";
@@ -25,11 +30,18 @@ export const setResumeStyles = (styles: ResumeStyles) => {
     setStyle(key, styles[key]);
 };
 
-export const setResumeContent = (content: string) => {
-  const { setData, toggleImportedFlag } = useDataStore();
+export const setResumeMd = (content: string) => {
+  const { setData, toggleMdFlag } = useDataStore();
 
   setData("mdContent", content);
-  toggleImportedFlag(true);
+  toggleMdFlag(true);
+};
+
+export const setResumeCss = (content: string) => {
+  const { setData, toggleCssFlag } = useDataStore();
+
+  setData("cssContent", content);
+  toggleCssFlag(true);
 };
 
 /**
@@ -43,7 +55,8 @@ export const setResume = (id: string, resume: ResumeStorageItem) => {
 
   setData("curResumeId", id);
   setData("curResumeName", resume.name);
-  setResumeContent(resume.content);
+  setResumeMd(resume.markdown);
+  setResumeCss(resume.css);
   setResumeStyles(resume.styles);
 };
 
@@ -72,7 +85,8 @@ export const newResume = async () => {
   const id = new Date().getTime().toString(); // generate a new id
   const resume = {
     name: DEFAULT_NAME,
-    content: DEFAULT_MD_CONTENT,
+    markdown: DEFAULT_MD_CONTENT,
+    css: DEFAULT_CSS_CONTENT,
     styles: DEFAULT_STYLES,
     update: id
   } as ResumeStorageItem;
@@ -102,7 +116,8 @@ export const importResumesFromLocal = async (callback?: () => void) => {
   const check = (data: ResumeStorage) => {
     for (const resume of Object.values(data)) {
       if (typeof resume.name !== "string") return false;
-      if (typeof resume.content !== "string") return false;
+      if (typeof resume.markdown !== "string") return false;
+      if (typeof resume.css !== "string") return false;
       if (typeof resume.styles !== "object") return false;
       if (!["string", "undefined"].includes(typeof resume.update)) return false;
 

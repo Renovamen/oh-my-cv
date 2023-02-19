@@ -2,8 +2,7 @@
   <SmartPages
     :id="id"
     ref="smart"
-    class="resume-render"
-    :content="renderMarkdown(content)"
+    :content="renderMarkdown(markdown)"
     :height="getPaperPx(styles.paper, 'h')"
     :width="PAPER[styles.paper].w"
     :top="styles.marginV"
@@ -11,7 +10,7 @@
     :left="styles.marginH"
     :right="styles.marginH"
     :before-break-page="() => onFontLoaded(styles)"
-    :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize]"
+    :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize, css]"
     :watch-delay="[styles.fontCJK, styles.fontEN]"
   />
 </template>
@@ -24,7 +23,8 @@ import type { ResumeStyles } from "~/types";
 
 defineProps<{
   id: string;
-  content: string;
+  markdown: string;
+  css?: string;
   styles: ResumeStyles;
 }>();
 

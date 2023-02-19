@@ -1,7 +1,7 @@
 <template>
   <ToolItem :text="t('toolbar.margin')" icon="radix-icons:margin">
     <div mb-4 text-light-c>
-      <div flex hstack space-x-1 justify-end>
+      <div hstack space-x-1 justify-end>
         <span class="iconify" data-icon="icon-park-outline:margin-one" />
         <span>{{ t("toolbar.vertical") }}</span>
       </div>
@@ -14,7 +14,7 @@
     </div>
 
     <div text-light-c>
-      <div flex hstack space-x-1 justify-end>
+      <div hstack space-x-1 justify-end>
         <span class="iconify" data-icon="icon-park-outline:margin" />
         <span>{{ t("toolbar.horizontal") }}</span>
       </div>

@@ -17,7 +17,7 @@
           <ResumeRender
             :id="resume.id"
             ref="render"
-            :content="resume.content"
+            :markdown="resume.markdown"
             :styles="resume.styles"
             :style="{
               transform: `scale(${1 / MM_TO_PX})`
@@ -34,7 +34,8 @@
 </template>
 
 <script lang="ts" setup>
-import { setDynamicCss, resolveGoogleFont, PAPER, MM_TO_PX } from "~/utils";
+import { setDynamicCss, setBackboneCss, resolveGoogleFont } from "~/utils";
+import { PAPER, MM_TO_PX } from "~/utils/constants";
 import type { ResumeListItem } from "~/types";
 
 const props = defineProps<{
@@ -52,15 +53,21 @@ const height = PAPER[props.resume.styles.paper].h;
 
 const render = ref();
 
-onMounted(async () => {
+const updateResumeItem = async () => {
+  console.log("set");
+  // set resume backbone styles
+  setBackboneCss(props.resume.css, props.resume.id);
   // load Google fonts
   await resolveGoogleFont(props.resume.styles.fontEN);
   await resolveGoogleFont(props.resume.styles.fontCJK);
-  // set resume styles
+  // set resume dynamic styles
   setDynamicCss(props.resume.styles, props.resume.id);
   // force update SmartPage
   render.value.forceUpdate();
-});
+};
+
+onMounted(updateResumeItem);
+onUpdated(updateResumeItem);
 </script>
 
 <style scoped>

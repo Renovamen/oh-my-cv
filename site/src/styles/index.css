@@ -1,6 +1,5 @@
 @import "./fonts.css";
 @import "./edit.css";
-@import "./cv.css";
 
 body {
   @apply bg-dark-c;

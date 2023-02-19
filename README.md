@@ -13,7 +13,7 @@ Have fun: [ohcv.zxh.io](https://ohcv.zxh.io/)
 
 ## Notice
 
-Highly recommend using Chrome.
+Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.google.com/chrome/) and [Microsoft Edge](https://www.microsoft.com/en-us/edge).
 
 
 &nbsp;
@@ -22,7 +22,7 @@ Highly recommend using Chrome.
 
 - Write your resume in Markdown and preview it in real-time online, it's smooth!
 - Export to A4 and US Letter size PDFs
-- Customize: page margins, theme colors, line heights, fonts, etc.
+- Customize page margins, theme colors, line heights, fonts, etc.
 - Pick any fonts from [Google Fonts](https://fonts.google.com/)
 - Add icons easily via [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))
 - Tex support ([KaTeX](https://github.com/KaTeX/KaTeX))
@@ -30,7 +30,7 @@ Highly recommend using Chrome.
 - Case correction (e.g. `Github` -> `GitHub`)
 - Add line breaks just like in LaTeX: `\\[10px]`
 - Automatically breaking pages
-- Neat template
+- Customize CSS
 - Manage multiple resumes
 - Your data in your hands:
   - Data are saved locally within your browser, see [here](https://localforage.github.io/localForage/) for details
@@ -51,7 +51,7 @@ Highly recommend using Chrome.
 
 - [x] Pick any fonts from [Google Fonts](https://fonts.google.com/)
 
-- [ ] Custom CSS
+- [x] Custom CSS
 
 
 &nbsp;

@@ -22,7 +22,7 @@ export default defineConfig({
     ["border-dark-c", "border-gray-500 dark:border-gray-400"],
     ["border-darker-c", "border-black dark:border-gray-200"],
     ["border-light-c", "border-gray-200 dark:border-slate-500"],
-    ["hide-on-mobile", "hidden md:block"],
+    ["hide-on-mobile", "lt-md:hidden"],
     ["shadow-c", "shadow dark:shadow-gray-600"],
     ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-dark-c"],
     [

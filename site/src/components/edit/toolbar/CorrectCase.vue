@@ -21,7 +21,7 @@
 
 <script lang="ts" setup>
 import { correctCase } from "correct-case";
-import { setResumeContent } from "~/utils";
+import { setResumeMd } from "~/utils";
 
 const { t } = useI18n();
 const { data } = useDataStore();
@@ -31,7 +31,7 @@ const correct = async () => {
   const md = data.mdContent;
   const result = await correctCase(md);
 
-  setResumeContent(result.text);
+  setResumeMd(result.text);
 
   const corrected = result.correctedWords ? result.correctedWords.length : true;
   setToastFlag("correct", corrected);

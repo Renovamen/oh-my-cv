@@ -1,4 +1,5 @@
 import { injectCSS } from "@renovamen/dynamic-css";
+import { PREVIEW_SELECTOR } from "~/utils";
 import type { ResumeStyles } from "~/types";
 
 const themeColorCss = (styles: ResumeStyles, id: string) => {
@@ -47,5 +48,12 @@ export const setDynamicCss = (styles: ResumeStyles, id: string) => {
     lineHeightCss(styles, pageId) +
     (id === "preview" ? paperCss(styles) : "");
 
-  injectCSS(content, `oh-cv-${id}`);
+  injectCSS(content, `oh-cv-dynamic-${id}`);
+};
+
+export const setBackboneCss = (css: string, id: string) => {
+  if (id !== "preview")
+    css = css.replaceAll(PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
+
+  injectCSS(css, `oh-cv-backbone-${id}`);
 };

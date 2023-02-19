@@ -122,13 +122,13 @@ export default defineComponent({
           props.height,
           ...props.watch
         ],
-        () => debounce(resolvePages, 100)()
+        () => debounce(resolvePages, 200)()
       );
 
       // Font update or something
       watch(
         () => props.watchDelay,
-        () => debounce(() => resolvePages(100), 100)()
+        () => debounce(() => resolvePages(100), 200)()
       );
 
       // Initialize styles

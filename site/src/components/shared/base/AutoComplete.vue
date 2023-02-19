@@ -11,7 +11,7 @@
     "
   >
     <div
-      class="flex hstack h-9 space-x-2 px-2 py-1 rounded border"
+      class="hstack h-9 space-x-2 px-2 py-1 rounded border"
       :class="[isFocus && 'border-darker-c', !isFocus && 'border-c']"
     >
       <input

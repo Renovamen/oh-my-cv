@@ -3,12 +3,12 @@
     :text="t('toolbar.font_family')"
     icon="material-symbols:font-download-outline"
   >
-    <div class="flex hstack space-x-2 w-full mb-2">
+    <div class="hstack space-x-2 w-full mb-2">
       <AutoComplete flex-1 :items="cjkFonts" :default="styles.fontCJK.name" />
       <span w-13>{{ t("toolbar.cn") }}</span>
     </div>
 
-    <div class="flex hstack space-x-2 w-full">
+    <div class="hstack space-x-2 w-full">
       <AutoComplete flex-1 :items="enFonts" :default="styles.fontEN.name" />
       <span w-13>{{ t("toolbar.en") }}</span>
     </div>
