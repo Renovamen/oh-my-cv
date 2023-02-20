@@ -1,7 +1,7 @@
 {
   "name": "oh-cv",
   "private": true,
-  "packageManager": "pnpm@7.25.0",
+  "packageManager": "pnpm@7.27.1",
   "scripts": {
     "build": "pnpm --filter=site build",
     "build:pkg": "pnpm -r --stream build:pkg",
@@ -19,17 +19,17 @@
     "trailingComma": "none"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.51.0",
-    "@typescript-eslint/parser": "^5.51.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
     "bumpp": "^8.2.1",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.9.0",
-    "pnpm": "^7.27.0",
+    "pnpm": "^7.27.1",
     "prettier": "^2.8.4",
     "taze": "^0.8.5",
-    "tsup": "^6.6.1",
+    "tsup": "^6.6.3",
     "typescript": "^4.9.5"
   },
   "version": "0.1.0"
