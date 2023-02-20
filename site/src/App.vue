@@ -25,9 +25,7 @@ useHead({
       rel: "icon",
       type: "image/svg+xml",
       href: computed(() =>
-        preferredDark.value
-          ? "/favicon/favicon-dark.svg"
-          : "/favicon/favicon.svg"
+        preferredDark.value ? "/favicon-dark.svg" : "/favicon.svg"
       )
     }
   ]

@@ -5,6 +5,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import Pages from "vite-plugin-pages";
 import generateSitemap from "vite-ssg-sitemap";
 import Layouts from "vite-plugin-vue-layouts";
+import { VitePWA } from "vite-plugin-pwa";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import VueI18n from "@intlify/unplugin-vue-i18n/vite";
@@ -59,6 +60,55 @@ export default defineConfig({
       runtimeOnly: true,
       compositionOnly: true,
       include: [path.resolve(__dirname, "src/i18n/translations/**")]
+    }),
+
+    // https://github.com/antfu/vite-plugin-pwa
+    VitePWA({
+      registerType: "autoUpdate",
+      includeAssets: ["/*.{svg,png}"],
+      manifest: {
+        name: "Oh, CV!",
+        short_name: "Oh, CV!",
+        theme_color: "#ffffff",
+        icons: [
+          {
+            src: "/pwa-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "/pwa-512x512.png",
+            sizes: "512x512",
+            type: "image/png"
+          },
+          {
+            src: "/favicon.svg",
+            sizes: "512x512",
+            type: "image/svg",
+            purpose: "any maskable"
+          }
+        ]
+      },
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,otf,ttf,woff2}"],
+        maximumFileSizeToCacheInBytes: 16000000,
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp("^https://fonts.googleapis.com/.*", "i"),
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-font-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ]
+      }
     })
   ],
 

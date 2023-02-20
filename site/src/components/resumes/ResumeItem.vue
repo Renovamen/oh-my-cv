@@ -54,7 +54,6 @@ const height = PAPER[props.resume.styles.paper].h;
 const render = ref();
 
 const updateResumeItem = async () => {
-  console.log("set");
   // set resume backbone styles
   setBackboneCss(props.resume.css, props.resume.id);
   // load Google fonts

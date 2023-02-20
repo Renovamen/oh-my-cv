@@ -21,6 +21,7 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.googl
 ## Features
 
 - Write your resume in Markdown and preview it in real-time online, it's smooth!
+- It works offline ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps))
 - Export to A4 and US Letter size PDFs
 - Customize page margins, theme colors, line heights, fonts, etc.
 - Pick any fonts from [Google Fonts](https://fonts.google.com/)
