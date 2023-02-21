@@ -13,8 +13,7 @@
 <script lang="ts" setup>
 import { newResume } from "~/utils";
 
-const { t } = useI18n();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 const router = useRouter();
 
 const newAndSwitch = async () => {

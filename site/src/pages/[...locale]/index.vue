@@ -1,46 +1,67 @@
 <template>
-  <div class="resumes-page">
+  <div class="landing-page">
     <Header />
 
-    <div class="max-w-306 mx-auto px-5 py-16 text-dark-c">
-      <div class="space-y-2 md:(hstack justify-between)">
-        <h1 font-bold text-2xl sm:text-3xl>{{ t("resumes.my_resume") }}</h1>
-        <FileOptions @update="loadResumes" />
-      </div>
+    <div class="workspace">
+      <div
+        class="absolute px-5 md:px-20 lt-sm:pb-10 w-fit h-fit max-w-240 left-0 right-0 top-0 bottom-0 m-auto"
+      >
+        <div text-center mt-40>
+          <h1 text="c 3xl sm:4xl" v-html="t('landing.hero')" />
+          <div my-10 text-light-c sm:text-lg>
+            <BrandName /> {{ t("landing.desc") }}
+          </div>
+          <router-link :to="switchPath('resumes', locale)">
+            <span
+              class="text-white bg-brand px-4 py-3 rounded-lg mx-auto outline outline-4 outline-transparent duration-200 hover:(outline-rose-300/50)"
+            >
+              {{ t("landing.start") }}
+            </span>
+          </router-link>
+        </div>
 
-      <div class="flex flex-wrap gap-x-4 gap-y-8 mt-8">
-        <NewResume />
-        <ResumeItem
-          v-for="resume in list"
-          :key="resume.id"
-          class="resume-item"
-          :resume="resume"
-          @update="loadResumes"
-        />
+        <div
+          class="lt-sm:space-y-10 sm:(w-130 grid grid-cols-2) lg:w-150 text-light-c mt-15 mx-auto"
+        >
+          <div v-for="i in [0, 1]" :key="`feature-${i}`">
+            <div w-fit sm:mx-auto>
+              <div hstack mb-3 space-x-1.5>
+                <span
+                  class="w-5 h-5 rounded-full text-white flex-center"
+                  :class="[i ? 'bg-blue-400' : 'bg-brand']"
+                >
+                  <span
+                    v-if="i"
+                    class="iconify text-xs"
+                    data-icon="wpf:privacy"
+                  />
+                  <span
+                    v-else
+                    class="iconify text-xs"
+                    data-icon="mdi:rocket-launch"
+                  />
+                </span>
+                <h2 text-c>{{ t(`landing.feats[${i}].title`) }}</h2>
+              </div>
+              <ul text-sm pl-2 ml-4.5 list-disc>
+                <li
+                  v-for="line in t(`landing.feats[${i}].items`).split('<br>')"
+                  :key="line"
+                  v-html="line"
+                />
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { getResumeList } from "~/utils";
-import type { ResumeListItem } from "~/types";
-
-const { t } = useI18n();
-
-// Load resumes from storage
-const list = ref<ResumeListItem[]>();
-
-const loadResumes = async () => {
-  list.value = await getResumeList();
-};
-
-onMounted(loadResumes);
+const { t, locale } = useI18n();
 
 // Handle languages
 const props = defineProps<{ locale: string[] | string }>();
 watchLocale(props);
-
-// Handle notifications
-watchToast();
 </script>

@@ -1,7 +1,17 @@
 lang: 语言
-desc: 在线用 Markdown 写简历！
+desc: 用 Markdown 写简历！
 
 toggle_dark: 切换深色模式
+
+landing:
+  hero: 用 Markdown 写<span text-brand>简历</span>！
+  desc: 能让您轻松的创建和管理简历，它开源免费，且绝不会（也无法）收集您的数据
+  start: 开始使用
+  feats:
+    - title: 简单且强大
+      items: 创建并管理多份简历<br>实时预览<br>导出为多种 PDF 格式<br>可定制程度高<br>轻松切换字体和添加图标<br>点击<a href="https://github.com/Renovamen/oh-cv#features" target="_blank">这里</a>查看更多特性
+    - title: 保护您的隐私
+      items: 开源免费<br>数据保存在本地<br>无需登录<br>没有用户追踪<br>没有广告
 
 resumes:
   my_resume: 我的简历

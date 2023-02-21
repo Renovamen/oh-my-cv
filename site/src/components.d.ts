@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AutoComplete: typeof import('./components/shared/base/AutoComplete.vue')['default']
+    BrandName: typeof import('./components/shared/icons/BrandName.vue')['default']
     CorrectCase: typeof import('./components/edit/toolbar/CorrectCase.vue')['default']
     DisplayInput: typeof import('./components/shared/base/DisplayInput.vue')['default']
     Dropdown: typeof import('./components/shared/base/Dropdown.vue')['default']
