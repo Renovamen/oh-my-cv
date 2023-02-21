@@ -9,6 +9,7 @@
       </div>
 
       <div class="flex flex-wrap gap-x-4 gap-y-8 mt-8">
+        <NewResume />
         <ResumeItem
           v-for="resume in list"
           :key="resume.id"

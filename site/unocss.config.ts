@@ -28,6 +28,10 @@ export default defineConfig({
     [
       "round-btn",
       "w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-darker-c"
+    ],
+    [
+      "resume-card",
+      "cursor-pointer mx-auto overflow-hidden rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
     ]
   ],
   theme: {

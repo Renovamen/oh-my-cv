@@ -1,24 +1,11 @@
 <template>
   <div class="file-options hstack space-x-2">
-    <button
-      class="text-white bg-blue-500 hover:(bg-blue-600 dark:bg-blue-400)"
-      @click="newAndSwitch"
-    >
-      <span
-        class="iconify"
-        data-icon="material-symbols:note-add-outline-rounded"
-      />
-      <span>{{ t("resumes.new") }}</span>
-    </button>
-    <button
-      class="border border-dark-c hover:bg-darker-c"
-      @click="saveResumesToLocal"
-    >
+    <button :aria-label="t('resumes.saveas')" @click="saveResumesToLocal">
       <span class="iconify" data-icon="ic:baseline-save-as" />
       <span>{{ t("resumes.saveas") }}</span>
     </button>
     <button
-      class="border border-dark-c hover:bg-darker-c"
+      :aria-label="t('resumes.import')"
       @click="() => importResumesFromLocal(() => $emit('update'))"
     >
       <span class="iconify" data-icon="ic:round-upload-file" />
@@ -29,27 +16,20 @@
 
 <script lang="ts" setup>
 import { useShortcuts } from "@renovamen/vue-shortcuts";
-import { newResume, saveResumesToLocal, importResumesFromLocal } from "~/utils";
+import { saveResumesToLocal, importResumesFromLocal } from "~/utils";
 
 defineEmits<{
   (e: "update"): void;
 }>();
 
-const router = useRouter();
 const { t } = useI18n();
-const { locale } = useI18n();
-
-const newAndSwitch = async () => {
-  const id = await newResume();
-  router.push({ path: switchPath("edit", locale.value), query: { id: id } });
-};
 
 useShortcuts("shift+ctrl+s", saveResumesToLocal);
 </script>
 
 <style scoped>
 .file-options button {
-  @apply hstack rounded text-sm space-x-1 px-2 py-1 sm:(text-base space-x-1.5 px-2.5 py-1.5);
+  @apply hstack rounded border border-dark-c hover:bg-darker-c text-sm space-x-1 px-2 py-1 sm:(text-base space-x-1.5 px-2.5 py-1.5);
 }
 
 .file-options button .iconify {

@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     Logo: typeof import('./components/shared/icons/Logo.vue')['default']
     Margins: typeof import('./components/edit/toolbar/Margins.vue')['default']
     NavItem: typeof import('./components/shared/base/NavItem.vue')['default']
+    NewResume: typeof import('./components/resumes/NewResume.vue')['default']
     Paper: typeof import('./components/edit/toolbar/Paper.vue')['default']
     ParagraphSpace: typeof import('./components/edit/toolbar/ParagraphSpace.vue')['default']
     PopupPane: typeof import('./components/shared/base/PopupPane.vue')['default']
