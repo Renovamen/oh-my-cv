@@ -20,7 +20,7 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.googl
 
 ## Features
 
-- Write your resume in Markdown and preview it in real-time online, it's smooth!
+- Write your resume in Markdown and preview it in real-time, it's smooth!
 - It works offline ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps))
 - Export to A4 and US Letter size PDFs
 - Customize page margins, theme colors, line heights, fonts, etc.
@@ -30,7 +30,7 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.googl
 - Cross-reference (would be useful for an academic CV)
 - Case correction (e.g. `Github` -> `GitHub`)
 - Add line breaks just like in LaTeX: `\\[10px]`
-- Automatically breaking pages
+- Break pages automatically
 - Customize CSS
 - Manage multiple resumes
 - Your data in your hands:
@@ -42,24 +42,9 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.googl
 
 &nbsp;
 
-## TO-DO
-
-- [ ] Export to:
-
-  - [x] PDF
-  - [x] Markdown
-  - [ ] HTML
-
-- [x] Pick any fonts from [Google Fonts](https://fonts.google.com/)
-
-- [x] Custom CSS
-
-
-&nbsp;
-
 ## Development
 
-It's built on [Vitesse](https://github.com/antfu/vitesse), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite 3](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
+It's built on [Vitesse](https://github.com/antfu/vitesse), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
 
 Clone the repo and install dependencies:
 
