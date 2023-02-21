@@ -4,7 +4,7 @@
 
     <div class="max-w-306 mx-auto px-5 py-16 text-dark-c">
       <div class="space-y-2 md:(hstack justify-between)">
-        <h1 font-bold text-2xl sm:text-3xl>{{ t("resumes.my_resume") }}</h1>
+        <h1 font-bold text-2xl sm:text-3xl>{{ t("resumes.my_resumes") }}</h1>
         <FileOptions @update="loadResumes" />
       </div>
 

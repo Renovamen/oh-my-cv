@@ -8,10 +8,10 @@ import {
 } from ".";
 import type { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 
-const OHCV_KEY = "ohcv_data";
+const OHMYCV_KEY = "ohmycv_data";
 
 export const getStorage = async () =>
-  localForage.getItem<ResumeStorage>(OHCV_KEY);
+  localForage.getItem<ResumeStorage>(OHMYCV_KEY);
 
 export const getResumeList = async () => {
   const storage = (await getStorage()) || {};
@@ -72,7 +72,7 @@ export const saveResume = async (id: string, resume: ResumeStorageItem) => {
   const storage = (await getStorage()) || {};
   storage[id] = resume;
 
-  await localForage.setItem(OHCV_KEY, storage);
+  await localForage.setItem(OHMYCV_KEY, storage);
   setToastFlag("save", true);
 };
 
@@ -102,7 +102,7 @@ export const newResume = async () => {
  */
 export const saveResumesToLocal = async () => {
   const storage = (await getStorage()) || {};
-  downloadFile("ohcv_data.json", JSON.stringify(storage));
+  downloadFile("ohmycv_data.json", JSON.stringify(storage));
 };
 
 /**
@@ -161,7 +161,7 @@ export const importResumesFromLocal = async (callback?: () => void) => {
       ...data
     };
 
-    await localForage.setItem(OHCV_KEY, newStorage);
+    await localForage.setItem(OHMYCV_KEY, newStorage);
     setToastFlag("import", "yes");
 
     callback && callback();
@@ -178,7 +178,7 @@ export const deleteResume = async (id: string) => {
     const name = storage[id].name;
     delete storage[id];
 
-    await localForage.setItem(OHCV_KEY, storage);
+    await localForage.setItem(OHMYCV_KEY, storage);
 
     setToastFlag("delete", name);
   }
@@ -211,7 +211,7 @@ export const duplicateResume = async (id: string) => {
     resume.update = newId;
     storage[newId] = resume;
 
-    await localForage.setItem(OHCV_KEY, storage);
+    await localForage.setItem(OHMYCV_KEY, storage);
     setToastFlag("duplicate", oldName);
   }
 };
@@ -222,6 +222,6 @@ export const renameResume = async (id: string, name: string) => {
   const storage = (await getStorage()) || {};
   storage[id].name = name;
 
-  await localForage.setItem(OHCV_KEY, storage);
+  await localForage.setItem(OHMYCV_KEY, storage);
   setToastFlag("save", true);
 };

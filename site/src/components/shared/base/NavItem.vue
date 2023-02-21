@@ -5,7 +5,7 @@
     @trigger="isDropDownOpen = false"
   >
     <div
-      class="relative float-right hstack cursor-pointer space-x-1"
+      class="hstack cursor-pointer space-x-1"
       role="button"
       tabindex="0"
     >

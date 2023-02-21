@@ -2,23 +2,23 @@
   <header class="header hstack justify-between pl-4 pr-1 text-c">
     <router-link
       class="hstack cursor-pointer text-gray-900 dark:text-gray-100"
-      to="/"
+      :to="switchPath('resumes', locale)"
     >
       <Logo hide-on-mobile mr-2 text="sm md:base" />
-      <h1 font="logo" text="base md:lg">Oh, CV!</h1>
+      <h1 text="base md:lg"><BrandName /></h1>
     </router-link>
 
     <slot name="middle" />
 
     <div hstack>
-      <ToggleLang mr-1.5 md:w-26 />
+      <ToggleLang mr-1.5 />
 
       <slot name="tail" />
 
       <ToggleDark />
       <a
         class="round-btn"
-        href="http://github.com/Renovamen/oh-cv"
+        href="http://github.com/Renovamen/oh-my-cv"
         target="_blank"
         rel="nofollow noopener"
       >
@@ -27,3 +27,7 @@
     </div>
   </header>
 </template>
+
+<script lang="ts" setup>
+const { t, locale } = useI18n();
+</script>

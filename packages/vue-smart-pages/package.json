@@ -2,13 +2,13 @@
   "name": "vue-smart-pages",
   "version": "0.1.0",
   "description": "Automatically breaking page just like Word, for Vue 3.",
-  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/vue-smart-pages",
+  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/vue-smart-pages",
   "bugs": {
-    "url": "https://github.com/Renovamen/oh-cv"
+    "url": "https://github.com/Renovamen/oh-my-cv"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Renovamen/oh-cv.git",
+    "url": "git+https://github.com/Renovamen/oh-my-cv.git",
     "directory": "packages/vue-smart-pages"
   },
   "license": "MIT",

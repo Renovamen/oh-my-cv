@@ -67,8 +67,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["/*.{svg,png}"],
       manifest: {
-        name: "Oh, CV!",
-        short_name: "Oh, CV!",
+        name: "Oh My CV!",
+        short_name: "Oh My CV!",
         theme_color: "#ffffff",
         icons: [
           {

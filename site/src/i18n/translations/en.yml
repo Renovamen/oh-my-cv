@@ -9,12 +9,12 @@ landing:
   start: Get Started
   feats:
     - title: Simple and Powerful
-      items: Manage multiple resumes<br>Real-time preview<br>Export to PDF format<br>Fully customizable<br>Pick fonts and add icons<br>And more features, see them <a href="https://github.com/Renovamen/oh-cv#features" target="_blank">here</a>
+      items: Manage multiple resumes<br>Real-time preview<br>Export to PDF format<br>Fully customizable<br>Pick fonts and add icons<br>And more features, see them <a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">here</a>
     - title: Your Data in Your Hands
       items: Open source and free<br>Data are saved locallye<br>No logine<br>No user tracking<br>No ads
 
 resumes:
-  my_resume: My Resumes
+  my_resumes: My Resumes
   created: "Created: "
   updated: "Updated: "
   new: New

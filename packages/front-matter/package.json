@@ -7,13 +7,13 @@
     "front matter",
     "meta data"
   ],
-  "homepage": "https://github.com/Renovamen/oh-cv/tree/main/packages/front-matter",
+  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/front-matter",
   "bugs": {
-    "url": "https://github.com/Renovamen/oh-cv"
+    "url": "https://github.com/Renovamen/oh-my-cv"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Renovamen/oh-cv.git",
+    "url": "git+https://github.com/Renovamen/oh-my-cv.git",
     "directory": "packages/front-matter"
   },
   "license": "MIT",
