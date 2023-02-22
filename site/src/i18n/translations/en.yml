@@ -11,7 +11,7 @@ landing:
     - title: Simple and Powerful
       items: Manage multiple resumes<br>Real-time preview<br>Export to PDF format<br>Fully customizable<br>Pick fonts and add icons<br>And more features, see them <a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">here</a>
     - title: Your Data in Your Hands
-      items: Open source and free<br>Data are saved locallye<br>No logine<br>No user tracking<br>No ads
+      items: Open source and free<br>Data are saved locally<br>No login<br>No user tracking<br>No ads
 
 resumes:
   my_resumes: My Resumes
