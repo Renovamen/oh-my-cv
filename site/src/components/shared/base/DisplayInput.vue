@@ -10,9 +10,10 @@
       @keyup.enter="enter"
     />
     <span
-      class="iconify hide-on-mobile absolute w-4 h-4 top-1/2 -mt-2 right-0 text-light-c opacity-0"
-      data-icon="bx:edit"
-    />
+      class="hide-on-mobile opacity-0 flex-center absolute top-1/2 -mt-2 right-0"
+    >
+      <span class="iconify text-light-c" data-icon="bx:edit" />
+    </span>
   </div>
 </template>
 
@@ -32,11 +33,11 @@ const enter = (e: Event) => {
 </script>
 
 <style scoped>
-.display-input:hover .iconify {
+.display-input:hover > span {
   @apply opacity-100;
 }
 
-.display-input input.focus + .iconify {
-  @apply !opacity-0;
+.display-input input.focus + span {
+  @apply opacity-0;
 }
 </style>

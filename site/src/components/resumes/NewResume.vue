@@ -24,6 +24,6 @@ const newAndSwitch = async () => {
 
 <style scoped>
 .resume-card:hover .iconify {
-  @apply text-red-400 dark:text-orange-400;
+  @apply text-brand;
 }
 </style>
