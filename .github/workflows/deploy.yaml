@@ -40,4 +40,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: site/dist
-          cname: ohcv.zxh.io
+          cname: ohmycv.app
