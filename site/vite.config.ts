@@ -69,7 +69,6 @@ export default defineConfig({
       manifest: {
         name: "Oh My CV!",
         short_name: "Oh My CV!",
-        theme_color: "#ffffff",
         icons: [
           {
             src: "/pwa-192x192.png",
