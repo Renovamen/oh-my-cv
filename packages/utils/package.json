@@ -28,7 +28,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "devDependencies": {
-    "user-agent-data-types": "^0.3.0"
+    "user-agent-data-types": "^0.3.1"
   },
   "publishConfig": {
     "access": "public"
