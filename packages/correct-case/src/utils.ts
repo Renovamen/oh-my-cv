@@ -15,11 +15,22 @@ const dict: Record<string, string> = {
 };
 
 const IGNORE_REGEX = /@correct-case-ignore\s+([^\s]+)/g;
+export const UTF8_RANGE = "[\u0080-\uFFFF]";
 
 const buildRegex = (dictionary: Record<string, string>): RegExp => {
   const keys = Object.keys(dictionary);
-  const regex = new RegExp(`\\b(${keys.join("|")})\\b`, "gi");
+  const regex = new RegExp(
+    `\\b(${keys.join("|").replace(/\+/g, "\\+")})\\b`,
+    "gi"
+  );
   return regex;
+};
+
+const containsUTF8 = (code: string, key: string, index: number) => {
+  const utf8Regex = new RegExp(`${UTF8_RANGE}`);
+  const head = code.charAt(index - 1);
+  const tail = code.charAt(index + key.length);
+  return utf8Regex.test(head) || utf8Regex.test(tail);
 };
 
 type Result = {
@@ -46,21 +57,23 @@ export const replace = (
   const regex = buildRegex(dict);
   const changedWords = [] as Result[];
 
-  const newText = text.replace(regex, (_, key: string) => {
-    if (!key.match(/[A-Z]/) || !key.match(/[a-z]/)) return _;
+  const newText = text.replace(regex, (_, from: string, index: number) => {
+    if (containsUTF8(text, from, index)) return _;
 
-    const lower = key.toLowerCase();
+    if (!from.match(/[A-Z]/) || !from.match(/[a-z]/)) return _;
+
+    const lower = from.toLowerCase();
     if (ignore.includes(lower)) return _;
 
-    const value = dict[lower];
-    if (!value || value === key) return _;
+    const to = dict[lower];
+    if (!to || to === from) return _;
 
     changedWords.push({
       before: _,
-      after: value
+      after: to
     });
 
-    return value;
+    return to;
   });
 
   return {

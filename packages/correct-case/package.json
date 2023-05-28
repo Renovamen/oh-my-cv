@@ -28,7 +28,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "case-police": "^0.5.14"
+    "case-police": "^0.6.1"
   },
   "publishConfig": {
     "access": "public"

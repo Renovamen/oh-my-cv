@@ -59,7 +59,8 @@ export default defineConfig({
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
-      include: [path.resolve(__dirname, "src/i18n/translations/**")]
+      include: [path.resolve(__dirname, "src/i18n/translations/**")],
+      strictMessage: false
     }),
 
     // https://github.com/antfu/vite-plugin-pwa
