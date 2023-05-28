@@ -20,6 +20,9 @@ export const EN_FONTS: Font[] = [
     name: "CMU Sans Serif"
   },
   {
+    name: "Euclid"
+  },
+  {
     name: "Minion Pro"
   },
   {

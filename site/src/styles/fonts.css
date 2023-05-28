@@ -140,6 +140,34 @@
   src: url("~/assets/fonts/adobe-garamond-pro/bolditalic.ttf") format("opentype");
 }
 
+@font-face {
+  font-family: "Euclid";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/euclid/regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Euclid";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/euclid/bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Euclid";
+  font-style: italic;
+  font-weight: normal;
+  src: url("~/assets/fonts/euclid/italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Euclid";
+  font-style: italic;
+  font-weight: bold;
+  src: url("~/assets/fonts/euclid/bolditalic.ttf") format("opentype");
+}
+
 /* Chinese */
 
 @font-face {
