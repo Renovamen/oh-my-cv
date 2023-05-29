@@ -1,6 +1,6 @@
 const defaultLocale = "en";
 
-export const watchLocale = (props: { locale: string[] | string }) => {
+export const watchLocale = (props: { lang: string[] | string }) => {
   const { availableLocales, locale } = useI18n();
 
   const checkLocale = (toLocale: string) => {
@@ -12,11 +12,11 @@ export const watchLocale = (props: { locale: string[] | string }) => {
     return checkLocale(l) ? l : defaultLocale;
   };
 
-  locale.value = getLocale(props.locale);
+  locale.value = getLocale(props.lang);
 
   watch(
-    () => props.locale,
-    () => (locale.value = getLocale(props.locale))
+    () => props.lang,
+    () => (locale.value = getLocale(props.lang))
   );
 };
 

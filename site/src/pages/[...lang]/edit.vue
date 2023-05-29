@@ -59,7 +59,7 @@ const isMobile = useMobile();
 const isToolbarOpen = ref(!isMobile.value);
 
 // Handle languages
-const props = defineProps<{ locale: string[] | string }>();
+const props = defineProps<{ lang: string[] | string }>();
 watchLocale(props);
 
 // Handle notifications

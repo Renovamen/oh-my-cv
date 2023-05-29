@@ -62,6 +62,6 @@
 const { t, locale } = useI18n();
 
 // Handle languages
-const props = defineProps<{ locale: string[] | string }>();
+const props = defineProps<{ lang: string[] | string }>();
 watchLocale(props);
 </script>

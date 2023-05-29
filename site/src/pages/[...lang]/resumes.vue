@@ -38,7 +38,7 @@ const loadResumes = async () => {
 onMounted(loadResumes);
 
 // Handle languages
-const props = defineProps<{ locale: string[] | string }>();
+const props = defineProps<{ lang: string[] | string }>();
 watchLocale(props);
 
 // Handle notifications
