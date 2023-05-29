@@ -45,7 +45,7 @@
     "critters": "^0.0.16",
     "markdown-it-cross-ref": "workspace:0.1.0",
     "markdown-it-deflist": "^2.1.0",
-    "markdown-it-line-break": "workspace:0.1.0",
+    "markdown-it-latex-cmds": "workspace:0.1.0",
     "markdown-it-link-attributes": "^4.0.1",
     "unocss": "^0.52.3",
     "unplugin-auto-import": "^0.16.2",

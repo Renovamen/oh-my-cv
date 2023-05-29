@@ -1,3 +1,5 @@
+const NEW_PAGE = "md-it-newpage";
+
 const removeElements = (parent: HTMLElement, selector: string) => {
   const elements = Array.from(parent.querySelectorAll(selector));
 
@@ -42,7 +44,7 @@ export const breakPage = (
       parseInt(style.marginTop) +
       parseInt(style.marginBottom);
 
-    if (pageH + childH > contentH) {
+    if (pageH + childH > contentH || child.className === NEW_PAGE) {
       newPage.appendChild(getPageBreakElement(height - pageH - top));
       pageH = 0;
     }

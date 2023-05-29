@@ -89,7 +89,7 @@ importers:
         specifier: ^13.0.1
         version: 13.0.1
 
-  packages/markdown-it-line-break:
+  packages/markdown-it-latex-cmds:
     devDependencies:
       '@types/markdown-it':
         specifier: ^12.2.3
@@ -245,9 +245,9 @@ importers:
       markdown-it-deflist:
         specifier: ^2.1.0
         version: 2.1.0
-      markdown-it-line-break:
+      markdown-it-latex-cmds:
         specifier: workspace:0.1.0
-        version: link:../packages/markdown-it-line-break
+        version: link:../packages/markdown-it-latex-cmds
       markdown-it-link-attributes:
         specifier: ^4.0.1
         version: 4.0.1

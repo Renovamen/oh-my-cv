@@ -29,7 +29,7 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.googl
 - Tex support ([KaTeX](https://github.com/KaTeX/KaTeX))
 - Cross-reference (would be useful for an academic CV)
 - Case correction (e.g. `Github` -> `GitHub`)
-- Add line breaks just like in LaTeX: `\\[10px]`
+- Add line breaks (`\\[10px]`) or start a new page (`\newpage`) just like in LaTeX
 - Break pages automatically
 - Customize CSS
 - Manage multiple resumes

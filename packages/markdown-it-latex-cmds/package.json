@@ -1,20 +1,20 @@
 {
-  "name": "markdown-it-line-break",
+  "name": "markdown-it-latex-cmds",
   "version": "0.1.0",
-  "description": "Add line breaks to Markdown just like in LaTeX.",
+  "description": "Enable using some LaTeX commands in Markdown.",
   "keywords": [
     "markdown",
     "markdown-it-plugin",
     "markdown-it"
   ],
-  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/markdown-it-line-break",
+  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/markdown-it-latex-cmds",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-my-cv"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renovamen/oh-my-cv.git",
-    "directory": "packages/markdown-it-line-break"
+    "directory": "packages/markdown-it-latex-cmds"
   },
   "license": "MIT",
   "author": "Renovamen <renovamenzxh@gmail.com>",
