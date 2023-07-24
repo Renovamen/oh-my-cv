@@ -36,10 +36,10 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "katex": "^0.16.7"
+    "katex": "^0.16.8"
   },
   "devDependencies": {
-    "@types/katex": "^0.16.0",
+    "@types/katex": "^0.16.1",
     "@types/markdown-it": "^12.2.3",
     "markdown-it": "^13.0.1"
   },

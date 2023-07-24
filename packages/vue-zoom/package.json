@@ -28,7 +28,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "@vueuse/core": "^10.1.2",
+    "@vueuse/core": "^10.2.1",
     "vue": "^3.3.4"
   },
   "publishConfig": {
