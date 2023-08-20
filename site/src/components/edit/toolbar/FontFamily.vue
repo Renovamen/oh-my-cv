@@ -40,7 +40,7 @@ const enFonts = computed(() => {
               EN_FONTS.find((font) => font.name === item.name)?.fontFamily ||
               item.name
           })
-      } as DropdownItem)
+      }) as DropdownItem
   );
   return en.concat(gEnFontList.value);
 });
@@ -57,7 +57,7 @@ const cjkFonts = computed(() => {
               CJK_FONTS.find((font) => font.name === item.name)?.fontFamily ||
               item.name
           })
-      } as DropdownItem)
+      }) as DropdownItem
   );
   return cn.concat(gCJKFontList.value);
 });

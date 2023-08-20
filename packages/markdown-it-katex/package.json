@@ -39,8 +39,8 @@
     "katex": "^0.16.8"
   },
   "devDependencies": {
-    "@types/katex": "^0.16.1",
-    "@types/markdown-it": "^12.2.3",
+    "@types/katex": "^0.16.2",
+    "@types/markdown-it": "^13.0.0",
     "markdown-it": "^13.0.1"
   },
   "publishConfig": {
