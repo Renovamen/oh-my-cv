@@ -19,12 +19,12 @@
     "@renovamen/eslint-config-vue": "^0.1.0",
     "@renovamen/prettier-config": "^0.1.0",
     "bumpp": "^9.2.0",
-    "eslint": "^8.47.0",
+    "eslint": "^8.48.0",
     "pnpm": "^8.6.12",
     "prettier": "^3.0.2",
     "taze": "^0.11.2",
     "tsup": "^7.2.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "version": "0.1.0"
 }

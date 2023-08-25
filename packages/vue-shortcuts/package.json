@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@renovamen/utils": "workspace:0.1.0",
-    "@vueuse/core": "^10.3.0",
+    "@vueuse/core": "^10.4.0",
     "vue": "^3.3.4"
   },
   "publishConfig": {
