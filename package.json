@@ -14,17 +14,12 @@
     "release:pkg:version": "bumpp package.json packages/*/package.json --commit \"build: publish v%s\" --all --tag --push",
     "serve": "pnpm --filter=site serve"
   },
-  "prettier": {
-    "trailingComma": "none"
-  },
+  "prettier": "@renovamen/prettier-config",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
+    "@renovamen/eslint-config-vue": "^0.1.0",
+    "@renovamen/prettier-config": "^0.1.0",
     "bumpp": "^9.2.0",
     "eslint": "^8.47.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-vue": "^9.17.0",
     "pnpm": "^8.6.12",
     "prettier": "^3.0.2",
     "taze": "^0.11.2",

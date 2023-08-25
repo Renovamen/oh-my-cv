@@ -12,10 +12,7 @@ export const useDataStore = defineStore("data", () => {
     curResumeName: DEFAULT_NAME
   });
 
-  const setData = <T extends keyof SystemData>(
-    key: T,
-    value: SystemData[T]
-  ) => {
+  const setData = <T extends keyof SystemData>(key: T, value: SystemData[T]) => {
     data[key] = value;
     if (key === "cssContent") setBackboneCss(value as string, "preview");
   };

@@ -19,16 +19,10 @@
         <span class="iconify" data-icon="lucide:zoom-out" />
       </button>
       <button @click="fitWidth">
-        <span
-          class="iconify"
-          data-icon="fluent:arrow-autofit-width-20-filled"
-        />
+        <span class="iconify" data-icon="fluent:arrow-autofit-width-20-filled" />
       </button>
       <button @click="fitHeight">
-        <span
-          class="iconify"
-          data-icon="fluent:arrow-autofit-height-20-filled"
-        />
+        <span class="iconify" data-icon="fluent:arrow-autofit-height-20-filled" />
       </button>
     </div>
   </div>

@@ -179,9 +179,9 @@ export const MarkdownItKatex: PluginWithOptions<KatexOptions> = (
     } catch (error) {
       if (options.throwOnError) console.warn(error);
 
-      return `<span title='${htmlEscape(
-        (error as Error).toString()
-      )}'>${htmlEscape(tex)}</span>`;
+      return `<span title='${htmlEscape((error as Error).toString())}'>${htmlEscape(
+        tex
+      )}</span>`;
     }
   };
 

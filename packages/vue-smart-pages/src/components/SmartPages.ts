@@ -83,14 +83,7 @@ export default defineComponent({
       updateCSS();
 
       const resolveBreak = () => {
-        breakPage(
-          id,
-          props.height,
-          props.top,
-          props.bottom,
-          props.left,
-          props.right
-        );
+        breakPage(id, props.height, props.top, props.bottom, props.left, props.right);
         if (props.afterBreakPage) props.afterBreakPage();
       };
 

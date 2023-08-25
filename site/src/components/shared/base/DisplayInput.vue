@@ -9,9 +9,7 @@
       @blur="isFocus = false"
       @keyup.enter="enter"
     />
-    <span
-      class="hide-on-mobile opacity-0 flex-center absolute top-1/2 -mt-2 right-0"
-    >
+    <span class="hide-on-mobile opacity-0 flex-center absolute top-1/2 -mt-2 right-0">
       <span class="iconify text-light-c" data-icon="bx:edit" />
     </span>
   </div>

@@ -32,9 +32,7 @@ const getFontStylesheet = async (
   const url = new URL(GOOGLE_FONTS_CSS);
 
   const variantsStr = variants.join(",");
-  const familiesStr = fonts.map(
-    (font): string => `${font.family}:${variantsStr}`
-  );
+  const familiesStr = fonts.map((font): string => `${font.family}:${variantsStr}`);
 
   url.searchParams.append("family", familiesStr.join("|"));
   url.searchParams.append("subset", subsets.join(","));
@@ -69,11 +67,7 @@ export const loadFontList = async (apiKey: string): Promise<Font[]> => {
   });
 };
 
-export const loadFont = async (
-  font: Font,
-  subsets: Subset[],
-  variants: Variant[]
-) => {
+export const loadFont = async (font: Font, subsets: Subset[], variants: Variant[]) => {
   if (!hasStylesheet(font.id)) {
     // Only load font if it doesn't have a stylesheet yet
     const fontStyle = await getFontStylesheet([font], subsets, variants);

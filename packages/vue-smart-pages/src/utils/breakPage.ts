@@ -40,9 +40,7 @@ export const breakPage = (
   for (const child of Array.from(page.children)) {
     const style = window.getComputedStyle(child, null);
     const childH =
-      child.clientHeight +
-      parseInt(style.marginTop) +
-      parseInt(style.marginBottom);
+      child.clientHeight + parseInt(style.marginTop) + parseInt(style.marginBottom);
 
     if (pageH + childH > contentH || child.className === NEW_PAGE) {
       newPage.appendChild(getPageBreakElement(height - pageH - top));

@@ -52,8 +52,7 @@ export const setDynamicCss = (styles: ResumeStyles, id: string) => {
 };
 
 export const setBackboneCss = (css: string, id: string) => {
-  if (id !== "preview")
-    css = css.replaceAll(PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
+  if (id !== "preview") css = css.replaceAll(PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
 
   injectCSS(css, `oh-my-cv-backbone-${id}`);
 };

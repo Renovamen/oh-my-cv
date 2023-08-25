@@ -27,10 +27,7 @@ export default defineConfig({
     ["hide-on-mobile", "lt-md:hidden"],
     ["shadow-c", "shadow dark:shadow-gray-600"],
     ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-dark-c"],
-    [
-      "round-btn",
-      "w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-darker-c"
-    ],
+    ["round-btn", "w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-darker-c"],
     [
       "resume-card",
       "cursor-pointer mx-auto overflow-hidden rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"

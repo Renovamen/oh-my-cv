@@ -1,9 +1,4 @@
-export type Category =
-  | "sans-serif"
-  | "serif"
-  | "display"
-  | "handwriting"
-  | "monospace";
+export type Category = "sans-serif" | "serif" | "display" | "handwriting" | "monospace";
 
 export type Subset =
   | "arabic"

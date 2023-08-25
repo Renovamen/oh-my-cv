@@ -1,7 +1,4 @@
-import GoogleFontsLoader, {
-  type Font as GoogleFont,
-  Subset
-} from "gfonts-loader";
+import GoogleFontsLoader, { type Font as GoogleFont, Subset } from "gfonts-loader";
 import { EN_FONTS, CJK_FONTS, CJK_SUBSETS, IGNORE_FONTS } from "~/utils";
 import type { ResumeStyles, Font } from "~/types";
 
@@ -16,8 +13,7 @@ const gLoader = key
 const isGoogleFont = (font: Font) => {
   const check = (list: Font[]) =>
     list.some(
-      (item) =>
-        (item.fontFamily || item.name) === (font.fontFamily || font.name)
+      (item) => (item.fontFamily || item.name) === (font.fontFamily || font.name)
     );
   return !check(EN_FONTS) && !check(CJK_FONTS);
 };

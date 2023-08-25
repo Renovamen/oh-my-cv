@@ -1,8 +1,5 @@
 <template>
-  <ToolItem
-    :text="t('toolbar.theme_color')"
-    icon="material-symbols:palette-outline"
-  >
+  <ToolItem :text="t('toolbar.theme_color')" icon="material-symbols:palette-outline">
     <ul class="flex justify-between mb-4">
       <li
         v-for="(color, i) in THEME_COLORS"
@@ -23,10 +20,7 @@
       @click="isFocus = true"
       @trigger="isFocus = false"
     >
-      <span
-        class="w-4 h-4 rounded-sm"
-        :style="{ backgroundColor: currentThemeColor }"
-      />
+      <span class="w-4 h-4 rounded-sm" :style="{ backgroundColor: currentThemeColor }" />
       <span>{{ customColor }}</span>
       <input
         class="absolute -left-2 w-full h-full opacity-0 cursor-pointer"
@@ -50,8 +44,7 @@ const isFocus = ref(false);
 const pickedColorId = ref(-1);
 const customColor = ref("");
 
-const getColorId = (color: string) =>
-  THEME_COLORS.findIndex((item) => item === color);
+const getColorId = (color: string) => THEME_COLORS.findIndex((item) => item === color);
 
 const resetDisplayColor = () => {
   pickedColorId.value = getColorId(styles.themeColor);
@@ -61,9 +54,7 @@ const resetDisplayColor = () => {
 resetDisplayColor();
 
 const currentThemeColor = computed(() =>
-  pickedColorId.value === -1
-    ? customColor.value
-    : THEME_COLORS[pickedColorId.value]
+  pickedColorId.value === -1 ? customColor.value : THEME_COLORS[pickedColorId.value]
 );
 
 const pickColor = (i: number) => {

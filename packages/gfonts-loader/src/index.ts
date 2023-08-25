@@ -45,8 +45,7 @@ export class GoogleFontsLoader {
       const font = fonts[i];
 
       // Exit once specified limit of number of fonts is reached
-      if (this.options.limit! >= 0 && this.fontMap.size >= this.options.limit!)
-        break;
+      if (this.options.limit! >= 0 && this.fontMap.size >= this.options.limit!) break;
 
       if (
         // Only keep fonts whose names are included in the provided array
@@ -56,13 +55,9 @@ export class GoogleFontsLoader {
         (this.options.categories!.length === 0 ||
           this.options.categories!.includes(font.category)) &&
         // Only keep fonts which are available in all specified subsets
-        this.options.subsets!.every((subset) =>
-          font.subsets.includes(subset)
-        ) &&
+        this.options.subsets!.every((subset) => font.subsets.includes(subset)) &&
         // Only keep fonts which contain all specified variants
-        this.options.variants!.every((variant) =>
-          font.variants.includes(variant)
-        ) &&
+        this.options.variants!.every((variant) => font.variants.includes(variant)) &&
         // Only keep fonts for which the `filter` function evaluates to `true`
         this.options.filter!(font) === true
       ) {
@@ -104,9 +99,7 @@ export class GoogleFontsLoader {
 
     if (!activeFont) {
       // Font is not in fontList: Keep current activeFont and log error
-      throw Error(
-        `Cannot update active font: "${fontFamily}" is not in the font list`
-      );
+      throw Error(`Cannot update active font: "${fontFamily}" is not in the font list`);
     }
 
     this.activeFontFamily = fontFamily;

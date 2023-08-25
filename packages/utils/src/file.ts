@@ -8,10 +8,7 @@ export const fetchFile = async (url: string) => {
   }
 };
 
-export const uploadFile = (
-  callback: (content: string) => void,
-  accept?: string
-) => {
+export const uploadFile = (callback: (content: string) => void, accept?: string) => {
   const upload = (e: Event) => {
     e.stopPropagation();
 

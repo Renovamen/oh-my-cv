@@ -72,9 +72,7 @@ const handleSelect = (text: string) => {
 const filteredItems = computed(() =>
   editTimes.value > 0
     ? props.items.filter((item) =>
-        item.text
-          .toLocaleLowerCase()
-          .includes(searchTerm.value.toLocaleLowerCase())
+        item.text.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase())
       )
     : props.items
 );

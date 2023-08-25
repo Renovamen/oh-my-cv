@@ -11,12 +11,7 @@
     <slot name="middle" />
 
     <div hstack>
-      <NavItem
-        mr-3
-        link="resumes"
-        :text="t('resumes.my_resumes')"
-        icon="ep:menu"
-      />
+      <NavItem mr-3 link="resumes" :text="t('resumes.my_resumes')" icon="ep:menu" />
       <ToggleLang mr-1.5 />
 
       <slot name="tail" />

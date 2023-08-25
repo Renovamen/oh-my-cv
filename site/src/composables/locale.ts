@@ -29,8 +29,7 @@ export const switchLocale = (toLocale: string) => {
       ? route.path
       : route.path.replace(`/${locale.value}`, "");
 
-  const toPath =
-    toLocale === defaultLocale ? basePath : `/${toLocale}${basePath}`;
+  const toPath = toLocale === defaultLocale ? basePath : `/${toLocale}${basePath}`;
   return toPath;
 };
 

@@ -1,8 +1,5 @@
 <template>
-  <ToolItem
-    :text="t('toolbar.paragraph')"
-    icon="icon-park-outline:paragraph-break-two"
-  >
+  <ToolItem :text="t('toolbar.paragraph')" icon="icon-park-outline:paragraph-break-two">
     <vue-slider v-model="paragraphSpace" :max="50" />
     <div flex justify-between text-light-c>
       <span>0px</span>

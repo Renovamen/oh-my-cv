@@ -3,20 +3,14 @@
     <div
       class="hstack h-9 text-sm md:(h-10 text-base) w-full text-c bg-c border-b border-c px-4 space-x-2"
     >
-      <button
-        class="relative leading-9 md:leading-10 px-2"
-        @click="activateMarkdown"
-      >
+      <button class="relative leading-9 md:leading-10 px-2" @click="activateMarkdown">
         Markdown
         <span
           v-show="!activatedTab"
           class="absolute w-full h-0.4 bg-blue-500 dark:bg-blue-400 left-0 bottom-0 rounded"
         />
       </button>
-      <button
-        class="relative leading-9 md:leading-10 px-2"
-        @click="activateCSS"
-      >
+      <button class="relative leading-9 md:leading-10 px-2" @click="activateCSS">
         CSS
         <span
           v-show="activatedTab"

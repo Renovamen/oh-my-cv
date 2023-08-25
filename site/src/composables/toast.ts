@@ -64,12 +64,8 @@ export const watchToast = () => {
     () => toastFlag.correct,
     () => {
       if (toastFlag.correct) {
-        if (toastFlag.correct === true)
-          toast.info(t("notification.correct.no"));
-        else
-          toast.success(
-            t("notification.correct.yes", { num: toastFlag.correct })
-          );
+        if (toastFlag.correct === true) toast.info(t("notification.correct.no"));
+        else toast.success(t("notification.correct.yes", { num: toastFlag.correct }));
 
         closeToastFlag("correct");
       }
@@ -80,10 +76,8 @@ export const watchToast = () => {
     () => toastFlag.import,
     () => {
       if (toastFlag.import) {
-        if (toastFlag.import === "yes")
-          toast.success(t("notification.import.yes"));
-        else if (toastFlag.import === "no")
-          toast.error(t("notification.import.no"));
+        if (toastFlag.import === "yes") toast.success(t("notification.import.yes"));
+        else if (toastFlag.import === "no") toast.error(t("notification.import.no"));
 
         closeToastFlag("import");
       }

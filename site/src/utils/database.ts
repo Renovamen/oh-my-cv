@@ -1,17 +1,11 @@
 import * as localForage from "localforage";
 import { downloadFile, uploadFile, copy } from "@renovamen/utils";
-import {
-  DEFAULT_STYLES,
-  DEFAULT_NAME,
-  DEFAULT_MD_CONTENT,
-  DEFAULT_CSS_CONTENT
-} from ".";
+import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT, DEFAULT_CSS_CONTENT } from ".";
 import type { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 
 const OHMYCV_KEY = "ohmycv_data";
 
-export const getStorage = async () =>
-  localForage.getItem<ResumeStorage>(OHMYCV_KEY);
+export const getStorage = async () => localForage.getItem<ResumeStorage>(OHMYCV_KEY);
 
 export const getResumeList = async () => {
   const storage = (await getStorage()) || {};
@@ -131,15 +125,9 @@ export const importResumesFromLocal = async (callback?: () => void) => {
       if (typeof styles.paragraphSpace !== "number") return false;
       if (typeof styles.themeColor !== "string") return false;
 
-      if (
-        typeof styles.fontCJK !== "object" ||
-        typeof styles.fontCJK.name !== "string"
-      )
+      if (typeof styles.fontCJK !== "object" || typeof styles.fontCJK.name !== "string")
         return false;
-      if (
-        typeof styles.fontEN !== "object" ||
-        typeof styles.fontEN.name !== "string"
-      )
+      if (typeof styles.fontEN !== "object" || typeof styles.fontEN.name !== "string")
         return false;
     }
 

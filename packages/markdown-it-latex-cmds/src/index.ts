@@ -14,8 +14,7 @@ const newPage: RuleBlock = (state, start, end, silent) => {
   const max = state.eMarks[start];
 
   if (silent) return false; // don't run any pairs in validation mode
-  if (pos + 8 > max || state.src.slice(pos, pos + 8) !== "\\newpage")
-    return false; // should be "\newpage"
+  if (pos + 8 > max || state.src.slice(pos, pos + 8) !== "\\newpage") return false; // should be "\newpage"
 
   // skip "\newpage"
   state.line = start + 1;

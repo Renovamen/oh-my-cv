@@ -4,10 +4,7 @@
       <span class="iconify" data-icon="ion:duplicate" />
     </button>
     <button @click="remove">
-      <span
-        class="iconify"
-        data-icon="material-symbols:delete-outline-rounded"
-      />
+      <span class="iconify" data-icon="material-symbols:delete-outline-rounded" />
     </button>
   </div>
 </template>

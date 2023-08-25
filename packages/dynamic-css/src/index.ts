@@ -23,10 +23,7 @@ export const injectCSS = (cssText: string, id?: string) => {
     if (!styleSheet) {
       styleSheet = new CSSStyleSheet();
       styleSheet.replaceSync(cssText);
-      document.adoptedStyleSheets = [
-        ...document.adoptedStyleSheets,
-        styleSheet
-      ];
+      document.adoptedStyleSheets = [...document.adoptedStyleSheets, styleSheet];
     } else {
       styleSheet.replaceSync(cssText);
     }

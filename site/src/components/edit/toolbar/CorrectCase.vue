@@ -1,8 +1,5 @@
 <template>
-  <ToolItem
-    :text="t('toolbar.correct_case.text')"
-    icon="icon-park-outline:check-correct"
-  >
+  <ToolItem :text="t('toolbar.correct_case.text')" icon="icon-park-outline:check-correct">
     <div
       class="bg-c lg:bg-dark-c rounded py-2 px-3"
       v-html="t('toolbar.correct_case.desc')"

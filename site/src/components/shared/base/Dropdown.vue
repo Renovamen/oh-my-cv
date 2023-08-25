@@ -20,11 +20,7 @@
       "
     >
       <div class="space-x-1.5 hstack">
-        <span
-          v-if="item.icon"
-          class="iconify text-base"
-          :data-icon="item.icon"
-        />
+        <span v-if="item.icon" class="iconify text-base" :data-icon="item.icon" />
         <span>{{ item.text }}</span>
       </div>
       <span v-if="item.note" class="text-lighter-c text-xs hide-on-mobile">
@@ -48,7 +44,5 @@ const router = useRouter();
 const route = useRoute();
 
 const toLink = (path: string) =>
-  isExternal(path)
-    ? window.open(path)
-    : router.push({ path: path, query: route.query });
+  isExternal(path) ? window.open(path) : router.push({ path: path, query: route.query });
 </script>

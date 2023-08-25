@@ -10,8 +10,7 @@ import type { RuleCore } from "markdown-it/lib/parser_core";
 const getAnchorName = (tokens: Token[], idx: number) =>
   Number(tokens[idx].meta.id + 1).toString();
 
-const getAnchorCaption = (tokens: Token[], idx: number) =>
-  tokens[idx].meta.label;
+const getAnchorCaption = (tokens: Token[], idx: number) => tokens[idx].meta.label;
 
 const renderReference: RenderRule = (tokens, idx) => {
   const id = getAnchorName(tokens, idx);
@@ -46,8 +45,7 @@ const crossrefDef: RuleBlock = (state, startLine, endLine, silent) => {
   }
 
   if (pos === start + 2) return false; // no empty crossref labels
-  if (pos + 1 >= max || state.src.charCodeAt(++pos) !== 0x3a /* : */)
-    return false;
+  if (pos + 1 >= max || state.src.charCodeAt(++pos) !== 0x3a /* : */) return false;
 
   if (silent) return true;
 
@@ -70,9 +68,7 @@ const crossrefDef: RuleBlock = (state, startLine, endLine, silent) => {
 
   const posAfterColon = pos;
   const initial = (offset =
-    state.sCount[startLine] +
-    pos -
-    (state.bMarks[startLine] + state.tShift[startLine]));
+    state.sCount[startLine] + pos - (state.bMarks[startLine] + state.tShift[startLine]));
 
   let ch;
   while (pos < max) {
@@ -171,9 +167,7 @@ const crossrefCore: RuleCore = (state) => {
   for (let i = 0; i < state.tokens.length; i++) {
     if (state.tokens[i].type === "crossref_reference_open") {
       const currentLabel = state.tokens[i].meta.label;
-      const id = list
-        ? list.findIndex((item: string) => item === currentLabel)
-        : -1;
+      const id = list ? list.findIndex((item: string) => item === currentLabel) : -1;
 
       const openToken = new state.Token("renderOpenTag", "", 1);
       openToken.meta = { id: id, label: currentLabel };

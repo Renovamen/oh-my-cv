@@ -17,12 +17,7 @@
 
 <script lang="ts" setup>
 import { getGoogleFonts } from "~/utils";
-import {
-  CJK_FONTS,
-  EN_FONTS,
-  CJK_NAME_MAP,
-  CJK_FIRST
-} from "~/utils/constants";
+import { CJK_FONTS, EN_FONTS, CJK_NAME_MAP, CJK_FIRST } from "~/utils/constants";
 import type { DropdownItem } from "~/types";
 
 const { t } = useI18n();
@@ -37,8 +32,7 @@ const enFonts = computed(() => {
           setStyle("fontEN", {
             name: item.name,
             fontFamily:
-              EN_FONTS.find((font) => font.name === item.name)?.fontFamily ||
-              item.name
+              EN_FONTS.find((font) => font.name === item.name)?.fontFamily || item.name
           })
       }) as DropdownItem
   );
@@ -54,8 +48,7 @@ const cjkFonts = computed(() => {
           setStyle("fontCJK", {
             name: item.name,
             fontFamily:
-              CJK_FONTS.find((font) => font.name === item.name)?.fontFamily ||
-              item.name
+              CJK_FONTS.find((font) => font.name === item.name)?.fontFamily || item.name
           })
       }) as DropdownItem
   );
@@ -83,12 +76,8 @@ onMounted(async () => {
     };
   });
 
-  const first = gCJKFontList.value.filter((item) =>
-    CJK_FIRST.includes(item.text)
-  );
-  const after = gCJKFontList.value.filter(
-    (item) => !CJK_FIRST.includes(item.text)
-  );
+  const first = gCJKFontList.value.filter((item) => CJK_FIRST.includes(item.text));
+  const after = gCJKFontList.value.filter((item) => !CJK_FIRST.includes(item.text));
 
   gCJKFontList.value = first.concat(after);
 });

@@ -17,11 +17,10 @@ export const setupMonaco = async () => {
   window.monaco = monaco;
 
   await (async () => {
-    const [{ default: EditorWorker }, { default: CssWorker }] =
-      await Promise.all([
-        import("monaco-editor/esm/vs/editor/editor.worker?worker"),
-        import("monaco-editor/esm/vs/language/css/css.worker?worker")
-      ]);
+    const [{ default: EditorWorker }, { default: CssWorker }] = await Promise.all([
+      import("monaco-editor/esm/vs/editor/editor.worker?worker"),
+      import("monaco-editor/esm/vs/language/css/css.worker?worker")
+    ]);
 
     window.MonacoEnvironment = {
       getWorker(_moduleId: string, label: string) {
@@ -37,8 +36,7 @@ export const setupMonaco = async () => {
     };
   })();
 
-  if (getCurrentInstance())
-    await new Promise<void>((resolve) => onMounted(resolve));
+  if (getCurrentInstance()) await new Promise<void>((resolve) => onMounted(resolve));
 
   return { monaco };
 };
@@ -51,10 +49,7 @@ export const setupMonacoModel = (
   onChange: () => void
 ) => {
   const disposables = [] as Monaco.IDisposable[];
-  const model = monaco.editor.createModel(
-    content,
-    language
-  ) as Monaco.editor.ITextModel;
+  const model = monaco.editor.createModel(content, language) as Monaco.editor.ITextModel;
 
   disposables.push(model);
   disposables.push(model.onDidChangeContent(onChange));
