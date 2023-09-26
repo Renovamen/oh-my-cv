@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { acceptHMRUpdate, defineStore } from "pinia";
 import { copy } from "@renovamen/utils";
 import { setDynamicCss, DEFAULT_STYLES, resolveGoogleFont } from "~/utils";
 import type { ResumeStyles, Font } from "~/types";
@@ -25,3 +25,6 @@ export const useStyleStore = defineStore("style", () => {
     setStyle
   };
 });
+
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useStyleStore, import.meta.hot));

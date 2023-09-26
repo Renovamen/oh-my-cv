@@ -10,6 +10,7 @@ import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import VueI18n from "@intlify/unplugin-vue-i18n/vite";
 import Unocss from "unocss/vite";
+import { unheadVueComposablesImports } from "@unhead/vue";
 
 export default defineConfig({
   resolve: {
@@ -37,9 +38,8 @@ export default defineConfig({
         "vue",
         "vue-router",
         "vue-i18n",
-        "vue/macros",
-        "@vueuse/head",
-        "@vueuse/core"
+        "@vueuse/core",
+        unheadVueComposablesImports
       ],
       dts: "src/auto-imports.d.ts",
       dirs: ["src/composables", "src/stores"],
@@ -59,6 +59,7 @@ export default defineConfig({
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
+      fullInstall: true,
       include: [path.resolve(__dirname, "src/i18n/translations/**")],
       strictMessage: false
     }),
@@ -116,6 +117,9 @@ export default defineConfig({
   ssgOptions: {
     script: "async",
     formatting: "minify",
+    crittersOptions: {
+      reduceInlineStyles: false
+    },
     onFinished: generateSitemap,
     includedRoutes: () => [
       "/",

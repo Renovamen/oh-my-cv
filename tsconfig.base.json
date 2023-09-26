@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
     "jsx": "preserve",
-    "sourceMap": true,
-    "skipLibCheck": true,
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "allowJs": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true
+    "noUnusedLocals": true,
+    "skipLibCheck": true
   }
 }

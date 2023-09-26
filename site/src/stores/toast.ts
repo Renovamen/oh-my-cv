@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { acceptHMRUpdate, defineStore } from "pinia";
 import type { ToastFlagData } from "~/types";
 
 export const useToastStore = defineStore("toast", () => {
@@ -29,3 +29,6 @@ export const useToastStore = defineStore("toast", () => {
     closeToastFlag
   };
 });
+
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useToastStore, import.meta.hot));

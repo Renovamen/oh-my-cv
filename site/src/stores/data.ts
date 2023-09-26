@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { acceptHMRUpdate, defineStore } from "pinia";
 import { DEFAULT_NAME, setBackboneCss } from "~/utils";
 import type { SystemData } from "~/types";
 
@@ -32,3 +32,6 @@ export const useDataStore = defineStore("data", () => {
     toggleCssFlag
   };
 });
+
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useDataStore, import.meta.hot));

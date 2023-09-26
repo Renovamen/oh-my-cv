@@ -22,14 +22,14 @@ useHead({
     { property: "og:locale", content: locale },
     {
       name: "theme-color",
-      content: computed(() => (isDark.value ? "#475569" : "#f3f4f6"))
+      content: () => (isDark.value ? "#475569" : "#f3f4f6")
     }
   ],
   link: [
     {
       rel: "icon",
       type: "image/svg+xml",
-      href: computed(() => (preferredDark.value ? "/favicon-dark.svg" : "/favicon.svg"))
+      href: () => (preferredDark.value ? "/favicon-dark.svg" : "/favicon.svg")
     }
   ]
 });

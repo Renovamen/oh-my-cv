@@ -16,8 +16,8 @@
   },
   "prettier": "@renovamen/prettier-config",
   "devDependencies": {
-    "@renovamen/eslint-config-vue": "^0.1.2",
-    "@renovamen/prettier-config": "^0.1.1",
+    "@renovamen/eslint-config-vue": "^0.1.3",
+    "@renovamen/prettier-config": "^0.1.3",
     "bumpp": "^9.2.0",
     "eslint": "^8.50.0",
     "pnpm": "^8.7.6",
