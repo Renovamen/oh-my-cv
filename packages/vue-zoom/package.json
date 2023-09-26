@@ -1,6 +1,6 @@
 {
   "name": "@renovamen/vue-zoom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vue 3 component for zooming content.",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/vue-zoom",
   "bugs": {
@@ -29,7 +29,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "@vueuse/core": "^10.4.0",
+    "@vueuse/core": "^10.4.1",
     "vue": "^3.3.4"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "@renovamen/utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utility functions for cool Renovamen.",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/utils",
   "bugs": {
@@ -29,7 +29,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "devDependencies": {
-    "user-agent-data-types": "^0.3.1"
+    "user-agent-data-types": "^0.4.2"
   },
   "publishConfig": {
     "access": "public"

@@ -1,7 +1,7 @@
 {
   "name": "oh-my-cv",
   "private": true,
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@8.7.6",
   "scripts": {
     "build": "pnpm --filter=site build",
     "build:pkg": "pnpm -r --stream build:pkg",
@@ -16,15 +16,15 @@
   },
   "prettier": "@renovamen/prettier-config",
   "devDependencies": {
-    "@renovamen/eslint-config-vue": "^0.1.0",
-    "@renovamen/prettier-config": "^0.1.0",
+    "@renovamen/eslint-config-vue": "^0.1.2",
+    "@renovamen/prettier-config": "^0.1.1",
     "bumpp": "^9.2.0",
-    "eslint": "^8.48.0",
-    "pnpm": "^8.6.12",
-    "prettier": "^3.0.2",
+    "eslint": "^8.50.0",
+    "pnpm": "^8.7.6",
+    "prettier": "^3.0.3",
     "taze": "^0.11.2",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

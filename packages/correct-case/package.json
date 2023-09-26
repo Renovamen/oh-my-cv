@@ -1,6 +1,6 @@
 {
   "name": "correct-case",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Make the case correct (dictionaries are from `case-police`).",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/correct-case",
   "bugs": {

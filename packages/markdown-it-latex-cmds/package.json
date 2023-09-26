@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-latex-cmds",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Enable using some LaTeX commands in Markdown.",
   "keywords": [
     "markdown",
@@ -34,7 +34,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.0",
+    "@types/markdown-it": "^13.0.1",
     "markdown-it": "^13.0.1"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "vue-smart-pages",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Automatically breaking page just like Word, for Vue 3.",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/vue-smart-pages",
   "bugs": {
