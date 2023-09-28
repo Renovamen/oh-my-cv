@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NODE_VERSION: 16
+      NODE_VERSION: 18
 
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
       - name: Build site
         run: pnpm release
         env:
-          VITE_GOOGLE_FONTS_KEY: ${{ secrets.GOOGLE_FONTS_KEY }}
+          NUXT_PUBLIC_GOOGLE_FONTS_KEY: ${{ secrets.GOOGLE_FONTS_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

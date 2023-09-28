@@ -9,13 +9,13 @@
         <div text-center>
           <h1 text="c 3xl sm:4xl" v-html="t('landing.hero')" />
           <div my-10 text-light-c sm:text-lg><BrandName /> {{ t("landing.desc") }}</div>
-          <router-link :to="switchPath('resumes', locale)">
+          <nuxt-link :to="switchPath('resumes', locale)">
             <span
               class="text-white bg-brand px-4 py-3 rounded-lg mx-auto outline outline-4 outline-transparent duration-200 hover:outline-rose-300/50"
             >
               {{ t("landing.start") }}
             </span>
-          </router-link>
+          </nuxt-link>
         </div>
 
         <div
@@ -28,8 +28,10 @@
                   class="w-5 h-5 rounded-full text-white flex-center"
                   :class="[i ? 'bg-blue-400' : 'bg-brand']"
                 >
-                  <span v-if="i" class="iconify text-xs" data-icon="wpf:privacy" />
-                  <span v-else class="iconify text-xs" data-icon="mdi:rocket-launch" />
+                  <client-only>
+                    <span v-if="i" class="iconify text-xs" data-icon="wpf:privacy" />
+                    <span v-else class="iconify text-xs" data-icon="mdi:rocket-launch" />
+                  </client-only>
                 </span>
                 <h2 text-c>{{ t(`landing.feats[${i}].title`) }}</h2>
               </div>
@@ -50,8 +52,4 @@
 
 <script lang="ts" setup>
 const { t, locale } = useI18n();
-
-// Handle languages
-const props = defineProps<{ lang: string[] | string }>();
-watchLocale(props);
 </script>

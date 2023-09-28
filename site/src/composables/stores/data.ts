@@ -1,5 +1,4 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
-import { DEFAULT_NAME, setBackboneCss } from "~/utils";
 import type { SystemData } from "~/types";
 
 export const useDataStore = defineStore("data", () => {

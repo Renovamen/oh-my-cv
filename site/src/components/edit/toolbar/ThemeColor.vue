@@ -9,7 +9,9 @@
         @click="pickColor(i)"
       >
         <div v-show="pickedColorId === i" class="w-full h-full flex-center">
-          <span class="iconify" data-icon="line-md:confirm" />
+          <client-only>
+            <span class="iconify" data-icon="line-md:confirm" />
+          </client-only>
         </div>
       </li>
     </ul>
@@ -34,7 +36,6 @@
 
 <script lang="ts" setup>
 import { OnClickOutside } from "@vueuse/components";
-import { THEME_COLORS } from "~/utils";
 
 const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();

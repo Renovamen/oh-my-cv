@@ -8,5 +8,6 @@
 </template>
 
 <script setup lang="ts">
-const color = computed(() => (isDark.value ? "#e2e8f0" : "#1e293b"));
+const colorMode = useColorMode();
+const color = computed(() => (colorMode.preference === "dark" ? "#e2e8f0" : "#1e293b"));
 </script>

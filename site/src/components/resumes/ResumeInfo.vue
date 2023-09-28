@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import { renameResume } from "~/utils";
 import type { ResumeListItem } from "~/types";
 
 const props = defineProps<{

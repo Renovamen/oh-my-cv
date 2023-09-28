@@ -1,8 +1,3 @@
-import type { ViteSSGContext } from "vite-ssg";
-import { PAPER } from "~/utils";
-
-export type UserModule = (ctx: ViteSSGContext) => void;
-
 export type PaperType = keyof typeof PAPER;
 
 export type ResumeStyles = {

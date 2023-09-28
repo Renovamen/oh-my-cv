@@ -1,6 +1,5 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { copy } from "@renovamen/utils";
-import { setDynamicCss, DEFAULT_STYLES, resolveGoogleFont } from "~/utils";
 import type { ResumeStyles, Font } from "~/types";
 
 export const useStyleStore = defineStore("style", () => {

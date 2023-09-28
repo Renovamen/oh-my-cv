@@ -1,16 +1,19 @@
 <template>
   <div class="resume-options absolute right-3 top-3 space-y-2">
     <button @click="duplicate">
-      <span class="iconify" data-icon="ion:duplicate" />
+      <client-only>
+        <span class="iconify" data-icon="ion:duplicate" />
+      </client-only>
     </button>
     <button @click="remove">
-      <span class="iconify" data-icon="material-symbols:delete-outline-rounded" />
+      <client-only>
+        <span class="iconify" data-icon="material-symbols:delete-outline-rounded" />
+      </client-only>
     </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { deleteResume, duplicateResume } from "~/utils";
 import type { ResumeListItem } from "~/types";
 
 const props = defineProps<{

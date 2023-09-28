@@ -1,12 +1,13 @@
 <template>
   <button class="round-btn" @click="save">
-    <span class="iconify md:text-lg" data-icon="ic:baseline-save" />
+    <client-only>
+      <span class="iconify md:text-lg" data-icon="ic:baseline-save" />
+    </client-only>
   </button>
 </template>
 
 <script lang="ts" setup>
 import { useShortcuts } from "@renovamen/vue-shortcuts";
-import { saveResume } from "~/utils";
 import type { ResumeStorageItem } from "~/types";
 
 const { data } = useDataStore();

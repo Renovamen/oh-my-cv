@@ -44,7 +44,7 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome](https://www.googl
 
 ## Development
 
-It's built on [Vitesse](https://github.com/antfu/vitesse), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
+It's built on [Nuxt 3](https://nuxt.com), with the power of [Vue 3](https://github.com/vuejs/vue-next), [Vite](https://github.com/vitejs/vite) and [UnoCSS](https://github.com/antfu/unocss).
 
 Clone the repo and install dependencies:
 
@@ -61,7 +61,7 @@ pnpm build:pkg
 To enable picking fonts from [Google Fonts](https://fonts.google.com/), you will need to generate a [Google Fonts Developer API Key](https://developers.google.com/fonts/docs/developer_api#APIKey). Then, create a `.env` file in [`site`](site/) folder and put:
 
 ```
-VITE_GOOGLE_FONTS_KEY="YOUR_API_KEY"
+NUXT_PUBLIC_GOOGLE_FONTS_KEY="YOUR_API_KEY"
 ```
 
 Start developing / building the site:

@@ -23,7 +23,6 @@
 </template>
 
 <script lang="ts" setup>
-import { getResumeList } from "~/utils";
 import type { ResumeListItem } from "~/types";
 
 const { t } = useI18n();
@@ -36,10 +35,6 @@ const loadResumes = async () => {
 };
 
 onMounted(loadResumes);
-
-// Handle languages
-const props = defineProps<{ lang: string[] | string }>();
-watchLocale(props);
 
 // Handle notifications
 watchToast();

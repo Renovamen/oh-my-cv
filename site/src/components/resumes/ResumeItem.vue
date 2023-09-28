@@ -8,7 +8,7 @@
           height: `${height}px`
         }"
       >
-        <router-link
+        <nuxt-link
           :to="{
             path: switchPath('edit', locale),
             query: { id: props.resume.id }
@@ -24,7 +24,7 @@
             }"
             class="origin-top-left"
           />
-        </router-link>
+        </nuxt-link>
         <ResumeOptions :resume="resume" @update="emit('update')" />
       </div>
     </div>
@@ -34,8 +34,6 @@
 </template>
 
 <script lang="ts" setup>
-import { setDynamicCss, setBackboneCss, resolveGoogleFont } from "~/utils";
-import { PAPER, MM_TO_PX } from "~/utils/constants";
 import type { ResumeListItem } from "~/types";
 
 const props = defineProps<{

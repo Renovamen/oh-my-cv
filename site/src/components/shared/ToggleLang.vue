@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SUPPORT_LOCALES, LocaleType } from "~/i18n";
+import { SUPPORT_LOCALES, type LocaleType } from "~/i18n";
 
 const { availableLocales, locale } = useI18n();
 

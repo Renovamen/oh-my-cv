@@ -6,7 +6,9 @@
   >
     <div hstack justify-between h-7 pl-4 pr-3 mt-2>
       <div hstack font-medium>
-        <span class="iconify" :data-icon="icon" />
+        <client-only>
+          <span class="iconify" :data-icon="icon" />
+        </client-only>
         <span mx-2 text="sm light-c">/</span>
         <span text-sm>{{ text }}</span>
       </div>
@@ -14,7 +16,9 @@
         class="hstack p-1 rounded-full duration-100 hover:(bg-dark-c rotate-90)"
         @click="$emit('close')"
       >
-        <span class="iconify" data-icon="ic:baseline-close" />
+        <client-only>
+          <span class="iconify" data-icon="ic:baseline-close" />
+        </client-only>
       </button>
     </div>
 

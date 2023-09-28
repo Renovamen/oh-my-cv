@@ -1,12 +1,12 @@
 <template>
   <header class="header hstack justify-between pl-4 pr-1 text-c">
-    <router-link
+    <nuxt-link
       class="hstack cursor-pointer text-gray-900 dark:text-gray-100"
       :to="switchPath('/', locale)"
     >
       <Logo hide-on-mobile mr-2 text="sm md:base" />
       <h1 text="base md:lg"><BrandName /></h1>
-    </router-link>
+    </nuxt-link>
 
     <slot name="middle" />
 
@@ -23,7 +23,9 @@
         target="_blank"
         rel="nofollow noopener"
       >
-        <span class="iconify md:text-lg" data-icon="tabler:brand-github" />
+        <client-only>
+          <span class="iconify md:text-lg" data-icon="tabler:brand-github" />
+        </client-only>
       </a>
     </div>
   </header>

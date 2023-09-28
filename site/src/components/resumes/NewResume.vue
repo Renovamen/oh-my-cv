@@ -5,14 +5,14 @@
       :aria-label="t('resumes.new')"
       @click="newAndSwitch"
     >
-      <span class="iconify w-12 h-12 text-light-c" data-icon="ic:round-plus" />
+      <client-only>
+        <span class="iconify w-12 h-12 text-light-c" data-icon="ic:round-plus" />
+      </client-only>
     </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { newResume } from "~/utils";
-
 const { t, locale } = useI18n();
 const router = useRouter();
 

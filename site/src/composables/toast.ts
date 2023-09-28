@@ -1,4 +1,5 @@
-import { useToast } from "vue-toastification";
+// @ts-expect-error: missing types
+import { useToast } from "vue-toastification/dist/index.mjs";
 
 export const watchToast = () => {
   const toast = useToast();

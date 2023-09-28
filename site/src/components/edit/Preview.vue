@@ -13,16 +13,24 @@
       class="zoom-bar hstack fixed bottom-4 lg:(bottom-auto top-15) ml-2 shadow-c rounded-full overflow-hidden text-white bg-blue-500 lg:opacity-0 hover:opacity-100"
     >
       <button @click="scale *= 1.1">
-        <span class="iconify" data-icon="lucide:zoom-in" />
+        <client-only>
+          <span class="iconify" data-icon="lucide:zoom-in" />
+        </client-only>
       </button>
       <button @click="scale /= 1.1">
-        <span class="iconify" data-icon="lucide:zoom-out" />
+        <client-only>
+          <span class="iconify" data-icon="lucide:zoom-out" />
+        </client-only>
       </button>
       <button @click="fitWidth">
-        <span class="iconify" data-icon="fluent:arrow-autofit-width-20-filled" />
+        <client-only>
+          <span class="iconify" data-icon="fluent:arrow-autofit-width-20-filled" />
+        </client-only>
       </button>
       <button @click="fitHeight">
-        <span class="iconify" data-icon="fluent:arrow-autofit-height-20-filled" />
+        <client-only>
+          <span class="iconify" data-icon="fluent:arrow-autofit-height-20-filled" />
+        </client-only>
       </button>
     </div>
   </div>
@@ -30,7 +38,6 @@
 
 <script lang="ts" setup>
 import Zoom from "@renovamen/vue-zoom";
-import { getPaperPx } from "~/utils";
 
 const scale = ref(1);
 const zoom = ref<InstanceType<typeof Zoom>>();

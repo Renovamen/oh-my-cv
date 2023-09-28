@@ -1,19 +1,25 @@
 <template>
   <ToolItem :text="t('toolbar.file.text')" icon="carbon:import-export">
     <li class="dropdown-li space-x-1.5 rounded" @click="toggleImport(true)">
-      <span class="iconify text-base" data-icon="mdi:upload" />
+      <client-only>
+        <span class="iconify text-base" data-icon="mdi:upload" />
+      </client-only>
       <span>{{ t("toolbar.file.import") }}</span>
     </li>
 
     <hr border-dashed border-c my-1 />
 
     <li class="dropdown-li space-x-1.5 rounded" @click="exportPDF">
-      <span class="iconify text-base" data-icon="mdi:file-pdf" />
+      <client-only>
+        <span class="iconify text-base" data-icon="mdi:file-pdf" />
+      </client-only>
       <span>{{ t("toolbar.file.export_pdf") }}</span>
     </li>
 
     <li class="dropdown-li space-x-1.5 rounded" @click="exportMd">
-      <span class="iconify text-base" data-icon="ri:markdown-fill" />
+      <client-only>
+        <span class="iconify text-base" data-icon="ri:markdown-fill" />
+      </client-only>
       <span>{{ t("toolbar.file.export_md") }}</span>
     </li>
 

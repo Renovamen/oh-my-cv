@@ -78,7 +78,9 @@ const navbar = () => (
   >
     {sections.map((item) => (
       <button class="round-btn" onClick={() => scrollTo(item.name)}>
-        <span class="iconify" text="sm md:base" data-icon={item.icon} />
+        <client-only>
+          <span class="iconify" text="sm md:base" data-icon={item.icon} />
+        </client-only>
       </button>
     ))}
   </div>

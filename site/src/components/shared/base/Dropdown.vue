@@ -20,7 +20,9 @@
       "
     >
       <div class="space-x-1.5 hstack">
-        <span v-if="item.icon" class="iconify text-base" :data-icon="item.icon" />
+        <client-only>
+          <span v-if="item.icon" class="iconify text-base" :data-icon="item.icon" />
+        </client-only>
         <span>{{ item.text }}</span>
       </div>
       <span v-if="item.note" class="text-lighter-c text-xs hide-on-mobile">

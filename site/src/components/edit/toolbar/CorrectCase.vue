@@ -10,7 +10,9 @@
       bg="blue-500 hover:(blue-600 dark:blue-400)"
       @click="correct"
     >
-      <span class="iconify" data-icon="carbon:rocket" />
+      <client-only>
+        <span class="iconify" data-icon="carbon:rocket" />
+      </client-only>
       <span>{{ t("toolbar.correct_case.btn") }}</span>
     </button>
   </ToolItem>
@@ -18,7 +20,6 @@
 
 <script lang="ts" setup>
 import { correctCase } from "correct-case";
-import { setResumeMd } from "~/utils";
 
 const { t } = useI18n();
 const { data } = useDataStore();
