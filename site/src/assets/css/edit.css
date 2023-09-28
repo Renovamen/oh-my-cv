@@ -65,11 +65,13 @@
   .toolbar-mobile,
   .splitpanes__splitter,
   .zoom-bar,
-  .Vue-Toastification__container {
-    display: none;
+  .Vue-Toastification__container,
+  #vue-inspector-container,
+  #nuxt-devtools-container {
+    display: none !important;
   }
 
-  .splitpanes__pane {
+  .preview-pane {
     width: 100% !important;
     padding: 0;
   }

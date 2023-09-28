@@ -1,14 +1,16 @@
 <template>
-  <router-link
+  <nuxt-link
     v-if="link"
     class="hstack cursor-pointer space-x-1"
     :to="switchPath(link, locale)"
   >
-    <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
+    <client-only>
+      <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
+    </client-only>
     <span v-if="text" class="truncate max-w-xs hide-on-mobile">
       {{ text }}
     </span>
-  </router-link>
+  </nuxt-link>
 
   <OnClickOutside
     v-else
@@ -17,7 +19,9 @@
     @trigger="isDropDownOpen = false"
   >
     <div class="hstack cursor-pointer space-x-1" role="button" tabindex="0">
-      <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
+      <client-only>
+        <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
+      </client-only>
       <span v-if="text" class="truncate max-w-xs hide-on-mobile">
         {{ text }}
       </span>

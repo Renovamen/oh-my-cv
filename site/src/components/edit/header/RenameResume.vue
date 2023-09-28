@@ -7,8 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { renameResume } from "~/utils";
-
 const { data } = useDataStore();
 
 const rename = (text: string) => {

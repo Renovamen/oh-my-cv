@@ -10,8 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import { PAPER } from "~/utils";
-
 const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 </script>

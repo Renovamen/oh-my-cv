@@ -1,5 +1,4 @@
 import { injectCSS } from "@renovamen/dynamic-css";
-import { PREVIEW_SELECTOR } from "~/utils";
 import type { ResumeStyles } from "~/types";
 
 const themeColorCss = (styles: ResumeStyles, id: string) => {

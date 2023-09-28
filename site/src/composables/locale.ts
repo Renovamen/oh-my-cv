@@ -1,22 +1,23 @@
 const defaultLocale = "en";
 
-export const watchLocale = (props: { lang: string[] | string }) => {
+export const watchLocale = () => {
   const { availableLocales, locale } = useI18n();
+  const route = useRoute();
 
   const checkLocale = (toLocale: string) => {
     return !(availableLocales.indexOf(toLocale) === -1);
   };
 
-  const getLocale = (param: string[] | string) => {
-    const l = param === "string" ? param : param[0];
+  const getCurrentLocale = () => {
+    const l = route.params.lang === "" ? defaultLocale : route.params.lang[0];
     return checkLocale(l) ? l : defaultLocale;
   };
 
-  locale.value = getLocale(props.lang);
+  locale.value = getCurrentLocale();
 
   watch(
-    () => props.lang,
-    () => (locale.value = getLocale(props.lang))
+    () => route.params.lang,
+    () => (locale.value = getCurrentLocale())
   );
 };
 

@@ -92,11 +92,16 @@ export const setupMonacoEditor = async (container: HTMLDivElement) => {
     }
   });
 
-  monaco.editor.setTheme(isDark.value ? "vs-dark-dimmed" : "vs");
+  const colorMode = useColorMode();
 
-  watch(isDark, (val) => {
-    monaco.editor.setTheme(val ? "vs-dark-dimmed" : "vs");
-  });
+  monaco.editor.setTheme(colorMode.preference === "dark" ? "vs-dark-dimmed" : "vs");
+
+  watch(
+    () => colorMode.preference,
+    (val) => {
+      monaco.editor.setTheme(val === "dark" ? "vs-dark-dimmed" : "vs");
+    }
+  );
 
   // Markdown model
   const markdown = setupMonacoModel(

@@ -1,14 +1,18 @@
 <template>
   <div class="file-options hstack space-x-2">
     <button :aria-label="t('resumes.saveas')" @click="saveResumesToLocal">
-      <span class="iconify" data-icon="ic:baseline-save-as" />
+      <client-only>
+        <span class="iconify" data-icon="ic:baseline-save-as" />
+      </client-only>
       <span>{{ t("resumes.saveas") }}</span>
     </button>
     <button
       :aria-label="t('resumes.import')"
       @click="() => importResumesFromLocal(() => $emit('update'))"
     >
-      <span class="iconify" data-icon="ic:round-upload-file" />
+      <client-only>
+        <span class="iconify" data-icon="ic:round-upload-file" />
+      </client-only>
       <span>{{ t("resumes.import") }}</span>
     </button>
   </div>
@@ -16,7 +20,6 @@
 
 <script lang="ts" setup>
 import { useShortcuts } from "@renovamen/vue-shortcuts";
-import { saveResumesToLocal, importResumesFromLocal } from "~/utils";
 
 defineEmits<{
   (e: "update"): void;

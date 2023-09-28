@@ -2,7 +2,9 @@
   <ToolItem :text="t('toolbar.margin')" icon="radix-icons:margin">
     <div mb-4 text-light-c>
       <div hstack space-x-1 justify-end>
-        <span class="iconify" data-icon="icon-park-outline:margin-one" />
+        <client-only>
+          <span class="iconify" data-icon="icon-park-outline:margin-one" />
+        </client-only>
         <span>{{ t("toolbar.vertical") }}</span>
       </div>
       <vue-slider v-model="marginV" />
@@ -15,7 +17,9 @@
 
     <div text-light-c>
       <div hstack space-x-1 justify-end>
-        <span class="iconify" data-icon="icon-park-outline:margin" />
+        <client-only>
+          <span class="iconify" data-icon="icon-park-outline:margin" />
+        </client-only>
         <span>{{ t("toolbar.horizontal") }}</span>
       </div>
       <vue-slider v-model="marginH" />

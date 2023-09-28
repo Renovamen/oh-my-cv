@@ -1,14 +1,7 @@
 import GoogleFontsLoader, { type Font as GoogleFont, Subset } from "gfonts-loader";
-import { EN_FONTS, CJK_FONTS, CJK_SUBSETS, IGNORE_FONTS } from "~/utils";
 import type { ResumeStyles, Font } from "~/types";
 
-const key = import.meta.env.VITE_GOOGLE_FONTS_KEY;
-const gLoader = key
-  ? new GoogleFontsLoader(key, {
-      variants: ["regular", "700"],
-      filter: (font: GoogleFont) => !IGNORE_FONTS.includes(font.family)
-    })
-  : null;
+let gLoader: GoogleFontsLoader | undefined;
 
 const isGoogleFont = (font: Font) => {
   const check = (list: Font[]) =>
@@ -19,7 +12,17 @@ const isGoogleFont = (font: Font) => {
 };
 
 export const googleFontsLoader = async () => {
-  if (gLoader && !gLoader.getFontMap().size) await gLoader.init();
+  const config = useRuntimeConfig();
+  const key = config.public.googleFontsKey;
+
+  if (!gLoader && key !== "") {
+    gLoader = new GoogleFontsLoader(key, {
+      variants: ["regular", "700"],
+      filter: (font: GoogleFont) => !IGNORE_FONTS.includes(font.family)
+    });
+    await gLoader.init();
+  }
+
   return gLoader;
 };
 

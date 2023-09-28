@@ -52,7 +52,9 @@
           class="flex-center w-8 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"
           @click="uploadFileFromURL"
         >
-          <span class="iconify" data-icon="line-md:confirm" />
+          <client-only>
+            <span class="iconify" data-icon="line-md:confirm" />
+          </client-only>
         </button>
       </div>
     </div>
@@ -61,7 +63,6 @@
 
 <script lang="ts" setup>
 import { fetchFile, uploadFile } from "@renovamen/utils";
-import { setResumeMd } from "~/utils";
 
 const { t } = useI18n();
 

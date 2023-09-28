@@ -21,10 +21,14 @@
       />
       <div text-light-c>
         <div v-show="isFocus">
-          <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
+          <client-only>
+            <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
+          </client-only>
         </div>
         <div v-show="!isFocus">
-          <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-down" />
+          <client-only>
+            <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-down" />
+          </client-only>
         </div>
       </div>
     </div>

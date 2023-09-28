@@ -1,17 +1,18 @@
 <template>
-  <RouterView />
+  <div class="font-ui">
+    <NuxtPage />
+  </div>
 </template>
 
 <script setup lang="ts">
 const { t, locale } = useI18n();
+const colorMode = useColorMode();
+const preferredDark = usePreferredDark();
 
 const title = computed(() => t("head.title"));
 const keywords = computed(() => t("head.keywords"));
 const desc = computed(() => t("head.desc"));
 
-// https://github.com/vueuse/head
-// you can use this to manipulate the document head in any components,
-// they will be rendered correctly in the html results with vite-ssg
 useHead({
   title: title,
   meta: [
@@ -22,7 +23,7 @@ useHead({
     { property: "og:locale", content: locale },
     {
       name: "theme-color",
-      content: () => (isDark.value ? "#475569" : "#f3f4f6")
+      content: () => (colorMode.preference === "dark" ? "#475569" : "#f3f4f6")
     }
   ],
   link: [
@@ -31,6 +32,16 @@ useHead({
       type: "image/svg+xml",
       href: () => (preferredDark.value ? "/favicon-dark.svg" : "/favicon.svg")
     }
+  ],
+  script: [
+    {
+      src: "https://code.iconify.design/2/2.2.1/iconify.min.js",
+      type: "module",
+      tagPosition: "bodyClose"
+    }
   ]
 });
+
+// Handle languages
+watchLocale();
 </script>

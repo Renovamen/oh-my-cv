@@ -16,8 +16,6 @@
 </template>
 
 <script lang="ts" setup>
-import { getGoogleFonts } from "~/utils";
-import { CJK_FONTS, EN_FONTS, CJK_NAME_MAP, CJK_FIRST } from "~/utils/constants";
 import type { DropdownItem } from "~/types";
 
 const { t } = useI18n();

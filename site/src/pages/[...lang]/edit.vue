@@ -40,7 +40,6 @@
 <script lang="ts" setup>
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
-import { switchResume } from "~/utils";
 
 // Resume data
 const route = useRoute();
@@ -57,10 +56,6 @@ const isMobile = useMobile();
 
 // Toogle toolbar
 const isToolbarOpen = ref(!isMobile.value);
-
-// Handle languages
-const props = defineProps<{ lang: string[] | string }>();
-watchLocale(props);
 
 // Handle notifications
 watchToast();

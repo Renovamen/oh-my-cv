@@ -17,8 +17,6 @@
 
 <script lang="ts" setup>
 import SmartPages from "vue-smart-pages";
-import { renderMarkdown, onFontLoaded } from "~/utils";
-import { CHROME_PRINT_BOTTOM, PAPER, getPaperPx } from "~/utils/constants";
 import type { ResumeStyles } from "~/types";
 
 defineProps<{
