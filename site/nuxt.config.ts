@@ -1,12 +1,19 @@
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "url";
 import VueI18n from "@intlify/unplugin-vue-i18n/vite";
+import { pwa } from "./configs/pwa";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: "src/",
 
-  modules: ["@vueuse/nuxt", "@unocss/nuxt", "@pinia/nuxt", "@nuxtjs/color-mode"],
+  modules: [
+    "@vueuse/nuxt",
+    "@unocss/nuxt",
+    "@pinia/nuxt",
+    "@nuxtjs/color-mode",
+    "@vite-pwa/nuxt"
+  ],
 
   css: [
     "@unocss/reset/tailwind.css",
@@ -79,6 +86,8 @@ export default defineNuxtConfig({
       ]
     }
   },
+
+  pwa,
 
   generate: {
     routes: ["/", "/zh-cn", "/resumes", "/zh-cn/resumes", "/edit", "/zh-cn/edit"]

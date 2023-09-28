@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt generate",
-    "dev": "nuxt dev",
-    "serve": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "nuxi generate",
+    "dev": "nuxi dev",
+    "serve": "npx serve .output/public",
+    "postinstall": "nuxi prepare"
   },
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^1.2.0",

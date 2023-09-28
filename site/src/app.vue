@@ -1,5 +1,6 @@
 <template>
   <div class="font-ui">
+    <VitePwaManifest />
     <NuxtPage />
   </div>
 </template>
