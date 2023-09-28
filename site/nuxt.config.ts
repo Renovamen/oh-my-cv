@@ -12,7 +12,8 @@ export default defineNuxtConfig({
     "@unocss/nuxt",
     "@pinia/nuxt",
     "@nuxtjs/color-mode",
-    "@vite-pwa/nuxt"
+    "@vite-pwa/nuxt",
+    "nuxt-simple-sitemap"
   ],
 
   css: [
@@ -85,6 +86,10 @@ export default defineNuxtConfig({
         { property: "og:type", content: "website" }
       ]
     }
+  },
+
+  site: {
+    url: "https://ohmycv.app"
   },
 
   pwa,
