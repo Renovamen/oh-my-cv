@@ -66,14 +66,13 @@
   .splitpanes__splitter,
   .zoom-bar,
   .Vue-Toastification__container,
-  #vue-inspector-container,
   #nuxt-devtools-container {
     display: none !important;
   }
 
   .preview-pane {
     width: 100% !important;
-    padding: 0;
+    padding: 0 !important;
   }
 
   .pane-container {
