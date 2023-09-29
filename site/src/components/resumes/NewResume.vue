@@ -18,7 +18,7 @@ const router = useRouter();
 
 const newAndSwitch = async () => {
   const id = await newResume();
-  router.push({ path: switchPath("edit", locale.value), query: { id: id } });
+  router.push(switchPath(`edit/${id}`, locale.value));
 };
 </script>
 

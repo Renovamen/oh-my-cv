@@ -94,8 +94,14 @@ export default defineNuxtConfig({
 
   pwa,
 
-  generate: {
-    routes: ["/", "/zh-cn", "/resumes", "/zh-cn/resumes", "/edit", "/zh-cn/edit"]
+  experimental: {
+    payloadExtraction: false
+  },
+
+  nitro: {
+    prerender: {
+      routes: ["/", "/zh-cn"]
+    }
   },
 
   devtools: { enabled: true }

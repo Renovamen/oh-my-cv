@@ -41,15 +41,9 @@
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 
-// Resume data
+// Fetch resume data
 const route = useRoute();
-const router = useRouter();
-const id = route.query.id?.toString();
-
-// Navigation guards
-(async () => {
-  if (!(id && (await switchResume(id)))) router.push("/");
-})();
+(async () => await switchResume(route.params.id as string))();
 
 // Responsize
 const isMobile = useMobile();

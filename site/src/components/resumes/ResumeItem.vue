@@ -8,12 +8,7 @@
           height: `${height}px`
         }"
       >
-        <nuxt-link
-          :to="{
-            path: switchPath('edit', locale),
-            query: { id: props.resume.id }
-          }"
-        >
+        <nuxt-link :to="switchPath(`edit/${props.resume.id}`, locale)">
           <ResumeRender
             :id="resume.id"
             ref="render"
