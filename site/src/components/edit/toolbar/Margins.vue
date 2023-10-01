@@ -1,11 +1,11 @@
 <template>
-  <ToolItem :text="t('toolbar.margin')" icon="radix-icons:margin">
+  <ToolItem :text="$t('toolbar.margin')" icon="radix-icons:margin">
     <div mb-4 text-light-c>
       <div hstack space-x-1 justify-end>
         <client-only>
           <span class="iconify" data-icon="icon-park-outline:margin-one" />
         </client-only>
-        <span>{{ t("toolbar.vertical") }}</span>
+        <span>{{ $t("toolbar.vertical") }}</span>
       </div>
       <vue-slider v-model="marginV" />
       <div flex justify-between>
@@ -20,7 +20,7 @@
         <client-only>
           <span class="iconify" data-icon="icon-park-outline:margin" />
         </client-only>
-        <span>{{ t("toolbar.horizontal") }}</span>
+        <span>{{ $t("toolbar.horizontal") }}</span>
       </div>
       <vue-slider v-model="marginH" />
       <div flex justify-between>
@@ -33,7 +33,6 @@
 </template>
 
 <script lang="ts" setup>
-const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 
 const marginV = computed({

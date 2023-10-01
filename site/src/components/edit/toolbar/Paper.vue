@@ -1,5 +1,5 @@
 <template>
-  <ToolItem :text="t('toolbar.paper')" icon="majesticons:paper-fold-line">
+  <ToolItem :text="$t('toolbar.paper')" icon="majesticons:paper-fold-line">
     <Combobox id="paper-size" :items="items" :initial="styles.paper" capitalize />
   </ToolItem>
 </template>
@@ -7,7 +7,6 @@
 <script lang="ts" setup>
 import type { PaperType } from "~/types";
 
-const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 
 const items = Object.keys(PAPER).map((paper) => ({

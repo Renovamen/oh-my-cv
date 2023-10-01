@@ -1,7 +1,7 @@
 <template>
   <PopupPane
     class="h-40 w-full md:w-96"
-    :text="t('import.title')"
+    :text="$t('import.title')"
     icon="mdi:upload"
     @close="emit('closeImport')"
   >
@@ -15,7 +15,7 @@
         ]"
         @click="activatedTab = 0"
       >
-        {{ t("import.from_local") }}
+        {{ $t("import.from_local") }}
       </button>
       <button
         class="px-2 py-0.5"
@@ -26,7 +26,7 @@
         ]"
         @click="activatedTab = 1"
       >
-        {{ t("import.from_url") }}
+        {{ $t("import.from_url") }}
       </button>
     </div>
 
@@ -63,8 +63,6 @@
 
 <script lang="ts" setup>
 import { fetchFile, uploadFile } from "@renovamen/utils";
-
-const { t } = useI18n();
 
 const emit = defineEmits<{
   (e: "closeImport"): void;

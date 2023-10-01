@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="hstack cursor-pointer space-x-1" :to="switchPath(link, locale)">
+  <nuxt-link class="hstack cursor-pointer space-x-1" :to="switchPath(link, $i18n.locale)">
     <client-only>
       <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
     </client-only>
@@ -15,6 +15,4 @@ defineProps<{
   link: string;
   icon?: string;
 }>();
-
-const { locale } = useI18n();
 </script>

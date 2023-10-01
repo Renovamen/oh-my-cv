@@ -7,13 +7,13 @@
         class="px-5 md:px-20 pt-40 h-fit max-w-240 lt-sm:pb-10 sm:(absolute left-0 right-0 top-0 bottom-0 m-auto)"
       >
         <div text-center>
-          <h1 text="c 3xl sm:4xl" v-html="t('landing.hero')" />
-          <div my-10 text-light-c sm:text-lg><BrandName /> {{ t("landing.desc") }}</div>
-          <nuxt-link :to="switchPath('resumes', locale)">
+          <h1 text="c 3xl sm:4xl" v-html="$t('landing.hero')" />
+          <div my-10 text-light-c sm:text-lg><BrandName /> {{ $t("landing.desc") }}</div>
+          <nuxt-link :to="switchPath('resumes', $i18n.locale)">
             <span
               class="text-white bg-brand px-4 py-3 rounded-lg mx-auto outline outline-4 outline-transparent duration-200 hover:outline-rose-300/50"
             >
-              {{ t("landing.start") }}
+              {{ $t("landing.start") }}
             </span>
           </nuxt-link>
         </div>
@@ -33,11 +33,11 @@
                     <span v-else class="iconify text-xs" data-icon="mdi:rocket-launch" />
                   </client-only>
                 </span>
-                <h2 text-c>{{ t(`landing.feats[${i}].title`) }}</h2>
+                <h2 text-c>{{ $t(`landing.feats[${i}].title`) }}</h2>
               </div>
               <ul text-sm pl-2 ml-4.5 list-disc>
                 <li
-                  v-for="line in t(`landing.feats[${i}].items`).split('<br>')"
+                  v-for="line in $t(`landing.feats[${i}].items`).split('<br>')"
                   :key="line"
                   v-html="line"
                 />
@@ -49,7 +49,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-const { t, locale } = useI18n();
-</script>

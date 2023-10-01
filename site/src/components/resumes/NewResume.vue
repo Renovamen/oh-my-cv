@@ -2,7 +2,7 @@
   <div w-56 h-80>
     <button
       class="resume-card w-[210px] h-[299px] flex-center bg-darker-c hover:bg-c"
-      :aria-label="t('resumes.new')"
+      :aria-label="$t('resumes.new')"
       @click="newAndSwitch"
     >
       <client-only>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-const { t, locale } = useI18n();
+const { locale } = useI18n();
 const router = useRouter();
 
 const newAndSwitch = async () => {

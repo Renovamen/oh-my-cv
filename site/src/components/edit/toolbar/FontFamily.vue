@@ -1,6 +1,6 @@
 <template>
   <ToolItem
-    :text="t('toolbar.font_family')"
+    :text="$t('toolbar.font_family')"
     icon="material-symbols:font-download-outline"
   >
     <div class="hstack space-x-2 w-full mb-2">
@@ -10,7 +10,7 @@
         :items="cjkFonts"
         :initial="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
-      <span w-13>{{ t("toolbar.cn") }}</span>
+      <span w-13>{{ $t("toolbar.cn") }}</span>
     </div>
 
     <div class="hstack space-x-2 w-full">
@@ -20,7 +20,7 @@
         :items="enFonts"
         :initial="styles.fontEN.fontFamily || styles.fontEN.name"
       />
-      <span w-13>{{ t("toolbar.en") }}</span>
+      <span w-13>{{ $t("toolbar.en") }}</span>
     </div>
   </ToolItem>
 </template>
@@ -28,7 +28,6 @@
 <script lang="ts" setup>
 import type { ComboboxItem } from "~/types";
 
-const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 
 const enFonts = computed(() => {

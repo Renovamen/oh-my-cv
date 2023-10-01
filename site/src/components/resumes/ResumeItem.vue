@@ -8,7 +8,7 @@
           height: `${height}px`
         }"
       >
-        <nuxt-link :to="switchPath(`edit/${props.resume.id}`, locale)">
+        <nuxt-link :to="switchPath(`edit/${props.resume.id}`, $i18n.locale)">
           <ResumeRender
             :id="resume.id"
             ref="render"
@@ -38,8 +38,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: "update"): void;
 }>();
-
-const { locale } = useI18n();
 
 const width = PAPER[props.resume.styles.paper].w;
 const height = PAPER[props.resume.styles.paper].h;

@@ -2,7 +2,7 @@
   <header class="header hstack justify-between pl-4 pr-1 text-c">
     <nuxt-link
       class="hstack cursor-pointer text-gray-900 dark:text-gray-100"
-      :to="switchPath('/', locale)"
+      :to="switchPath('/', $i18n.locale)"
     >
       <Logo hide-on-mobile mr-2 text="sm md:base" />
       <h1 text="base md:lg"><BrandName /></h1>
@@ -11,7 +11,7 @@
     <slot name="middle" />
 
     <div hstack>
-      <NavItem mr-3 link="resumes" :label="t('resumes.my_resumes')" icon="ep:menu" />
+      <NavItem mr-3 link="resumes" :label="$t('resumes.my_resumes')" icon="ep:menu" />
       <ToggleLang mr-1.5 />
 
       <slot name="tail" />
@@ -30,7 +30,3 @@
     </div>
   </header>
 </template>
-
-<script lang="ts" setup>
-const { t, locale } = useI18n();
-</script>

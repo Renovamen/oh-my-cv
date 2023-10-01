@@ -2,9 +2,9 @@
   <div text-center>
     <DisplayInput class="w-53 mx-auto" :text="resume.name" :on-entered="rename" />
     <div v-if="updated" text-xs text-light-c mt-1.5>
-      {{ t("resumes.updated") }}{{ updated }}
+      {{ $t("resumes.updated") }}{{ updated }}
     </div>
-    <div text-xs text-light-c mt-0.5>{{ t("resumes.created") }}{{ created }}</div>
+    <div text-xs text-light-c mt-0.5>{{ $t("resumes.created") }}{{ created }}</div>
   </div>
 </template>
 
@@ -23,8 +23,6 @@ const rename = async (text: string) => {
   await renameResume(props.resume.id, text);
   emit("update");
 };
-
-const { t } = useI18n();
 
 const formatDate = (date?: string) => {
   return (

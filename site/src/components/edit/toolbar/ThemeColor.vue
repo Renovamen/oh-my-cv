@@ -1,5 +1,5 @@
 <template>
-  <ToolItem :text="t('toolbar.theme_color')" icon="material-symbols:palette-outline">
+  <ToolItem :text="$t('toolbar.theme_color')" icon="material-symbols:palette-outline">
     <ul class="flex justify-between mb-4">
       <li
         v-for="(color, i) in THEME_COLORS"
@@ -37,7 +37,6 @@
 <script lang="ts" setup>
 import { OnClickOutside } from "@vueuse/components";
 
-const { t } = useI18n();
 const { styles, setStyle } = useStyleStore();
 
 const isFocus = ref(false);
