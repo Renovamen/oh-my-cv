@@ -13,12 +13,12 @@
       </template>
     </Header>
 
-    <splitpanes class="workspace default-theme" :horizontal="isMobile">
-      <pane class="editor-pane px-2 lg:(pl-2 pr-1)">
+    <splitpanes class="workspace default-theme">
+      <pane class="editor-pane pl-2 pr-1">
         <Editor />
       </pane>
 
-      <pane class="preview-pane px-2 pt-1 lg:(px-1 pt-0)" min-size="20">
+      <pane class="preview-pane px-1 pt-0" min-size="20">
         <Preview />
       </pane>
 
@@ -45,10 +45,8 @@ import "splitpanes/dist/splitpanes.css";
 const route = useRoute();
 (async () => await switchResume(route.params.id as string))();
 
-// Responsize
-const isMobile = useMobile();
-
 // Toogle toolbar
+const isMobile = useMobile();
 const isToolbarOpen = ref(!isMobile.value);
 
 // Handle notifications

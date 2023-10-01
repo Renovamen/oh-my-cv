@@ -26,6 +26,10 @@ export default defineConfig({
     ["border-light-c", "border-gray-200 dark:border-slate-500"],
     ["hide-on-mobile", "lt-md:hidden"],
     ["shadow-c", "shadow dark:shadow-gray-600"],
+    [
+      "dropdown-container",
+      "bg-c border border-c rounded shadow-c overflow-x-hidden overflow-y-scroll"
+    ],
     ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-dark-c"],
     ["round-btn", "w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-darker-c"],
     [

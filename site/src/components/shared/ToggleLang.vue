@@ -1,7 +1,10 @@
 <template>
-  <NavItem :text="SUPPORT_LOCALES[locale as LocaleType].name" icon="ic:round-translate">
-    <Dropdown :items="items" />
-  </NavItem>
+  <NavDropdown
+    id="toggle language"
+    :label="SUPPORT_LOCALES[locale as LocaleType].name"
+    :items="items"
+    icon="ic:round-translate"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -12,7 +15,7 @@ const { availableLocales, locale } = useI18n();
 const items = computed(() =>
   availableLocales.map((item: string) => ({
     link: switchLocale(item),
-    text: SUPPORT_LOCALES[item as LocaleType].name,
+    label: SUPPORT_LOCALES[item as LocaleType].name,
     icon: SUPPORT_LOCALES[item as LocaleType].icon
   }))
 );
