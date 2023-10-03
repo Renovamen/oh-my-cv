@@ -37,6 +37,7 @@
 </template>
 
 <script lang="ts" setup>
+import { debounce } from "ts-debounce";
 import Zoom from "@renovamen/vue-zoom";
 
 const scale = ref(1);
@@ -54,7 +55,7 @@ const fitHeight = () => {
   scale.value = height.value / getPaperPx(styles.paper, "h");
 };
 
-setTimeout(fitWidth, 0);
+watch(width, () => debounce(fitWidth, 100)());
 </script>
 
 <style scoped>
