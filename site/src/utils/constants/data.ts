@@ -30,6 +30,12 @@ export const EN_FONTS: Font[] = [
   },
   {
     name: "Times Newer Roman"
+  },
+  {
+    name: "Helvetica Neue"
+  },
+  {
+    name: "Helvetica Neue Light"
   }
 ];
 
