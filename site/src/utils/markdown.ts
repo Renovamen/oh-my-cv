@@ -9,20 +9,30 @@ import frontmatter from "@renovamen/front-matter";
 import type { ResumeFrontMatter } from "~/types";
 
 const markdown = (() => {
-  const md = new MarkdownIt({ html: true });
+  const md = new MarkdownIt({ html: true }); // linkify: true // for non-marked links
 
   md.use(MarkdownItDeflist);
   md.use(MarkdownItKatex);
   md.use(MarkdownItCite);
   md.use(MarkdownItLatexCmds);
 
-  md.use(LinkAttributes, {
-    matcher: (link: string) => /^https?:\/\//.test(link),
-    attrs: {
-      target: "_blank",
-      rel: "noopener"
-    }
-  });
+  md.use(LinkAttributes, [
+    {
+      matcher: (href: String, config: any) => href.indexOf('otree') !== -1,
+      attrs: {
+        class:'otree url'
+      }
+    },
+    {
+      matcher: (link: string) => /^https?:\/\//.test(link),
+      attrs: {
+        target: "_blank",
+        rel: "noopener",
+        class: 'url'
+      }
+    }, 
+  ]
+  );
 
   return md;
 })();
