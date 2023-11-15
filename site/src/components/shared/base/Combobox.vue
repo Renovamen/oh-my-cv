@@ -7,10 +7,10 @@
     >
       <input
         v-bind="api.inputProps"
-        class="w-full rounded outline-none bg-transparent capitalize"
+        class="w-full outline-none bg-transparent capitalize"
         @focus="api.open"
       />
-      <button v-bind="api.triggerProps">
+      <div>
         <div v-show="api.isOpen">
           <client-only>
             <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
@@ -21,7 +21,7 @@
             <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-down" />
           </client-only>
         </div>
-      </button>
+      </div>
     </div>
 
     <div v-bind="api.positionerProps">
