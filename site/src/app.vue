@@ -24,7 +24,7 @@ useHead({
     { property: "og:locale", content: locale },
     {
       name: "theme-color",
-      content: () => (colorMode.preference === "dark" ? "#475569" : "#f3f4f6")
+      content: () => (colorMode?.preference === "dark" ? "#475569" : "#f3f4f6")
     }
   ],
   link: [
