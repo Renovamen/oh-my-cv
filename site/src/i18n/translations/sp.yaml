@@ -3,21 +3,21 @@ toggle_dark: Cambiar tema claro/oscuro
 
 head:
   title: Oh My CV! - Generador de CV online GRATUITO!!
-  desc: Free online resume maker, allows you to create your resume in minutes with Markdown!
+  desc: El creador de currículums vitae en línea gratuito le permite crear su currículum en minutos con Markdown!
   keywords: generador curriculum, generador cv, generador curriculum vitae, curriculum markdown, markdown cv
 
 landing:
   hero: Escribe tu <span text-brand>curriculum vitae</span> en Markdown!
-  desc: is a free and open source tool created to build and manage your resumes as easy as possible, without losing the privacy of your data.
+  desc: es una herramienta gratuita y de código abierto creada para crear y administrar sus currículums de la manera más fácil posible, sin perder la privacidad de sus datos.
   start: Crear My Resumen
   feats:
     - title: Simple y poderoso
-      items: Administra multiples curriculums conr <br>Vista previa en tiempo real<br>Exportar a PDF format<br>Completamente configurable<br>Elige fuentes y agrega íconos<br>Y <a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">más funciones</a>
+      items: Administra multiples curriculums con <br>Vista previa en tiempo real<br>Exportar a PDF format<br>Completamente configurable<br>Elige fuentes y agrega íconos<br>Y <a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">más funciones</a>
     - title: Primero tu privacidad
       items: Open source, libre y gratuito<br>Información guardada en tu equipo<br>No necesita que te registres<br>No realizamos ningún trackeo ni mostramos publicidad<br>No ads
 
 resumes:
-  my_resumes: Mis Curriculums
+  my_resumes: Mis CVs
   created: "Creado: "
   updated: "Actualizado: "
   new: Nuevo
@@ -41,11 +41,11 @@ toolbar:
     export_md: Exportar Markdown
   correct_case:
     text: Corregir Mayusculas
-    desc: "Example: \"Github\" → \"GitHub\" <br> Note: the words only including uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched"
+    desc: "Ejemplo: \"Github\" → \"GitHub\" <br> Nota: No se modificarán las palabras que sólo contengan mayúsculas o minúsculas (\"GITHUB\" or \"github\")"
     btn : Corrígelo!
   paper: Tamaño de hoja
-  font_family: Font Family
-  font_size: Font Size
+  font_family: Fuente
+  font_size: Tamaño de Fuente
   cn: CJK
   en: Inglés
   sp: Español
