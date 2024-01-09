@@ -10,17 +10,13 @@ const { t, locale } = useI18n();
 const colorMode = useColorMode();
 const preferredDark = usePreferredDark();
 
-const title = computed(() => t("head.title"));
-const keywords = computed(() => t("head.keywords"));
-const desc = computed(() => t("head.desc"));
-
 useHead({
-  title: title,
+  title: t("head.title"),
   meta: [
-    { name: "keywords", content: keywords },
-    { name: "description", content: desc },
-    { property: "og:title", content: title },
-    { property: "og:description", content: desc },
+    { name: "keywords", content: t("head.keywords") },
+    { name: "description", content: t("head.desc") },
+    { property: "og:title", content: t("head.title") },
+    { property: "og:description", content: t("head.desc") },
     { property: "og:locale", content: locale },
     {
       name: "theme-color",

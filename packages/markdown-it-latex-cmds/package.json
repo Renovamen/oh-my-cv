@@ -34,8 +34,8 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "devDependencies": {
-    "@types/markdown-it": "^13.0.6",
-    "markdown-it": "^13.0.2"
+    "@types/markdown-it": "^13.0.7",
+    "markdown-it": "^14.0.0"
   },
   "publishConfig": {
     "access": "public"

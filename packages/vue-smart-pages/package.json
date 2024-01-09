@@ -31,7 +31,7 @@
   "dependencies": {
     "@renovamen/dynamic-css": "workspace:*",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.3.8"
+    "vue": "^3.4.6"
   },
   "publishConfig": {
     "access": "public"

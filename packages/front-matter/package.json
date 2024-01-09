@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.9.0"
+    "@types/node": "^20.10.7"
   },
   "publishConfig": {
     "access": "public"
