@@ -7,7 +7,13 @@
         <loc>https://ohmycv.app/resumes</loc>
     </url>
     <url>
+        <loc>https://ohmycv.app/sp</loc>
+    </url>
+    <url>
         <loc>https://ohmycv.app/zh-cn</loc>
+    </url>
+    <url>
+        <loc>https://ohmycv.app/sp/resumes</loc>
     </url>
     <url>
         <loc>https://ohmycv.app/zh-cn/resumes</loc>
