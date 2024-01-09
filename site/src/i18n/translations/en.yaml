@@ -43,11 +43,12 @@ toolbar:
     text: Correct Case
     desc: "Example: \"Github\" → \"GitHub\" <br> Note: the words only including uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched"
     btn : Correct it!
-  paper: Pape Size
+  paper: Paper Size
   font_family: Font Family
   font_size: Font Size
   cn: CJK
   en: English
+  sp: Spanish
   theme_color: Theme Color
   paragraph: Paragraph Spacing
   line: Line Spacing
