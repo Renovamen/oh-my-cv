@@ -10,7 +10,7 @@
         :items="cjkFonts"
         :initial="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
-      <span w-13>{{ $t("toolbar.cn") }}</span>
+      <span w-13>{{ $t("toolbar.cjk") }}</span>
     </div>
 
     <div class="hstack space-x-2 w-full">

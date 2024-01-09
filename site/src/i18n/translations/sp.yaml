@@ -46,9 +46,8 @@ toolbar:
   paper: Tamaño de hoja
   font_family: Fuente
   font_size: Tamaño de Fuente
-  cn: CJK
+  cjk: CJK
   en: Inglés
-  sp: Español
   theme_color: Color y tema
   paragraph: Espaciado de párrafo
   line: Espaciado de línea
