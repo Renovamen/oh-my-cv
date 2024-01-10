@@ -197,3 +197,58 @@
   font-weight: bold;
   src: url("~/assets/fonts/hkst/w9.ttf") format("opentype");
 }
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/helvetica-neue/regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/helvetica-neue/bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: normal;
+  src: url("~/assets/fonts/helvetica-neue/italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  font-style: italic;
+  font-weight: bold;
+  src: url("~/assets/fonts/helvetica-neue/bolditalic.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Helvetica Neue Light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("~/assets/fonts/helvetica-neue-light/regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  font-style: normal;
+  font-weight: bold;
+  src: url("~/assets/fonts/helvetica-neue-light/bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  font-style: italic;
+  font-weight: normal;
+  src: url("~/assets/fonts/helvetica-neue-light/italic.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  font-style: italic;
+  font-weight: bold;
+  src: url("~/assets/fonts/helvetica-neue-light/bolditalic.ttf") format("opentype");
+}
