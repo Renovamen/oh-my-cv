@@ -1,5 +1,5 @@
 <template>
-  <div v-bind="api.rootProps">
+  <div v-bind="api.rootProps" relative>
     <div
       v-bind="api.controlProps"
       class="hstack h-9 space-x-2 px-2 py-1 rounded border"
@@ -28,7 +28,7 @@
       <ul
         v-if="options.length > 0"
         v-bind="api.contentProps"
-        class="dropdown-container absolute z-20 w-full max-h-60"
+        class="dropdown-container z-20 max-h-60 -mt-1"
       >
         <li
           v-for="item in options"
@@ -51,7 +51,7 @@ import type { ComboboxItem } from "~/types";
 const props = defineProps<{
   id: string;
   items: Array<ComboboxItem>;
-  initial?: string;
+  default: string;
 }>();
 
 const options = ref(props.items);
@@ -64,16 +64,11 @@ const collectionRef = computed(() =>
   })
 );
 
-watch(
-  () => props.initial,
-  () => api.value.setValue([props.initial!])
-);
-
 const [state, send] = useMachine(
   combobox.machine({
     id: props.id,
     collection: collectionRef.value,
-    value: [props.initial || props.items[0].value],
+    value: [props.default],
     closeOnSelect: false,
     onOpenChange: ({ open }) => {
       if (!open) return;
@@ -97,6 +92,11 @@ const [state, send] = useMachine(
 );
 
 const api = computed(() => combobox.connect(state.value, send, normalizeProps));
+
+watch(
+  () => props.default,
+  () => api.value.setValue([props.default])
+);
 </script>
 
 <style scoped>

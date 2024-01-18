@@ -16,5 +16,5 @@ const items = availableLocales.map((item: string) => ({
   link: switchLocale(item),
   label: SUPPORT_LOCALES[item as LocaleType].name,
   icon: SUPPORT_LOCALES[item as LocaleType].icon
-}))
+}));
 </script>

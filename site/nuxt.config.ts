@@ -19,8 +19,6 @@ export default defineNuxtConfig({
   css: [
     "@unocss/reset/tailwind.css",
     "katex/dist/katex.min.css",
-    "vue-slider-component/dist-css/vue-slider-component.css",
-    "vue-slider-component/theme/default.css",
     "vue-toastification/dist/index.css",
     "~/assets/css/index.css"
   ],

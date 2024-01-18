@@ -1,8 +1,9 @@
 <template>
-  <DisplayInput
+  <Editable
+    id="edit-rename"
     class="w-32 sm:w-50 text-sm md:text-base"
-    :text="data.curResumeName"
-    :on-entered="rename"
+    :default="data.curResumeName"
+    :on-value-commit="rename"
   />
 </template>
 

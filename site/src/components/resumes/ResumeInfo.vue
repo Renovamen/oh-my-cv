@@ -1,6 +1,11 @@
 <template>
   <div text-center>
-    <DisplayInput class="w-53 mx-auto" :text="resume.name" :on-entered="rename" />
+    <Editable
+      :id="`resumes-rename-${resume.id}`"
+      class="w-53 mx-auto"
+      :default="resume.name"
+      :on-value-commit="rename"
+    />
     <div v-if="updated" text-xs text-light-c mt-1.5>
       {{ $t("resumes.updated") }}{{ updated }}
     </div>

@@ -8,7 +8,7 @@
         id="font-en"
         flex-1
         :items="cjkFonts"
-        :initial="styles.fontCJK.fontFamily || styles.fontCJK.name"
+        :default="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
       <span w-13>{{ $t("toolbar.cjk") }}</span>
     </div>
@@ -18,7 +18,7 @@
         id="font-cn"
         flex-1
         :items="enFonts"
-        :initial="styles.fontEN.fontFamily || styles.fontEN.name"
+        :default="styles.fontEN.fontFamily || styles.fontEN.name"
       />
       <span w-13>{{ $t("toolbar.en") }}</span>
     </div>

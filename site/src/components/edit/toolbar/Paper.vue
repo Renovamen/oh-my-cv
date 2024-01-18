@@ -1,6 +1,6 @@
 <template>
   <ToolItem :text="$t('toolbar.paper')" icon="majesticons:paper-fold-line">
-    <Combobox id="paper-size" :items="items" :initial="styles.paper" capitalize />
+    <Combobox id="paper-size" :items="items" :default="styles.paper" capitalize />
   </ToolItem>
 </template>
 

@@ -7,12 +7,13 @@
         </client-only>
         <span>{{ $t("toolbar.vertical") }}</span>
       </div>
-      <vue-slider v-model="marginV" />
-      <div flex justify-between>
-        <span>0px</span>
-        <span>50px</span>
-        <span>100px</span>
-      </div>
+
+      <Slider
+        id="margin-v"
+        unit="px"
+        :default="styles.marginV"
+        :on-value-change="setMarginV"
+      />
     </div>
 
     <div text-light-c>
@@ -22,12 +23,13 @@
         </client-only>
         <span>{{ $t("toolbar.horizontal") }}</span>
       </div>
-      <vue-slider v-model="marginH" />
-      <div flex justify-between>
-        <span>0px</span>
-        <span>50px</span>
-        <span>100px</span>
-      </div>
+
+      <Slider
+        id="margin-h"
+        unit="px"
+        :default="styles.marginH"
+        :on-value-change="setMarginH"
+      />
     </div>
   </ToolItem>
 </template>
@@ -35,13 +37,6 @@
 <script lang="ts" setup>
 const { styles, setStyle } = useStyleStore();
 
-const marginV = computed({
-  get: () => styles.marginV,
-  set: (value: number) => setStyle("marginV", value)
-});
-
-const marginH = computed({
-  get: () => styles.marginH,
-  set: (value: number) => setStyle("marginH", value)
-});
+const setMarginV = (value: number) => setStyle("marginV", value);
+const setMarginH = (value: number) => setStyle("marginH", value);
 </script>

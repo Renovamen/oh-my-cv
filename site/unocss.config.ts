@@ -25,7 +25,7 @@ export default defineConfig({
     ["border-darker-c", "border-black dark:border-gray-200"],
     ["border-light-c", "border-gray-200 dark:border-slate-500"],
     ["hide-on-mobile", "lt-md:hidden"],
-    ["shadow-c", "shadow dark:shadow-gray-600"],
+    ["shadow-c", "shadow shadow-slate-300 dark:shadow-slate-800"],
     [
       "dropdown-container",
       "bg-c border border-c rounded shadow-c overflow-x-hidden overflow-y-scroll"

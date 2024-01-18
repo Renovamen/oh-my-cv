@@ -13,10 +13,6 @@ svg.iconify {
   @apply inline-block;
 }
 
-.dark .vue-slider-rail {
-  @apply bg-gray-500;
-}
-
 .Vue-Toastification__toast {
   @apply px-5 py-3 min-h-0;
 }
