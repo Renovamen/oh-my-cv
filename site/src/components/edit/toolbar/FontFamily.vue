@@ -5,7 +5,7 @@
   >
     <div class="hstack space-x-2 w-full mb-2">
       <Combobox
-        id="font-en"
+        id="font-cjk"
         flex-1
         :items="cjkFonts"
         :default="styles.fontCJK.fontFamily || styles.fontCJK.name"
@@ -15,7 +15,7 @@
 
     <div class="hstack space-x-2 w-full">
       <Combobox
-        id="font-cn"
+        id="font-en"
         flex-1
         :items="enFonts"
         :default="styles.fontEN.fontFamily || styles.fontEN.name"

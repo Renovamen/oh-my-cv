@@ -70,10 +70,6 @@ const [state, send] = useMachine(
     collection: collectionRef.value,
     value: [props.default],
     closeOnSelect: false,
-    onOpenChange: ({ open }) => {
-      if (!open) return;
-      options.value = props.items;
-    },
     onInputValueChange: ({ value }) => {
       const filtered = props.items.filter((item) =>
         item.label.toLowerCase().includes(value.toLowerCase())
@@ -81,7 +77,7 @@ const [state, send] = useMachine(
       options.value = filtered.length > 0 ? filtered : props.items;
     },
     onValueChange: ({ items }: { items: ComboboxItem[] }) => {
-      items[0].onSelect();
+      items[0]?.onSelect();
     }
   }),
   {
@@ -96,6 +92,11 @@ const api = computed(() => combobox.connect(state.value, send, normalizeProps));
 watch(
   () => props.default,
   () => api.value.setValue([props.default])
+);
+
+watch(
+  () => props.items,
+  () => (options.value = props.items)
 );
 </script>
 
