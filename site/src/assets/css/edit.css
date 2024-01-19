@@ -65,7 +65,7 @@
   .toolbar-mobile,
   .splitpanes__splitter,
   .zoom-bar,
-  .Vue-Toastification__container,
+  .toast-container,
   #nuxt-devtools-container {
     display: none !important;
   }

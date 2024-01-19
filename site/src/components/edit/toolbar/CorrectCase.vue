@@ -25,7 +25,7 @@
 import { correctCase } from "correct-case";
 
 const { data } = useDataStore();
-const { setToastFlag } = useToastStore();
+const toast = useToast();
 
 const correct = async () => {
   const md = data.mdContent;
@@ -34,6 +34,6 @@ const correct = async () => {
   setResumeMd(result.text);
 
   const corrected = result.correctedWords ? result.correctedWords.length : true;
-  setToastFlag("correct", corrected);
+  toast.correct(corrected);
 };
 </script>

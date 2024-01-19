@@ -12,15 +12,3 @@ body {
 svg.iconify {
   @apply inline-block;
 }
-
-.Vue-Toastification__toast {
-  @apply px-5 py-3 min-h-0;
-}
-
-.Vue-Toastification__icon {
-  @apply w-4 mr-3;
-}
-
-.Vue-Toastification__toast-body {
-  @apply margin-auto;
-}

@@ -200,6 +200,9 @@ importers:
       '@zag-js/tabs':
         specifier: ^0.32.1
         version: 0.32.1
+      '@zag-js/toast':
+        specifier: ^0.32.1
+        version: 0.32.1
       '@zag-js/vue':
         specifier: ^0.32.1
         version: 0.32.1(vue@3.4.14)
@@ -251,9 +254,6 @@ importers:
       vue-smart-pages:
         specifier: workspace:*
         version: link:../packages/vue-smart-pages
-      vue-toastification:
-        specifier: ^2.0.0-rc.5
-        version: 2.0.0-rc.5(vue@3.4.14)
 
 packages:
 
@@ -4331,6 +4331,17 @@ packages:
     resolution: {integrity: sha512-aK1uswWYF76PFoxGL+3HW/kth9uldFWSW4lOh89NfEcc6Ym7qS5B+P0HKJVM9DuQbihvQX9dyc9PvM7/LJTSRA==}
     dependencies:
       '@zag-js/dom-query': 0.32.1
+    dev: true
+
+  /@zag-js/toast@0.32.1:
+    resolution: {integrity: sha512-HrfVzFX7ANS9qOewCr8qOCbgko635bZxYKMv+ojjo4U/TtwkGb43+lVU7/qwZj0z18/OtXBH5YQjFwQZXg5x8g==}
+    dependencies:
+      '@zag-js/anatomy': 0.32.1
+      '@zag-js/core': 0.32.1
+      '@zag-js/dom-event': 0.32.1
+      '@zag-js/dom-query': 0.32.1
+      '@zag-js/types': 0.32.1
+      '@zag-js/utils': 0.32.1
     dev: true
 
   /@zag-js/types@0.32.1:
@@ -10422,14 +10433,6 @@ packages:
       vue: ^3.2.0
     dependencies:
       '@vue/devtools-api': 6.5.1
-      vue: 3.4.14(typescript@5.3.3)
-    dev: true
-
-  /vue-toastification@2.0.0-rc.5(vue@3.4.14):
-    resolution: {integrity: sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==}
-    peerDependencies:
-      vue: ^3.0.2
-    dependencies:
       vue: 3.4.14(typescript@5.3.3)
     dev: true
 

@@ -1,8 +1,20 @@
-import VueToast from "vue-toastification";
+import * as toast from "@zag-js/toast";
+import { normalizeProps, useMachine } from "@zag-js/vue";
 
-export default defineNuxtPlugin(({ vueApp }) => {
-  vueApp.use(VueToast, {
-    timeout: 2500,
-    position: "bottom-right"
-  });
+export default defineNuxtPlugin(() => {
+  const [state, send] = useMachine(
+    toast.group.machine({
+      id: "toast",
+      placement: "bottom-end",
+      duration: 2500,
+      removeDelay: 750
+    })
+  );
+  const toastApi = computed(() => toast.group.connect(state.value, send, normalizeProps));
+
+  return {
+    provide: {
+      toast: toastApi
+    }
+  };
 });

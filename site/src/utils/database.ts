@@ -61,21 +61,19 @@ export const setResume = (id: string, resume: ResumeStorageItem) => {
  * @param resume resume data
  */
 export const saveResume = async (id: string, resume: ResumeStorageItem) => {
-  const { setToastFlag } = useToastStore();
-
   const storage = (await getStorage()) || {};
   storage[id] = resume;
 
   await localForage.setItem(OHMYCV_KEY, storage);
-  setToastFlag("save", true);
+
+  const toast = useToast();
+  toast.save();
 };
 
 /**
  * New a resume using default styles and content
  */
 export const newResume = async () => {
-  const { setToastFlag } = useToastStore();
-
   const id = new Date().getTime().toString(); // generate a new id
   const resume = {
     name: DEFAULT_NAME,
@@ -86,7 +84,9 @@ export const newResume = async () => {
   } as ResumeStorageItem;
 
   await saveResume(id, resume);
-  setToastFlag("new", true);
+
+  const toast = useToast();
+  toast.new();
 
   return id;
 };
@@ -105,7 +105,7 @@ export const saveResumesToLocal = async () => {
  * @param callback A callback function to be excuted after importing finished
  */
 export const importResumesFromLocal = async (callback?: () => void) => {
-  const { setToastFlag } = useToastStore();
+  const toast = useToast();
 
   const check = (data: ResumeStorage) => {
     for (const resume of Object.values(data)) {
@@ -140,7 +140,7 @@ export const importResumesFromLocal = async (callback?: () => void) => {
     const data = JSON.parse(content) as ResumeStorage;
 
     if (!check(data)) {
-      setToastFlag("import", "no");
+      toast.import(false);
       return;
     }
 
@@ -150,7 +150,7 @@ export const importResumesFromLocal = async (callback?: () => void) => {
     };
 
     await localForage.setItem(OHMYCV_KEY, newStorage);
-    setToastFlag("import", "yes");
+    toast.import(true);
 
     callback && callback();
   };
@@ -159,7 +159,7 @@ export const importResumesFromLocal = async (callback?: () => void) => {
 };
 
 export const deleteResume = async (id: string) => {
-  const { setToastFlag } = useToastStore();
+  const toast = useToast();
   const storage = await getStorage();
 
   if (storage && storage[id]) {
@@ -168,17 +168,17 @@ export const deleteResume = async (id: string) => {
 
     await localForage.setItem(OHMYCV_KEY, storage);
 
-    setToastFlag("delete", name);
+    toast.delete(name);
   }
 };
 
 export const switchResume = async (id: string) => {
-  const { setToastFlag } = useToastStore();
+  const toast = useToast();
   const storage = await getStorage();
 
   if (storage && storage[id]) {
     setResume(id, storage[id]);
-    setToastFlag("switch", storage[id].name);
+    toast.switch(storage[id].name);
     return true;
   }
 
@@ -186,7 +186,7 @@ export const switchResume = async (id: string) => {
 };
 
 export const duplicateResume = async (id: string) => {
-  const { setToastFlag } = useToastStore();
+  const toast = useToast();
   const storage = await getStorage();
 
   if (storage && storage[id]) {
@@ -200,16 +200,16 @@ export const duplicateResume = async (id: string) => {
     storage[newId] = resume;
 
     await localForage.setItem(OHMYCV_KEY, storage);
-    setToastFlag("duplicate", oldName);
+    toast.duplicate(oldName);
   }
 };
 
 export const renameResume = async (id: string, name: string) => {
-  const { setToastFlag } = useToastStore();
-
   const storage = (await getStorage()) || {};
   storage[id].name = name;
 
   await localForage.setItem(OHMYCV_KEY, storage);
-  setToastFlag("save", true);
+
+  const toast = useToast();
+  toast.save();
 };

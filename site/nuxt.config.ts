@@ -19,7 +19,6 @@ export default defineNuxtConfig({
   css: [
     "@unocss/reset/tailwind.css",
     "katex/dist/katex.min.css",
-    "vue-toastification/dist/index.css",
     "~/assets/css/index.css"
   ],
 

@@ -2,6 +2,7 @@
   <div class="font-ui">
     <VitePwaManifest />
     <NuxtPage />
+    <ToastList />
   </div>
 </template>
 

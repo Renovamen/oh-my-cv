@@ -49,9 +49,6 @@ const route = useRoute();
 const isMobile = useMobile();
 const isToolbarOpen = ref(!isMobile.value);
 
-// Handle notifications
-watchToast();
-
 // Splitpane sizes
 const { width } = useWindowSize();
 

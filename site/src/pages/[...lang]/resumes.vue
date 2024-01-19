@@ -33,7 +33,4 @@ const loadResumes = async () => {
 };
 
 onMounted(loadResumes);
-
-// Handle notifications
-watchToast();
 </script>

@@ -31,6 +31,7 @@
     "@zag-js/menu": "^0.32.1",
     "@zag-js/slider": "^0.32.1",
     "@zag-js/tabs": "^0.32.1",
+    "@zag-js/toast": "^0.32.1",
     "@zag-js/vue": "^0.32.1",
     "correct-case": "workspace:*",
     "gfonts-loader": "workspace:*",
@@ -47,7 +48,6 @@
     "splitpanes": "^3.1.5",
     "ts-debounce": "^4.0.0",
     "vue-i18n": "^9.9.0",
-    "vue-smart-pages": "workspace:*",
-    "vue-toastification": "^2.0.0-rc.5"
+    "vue-smart-pages": "workspace:*"
   }
 }

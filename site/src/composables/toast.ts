@@ -1,87 +1,83 @@
-// @ts-expect-error: missing types
-import { useToast } from "vue-toastification/dist/index.mjs";
+import { i18n } from "~/plugins/i18n";
 
-export const watchToast = () => {
-  const toast = useToast();
-  const { t } = useI18n();
-  const { toastFlag, closeToastFlag } = useToastStore();
+const { t } = i18n.global;
 
-  watch(
-    () => toastFlag.switch,
-    () => {
-      if (toastFlag.switch) {
-        toast.info(t("notification.switch", { msg: toastFlag.switch }));
-        closeToastFlag("switch");
-      }
+export const useToast = () => {
+  const { $toast } = useNuxtApp();
+
+  const save = () => {
+    $toast.value.create({
+      description: t("notification.save"),
+      type: "success"
+    });
+  };
+
+  const switchResume = (msg: string) => {
+    $toast.value.create({
+      description: t("notification.switch", { msg }),
+      type: "info"
+    });
+  };
+
+  const deleteResume = (msg: string) => {
+    $toast.value.create({
+      description: t("notification.delete", { msg }),
+      type: "error"
+    });
+  };
+
+  const newResume = () => {
+    $toast.value.create({
+      description: t("notification.new"),
+      type: "success"
+    });
+  };
+
+  const duplicate = (msg: string) => {
+    $toast.value.create({
+      description: t("notification.duplicate", {
+        old: msg,
+        new: msg + " Copy"
+      }),
+      type: "success"
+    });
+  };
+
+  const correct = (msg: true | number) => {
+    if (msg === true) {
+      $toast.value.create({
+        description: t("notification.correct.no"),
+        type: "info"
+      });
+    } else {
+      $toast.value.create({
+        description: t("notification.correct.yes", { num: msg }),
+        type: "success"
+      });
     }
-  );
+  };
 
-  watch(
-    () => toastFlag.delete,
-    () => {
-      if (toastFlag.delete) {
-        toast.error(t("notification.delete", { msg: toastFlag.delete }));
-        closeToastFlag("delete");
-      }
+  const importResume = (msg: boolean) => {
+    if (msg) {
+      $toast.value.create({
+        description: t("notification.import.yes"),
+        type: "success"
+      });
+    } else {
+      $toast.value.create({
+        description: t("notification.import.no"),
+        type: "error"
+      });
     }
-  );
+  };
 
-  watch(
-    () => toastFlag.new,
-    () => {
-      if (toastFlag.new) {
-        toast.success(t("notification.new"));
-        closeToastFlag("new");
-      }
-    }
-  );
-
-  watch(
-    () => toastFlag.save,
-    () => {
-      if (toastFlag.save) {
-        toast.success(t("notification.save"));
-        closeToastFlag("save");
-      }
-    }
-  );
-
-  watch(
-    () => toastFlag.duplicate,
-    () => {
-      if (toastFlag.duplicate) {
-        toast.success(
-          t("notification.duplicate", {
-            old: toastFlag.duplicate,
-            new: toastFlag.duplicate + " Copy"
-          })
-        );
-        closeToastFlag("duplicate");
-      }
-    }
-  );
-
-  watch(
-    () => toastFlag.correct,
-    () => {
-      if (toastFlag.correct) {
-        if (toastFlag.correct === true) toast.info(t("notification.correct.no"));
-        else toast.success(t("notification.correct.yes", { num: toastFlag.correct }));
-
-        closeToastFlag("correct");
-      }
-    }
-  );
-
-  watch(
-    () => toastFlag.import,
-    () => {
-      if (toastFlag.import) {
-        if (toastFlag.import === "yes") toast.success(t("notification.import.yes"));
-        else if (toastFlag.import === "no") toast.error(t("notification.import.no"));
-
-        closeToastFlag("import");
-      }
-    }
-  );
+  return {
+    save,
+    switch: switchResume,
+    delete: deleteResume,
+    new: newResume,
+    duplicate,
+    correct,
+    import: importResume
+  };
 };
