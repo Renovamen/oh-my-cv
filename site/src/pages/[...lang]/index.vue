@@ -19,19 +19,17 @@
         </div>
 
         <div
-          class="lt-sm:space-y-10 sm:(w-130 grid grid-cols-2) lg:w-150 text-light-c mt-15 mx-auto"
+          class="text-light-c mt-15 mx-auto lt-sm:space-y-10 sm:(w-150 grid grid-cols-2)"
         >
-          <div v-for="i in [0, 1]" :key="`feature-${i}`">
+          <div v-for="i in [0, 1]" :key="i">
             <div w-fit sm:mx-auto>
               <div hstack mb-3 space-x-1.5>
                 <span
-                  class="w-5 h-5 rounded-full text-white flex-center"
-                  :class="[i ? 'bg-blue-400' : 'bg-brand']"
+                  class="circle size-5 text-white text-xs"
+                  :class="i ? 'bg-blue-400' : 'bg-brand'"
                 >
-                  <client-only>
-                    <span v-if="i" class="iconify text-xs" data-icon="wpf:privacy" />
-                    <span v-else class="iconify text-xs" data-icon="mdi:rocket-launch" />
-                  </client-only>
+                  <span v-if="i" i-wpf:privacy />
+                  <span v-else i-mdi:rocket-launch />
                 </span>
                 <h2 text-c>{{ $t(`landing.feats[${i}].title`) }}</h2>
               </div>

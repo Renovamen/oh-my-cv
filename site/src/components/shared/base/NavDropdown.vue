@@ -1,9 +1,7 @@
 <template>
   <div>
     <button v-bind="api.triggerProps" class="hstack cursor-pointer space-x-1">
-      <client-only>
-        <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
-      </client-only>
+      <span v-if="icon" :class="icon" md:text-lg />
       <span class="truncate max-w-xs hide-on-mobile">
         {{ label }}
       </span>
@@ -17,9 +15,7 @@
           class="dropdown-li text-c"
         >
           <nuxt-link :to="item.link" space-x-1.5 hstack>
-            <client-only>
-              <span v-if="item.icon" class="iconify text-base" :data-icon="item.icon" />
-            </client-only>
+            <span v-if="item.icon" :class="item.icon" text-base />
             <span>{{ item.label }}</span>
           </nuxt-link>
         </li>

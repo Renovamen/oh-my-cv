@@ -15,20 +15,16 @@
         >
           <div hstack justify-between pl-4 pr-3 pt-2.5 pb-1>
             <div hstack text-sm>
-              <client-only>
-                <span class="iconify" :data-icon="icon" />
-              </client-only>
+              <span :class="icon" />
               <span mx-2 text-light-c>/</span>
               <span v-bind="api.titleProps">{{ title }}</span>
             </div>
 
             <button
-              class="flex-center p-1 rounded-full duration-100 hover:(bg-dark-c rotate-90)"
+              class="circle p-1 duration-100 hover:(bg-dark-c rotate-90)"
               v-bind="api.closeTriggerProps"
             >
-              <client-only>
-                <span class="iconify" data-icon="ic:baseline-close" />
-              </client-only>
+              <span i-ic:baseline-close />
             </button>
           </div>
 

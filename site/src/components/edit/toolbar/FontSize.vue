@@ -1,5 +1,5 @@
 <template>
-  <ToolItem :text="$t('toolbar.font_size')" icon="ri:font-size-2">
+  <ToolItem :text="$t('toolbar.font_size')" icon="i-ri:font-size-2">
     <Slider
       id="font-size"
       unit="px"

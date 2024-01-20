@@ -1,8 +1,6 @@
 <template>
   <nuxt-link class="hstack cursor-pointer space-x-1" :to="switchPath(link, $i18n.locale)">
-    <client-only>
-      <span v-if="icon" class="iconify md:text-lg" :data-icon="icon" />
-    </client-only>
+    <span v-if="icon" :class="icon" md:text-lg />
     <span class="truncate max-w-xs hide-on-mobile">
       {{ label }}
     </span>

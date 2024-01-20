@@ -3,24 +3,16 @@
     <div
       v-bind="api.controlProps"
       class="hstack h-9 space-x-2 px-2 py-1 rounded border"
-      :class="[api.isOpen && 'border-darker-c', !api.isOpen && 'border-c']"
+      :class="api.isOpen ? 'border-darker-c' : 'border-c'"
     >
       <input
         v-bind="api.inputProps"
         class="w-full outline-none bg-transparent capitalize"
         @focus="api.open"
       />
-      <div>
-        <div v-show="api.isOpen">
-          <client-only>
-            <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-up" />
-          </client-only>
-        </div>
-        <div v-show="!api.isOpen">
-          <client-only>
-            <span class="iconify text-lg" data-icon="ic:sharp-arrow-drop-down" />
-          </client-only>
-        </div>
+      <div size-5 flex-center>
+        <span v-show="api.isOpen" i-ic:sharp-arrow-drop-up text-lg />
+        <span v-show="!api.isOpen" i-ic:sharp-arrow-drop-down text-lg />
       </div>
     </div>
 

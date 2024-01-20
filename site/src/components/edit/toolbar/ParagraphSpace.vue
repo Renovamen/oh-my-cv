@@ -1,5 +1,8 @@
 <template>
-  <ToolItem :text="$t('toolbar.paragraph')" icon="icon-park-outline:paragraph-break-two">
+  <ToolItem
+    :text="$t('toolbar.paragraph')"
+    icon="i-icon-park-outline:paragraph-break-two"
+  >
     <Slider
       id="paragrapg-space"
       unit="px"

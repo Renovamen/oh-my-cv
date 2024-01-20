@@ -1,9 +1,7 @@
 <template>
   <div class="tool-item mx-4 mt-5 pb-6" text="xs md:sm">
     <div hstack space-x-2 mb-4 text="sm md:base">
-      <client-only>
-        <span v-if="icon" class="iconify" :data-icon="icon" />
-      </client-only>
+      <span v-if="icon" :class="icon" />
       <span>{{ text }}</span>
     </div>
 

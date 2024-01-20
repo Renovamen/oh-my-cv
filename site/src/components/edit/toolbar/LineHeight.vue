@@ -1,5 +1,5 @@
 <template>
-  <ToolItem :text="$t('toolbar.line')" icon="ic:round-format-line-spacing">
+  <ToolItem :text="$t('toolbar.line')" icon="i-ic:round-format-line-spacing">
     <Slider
       id="line-height"
       :default="styles.lineHeight"

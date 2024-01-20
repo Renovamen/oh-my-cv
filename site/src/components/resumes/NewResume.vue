@@ -5,9 +5,7 @@
       :aria-label="$t('resumes.new')"
       @click="newAndSwitch"
     >
-      <client-only>
-        <span class="iconify w-12 h-12 text-light-c" data-icon="ic:round-plus" />
-      </client-only>
+      <span i-ic:round-plus text="5xl light-c" />
     </button>
   </div>
 </template>
@@ -23,7 +21,7 @@ const newAndSwitch = async () => {
 </script>
 
 <style scoped>
-.resume-card:hover .iconify {
+.resume-card:hover span {
   @apply text-brand;
 }
 </style>

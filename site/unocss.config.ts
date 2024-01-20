@@ -1,11 +1,13 @@
 import {
   defineConfig,
   presetAttributify,
+  presetIcons,
   presetUno,
   presetWebFonts,
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
+import { SUPPORT_LOCALES } from "./src/i18n";
 
 export default defineConfig({
   shortcuts: [
@@ -31,7 +33,9 @@ export default defineConfig({
       "bg-c border border-c rounded shadow-c overflow-x-hidden overflow-y-scroll"
     ],
     ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-dark-c"],
-    ["round-btn", "w-7 h-7 md:(w-8 h-8) flex-center rounded-full hover:bg-darker-c"],
+    ["circle", "rounded-full flex-center"],
+    ["round-btn", "circle size-7 md:size-8 hover:bg-darker-c"],
+    ["rect-btn", "hstack space-x-1.5 px-2.5 py-1.5 rounded"],
     [
       "resume-card",
       "cursor-pointer mx-auto overflow-hidden rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
@@ -47,11 +51,17 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetIcons({
+      extraProperties: {
+        display: "inline-block"
+      }
+    }),
     presetWebFonts({
       fonts: {
         ui: "Lato:400,700"
       }
     })
   ],
-  transformers: [transformerDirectives(), transformerVariantGroup()]
+  transformers: [transformerDirectives(), transformerVariantGroup()],
+  safelist: Object.values(SUPPORT_LOCALES).map((item) => item.icon)
 });

@@ -13,24 +13,16 @@
       class="zoom-bar hstack fixed bottom-4 lg:(bottom-auto top-15) ml-2 shadow-c rounded-full overflow-hidden text-white bg-blue-500 lg:opacity-0 hover:opacity-100"
     >
       <button @click="scale *= 1.1">
-        <client-only>
-          <span class="iconify" data-icon="lucide:zoom-in" />
-        </client-only>
+        <span i-lucide:zoom-in />
       </button>
       <button @click="scale /= 1.1">
-        <client-only>
-          <span class="iconify" data-icon="lucide:zoom-out" />
-        </client-only>
+        <span i-lucide:zoom-out />
       </button>
       <button @click="fitWidth">
-        <client-only>
-          <span class="iconify" data-icon="fluent:arrow-autofit-width-20-filled" />
-        </client-only>
+        <span i-fluent:arrow-autofit-width-20-filled />
       </button>
       <button @click="fitHeight">
-        <client-only>
-          <span class="iconify" data-icon="fluent:arrow-autofit-height-20-filled" />
-        </client-only>
+        <span i-fluent:arrow-autofit-height-20-filled />
       </button>
     </div>
   </div>
@@ -60,6 +52,6 @@ watch(width, () => debounce(fitWidth, 100)());
 
 <style scoped>
 .zoom-bar button {
-  @apply flex-center h-10 w-10 text-lg hover:bg-blue-600;
+  @apply flex-center size-10 text-lg hover:bg-blue-600;
 }
 </style>

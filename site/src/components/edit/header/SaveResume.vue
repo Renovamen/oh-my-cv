@@ -1,8 +1,6 @@
 <template>
   <button class="round-btn" @click="save">
-    <client-only>
-      <span class="iconify md:text-lg" data-icon="ic:baseline-save" />
-    </client-only>
+    <span i-ic:baseline-save md:text-lg />
   </button>
 </template>
 

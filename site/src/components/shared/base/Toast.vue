@@ -2,38 +2,19 @@
   <div
     v-bind="api.rootProps"
     class="hstack space-x-5 min-w-80 text-white rounded-md shadow-c px-4 py-3"
-    :class="[bgColor]"
+    :class="bgColor"
   >
     <div flex-1 hstack space-x-2>
       <div size-6 flex-center>
-        <client-only>
-          <span
-            v-if="api.type === 'success'"
-            class="iconify"
-            data-icon="ep:success-filled"
-          />
-          <span
-            v-else-if="api.type === 'info'"
-            class="iconify text-lg"
-            data-icon="material-symbols:info-rounded"
-          />
-          <span
-            v-else-if="api.type === 'error'"
-            class="iconify"
-            data-icon="bx:bxs-error"
-          />
-        </client-only>
+        <span v-if="api.type === 'success'" i-ep:success-filled />
+        <span v-else-if="api.type === 'info'" i-material-symbols:info-rounded text-lg />
+        <span v-else-if="api.type === 'error'" i-bx:bxs-error />
       </div>
       <p v-bind="api.descriptionProps">{{ api.description }}</p>
     </div>
 
     <button size-6 flex-center @click="api.dismiss()">
-      <client-only>
-        <span
-          class="iconify duration-200 opacity-50 hover:opacity-100"
-          data-icon="ep:close-bold"
-        />
-      </client-only>
+      <span class="i-ep:close-bold duration-200 opacity-50 hover:opacity-100" />
     </button>
   </div>
 </template>

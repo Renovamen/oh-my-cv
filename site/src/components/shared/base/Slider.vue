@@ -10,13 +10,13 @@
 
       <div
         v-bind="api.getThumbProps({ index: 0 })"
-        class="h-4 w-4 rounded-full -mt-2.5"
+        class="size-4 rounded-full -mt-2.5"
         bg="white dark:slate-300"
         shadow="c slate-500"
       >
         <span
           class="p-1 min-w-6 rounded bg-brand absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full"
-          :class="[api.isDragging ? 'opacity-100' : 'opacity-0']"
+          :class="api.isDragging ? 'opacity-100' : 'opacity-0'"
           text="white xs center"
         >
           {{ api.value.at(0) }}
@@ -77,6 +77,6 @@ const unit = computed(() => props.unit || "");
 }
 
 [data-part="thumb"] span::after {
-  @apply absolute content-[""] h-0 w-0 border-5 border-transparent border-t-red-400 dark:border-t-rose-400 top-full left-0 right-0 mx-auto;
+  @apply absolute content-[""] size-0 border-5 border-transparent border-t-red-400 dark:border-t-rose-400 top-full left-0 right-0 mx-auto;
 }
 </style>

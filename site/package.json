@@ -5,10 +5,11 @@
   "scripts": {
     "build": "nuxt generate",
     "dev": "nuxt dev",
-    "serve": "npx serve .output/public",
+    "serve": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.171",
     "@intlify/unplugin-vue-i18n": "^2.0.0",
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.3.2",

@@ -9,47 +9,47 @@
 const sections = [
   {
     name: "file",
-    icon: "carbon:import-export",
+    icon: "i-carbon:import-export",
     component: <File id="toolbar-file" />
   },
   {
     name: "paper",
-    icon: "majesticons:paper-fold-line",
+    icon: "i-majesticons:paper-fold-line",
     component: <Paper id="toolbar-paper" />
   },
   {
     name: "theme-color",
-    icon: "material-symbols:palette-outline",
+    icon: "i-material-symbols:palette-outline",
     component: <ThemeColor id="toolbar-theme-color" />
   },
   {
     name: "font-family",
-    icon: "material-symbols:font-download-outline",
+    icon: "i-material-symbols:font-download-outline",
     component: <FontFamily id="toolbar-font-family" />
   },
   {
     name: "font-size",
-    icon: "ri:font-size-2",
+    icon: "i-ri:font-size-2",
     component: <FontSize id="toolbar-font-size" />
   },
   {
     name: "margins",
-    icon: "radix-icons:margin",
+    icon: "i-radix-icons:margin",
     component: <Margins id="toolbar-margins" />
   },
   {
     name: "paragraph-space",
-    icon: "icon-park-outline:paragraph-break-two",
+    icon: "i-icon-park-outline:paragraph-break-two",
     component: <ParagraphSpace id="toolbar-paragraph-space" />
   },
   {
     name: "line-height",
-    icon: "ic:round-format-line-spacing",
+    icon: "i-ic:round-format-line-spacing",
     component: <LineHeight id="toolbar-line-height" />
   },
   {
     name: "correct-case",
-    icon: "icon-park-outline:check-correct",
+    icon: "i-icon-park-outline:check-correct",
     component: <CorrectCase id="toolbar-correct-case" />
   }
 ];
@@ -78,9 +78,7 @@ const navbar = () => (
   >
     {sections.map((item) => (
       <button class="round-btn" onClick={() => scrollTo(item.name)}>
-        <client-only>
-          <span class="iconify" text="sm md:base" data-icon={item.icon} />
-        </client-only>
+        <span text="sm md:base" class={item.icon} />
       </button>
     ))}
   </div>

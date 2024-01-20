@@ -3,7 +3,7 @@
     id="toggle language"
     :label="SUPPORT_LOCALES[locale as LocaleType].name"
     :items="items"
-    icon="ic:round-translate"
+    icon="i-ic:round-translate"
   />
 </template>
 

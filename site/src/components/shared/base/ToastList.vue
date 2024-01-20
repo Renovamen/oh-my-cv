@@ -1,6 +1,7 @@
 <template>
   <div
     v-for="(toasts, placement, index) in $toast.toastsByPlacement"
+    :key="index"
     class="toast-container"
   >
     <div :key="placement" v-bind="$toast.getGroupProps({ placement })">

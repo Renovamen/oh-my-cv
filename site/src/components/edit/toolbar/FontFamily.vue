@@ -1,9 +1,9 @@
 <template>
   <ToolItem
     :text="$t('toolbar.font_family')"
-    icon="material-symbols:font-download-outline"
+    icon="i-material-symbols:font-download-outline"
   >
-    <div class="hstack space-x-2 w-full mb-2">
+    <div class="w-full hstack space-x-2 mb-2">
       <Combobox
         id="font-cjk"
         flex-1

@@ -3,10 +3,7 @@
     <button
       class="px-2 py-0.5"
       border="l r t rounded-t-sm"
-      :class="[
-        activatedTab === 0 && 'ml-4 bg-dark-c border-c',
-        activatedTab !== 0 && 'ml-2 border-transparent'
-      ]"
+      :class="activatedTab === 0 ? 'ml-4 bg-dark-c border-c' : 'ml-2 border-transparent'"
       @click="activatedTab = 0"
     >
       {{ $t("import.from_local") }}
@@ -14,10 +11,7 @@
     <button
       class="px-2 py-0.5"
       border="l r t rounded-t-sm"
-      :class="[
-        activatedTab === 1 && 'bg-dark-c border-c',
-        activatedTab !== 1 && 'border-transparent'
-      ]"
+      :class="activatedTab === 1 ? 'bg-dark-c border-c' : 'border-transparent'"
       @click="activatedTab = 1"
     >
       {{ $t("import.from_url") }}
@@ -35,9 +29,9 @@
       <span>No file choosen</span>
     </div>
 
-    <div v-if="activatedTab === 1" class="hstack w-full">
+    <div v-if="activatedTab === 1" class="hstack w-full space-x-1.5">
       <input
-        class="flex-1 h-7 mr-1.5 px-1 text-sm rounded-sm outline-none bg-c"
+        class="flex-1 h-7 px-1 text-sm rounded-sm outline-none bg-c"
         :value="pastedURL"
         @change="pastedURL = ($event.target as HTMLTextAreaElement).value"
         @keyup.enter="uploadFileFromURL"
@@ -46,9 +40,7 @@
         class="flex-center w-8 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-sm"
         @click="uploadFileFromURL"
       >
-        <client-only>
-          <span class="iconify" data-icon="line-md:confirm" />
-        </client-only>
+        <span i-line-md:confirm />
       </button>
     </div>
   </div>

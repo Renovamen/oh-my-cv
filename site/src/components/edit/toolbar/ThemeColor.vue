@@ -1,22 +1,18 @@
 <template>
-  <ToolItem :text="$t('toolbar.theme_color')" icon="material-symbols:palette-outline">
+  <ToolItem :text="$t('toolbar.theme_color')" icon="i-material-symbols:palette-outline">
     <!-- Color presets -->
     <div class="flex justify-between mb-4">
       <button
         v-for="(color, i) in THEME_COLORS"
         :key="`${i}-${color}`"
-        class="w-6 h-6 rounded text-white"
+        class="size-6 flex-center rounded text-white"
         :style="{ backgroundColor: color }"
         @click="api.setValue(color)"
       >
-        <div
+        <span
           v-show="getHexString(api.value) === color.toUpperCase()"
-          class="w-full h-full flex-center"
-        >
-          <client-only>
-            <span class="iconify" data-icon="line-md:confirm" />
-          </client-only>
-        </div>
+          i-line-md:confirm
+        />
       </button>
     </div>
 
@@ -25,11 +21,11 @@
       <div
         v-bind="api.controlProps"
         class="w-full hstack h-9 space-x-2 px-2 py-1 rounded border"
-        :class="[api.isOpen || isFocus ? 'border-darker-c' : 'border-c']"
+        :class="api.isOpen || isFocus ? 'border-darker-c' : 'border-c'"
       >
         <button v-bind="api.triggerProps">
           <div
-            class="w-4 h-4 rounded-sm"
+            class="size-4 rounded-sm"
             v-bind="api.getSwatchProps({ value: api.value })"
           />
         </button>
@@ -50,20 +46,18 @@
             <div v-bind="api.getAreaBackgroundProps()" class="w-full h-30" />
             <div
               v-bind="api.getAreaThumbProps()"
-              class="h-4 w-4 rounded-full border-2 border-black"
+              class="size-4 rounded-full border-2 border-black"
             >
-              <span class="absolute h-3 w-3 rounded-full border-2 border-white" />
+              <span class="absolute size-3 rounded-full border-2 border-white" />
             </div>
           </div>
 
           <div hstack my-3 px-3 space-x-3>
             <button
               v-bind="api.eyeDropperTriggerProps"
-              class="flex-center h-7 w-7 rounded hover:bg-dark-c"
+              class="flex-center size-7 rounded hover:bg-dark-c"
             >
-              <client-only>
-                <span class="iconify text-lg" data-icon="bx:bxs-eyedropper" />
-              </client-only>
+              <span i-bx:bxs-eyedropper text-lg />
             </button>
             <div v-bind="api.getChannelSliderProps({ channel: 'hue' })" flex-1>
               <div
@@ -72,9 +66,9 @@
               />
               <div
                 v-bind="api.getChannelSliderThumbProps({ channel: 'hue' })"
-                class="h-4.5 w-4.5 -mt-2 -ml-2 rounded-full border-2 border-black"
+                class="size-4.5 -mt-2 -ml-2 rounded-full border-2 border-black"
               >
-                <span class="absolute h-3.5 w-3.5 rounded-full border-2 border-white" />
+                <span class="absolute size-3.5 rounded-full border-2 border-white" />
               </div>
             </div>
           </div>
