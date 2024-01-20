@@ -9,11 +9,11 @@
       <div v-bind="api.positionerProps">
         <div
           v-bind="api.contentProps"
-          class="font-ui z-30 fixed m-auto left-0 right-0 top-0 bottom-0 bg-c flex flex-col overflow-hidden text-c shadow-c"
+          class="font-ui h-fit z-30 fixed inset-0 m-auto bg-c flex flex-col overflow-hidden text-c shadow-c"
           :class="boxClass"
           border="1 gray-400 dark:gray-500 rounded-md"
         >
-          <div hstack justify-between pl-4 pr-3 pt-2.5 pb-1>
+          <div hstack justify-between pl-4 pr-3 py-2.5>
             <div hstack text-sm>
               <span :class="icon" />
               <span mx-2 text-light-c>/</span>

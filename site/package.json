@@ -29,6 +29,7 @@
     "@zag-js/combobox": "^0.32.1",
     "@zag-js/dialog": "^0.32.1",
     "@zag-js/editable": "^0.32.1",
+    "@zag-js/file-upload": "^0.32.1",
     "@zag-js/menu": "^0.32.1",
     "@zag-js/slider": "^0.32.1",
     "@zag-js/tabs": "^0.32.1",

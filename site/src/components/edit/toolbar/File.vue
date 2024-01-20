@@ -4,7 +4,7 @@
       id="import-md"
       :title="$t('import.title')"
       icon="i-mdi:upload"
-      box-class="h-40 w-full md:w-96"
+      box-class="w-full md:w-96"
     >
       <template #button>
         <li class="dropdown-li space-x-1.5 rounded" role="button">

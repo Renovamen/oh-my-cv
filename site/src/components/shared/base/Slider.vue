@@ -77,6 +77,6 @@ const unit = computed(() => props.unit || "");
 }
 
 [data-part="thumb"] span::after {
-  @apply absolute content-[""] size-0 border-5 border-transparent border-t-red-400 dark:border-t-rose-400 top-full left-0 right-0 mx-auto;
+  @apply absolute content-[""] size-0 border-5 border-transparent border-t-red-400 dark:border-t-rose-400 top-full inset-x-0 mx-auto;
 }
 </style>

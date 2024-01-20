@@ -194,6 +194,9 @@ importers:
       '@zag-js/editable':
         specifier: ^0.32.1
         version: 0.32.1
+      '@zag-js/file-upload':
+        specifier: ^0.32.1
+        version: 0.32.1
       '@zag-js/menu':
         specifier: ^0.32.1
         version: 0.32.1
@@ -4239,6 +4242,22 @@ packages:
 
   /@zag-js/element-size@0.32.1:
     resolution: {integrity: sha512-ACklufmJQpah2UqwZUlYFaKi6uWfZBeTghtbfYHcDfzRbg2Hni612v8L1JeS4vAgjeDpcdHQpXXR4AZSpGZgNw==}
+    dev: true
+
+  /@zag-js/file-upload@0.32.1:
+    resolution: {integrity: sha512-cD0NRIDof9Vv2DemmnYe9ZPZxOZ6b8XZl8eq4G0e8+WLYtnRXyEURl8Dw0QJpfdDPQaHnnD4CNxPTQcLgP+9Sg==}
+    dependencies:
+      '@zag-js/anatomy': 0.32.1
+      '@zag-js/core': 0.32.1
+      '@zag-js/dom-query': 0.32.1
+      '@zag-js/file-utils': 0.32.1
+      '@zag-js/types': 0.32.1
+      '@zag-js/utils': 0.32.1
+      '@zag-js/visually-hidden': 0.32.1
+    dev: true
+
+  /@zag-js/file-utils@0.32.1:
+    resolution: {integrity: sha512-0PxTrljW51Lf9OCuYNlZuaLgF0v1NoVRzXa/osZ9HGceQjfo77R5G9u+/TP3u53W2PTxajEZ4eNzTibgpzNXFg==}
     dev: true
 
   /@zag-js/form-utils@0.32.1:

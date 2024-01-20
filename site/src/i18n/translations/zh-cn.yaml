@@ -30,7 +30,7 @@ resumes:
 
 import:
   title: 上传一个 Markdown 文件
-  from_local: 上传文件
+  from_local: 将文件拖拽至这里，或点击这里以选择文件
   from_url: 粘贴文件 URL
 
 toolbar:

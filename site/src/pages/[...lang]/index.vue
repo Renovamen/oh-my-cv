@@ -4,7 +4,7 @@
 
     <div class="workspace">
       <div
-        class="px-5 md:px-20 pt-40 h-fit max-w-240 lt-sm:pb-10 sm:(absolute left-0 right-0 top-0 bottom-0 m-auto)"
+        class="px-5 md:px-20 pt-40 h-fit max-w-240 lt-sm:pb-10 sm:(absolute inset-0 m-auto)"
       >
         <div text-center>
           <h1 text="c 3xl sm:4xl" v-html="$t('landing.hero')" />

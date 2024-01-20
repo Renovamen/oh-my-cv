@@ -30,7 +30,7 @@ resumes:
 
 import:
   title: Import a Markdown file
-  from_local: Upload a file
+  from_local: Drag your file here, or click here to choose a file
   from_url: Paste file URL
 
 toolbar:

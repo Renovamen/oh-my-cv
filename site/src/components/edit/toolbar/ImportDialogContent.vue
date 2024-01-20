@@ -1,38 +1,31 @@
 <template>
-  <div class="hstack pt-3 text-sm">
-    <button
-      class="px-2 py-0.5"
-      border="l r t rounded-t-sm"
-      :class="activatedTab === 0 ? 'ml-4 bg-dark-c border-c' : 'ml-2 border-transparent'"
-      @click="activatedTab = 0"
-    >
-      {{ $t("import.from_local") }}
-    </button>
-    <button
-      class="px-2 py-0.5"
-      border="l r t rounded-t-sm"
-      :class="activatedTab === 1 ? 'bg-dark-c border-c' : 'border-transparent'"
-      @click="activatedTab = 1"
-    >
-      {{ $t("import.from_url") }}
-    </button>
-  </div>
-
-  <div flex-1 hstack px-4 bg-dark-c>
-    <div v-if="activatedTab === 0" class="hstack text-xs space-x-1.5">
-      <button
-        class="px-1.5 py-0.5 rounded-[3px] border border-dark-c hover:(bg-gray-200 dark:bg-gray-700)"
-        @click="uploadFileFromLocal"
+  <div flex-1 px-4 py-6 space-y-6 bg-dark-c text-sm>
+    <div v-bind="api.rootProps" class="w-full space-y-2">
+      <div
+        v-bind="api.dropzoneProps"
+        class="py-12 hover:bg-darker-c cursor-pointer"
+        border="~ c dashed rounded"
       >
-        Choose File
-      </button>
-      <span>No file choosen</span>
+        <input v-bind="api.hiddenInputProps" />
+        <div text-center>{{ $t("import.from_local") }}</div>
+      </div>
+
+      <div v-if="localFile" class="bg-darker-c rounded py-1 px-2">
+        {{ localFile }}
+      </div>
     </div>
 
-    <div v-if="activatedTab === 1" class="hstack w-full space-x-1.5">
+    <div hstack>
+      <div flex-1 border="t c" />
+      <div px-5>OR</div>
+      <div flex-1 border="t c" />
+    </div>
+
+    <div class="hstack w-full space-x-1.5">
       <input
-        class="flex-1 h-7 px-1 text-sm rounded-sm outline-none bg-c"
+        class="flex-1 h-7 px-2 rounded-sm outline-none bg-c"
         :value="pastedURL"
+        :placeholder="$t('import.from_url')"
         @change="pastedURL = ($event.target as HTMLTextAreaElement).value"
         @keyup.enter="uploadFileFromURL"
       />
@@ -47,21 +40,41 @@
 </template>
 
 <script lang="ts" setup>
-import { fetchFile, uploadFile } from "@renovamen/utils";
+import * as fileUpload from "@zag-js/file-upload";
+import { normalizeProps, useMachine } from "@zag-js/vue";
+import { fetchFile } from "@renovamen/utils";
 
-const activatedTab = ref(0);
+// File component component
+const localFile = ref<string | null>(null);
+
+const [state, send] = useMachine(
+  fileUpload.machine({
+    id: "import-dialog",
+    accept: ".md",
+    onFileAccept: ({ files }) => {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const content = reader.result as string;
+        setResumeMd(content);
+      };
+      reader.readAsText(files[0]);
+
+      localFile.value = files[0].name;
+      pastedURL.value = "";
+    }
+  })
+);
+const api = computed(() => fileUpload.connect(state.value, send, normalizeProps));
+
+// Fetched file from pasted URL
 const pastedURL = ref("");
 
 const uploadFileFromURL = () => {
   if (pastedURL.value.trim() === "") return;
   fetchFile(pastedURL.value).then((content: string) => {
     setResumeMd(content);
+    localFile.value = null;
   });
-};
-
-const uploadFileFromLocal = () => {
-  uploadFile((content: string) => {
-    setResumeMd(content);
-  }, ".md");
 };
 </script>
