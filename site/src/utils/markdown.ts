@@ -70,7 +70,7 @@ const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
 
       header += item.newLine ? "<br>\n" : "";
 
-      header += `<span class="resume-header-item${
+      header += `<span class="header-text-item${
         i === n - 1 || frontmatter.header[i + 1].newLine ? " no-separator" : ""
       }">`;
 
