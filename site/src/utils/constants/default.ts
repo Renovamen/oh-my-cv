@@ -21,6 +21,7 @@ export const DEFAULT_STYLES = {
 
 export const DEFAULT_MD_CONTENT = `---
 name: Haha Ha
+image: https://thispersondoesnotexist.com
 header:
   - text: <span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
   - text: <span class="iconify" data-icon="tabler:mail"></span> renovamenzxh@gmail.com
@@ -213,16 +214,29 @@ ${PREVIEW_SELECTOR} img {
 /* Header */
 
 ${PREVIEW_SELECTOR} .resume-header {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+  margin-bottom: 1em;
 }
 
-${PREVIEW_SELECTOR} .resume-header h1 {
+${PREVIEW_SELECTOR} .resume-header .header-image {
+  width: 9em;
+  height: 9em;
+}
+
+${PREVIEW_SELECTOR} .resume-header .header-text {
+  text-align: center;
+  flex-grow: 1;
+}
+
+${PREVIEW_SELECTOR} .resume-header .header-text h1 {
   text-align: center;
   line-height: 1;
   margin-bottom: 8px;
 }
 
-${PREVIEW_SELECTOR} .resume-header-item:not(.no-separator)::after {
+${PREVIEW_SELECTOR} .resume-header .header-text-item:not(.no-separator)::after {
   content: " | ";
 }
 
