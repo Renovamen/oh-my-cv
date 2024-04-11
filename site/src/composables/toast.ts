@@ -1,9 +1,11 @@
+import * as toast from "@zag-js/toast";
 import { i18n } from "~/plugins/i18n";
 
 const { t } = i18n.global;
 
 export const useToast = () => {
-  const { $toast } = useNuxtApp();
+  const nuxtApp = useNuxtApp();
+  const $toast = computed(() => (nuxtApp.$toast as ComputedRef<toast.GroupApi>).value);
 
   const save = () => {
     $toast.value.create({

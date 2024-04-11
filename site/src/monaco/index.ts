@@ -42,6 +42,7 @@ export const setupMonaco = async () => {
 };
 
 export const setupMonacoModel = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   monaco: any,
   editor: Monaco.editor.IStandaloneCodeEditor,
   language: "markdown" | "css",
@@ -74,6 +75,8 @@ export const setupMonacoEditor = async (container: HTMLDivElement) => {
   const editor = monaco.editor.create(container, {
     wordWrap: "on",
     fontSize: 13,
+    fontFamily: `Menlo, Monaco, "Courier New", monospace`,
+    lineHeight: 1.5,
     automaticLayout: true
   }) as Monaco.editor.IStandaloneCodeEditor;
 

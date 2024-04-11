@@ -1,7 +1,7 @@
 <template>
   <div class="pane-container" v-bind="api.rootProps">
     <div
-      v-bind="api.tablistProps"
+      v-bind="api.listProps"
       class="hstack h-9 text-sm md:(h-10 text-base) w-full text-c bg-c border-b border-c px-4 space-x-2"
     >
       <button

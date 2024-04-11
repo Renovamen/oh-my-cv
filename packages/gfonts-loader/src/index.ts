@@ -19,7 +19,7 @@ export class GoogleFontsLoader {
       limit = -1,
       sort = "alphabet"
     }: Options = {},
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
+
     onChange: (font: Font) => void = (): void => {}
   ) {
     this.apiKey = apiKey;

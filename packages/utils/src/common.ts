@@ -24,4 +24,5 @@ export const slugify = (str: string) =>
       .replace(/\-+$/, "") // Remove trailing -
   );
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const copy = (obj: any) => JSON.parse(JSON.stringify(obj));
