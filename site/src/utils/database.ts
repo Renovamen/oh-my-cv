@@ -1,11 +1,12 @@
 import * as localForage from "localforage";
-import { downloadFile, uploadFile, copy } from "@renovamen/utils";
+import { downloadFile, uploadFile, copy, isClient } from "@renovamen/utils";
 import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT, DEFAULT_CSS_CONTENT } from ".";
 import type { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
 
 const OHMYCV_KEY = "ohmycv_data";
 
-export const getStorage = async () => localForage.getItem<ResumeStorage>(OHMYCV_KEY);
+export const getStorage = async () =>
+  isClient ? localForage.getItem<ResumeStorage>(OHMYCV_KEY) : null;
 
 export const getResumeList = async () => {
   const storage = (await getStorage()) || {};
