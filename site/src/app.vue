@@ -39,7 +39,4 @@ useHead({
     }
   ]
 });
-
-// Handle languages
-watchLocale();
 </script>

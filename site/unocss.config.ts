@@ -7,7 +7,7 @@ import {
   transformerDirectives,
   transformerVariantGroup
 } from "unocss";
-import { SUPPORT_LOCALES } from "./src/i18n";
+import { i18n } from "./configs/i18n";
 
 export default defineConfig({
   shortcuts: [
@@ -63,5 +63,6 @@ export default defineConfig({
     })
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  safelist: Object.values(SUPPORT_LOCALES).map((item) => item.icon)
+  // @ts-expect-error icon is a customized key
+  safelist: i18n.locales.map((item) => item.icon)
 });

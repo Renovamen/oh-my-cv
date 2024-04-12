@@ -1,20 +1,27 @@
 <template>
   <NavDropdown
     id="toggle language"
-    :label="SUPPORT_LOCALES[locale as LocaleType].name"
+    :label="localeName"
     :items="items"
     icon="i-ic:round-translate"
   />
 </template>
 
 <script lang="ts" setup>
-import { SUPPORT_LOCALES, type LocaleType } from "~/i18n";
+const switchLocalePath = useSwitchLocalePath();
+const { locale, locales } = useI18n();
 
-const { availableLocales, locale } = useI18n();
+const availableLocales = computed(() =>
+  locales.value.filter((i) => i.code !== locale.value)
+);
 
-const items = availableLocales.map((item: string) => ({
-  link: switchLocale(item),
-  label: SUPPORT_LOCALES[item as LocaleType].name,
-  icon: SUPPORT_LOCALES[item as LocaleType].icon
+const localeName = computed(
+  () => locales.value.find((i) => i.code === locale.value)?.name || ""
+);
+
+const items = availableLocales.value.map((item) => ({
+  link: switchLocalePath(item.code),
+  label: item.name!,
+  icon: item.icon
 }));
 </script>

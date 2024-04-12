@@ -1,7 +1,5 @@
-import { resolve, dirname } from "node:path";
-import { fileURLToPath } from "url";
-import VueI18n from "@intlify/unplugin-vue-i18n/vite";
 import { pwa } from "./configs/pwa";
+import { i18n } from "./configs/i18n";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -11,6 +9,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@unocss/nuxt",
     "@pinia/nuxt",
+    "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
     "@vite-pwa/nuxt",
     "nuxt-simple-sitemap"
@@ -22,15 +21,6 @@ export default defineNuxtConfig({
     "~/assets/css/index.css"
   ],
 
-  imports: {
-    presets: [
-      {
-        from: "vue-i18n",
-        imports: ["useI18n"]
-      }
-    ]
-  },
-
   components: [
     {
       path: "~/components",
@@ -38,23 +28,7 @@ export default defineNuxtConfig({
     }
   ],
 
-  build: {
-    transpile: ["vue-i18n"]
-  },
-
-  vite: {
-    plugins: [
-      VueI18n({
-        include: [
-          resolve(
-            dirname(fileURLToPath(import.meta.url)),
-            "./src/i18n/translations/*.yaml"
-          )
-        ],
-        strictMessage: false
-      })
-    ]
-  },
+  i18n,
 
   runtimeConfig: {
     public: {

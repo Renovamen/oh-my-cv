@@ -9,7 +9,7 @@
         <div text-center>
           <h1 text="c 3xl sm:4xl" v-html="$t('landing.hero')" />
           <div my-10 text-light-c sm:text-lg><BrandName /> {{ $t("landing.desc") }}</div>
-          <nuxt-link :to="switchPath('resumes', $i18n.locale)">
+          <nuxt-link :to="$nuxt.$localePath('/resumes')">
             <span
               class="text-white bg-brand px-4 py-3 rounded-lg mx-auto outline outline-4 outline-transparent duration-200 hover:outline-rose-300/50"
             >

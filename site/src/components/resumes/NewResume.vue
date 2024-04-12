@@ -11,12 +11,12 @@
 </template>
 
 <script lang="ts" setup>
-const { locale } = useI18n();
 const router = useRouter();
+const localePath = useLocalePath();
 
 const newAndSwitch = async () => {
   const id = await newResume();
-  router.push(switchPath(`edit/${id}`, locale.value));
+  router.push(localePath(`/edit/${id}`));
 };
 </script>
 
