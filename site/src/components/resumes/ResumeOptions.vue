@@ -1,5 +1,5 @@
 <template>
-  <div class="resume-options absolute right-3 top-3 space-y-2">
+  <div class="absolute right-3 top-3 space-y-2">
     <button @click="duplicate">
       <span i-ion:duplicate />
     </button>
@@ -32,7 +32,7 @@ const remove = async () => {
 </script>
 
 <style scoped>
-.resume-options button {
+button {
   @apply circle size-8 text-white bg-gray-500/80 hover:bg-gray-500;
 }
 </style>

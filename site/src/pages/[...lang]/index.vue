@@ -4,23 +4,24 @@
 
     <div class="workspace">
       <div
-        class="px-5 md:px-20 pt-40 h-fit max-w-240 lt-sm:pb-10 sm:(absolute inset-0 m-auto)"
+        class="h-fit max-w-240 sm:(absolute inset-0 m-auto)"
+        p="x-5 t-40 md:x-20 lt-sm:b-10"
       >
         <div text-center>
           <h1 text="c 3xl sm:4xl" v-html="$t('landing.hero')" />
           <div my-10 text-light-c sm:text-lg><BrandName /> {{ $t("landing.desc") }}</div>
           <nuxt-link :to="$nuxt.$localePath('/resumes')">
             <span
-              class="text-white bg-brand px-4 py-3 rounded-lg mx-auto outline outline-4 outline-transparent duration-200 hover:outline-rose-300/50"
+              class="text-white bg-brand rounded-lg mx-auto duration-200"
+              p="x-4 y-3"
+              outline="~ 4 transparent hover:rose-300/50"
             >
               {{ $t("landing.start") }}
             </span>
           </nuxt-link>
         </div>
 
-        <div
-          class="text-light-c mt-15 mx-auto lt-sm:space-y-10 sm:(w-150 grid grid-cols-2)"
-        >
+        <div m="t-15 x-auto" grid="~ cols-1 sm:cols-2 gap-y-10" text-light-c max-w-150>
           <div v-for="i in [0, 1]" :key="i">
             <div w-fit sm:mx-auto>
               <div hstack mb-3 space-x-1.5>

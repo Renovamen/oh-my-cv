@@ -37,18 +37,19 @@
         />
       </div>
 
-      <div
-        v-bind="api.positionerProps"
-        class="w-full bg-c border border-c rounded overflow-hidden shadow-md ml-2"
-      >
-        <div v-bind="api.contentProps">
+      <div v-bind="api.positionerProps" w-full ml-2>
+        <div
+          v-bind="api.contentProps"
+          class="bg-c overflow-hidden shadow-md"
+          border="~ c rounded"
+        >
           <div v-bind="api.getAreaProps()">
             <div v-bind="api.getAreaBackgroundProps()" class="w-full h-30" />
             <div
               v-bind="api.getAreaThumbProps()"
               class="size-4 rounded-full border-2 border-black"
             >
-              <span class="absolute size-3 rounded-full border-2 border-white" />
+              <span absolute size-3 border="2 white rounded-full" />
             </div>
           </div>
 
@@ -66,9 +67,10 @@
               />
               <div
                 v-bind="api.getChannelSliderThumbProps({ channel: 'hue' })"
-                class="size-4.5 -mt-2 -ml-2 rounded-full border-2 border-black"
+                class="size-4.5 -mt-2 -ml-2"
+                border="2 black rounded-full"
               >
-                <span class="absolute size-3.5 rounded-full border-2 border-white" />
+                <span absolute size-3.5 border="2 white rounded-full" />
               </div>
             </div>
           </div>

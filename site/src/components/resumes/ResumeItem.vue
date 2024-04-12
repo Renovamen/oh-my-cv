@@ -2,7 +2,7 @@
   <div>
     <div w-56 h-80>
       <div
-        class="resume-card border border-c"
+        class="resume-card group border border-c"
         :style="{
           width: `${width}px`,
           height: `${height}px`
@@ -20,7 +20,11 @@
             class="origin-top-left"
           />
         </nuxt-link>
-        <ResumeOptions :resume="resume" @update="emit('update')" />
+        <ResumeOptions
+          class="group-hover:block hidden"
+          :resume="resume"
+          @update="emit('update')"
+        />
       </div>
     </div>
 
@@ -59,13 +63,3 @@ const updateResumeItem = async () => {
 onMounted(updateResumeItem);
 onUpdated(updateResumeItem);
 </script>
-
-<style scoped>
-.resume-options {
-  @apply hidden;
-}
-
-.resume-card:hover .resume-options {
-  @apply block;
-}
-</style>

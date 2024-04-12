@@ -3,10 +3,7 @@
     :text="$t('toolbar.correct_case.text')"
     icon="i-icon-park-outline:check-correct"
   >
-    <div
-      class="bg-c lg:bg-dark-c rounded py-2 px-3"
-      v-html="$t('toolbar.correct_case.desc')"
-    />
+    <div bg="c lg:dark-c" p="y-2 x-3" rounded v-html="$t('toolbar.correct_case.desc')" />
 
     <button
       class="rect-btn mt-3 ml-auto text-white"
