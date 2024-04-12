@@ -10,13 +10,13 @@
 
       <div
         v-bind="api.getThumbProps({ index: 0 })"
-        class="size-4 rounded-full -mt-2.5"
+        class="group size-4 rounded-full -mt-2.5"
         bg="white dark:slate-300"
         shadow="c slate-500"
       >
         <span
-          class="p-1 min-w-6 rounded bg-brand absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full"
-          :class="api.isDragging ? 'opacity-100' : 'opacity-0'"
+          class="group-hover:block p-1 min-w-6 rounded bg-brand absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full"
+          :class="api.isDragging ? 'block' : 'hidden'"
           text="white xs center"
         >
           {{ api.value.at(0) }}
@@ -72,10 +72,6 @@ const unit = computed(() => props.unit || "");
 </script>
 
 <style scoped>
-[data-part="thumb"]:hover span {
-  @apply opacity-100;
-}
-
 [data-part="thumb"] span::after {
   @apply absolute content-[""] size-0 border-5 border-transparent border-t-red-400 dark:border-t-rose-400 top-full inset-x-0 mx-auto;
 }
