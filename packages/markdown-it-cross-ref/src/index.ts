@@ -1,33 +1,35 @@
 // Adapted from https://github.com/markdown-it/markdown-it-footnote
 
-import type Token from "markdown-it/lib/token";
-import type { PluginSimple } from "markdown-it";
-import type { RenderRule } from "markdown-it/lib/renderer";
-import type { RuleBlock } from "markdown-it/lib/parser_block";
-import type { RuleInline } from "markdown-it/lib/parser_inline";
-import type { RuleCore } from "markdown-it/lib/parser_core";
+import type {
+  Token,
+  PluginSimple,
+  Renderer,
+  ParserBlock,
+  ParserInline,
+  Core
+} from "markdown-it";
 
 const getAnchorName = (tokens: Token[], idx: number) =>
   Number(tokens[idx].meta.id + 1).toString();
 
 const getAnchorCaption = (tokens: Token[], idx: number) => tokens[idx].meta.label;
 
-const renderReference: RenderRule = (tokens, idx) => {
+const renderReference: Renderer.RenderRule = (tokens, idx) => {
   const id = getAnchorName(tokens, idx);
   const caption = getAnchorCaption(tokens, idx);
   return `<sup class="crossref-ref"><a href="#crossref${id}" id="crossref-ref${id}">${caption}</a></sup>`;
 };
 
-const renderOpenTag: RenderRule = (tokens, idx) => {
+const renderOpenTag: Renderer.RenderRule = (tokens, idx) => {
   const id = getAnchorName(tokens, idx);
   const caption = getAnchorCaption(tokens, idx);
   return `<ul class="crossref-list"><li id="crossref${id}" class="crossref-item" data-caption="${caption}">`;
 };
 
-const renderCloseTag: RenderRule = () => "</li>\n</ul>\n";
+const renderCloseTag: Renderer.RenderRule = () => "</li>\n</ul>\n";
 
 // Process crossref block definition
-const crossrefDef: RuleBlock = (state, startLine, endLine, silent) => {
+const crossrefDef: ParserBlock.RuleBlock = (state, startLine, endLine, silent) => {
   const start = state.bMarks[startLine] + state.tShift[startLine];
   const max = state.eMarks[startLine];
 
@@ -107,7 +109,7 @@ const crossrefDef: RuleBlock = (state, startLine, endLine, silent) => {
 };
 
 // Process crossref references ([~...])
-const crossrefRef: RuleInline = (state, silent) => {
+const crossrefRef: ParserInline.RuleInline = (state, silent) => {
   const max = state.posMax;
   const start = state.pos;
 
@@ -161,7 +163,7 @@ const crossrefRef: RuleInline = (state, silent) => {
 };
 
 // Replace crossref tokens
-const crossrefCore: RuleCore = (state) => {
+const crossrefCore: Core.RuleCore = (state) => {
   const list = state.env.crossrefs?.list as string[] | undefined;
 
   for (let i = 0; i < state.tokens.length; i++) {

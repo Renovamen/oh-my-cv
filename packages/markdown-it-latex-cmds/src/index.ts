@@ -1,15 +1,14 @@
-import type { PluginSimple } from "markdown-it";
-import type { RenderRule } from "markdown-it/lib/renderer";
-import type { RuleBlock } from "markdown-it/lib/parser_block";
+import type { PluginSimple, Renderer, ParserBlock } from "markdown-it";
 
 // same as UNESCAPE_MD_RE plus a space
 const UNESCAPE_RE = /\\([ \\!"#$%&'()*+,.\/:;<=>?@[\]^_`{|}~-])/g;
 
-const renderNewPage: RenderRule = () => `<div class="md-it-newpage"></div>`;
-const renderLineBreak: RenderRule = (tokens, idx) =>
+const renderNewPage: Renderer.RenderRule = () => `<div class="md-it-newpage"></div>`;
+
+const renderLineBreak: Renderer.RenderRule = (tokens, idx) =>
   `<div class="md-it-line-break" style="margin-top:${tokens[idx].meta.h};"></div>`;
 
-const newPage: RuleBlock = (state, start, end, silent) => {
+const newPage: ParserBlock.RuleBlock = (state, start, end, silent) => {
   const pos = state.bMarks[start] + state.tShift[start];
   const max = state.eMarks[start];
 
@@ -28,7 +27,7 @@ const newPage: RuleBlock = (state, start, end, silent) => {
   return true;
 };
 
-const lineBreak: RuleBlock = (state, start, end, silent) => {
+const lineBreak: ParserBlock.RuleBlock = (state, start, end, silent) => {
   const pos = state.bMarks[start] + state.tShift[start];
   const max = state.eMarks[start];
 

@@ -1,10 +1,12 @@
 // Adapted from https://github.com/waylonflinn/markdown-it-katex
 
 import Katex, { type KatexOptions } from "katex";
-import type { PluginWithOptions } from "markdown-it";
-import type StateInline from "markdown-it/lib/rules_inline/state_inline";
-import type { RuleBlock } from "markdown-it/lib/parser_block";
-import type { RuleInline } from "markdown-it/lib/parser_inline";
+import type {
+  PluginWithOptions,
+  StateInline,
+  ParserBlock,
+  ParserInline
+} from "markdown-it";
 import { htmlEscape } from "./utils";
 
 const isValidDelim = (
@@ -38,7 +40,7 @@ const isValidDelim = (
   };
 };
 
-const mathInline: RuleInline = (state, silent) => {
+const mathInline: ParserInline.RuleInline = (state, silent) => {
   let match, token, res, pos;
 
   if (state.src[state.pos] !== "$") return false;
@@ -109,7 +111,7 @@ const mathInline: RuleInline = (state, silent) => {
   return true;
 };
 
-const mathBlock: RuleBlock = (state, start, end, silent) => {
+const mathBlock: ParserBlock.RuleBlock = (state, start, end, silent) => {
   let firstLine;
   let lastLine;
   let next;
