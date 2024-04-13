@@ -21,7 +21,6 @@
     "@renovamen/vue-shortcuts": "workspace:*",
     "@renovamen/vue-zoom": "workspace:*",
     "@types/markdown-it-link-attributes": "^3.0.5",
-    "@types/splitpanes": "^2.2.6",
     "@unocss/nuxt": "^0.59.0",
     "@vite-pwa/nuxt": "^0.6.0",
     "@vueuse/nuxt": "^10.9.0",
@@ -32,6 +31,7 @@
     "@zag-js/file-upload": "^0.45.0",
     "@zag-js/menu": "^0.45.0",
     "@zag-js/slider": "^0.45.0",
+    "@zag-js/splitter": "^0.45.0",
     "@zag-js/tabs": "^0.45.0",
     "@zag-js/toast": "^0.45.0",
     "@zag-js/vue": "^0.45.0",
@@ -47,7 +47,6 @@
     "nuxt": "^3.11.2",
     "nuxt-simple-sitemap": "^4.4.1",
     "pinia": "^2.1.7",
-    "splitpanes": "^3.1.5",
     "ts-debounce": "^4.0.0",
     "vue-smart-pages": "workspace:*"
   }

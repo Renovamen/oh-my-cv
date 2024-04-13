@@ -1,7 +1,7 @@
 <template>
-  <div flex text-c h-full>
-    <tools />
-    <navbar />
+  <div flex text-c w-72 h-full>
+    <Tools />
+    <Navbar />
   </div>
 </template>
 
@@ -65,13 +65,13 @@ const scrollTo = (name: string) => {
   });
 };
 
-const tools = () => (
+const Tools = () => (
   <div class="pane-container" id="toolbar">
     {sections.map((item) => item.component)}
   </div>
 );
 
-const navbar = () => (
+const Navbar = () => (
   <div
     class="flex-center flex-col flex-none space-y-1 w-9 md:w-10"
     border="l c dashed lg:none"

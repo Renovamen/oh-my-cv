@@ -1,9 +1,10 @@
 <template>
-  <div class="edit-page">
+  <div class="edit-page flex flex-col">
     <Header>
       <template #middle>
         <RenameResume />
       </template>
+
       <template #tail>
         <SaveResume />
         <ToggleToolbar
@@ -13,46 +14,55 @@
       </template>
     </Header>
 
-    <splitpanes class="workspace default-theme">
-      <pane class="editor-pane pl-2 pr-1">
-        <Editor />
-      </pane>
+    <div class="workspace size-full overflow-hidden" flex="~ 1" pb-2>
+      <div v-bind="api.rootProps" px-3>
+        <div class="editor-pane" v-bind="api.getPanelProps({ id: 'editor' })">
+          <Editor />
+        </div>
 
-      <pane class="preview-pane px-1 pt-0" min-size="20">
-        <Preview />
-      </pane>
+        <div v-bind="api.getResizeTriggerProps({ id: 'editor:preview' })" />
 
-      <pane
-        v-if="!isMobile && isToolbarOpen"
-        class="toolbar-pane pl-1"
-        :size="size"
-        :min-size="minSize"
-        :max-size="maxSize"
-      >
+        <div class="preview-pane" v-bind="api.getPanelProps({ id: 'preview' })">
+          <Preview />
+        </div>
+      </div>
+
+      <div v-if="isToolbarOpen" class="tools-pane">
         <Toolbar />
-      </pane>
-    </splitpanes>
-
-    <Toolbar v-if="isMobile && isToolbarOpen" class="toolbar-mobile" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Splitpanes, Pane } from "splitpanes";
-import "splitpanes/dist/splitpanes.css";
+import * as splitter from "@zag-js/splitter";
+import { normalizeProps, useMachine } from "@zag-js/vue";
+
+// Horizontal splitpane
+const [state, send] = useMachine(
+  splitter.machine({
+    id: "h",
+    size: [{ id: "editor" }, { id: "preview" }]
+  })
+);
+
+const api = computed(() => splitter.connect(state.value, send, normalizeProps));
 
 // Fetch resume data
 const route = useRoute();
 (async () => await switchResume(route.params.id as string))();
 
 // Toogle toolbar
-const isMobile = useMobile();
-const isToolbarOpen = ref(!isMobile.value);
-
-// Splitpane sizes
 const { width } = useWindowSize();
-
-const size = ~~((300 / width.value) * 100);
-const minSize = computed(() => ~~((250 / width.value) * 100));
-const maxSize = computed(() => ~~((350 / width.value) * 100));
+const isToolbarOpen = ref(width.value > 1024);
 </script>
+
+<style scoped>
+[data-scope="splitter"][data-part="resize-trigger"] {
+  @apply relative w-3 outline-none;
+}
+
+[data-scope="splitter"][data-part="resize-trigger"]::after {
+  @apply content-[""] absolute bg-gray-400/40 w-1 h-10 rounded-full inset-0 m-auto;
+}
+</style>

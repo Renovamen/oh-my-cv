@@ -63,17 +63,5 @@ export default defineNuxtConfig({
     url: "https://ohmycv.app"
   },
 
-  pwa,
-
-  experimental: {
-    payloadExtraction: false
-  },
-
-  nitro: {
-    prerender: {
-      routes: ["/", "/zh-cn"]
-    }
-  },
-
-  devtools: { enabled: true }
+  pwa
 });
