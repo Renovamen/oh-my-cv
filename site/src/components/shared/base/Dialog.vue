@@ -4,7 +4,7 @@
   </div>
 
   <Teleport to="body">
-    <div v-if="api.isOpen">
+    <div v-if="api.open">
       <div v-bind="api.backdropProps" />
       <div v-bind="api.positionerProps">
         <div

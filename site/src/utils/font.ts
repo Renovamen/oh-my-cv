@@ -1,4 +1,5 @@
-import GoogleFontsLoader, { type Font as GoogleFont, Subset } from "gfonts-loader";
+import GoogleFontsLoader from "gfonts-loader";
+import type { Font as GoogleFont, Subset } from "gfonts-loader";
 import type { ResumeStyles, Font } from "~/types";
 
 let gLoader: GoogleFontsLoader | undefined;
@@ -45,8 +46,9 @@ export const getGoogleFonts = async () => {
     };
 
   const gfonts = loader.getFontMap();
-  const gfonts_en = [] as GoogleFont[],
-    gfonts_cjk = [] as GoogleFont[];
+
+  const gfonts_en = [] as GoogleFont[];
+  const gfonts_cjk = [] as GoogleFont[];
 
   for (const k of gfonts.keys()) {
     const font = gfonts.get(k)!;

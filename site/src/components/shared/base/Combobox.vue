@@ -3,17 +3,18 @@
     <div
       v-bind="api.controlProps"
       class="hstack h-9 space-x-2 px-2 py-1 rounded border"
-      :class="api.isOpen ? 'border-darker-c' : 'border-c'"
+      :class="api.open ? 'border-darker-c' : 'border-c'"
     >
       <input
         v-bind="api.inputProps"
         class="w-full outline-none bg-transparent capitalize"
-        @focus="api.open"
       />
-      <div size-5 flex-center>
-        <span v-show="api.isOpen" i-ic:sharp-arrow-drop-up text-lg />
-        <span v-show="!api.isOpen" i-ic:sharp-arrow-drop-down text-lg />
-      </div>
+      <button v-bind="api.triggerProps" size-5 flex-center>
+        <span
+          :class="api.open ? 'i-ic:sharp-arrow-drop-up' : 'i-ic:sharp-arrow-drop-down'"
+          text-lg
+        />
+      </button>
     </div>
 
     <div v-bind="api.positionerProps">
@@ -46,6 +47,8 @@ const props = defineProps<{
   default: string;
 }>();
 
+const getItemByValue = (value: string) => props.items.find((i) => i.value === value);
+
 const options = ref(props.items);
 
 const collectionRef = computed(() =>
@@ -61,15 +64,21 @@ const [state, send] = useMachine(
     id: props.id,
     collection: collectionRef.value,
     value: [props.default],
+    inputValue: getItemByValue(props.default)?.label || "",
+    openOnClick: true,
     closeOnSelect: false,
-    onInputValueChange: ({ value }) => {
+    onOpenChange: () => {
+      options.value = props.items;
+    },
+    onInputValueChange: ({ inputValue }) => {
       const filtered = props.items.filter((item) =>
-        item.label.toLowerCase().includes(value.toLowerCase())
+        item.label.toLowerCase().includes(inputValue.toLowerCase())
       );
       options.value = filtered.length > 0 ? filtered : props.items;
     },
-    onValueChange: ({ items }: { items: ComboboxItem[] }) => {
-      items[0]?.onSelect();
+    onValueChange: ({ value }) => {
+      const item = getItemByValue(value[0]);
+      item?.onSelect();
     }
   }),
   {
@@ -81,14 +90,19 @@ const [state, send] = useMachine(
 
 const api = computed(() => combobox.connect(state.value, send, normalizeProps));
 
-watch(
-  () => props.default,
-  () => api.value.setValue([props.default])
-);
+const setDefaultValue = () => {
+  api.value.setValue([props.default]);
+  api.value.setInputValue(getItemByValue(props.default)?.label || "");
+};
 
-watch(
+watchOnce(() => props.default, setDefaultValue);
+
+watchOnce(
   () => props.items,
-  () => (options.value = props.items)
+  () => {
+    options.value = props.items;
+    setDefaultValue();
+  }
 );
 </script>
 

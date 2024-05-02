@@ -16,7 +16,7 @@
       >
         <span
           class="group-hover:block p-1 min-w-6 rounded bg-brand absolute -top-2 left-1/2 -translate-x-2/4 -translate-y-full"
-          :class="api.isDragging ? 'block' : 'hidden'"
+          :class="api.dragging ? 'block' : 'hidden'"
           text="white xs center"
         >
           {{ api.value.at(0) }}

@@ -7,7 +7,7 @@
       <Combobox
         id="font-cjk"
         flex-1
-        :items="cjkFonts"
+        :items="localCjkFonts.concat(googleCjkFonts)"
         :default="styles.fontCJK.fontFamily || styles.fontCJK.name"
       />
       <span w-13>{{ $t("toolbar.cjk") }}</span>
@@ -17,7 +17,7 @@
       <Combobox
         id="font-en"
         flex-1
-        :items="enFonts"
+        :items="localEnFonts.concat(googleEnFonts)"
         :default="styles.fontEN.fontFamily || styles.fontEN.name"
       />
       <span w-13>{{ $t("toolbar.en") }}</span>
@@ -30,46 +30,42 @@ import type { ComboboxItem } from "~/types";
 
 const { styles, setStyle } = useStyleStore();
 
-const enFonts = computed(() => {
-  const en = EN_FONTS.map<ComboboxItem>((item) => {
-    const family =
-      EN_FONTS.find((font) => font.name === item.name)?.fontFamily || item.name;
-    return {
-      label: item.name,
-      value: family,
-      onSelect: () => setStyle("fontEN", { name: item.name, fontFamily: family })
-    };
-  });
-  return en.concat(gEnFontList.value);
+const localEnFonts = EN_FONTS.map<ComboboxItem>((item) => {
+  const family =
+    EN_FONTS.find((font) => font.name === item.name)?.fontFamily || item.name;
+
+  return {
+    label: item.name,
+    value: family,
+    onSelect: () => setStyle("fontEN", { name: item.name, fontFamily: family })
+  };
 });
 
-const cjkFonts = computed(() => {
-  const cn = CJK_FONTS.map<ComboboxItem>((item) => {
-    const family =
-      CJK_FONTS.find((font) => font.name === item.name)?.fontFamily || item.name;
-    return {
-      label: item.name,
-      value: family,
-      onSelect: () => setStyle("fontCJK", { name: item.name, fontFamily: family })
-    };
-  });
-  return cn.concat(gCJKFontList.value);
+const localCjkFonts = CJK_FONTS.map<ComboboxItem>((item) => {
+  const family =
+    CJK_FONTS.find((font) => font.name === item.name)?.fontFamily || item.name;
+
+  return {
+    label: item.name,
+    value: family,
+    onSelect: () => setStyle("fontCJK", { name: item.name, fontFamily: family })
+  };
 });
 
 // Setup Google Fonts
-const gEnFontList = ref<ComboboxItem[]>([]);
-const gCJKFontList = ref<ComboboxItem[]>([]);
+const googleEnFonts = ref<ComboboxItem[]>([]);
+const googleCjkFonts = ref<ComboboxItem[]>([]);
 
 onMounted(async () => {
   const { gfonts_en, gfonts_cjk } = await getGoogleFonts();
 
-  gEnFontList.value = gfonts_en.map((font) => ({
+  googleEnFonts.value = gfonts_en.map((font) => ({
     label: font.family,
     value: font.family,
     onSelect: () => setStyle("fontEN", { name: font.family })
   }));
 
-  gCJKFontList.value = gfonts_cjk.map((font) => {
+  const gCjkFonts = gfonts_cjk.map((font) => {
     const family = font.family;
     const name = CJK_NAME_MAP[family] || family;
     return {
@@ -79,9 +75,9 @@ onMounted(async () => {
     };
   });
 
-  const first = gCJKFontList.value.filter((item) => CJK_FIRST.includes(item.label));
-  const after = gCJKFontList.value.filter((item) => !CJK_FIRST.includes(item.label));
+  const first = gCjkFonts.filter((item) => CJK_FIRST.includes(item.label));
+  const after = gCjkFonts.filter((item) => !CJK_FIRST.includes(item.label));
 
-  gCJKFontList.value = first.concat(after);
+  googleCjkFonts.value = first.concat(after);
 });
 </script>

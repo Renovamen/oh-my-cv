@@ -1,7 +1,7 @@
 <template>
   <div
     class="border-1.5 rounded"
-    :class="api.isEditing ? 'border-dark-c' : 'border-transparent'"
+    :class="api.editing ? 'border-dark-c' : 'border-transparent'"
   >
     <div v-bind="api.rootProps">
       <div v-bind="api.areaProps">

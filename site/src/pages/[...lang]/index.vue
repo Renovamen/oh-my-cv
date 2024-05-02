@@ -29,8 +29,7 @@
                   class="circle size-5 text-white text-xs"
                   :class="i ? 'bg-blue-400' : 'bg-brand'"
                 >
-                  <span v-if="i" i-wpf:privacy />
-                  <span v-else i-mdi:rocket-launch />
+                  <span :class="i ? 'i-wpf:privacy' : 'i-mdi:rocket-launch'" />
                 </span>
                 <h2 text-c>{{ $t(`landing.feats[${i}].title`) }}</h2>
               </div>

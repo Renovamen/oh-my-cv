@@ -6,9 +6,13 @@
   >
     <div flex-1 flex items-start space-x-2>
       <div size-6 flex-center>
-        <span v-if="api.type === 'success'" i-ep:success-filled />
-        <span v-else-if="api.type === 'info'" i-material-symbols:info-rounded text-lg />
-        <span v-else-if="api.type === 'error'" i-bx:bxs-error />
+        <span
+          :class="[
+            api.type === 'success' && 'i-ep:success-filled',
+            api.type === 'info' && 'i-material-symbols:info-rounded text-lg',
+            api.type === 'error' && 'i-bx:bxs-error'
+          ]"
+        />
       </div>
       <p v-bind="api.descriptionProps">{{ api.description }}</p>
     </div>
@@ -47,42 +51,26 @@ const bgColor = computed(() => {
 
 [data-part="root"] {
   translate: var(--x) var(--y);
+  scale: var(--scale);
+  z-index: var(--z-index);
+  height: var(--height);
   opacity: var(--opacity);
-  will-change: translate, opacity;
+  will-change: translate, opacity, scale;
 }
 
-/* Borrowed from https://github.com/Maronato/vue-toastification/blob/next/src/scss/animations/_bounce.scss */
-
-[data-part="root"][data-state="open"] {
-  animation-name: bounceInRight;
-  animation-duration: 750ms;
-  animation-fill-mode: both;
+[data-part="root"] {
+  transition:
+    translate 400ms,
+    scale 400ms,
+    opacity 400ms;
+  transition-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1);
 }
 
-@keyframes bounceInRight {
-  from,
-  60%,
-  75%,
-  90%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  from {
-    opacity: 0;
-    transform: translate3d(3000px, 0, 0);
-  }
-  60% {
-    opacity: 1;
-    transform: translate3d(-25px, 0, 0);
-  }
-  75% {
-    transform: translate3d(10px, 0, 0);
-  }
-  90% {
-    transform: translate3d(-5px, 0, 0);
-  }
-  to {
-    transform: none;
-  }
+[data-part="root"][data-state="closed"] {
+  transition:
+    translate 400ms,
+    scale 400ms,
+    opacity 200ms;
+  transition-timing-function: cubic-bezier(0.06, 0.71, 0.55, 1);
 }
 </style>

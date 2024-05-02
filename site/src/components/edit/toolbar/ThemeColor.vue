@@ -21,7 +21,7 @@
       <div
         v-bind="api.controlProps"
         class="w-full hstack h-9 space-x-2 px-2 py-1 rounded border"
-        :class="api.isOpen || isFocus ? 'border-darker-c' : 'border-c'"
+        :class="api.open || isFocus ? 'border-darker-c' : 'border-c'"
       >
         <button v-bind="api.triggerProps">
           <div
