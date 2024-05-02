@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
-    "vue": "^3.4.21"
+    "vue": "^3.4.26"
   },
   "publishConfig": {
     "access": "public"

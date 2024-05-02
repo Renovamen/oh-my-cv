@@ -24,7 +24,7 @@ const toast = useToast();
 
 const correct = async () => {
   const md = data.mdContent;
-  const result = await correctCase(md);
+  const result = correctCase(md);
 
   setResumeMd(result.text);
 

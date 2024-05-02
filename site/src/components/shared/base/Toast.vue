@@ -4,7 +4,7 @@
     class="hstack space-x-5 min-w-80 text-white rounded-md shadow-c px-4 py-3"
     :class="bgColor"
   >
-    <div flex-1 hstack space-x-2>
+    <div flex-1 flex items-start space-x-2>
       <div size-6 flex-center>
         <span v-if="api.type === 'success'" i-ep:success-filled />
         <span v-else-if="api.type === 'info'" i-material-symbols:info-rounded text-lg />
@@ -43,16 +43,18 @@ const bgColor = computed(() => {
 </script>
 
 <style scoped>
+/* https://zagjs.com/components/vue-sfc/toast#requirement */
+
+[data-part="root"] {
+  translate: var(--x) var(--y);
+  opacity: var(--opacity);
+  will-change: translate, opacity;
+}
+
 /* Borrowed from https://github.com/Maronato/vue-toastification/blob/next/src/scss/animations/_bounce.scss */
 
 [data-part="root"][data-state="open"] {
   animation-name: bounceInRight;
-  animation-duration: 750ms;
-  animation-fill-mode: both;
-}
-
-[data-part="root"][data-state="closed"] {
-  animation-name: bounceOutRight;
   animation-duration: 750ms;
   animation-fill-mode: both;
 }
@@ -81,17 +83,6 @@ const bgColor = computed(() => {
   }
   to {
     transform: none;
-  }
-}
-
-@keyframes bounceOutRight {
-  40% {
-    opacity: 1;
-    transform: translate3d(-20px, 0, 0);
-  }
-  to {
-    opacity: 0;
-    transform: translate3d(1000px, 0, 0);
   }
 }
 </style>
