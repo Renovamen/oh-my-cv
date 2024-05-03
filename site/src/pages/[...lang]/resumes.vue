@@ -5,7 +5,7 @@
     <div class="max-w-306 mx-auto px-5 py-16 text-dark-c">
       <div class="space-y-2 md:(hstack justify-between)">
         <h1 font-bold text-3xl>{{ $t("resumes.my_resumes") }}</h1>
-        <FileOptions @update="loadResumes" />
+        <FileOptions @update="refresh" />
       </div>
 
       <div class="flex flex-wrap gap-x-4 gap-y-8 mt-8">
@@ -15,7 +15,7 @@
           :key="resume.id"
           class="resume-item"
           :resume="resume"
-          @update="loadResumes"
+          @update="refresh"
         />
       </div>
     </div>
@@ -25,12 +25,12 @@
 <script lang="ts" setup>
 import type { ResumeListItem } from "~/types";
 
-// Load resumes from storage
-const list = ref<ResumeListItem[]>();
-
-const loadResumes = async () => {
-  list.value = await getResumeList();
-};
-
-onMounted(loadResumes);
+const { data: list, refresh } = useLazyAsyncData<ResumeListItem[]>(
+  "resume-list",
+  getResumeList,
+  {
+    server: false,
+    default: () => []
+  }
+);
 </script>

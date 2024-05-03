@@ -65,19 +65,18 @@ onMounted(async () => {
     onSelect: () => setStyle("fontEN", { name: font.family })
   }));
 
-  const gCjkFonts = gfonts_cjk.map((font) => {
-    const family = font.family;
-    const name = CJK_NAME_MAP[family] || family;
-    return {
-      label: name,
-      value: family,
-      onSelect: () => setStyle("fontCJK", { name: name, fontFamily: family })
-    };
-  });
-
-  const first = gCjkFonts.filter((item) => CJK_FIRST.includes(item.label));
-  const after = gCjkFonts.filter((item) => !CJK_FIRST.includes(item.label));
-
-  googleCjkFonts.value = first.concat(after);
+  googleCjkFonts.value = gfonts_cjk
+    .map((font) => {
+      const family = font.family;
+      const name = CJK_NAME_MAP[family] || family;
+      return {
+        label: name,
+        value: family,
+        onSelect: () => setStyle("fontCJK", { name: name, fontFamily: family })
+      };
+    })
+    .sort((a, b) => {
+      return Number(CJK_FIRST.includes(b.label)) - Number(CJK_FIRST.includes(a.label));
+    });
 });
 </script>
