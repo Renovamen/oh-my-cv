@@ -60,6 +60,7 @@
 
   .pane-container {
     border: none;
+    border-radius: 0;
   }
 
   .vue-zoom {
