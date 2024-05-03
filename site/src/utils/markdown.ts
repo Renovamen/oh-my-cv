@@ -41,9 +41,24 @@ const resolveDeflist = (html: string) => {
   return html;
 };
 
+const isValidImageSrc = (string: string) => {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+};
+
 const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
   let header = "";
+  if (frontmatter.image && isValidImageSrc(frontmatter.image)) {
+    header += `<img class="header-image" src="${frontmatter.image}">\n`;
+  }
 
+  header += `<div class="header-text">\n`;
   if (frontmatter.name) header += `<h1>${frontmatter.name}</h1>\n`;
 
   if (frontmatter.header) {
@@ -55,7 +70,7 @@ const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
 
       header += item.newLine ? "<br>\n" : "";
 
-      header += `<span class="resume-header-item${
+      header += `<span class="header-text-item${
         i === n - 1 || frontmatter.header[i + 1].newLine ? " no-separator" : ""
       }">`;
 
@@ -65,6 +80,7 @@ const resolveHeader = (html: string, frontmatter: ResumeFrontMatter) => {
 
       header += `</span>\n`;
     }
+    header += `</div>\n`; // close header-wrapper
   }
 
   return `<div class="resume-header">${header}</div>` + html;
