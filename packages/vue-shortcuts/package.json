@@ -1,5 +1,5 @@
 {
-  "name": "@renovamen/vue-shortcuts",
+  "name": "@ohmycv/vue-shortcuts",
   "version": "0.1.1",
   "description": "Use keyboard shortcuts in Vue.",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/vue-shortcuts",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@renovamen/utils": "workspace:*",
-    "@vueuse/core": "^10.9.0",
-    "vue": "^3.4.26"
+    "@vueuse/core": "^10.11.0",
+    "vue": "^3.4.29"
   },
   "publishConfig": {
     "access": "public"

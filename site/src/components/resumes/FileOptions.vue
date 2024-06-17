@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useShortcuts } from "@renovamen/vue-shortcuts";
+import { useShortcuts } from "@ohmycv/vue-shortcuts";
 
 defineEmits<{
   (e: "update"): void;

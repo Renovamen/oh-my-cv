@@ -1,5 +1,5 @@
 {
-  "name": "correct-case",
+  "name": "@ohmycv/correct-case",
   "version": "0.1.1",
   "description": "Make the case correct (dictionaries are from `case-police`).",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/correct-case",

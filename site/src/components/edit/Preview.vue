@@ -30,7 +30,7 @@
 
 <script lang="ts" setup>
 import { debounce } from "ts-debounce";
-import Zoom from "@renovamen/vue-zoom";
+import Zoom from "@ohmycv/vue-zoom";
 
 const scale = ref(1);
 const zoom = ref<InstanceType<typeof Zoom>>();

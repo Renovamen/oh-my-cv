@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import SmartPages from "vue-smart-pages";
+import SmartPages from "@ohmycv/vue-smart-pages";
 import type { ResumeStyles } from "~/types";
 
 defineProps<{

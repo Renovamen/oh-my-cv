@@ -1,4 +1,4 @@
-import type { Subset } from "gfonts-loader";
+import type { Subset } from "@ohmycv/google-fonts-loader";
 import type { Font } from "~/types";
 
 export const CHROME_PRINT_BOTTOM = 10;

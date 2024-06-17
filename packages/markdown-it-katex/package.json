@@ -1,5 +1,5 @@
 {
-  "name": "@renovamen/markdown-it-katex",
+  "name": "@ohmycv/markdown-it-katex",
   "version": "0.1.1",
   "description": "Fast math support for markdown-it with KaTeX",
   "keywords": [

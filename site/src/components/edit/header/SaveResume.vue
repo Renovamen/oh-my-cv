@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useShortcuts } from "@renovamen/vue-shortcuts";
+import { useShortcuts } from "@ohmycv/vue-shortcuts";
 import type { ResumeStorageItem } from "~/types";
 
 const { data } = useDataStore();

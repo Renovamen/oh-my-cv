@@ -1,5 +1,5 @@
 {
-  "name": "markdown-it-cross-ref",
+  "name": "@ohmycv/markdown-it-cross-ref",
   "version": "0.1.1",
   "description": "MarkdownIt plugin for cross-reference.",
   "keywords": [

@@ -1,5 +1,5 @@
-import GoogleFontsLoader from "gfonts-loader";
-import type { Font as GoogleFont, Subset } from "gfonts-loader";
+import GoogleFontsLoader from "@ohmycv/google-fonts-loader";
+import type { Font as GoogleFont, Subset } from "@ohmycv/google-fonts-loader";
 import type { ResumeStyles, Font } from "~/types";
 
 let gLoader: GoogleFontsLoader | undefined;

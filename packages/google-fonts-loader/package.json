@@ -1,5 +1,5 @@
 {
-  "name": "gfonts-loader",
+  "name": "@ohmycv/google-fonts-loader",
   "version": "0.1.1",
   "description": "Extract YAML front matter from a string",
   "keywords": [
