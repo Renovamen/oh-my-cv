@@ -12,7 +12,9 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
     "@vite-pwa/nuxt",
-    "nuxt-simple-sitemap"
+    "nuxt-simple-sitemap",
+    "radix-vue/nuxt",
+    "shadcn-nuxt"
   ],
 
   css: [
@@ -21,14 +23,12 @@ export default defineNuxtConfig({
     "~/assets/css/index.css"
   ],
 
-  components: [
-    {
-      path: "~/components",
-      pathPrefix: false
-    }
-  ],
-
   i18n,
+
+  shadcn: {
+    prefix: "Ui",
+    componentDir: "./src/components/ui"
+  },
 
   runtimeConfig: {
     public: {

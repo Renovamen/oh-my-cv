@@ -7,7 +7,7 @@ head:
   keywords: Markdown 简历, 简历制作, 在线简历
 
 landing:
-  hero: 用 Markdown 写<span text-brand>简历</span>！
+  hero: 用 Markdown 写<span text-primary>简历</span>！
   desc: 能让您轻松的制作和管理简历，它开源免费，且绝不会（也无法）收集您的数据
   start: 开始制作简历
   feats:
@@ -16,27 +16,28 @@ landing:
     - title: 隐私优先
       items: 开源免费<br>数据保存在本地<br>无需登录或注册<br>没有用户追踪<br>没有广告
 
-resumes:
+dashboard:
   my_resumes: 我的简历
   created: 创建于：
   updated: 更新于：
   new: 新建
-  save: 保存
   saveas: 另存为...
   import: 从...导入
   duplicate: 创建副本
   rename: 重命名
   delete: 删除
 
-import:
-  title: 上传一个 Markdown 文件
-  from_local: 将文件拖拽至这里，或点击这里以选择文件
-  from_url: 粘贴文件 URL
-
 toolbar:
   file:
-    text: 导入 / 导出
-    import: 导入 Markdown
+    text: 文件
+    save: 保存
+    rename: 重命名
+    import:
+      trigger: 导入 Markdown
+      dialog:
+        header: 上传一个 Markdown 文件
+        from_local: 将文件拖拽至这里，或点击这里以选择文件
+        from_url: 粘贴文件 URL
     export_pdf: 导出为 PDF
     export_md: 导出为 Markdown
   correct_case:

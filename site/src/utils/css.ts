@@ -1,5 +1,7 @@
 import { injectCSS } from "@ohmycv/dynamic-css";
-import type { ResumeStyles } from "~/types";
+import type { ResumeStyles } from "~/composables/stores/style";
+
+const { RENDER } = useConstant();
 
 const themeColorCss = (styles: ResumeStyles, id: string) => {
   return (
@@ -51,7 +53,8 @@ export const setDynamicCss = (styles: ResumeStyles, id: string) => {
 };
 
 export const setBackboneCss = (css: string, id: string) => {
-  if (id !== "preview") css = css.replaceAll(PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
+  if (id !== "preview")
+    css = css.replaceAll(RENDER.PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
 
   injectCSS(css, `oh-my-cv-backbone-${id}`);
 };

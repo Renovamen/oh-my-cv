@@ -1,0 +1,61 @@
+#editor-page {
+  height: calc(100dvh);
+}
+
+#vue-smart-pages-preview .vue-smart-page-break {
+  @apply border-t-4 border-secondary;
+}
+
+.pane-container {
+  @apply h-full rounded-xl overflow-scroll;
+}
+
+/* Print mode */
+
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  #editor-page {
+    height: auto;
+  }
+
+  .workspace,
+  [data-panel-group-id="splitter-editor"] {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  header,
+  .toaster.group,
+  #zoom-bar,
+  #code-pane,
+  #code-preview-handle,
+  #tools-pane,
+  #nuxt-devtools-container {
+    display: none !important;
+  }
+
+  .pane-container {
+    border: none;
+    border-radius: 0;
+  }
+
+  #vue-zoom {
+    transform: scale(1) !important;
+    margin: 0 !important;
+  }
+
+  #vue-smart-pages-preview {
+    padding-bottom: 0 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .vue-smart-page-break {
+    page-break-before: always;
+    margin-top: 0 !important;
+    border: none;
+  }
+}

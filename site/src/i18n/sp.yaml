@@ -7,7 +7,7 @@ head:
   keywords: generador curriculum, generador cv, generador curriculum vitae, curriculum markdown, markdown cv
 
 landing:
-  hero: Escribe tu <span text-brand>curriculum vitae</span> en Markdown!
+  hero: Escribe tu <span text-primary>curriculum vitae</span> en Markdown!
   desc: es una herramienta gratuita y de código abierto creada para crear y administrar sus currículums de la manera más fácil posible, sin perder la privacidad de sus datos.
   start: Crear My Resumen
   feats:
@@ -16,27 +16,28 @@ landing:
     - title: Primero tu privacidad
       items: Open source, libre y gratuito<br>Información guardada en tu equipo<br>No necesita que te registres<br>No realizamos ningún trackeo ni mostramos publicidad<br>No ads
 
-resumes:
+dashboard:
   my_resumes: Mis CVs
   created: "Creado: "
   updated: "Actualizado: "
   new: Nuevo
-  save: Guardar
   saveas: Guardar como...
   import: Importar desde...
   rename: Renombrar
   duplicate: Duplicar
   delete: Eliminar
 
-import:
-  title: Importar un archivo Markdown
-  from_local: Subir archivo
-  from_url: Pegar desde URL
-
 toolbar:
   file:
-    text: Importar / Exportar
-    import: Importar Markdown
+    text: Archivo
+    save: Guardar
+    rename: Renombrar
+    import:
+      trigger: Importar Markdown
+      dialog:
+        header: Importar un archivo Markdown
+        from_local: Subir archivo
+        from_url: Pegar desde URL
     export_pdf: Exportar PDF
     export_md: Exportar Markdown
   correct_case:

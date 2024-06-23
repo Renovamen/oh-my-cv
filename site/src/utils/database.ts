@@ -1,7 +1,7 @@
 import * as localForage from "localforage";
 import { downloadFile, uploadFile, copy, isClient } from "@renovamen/utils";
-import { DEFAULT_STYLES, DEFAULT_NAME, DEFAULT_MD_CONTENT, DEFAULT_CSS_CONTENT } from ".";
-import type { ResumeStorage, ResumeStorageItem, ResumeStyles } from "~/types";
+import type { ResumeStorage, ResumeStorageItem } from "~/types";
+import type { ResumeStyles } from "~/composables/stores/style";
 
 const OHMYCV_KEY = "ohmycv_data";
 
@@ -75,12 +75,14 @@ export const saveResume = async (id: string, resume: ResumeStorageItem) => {
  * New a resume using default styles and content
  */
 export const newResume = async () => {
+  const { DEFAULT } = useConstant();
+
   const id = new Date().getTime().toString(); // generate a new id
   const resume = {
-    name: DEFAULT_NAME,
-    markdown: DEFAULT_MD_CONTENT,
-    css: DEFAULT_CSS_CONTENT,
-    styles: DEFAULT_STYLES,
+    name: DEFAULT.RESUME_NAME,
+    markdown: DEFAULT.MD_CONTENT,
+    css: DEFAULT.CSS_CONTENT,
+    styles: DEFAULT.STYLES,
     update: id
   } as ResumeStorageItem;
 
@@ -174,12 +176,17 @@ export const deleteResume = async (id: string) => {
 };
 
 export const switchResume = async (id: string) => {
+  const { setData } = useDataStore();
+
+  setData("loaded", false);
+
   const toast = useToast();
   const storage = await getStorage();
 
   if (storage && storage[id]) {
     setResume(id, storage[id]);
     toast.switch(storage[id].name);
+    setData("loaded", true);
     return true;
   }
 

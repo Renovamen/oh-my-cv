@@ -27,7 +27,7 @@ export default defineComponent({
       h(
         "div",
         {
-          class: "vue-zoom-container",
+          id: "vue-zoom-container",
           ref: container,
           style: {
             height: "100%"
@@ -37,7 +37,7 @@ export default defineComponent({
           h(
             "div",
             {
-              class: "vue-zoom",
+              id: "vue-zoom",
               ref: zoom,
               style: {
                 width: "fit-content",
