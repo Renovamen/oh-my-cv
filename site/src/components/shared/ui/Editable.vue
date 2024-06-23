@@ -1,11 +1,5 @@
 <template>
-  <EditableRoot
-    v-slot="{ isEditing }"
-    :default-value="defaultValue"
-    submit-mode="enter"
-    @submit="(text) => emit('submit', text)"
-    auto-resize
-  >
+  <EditableRoot v-slot="{ isEditing }" v-bind="forwarded">
     <EditableArea class="w-full">
       <EditablePreview />
       <EditableInput />
@@ -33,13 +27,16 @@
 </template>
 
 <script lang="ts" setup>
-import { EditableSubmitTrigger, EditableCancelTrigger } from "#components";
+import {
+  EditableSubmitTrigger,
+  EditableCancelTrigger,
+  type EditableRootProps,
+  type EditableRootEmits,
+  useForwardPropsEmits
+} from "radix-vue";
 
-defineProps<{
-  defaultValue?: string;
-}>();
+const props = defineProps<EditableRootProps>();
+const emits = defineEmits<EditableRootEmits>();
 
-const emit = defineEmits<{
-  (e: "submit", payload?: string): void;
-}>();
+const forwarded = useForwardPropsEmits(props, emits);
 </script>

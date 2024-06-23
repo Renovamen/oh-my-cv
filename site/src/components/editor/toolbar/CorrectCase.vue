@@ -21,14 +21,14 @@
 <script lang="ts" setup>
 import { correctCase } from "@ohmycv/correct-case";
 
-const { data } = useDataStore();
+const { data, setData } = useDataStore();
 const toast = useToast();
 
 const correct = async () => {
   const md = data.mdContent;
   const result = correctCase(md);
 
-  setResumeMd(result.text);
+  setData("mdContent", result.text);
 
   const corrected = result.correctedWords ? result.correctedWords.length : true;
   toast.correct(corrected);

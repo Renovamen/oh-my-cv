@@ -1,6 +1,6 @@
 <template>
   <SmartPages
-    :id="id"
+    :id="id.toString()"
     ref="smart"
     :content="renderMarkdown(markdown)"
     :height="constant.PAPER.sizeToPx(styles.paper, 'h')"
@@ -20,7 +20,7 @@ import SmartPages from "@ohmycv/vue-smart-pages";
 import type { ResumeStyles } from "~/composables/stores/style";
 
 defineProps<{
-  id: string;
+  id: string | number;
   markdown: string;
   css?: string;
   styles: ResumeStyles;

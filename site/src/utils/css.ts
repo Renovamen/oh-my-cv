@@ -38,7 +38,7 @@ const paperCss = (styles: ResumeStyles) => {
   return `@media print { @page { size: ${styles.paper}; } }`;
 };
 
-export const setDynamicCss = (styles: ResumeStyles, id: string) => {
+export const setDynamicCss = (styles: ResumeStyles, id: string | number) => {
   const pageId = `vue-smart-pages-${id}`;
 
   const content =
@@ -52,7 +52,7 @@ export const setDynamicCss = (styles: ResumeStyles, id: string) => {
   injectCSS(content, `oh-my-cv-dynamic-${id}`);
 };
 
-export const setBackboneCss = (css: string, id: string) => {
+export const setBackboneCss = (css: string, id: string | number) => {
   if (id !== "preview")
     css = css.replaceAll(RENDER.PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
 

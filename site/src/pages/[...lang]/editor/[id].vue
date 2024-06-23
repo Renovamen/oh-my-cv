@@ -50,11 +50,17 @@
 </template>
 
 <script lang="ts" setup>
+import { IsValid } from "~/utils";
+
 const route = useRoute();
 const { data } = useDataStore();
 
 // Fetch resume data
-onMounted(() => switchResume(route.params.id as string));
+onMounted(() => {
+  if (IsValid.int(route.params.id)) {
+    storageService.switchToResume(Number(route.params.id));
+  }
+});
 
 // Toogle toolbar
 const { width } = useWindowSize();

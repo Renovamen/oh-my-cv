@@ -18,10 +18,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { ResumeListItem } from "~/types";
+import type { DbResume } from "~/utils/storage";
 
 const props = defineProps<{
-  resume: ResumeListItem;
+  resume: DbResume;
 }>();
 
 const emit = defineEmits<{
@@ -29,12 +29,12 @@ const emit = defineEmits<{
 }>();
 
 const duplicate = async () => {
-  await duplicateResume(props.resume.id);
+  await storageService.duplicateResume(props.resume.id);
   emit("update");
 };
 
 const remove = async () => {
-  await deleteResume(props.resume.id);
+  await storageService.deleteResume(props.resume.id);
   emit("update");
 };
 </script>

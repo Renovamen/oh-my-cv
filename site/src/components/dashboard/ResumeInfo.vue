@@ -3,23 +3,25 @@
     <SharedUiEditable
       class="w-53 mx-auto"
       :default-value="resume.name"
+      submit-mode="enter"
+      auto-resize
       @submit="(text) => rename(text)"
     />
 
-    <div v-if="updated" text="xs muted-foreground" mt-1.5>
-      {{ $t("dashboard.updated") }}{{ updated }}
+    <div text="xs muted-foreground" mt-1.5>
+      {{ $t("dashboard.updated") }}{{ updated_at }}
     </div>
     <div text="xs muted-foreground" mt-0.5>
-      {{ $t("dashboard.created") }}{{ created }}
+      {{ $t("dashboard.created") }}{{ created_at }}
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { ResumeListItem } from "~/types";
+import type { DbResume } from "~/utils/storage";
 
 const props = defineProps<{
-  resume: ResumeListItem;
+  resume: DbResume;
 }>();
 
 const emit = defineEmits<{
@@ -29,7 +31,14 @@ const emit = defineEmits<{
 const rename = async (text?: string) => {
   if (!text) return;
 
-  await renameResume(props.resume.id, text);
+  await storageService.updateResume(
+    {
+      id: props.resume.id,
+      name: text
+    },
+    false
+  );
+
   emit("update");
 };
 
@@ -41,6 +50,6 @@ const formatDate = (date?: string) =>
     .replace("T", " ")
     .replaceAll("-", "/");
 
-const created = computed(() => formatDate(props.resume.id));
-const updated = computed(() => formatDate(props.resume.update));
+const created_at = computed(() => formatDate(props.resume.created_at));
+const updated_at = computed(() => formatDate(props.resume.updated_at));
 </script>

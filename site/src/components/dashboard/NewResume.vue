@@ -15,7 +15,9 @@ const router = useRouter();
 const localePath = useLocalePath();
 
 const newAndSwitch = async () => {
-  const id = await newResume();
-  router.push(localePath(`/editor/${id}`));
+  const data = await storageService.createResume();
+
+  if (!data) return;
+  else router.push(localePath(`/editor/${data.id}`));
 };
 </script>

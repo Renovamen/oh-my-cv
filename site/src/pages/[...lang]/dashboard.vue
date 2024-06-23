@@ -24,11 +24,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { ResumeListItem } from "~/types";
+import type { DbResume } from "~/utils/storage";
 
-const { data: list, refresh } = useLazyAsyncData<ResumeListItem[]>(
+const { data: list, refresh } = useLazyAsyncData<DbResume[]>(
   "resume-list",
-  getResumeList,
+  () => storageService.getResumes(),
   {
     server: false,
     default: () => []

@@ -56,6 +56,8 @@ import * as fileUpload from "@zag-js/file-upload";
 import { normalizeProps, useMachine } from "@zag-js/vue";
 import { fetchFile } from "@renovamen/utils";
 
+const { setData } = useDataStore();
+
 // Zag.js file component
 const localFile = ref<string | null>(null);
 
@@ -68,7 +70,7 @@ const [state, send] = useMachine(
 
       reader.onloadend = () => {
         const content = reader.result as string;
-        setResumeMd(content);
+        setData("mdContent", content);
       };
       reader.readAsText(files[0]);
 
@@ -85,7 +87,7 @@ const pastedURL = ref("");
 const uploadFileFromURL = () => {
   if (pastedURL.value.trim() === "") return;
   fetchFile(pastedURL.value).then((content: string) => {
-    setResumeMd(content);
+    setData("mdContent", content);
     localFile.value = null;
   });
 };

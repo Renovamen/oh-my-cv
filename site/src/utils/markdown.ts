@@ -6,7 +6,17 @@ import MarkdownItKatex from "@ohmycv/markdown-it-katex";
 import MarkdownItCite from "@ohmycv/markdown-it-cross-ref";
 import MarkdownItLatexCmds from "@ohmycv/markdown-it-latex-cmds";
 import frontmatter from "@ohmycv/front-matter";
-import type { ResumeFrontMatter } from "~/types";
+
+type ResumeHeaderItem = {
+  readonly text: string;
+  readonly link?: string;
+  readonly newLine?: boolean;
+};
+
+type ResumeFrontMatter = {
+  readonly name?: string;
+  readonly header?: Array<ResumeHeaderItem>;
+};
 
 const markdown = (() => {
   const md = new MarkdownIt({ html: true });

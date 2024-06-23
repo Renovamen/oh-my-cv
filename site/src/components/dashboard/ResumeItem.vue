@@ -33,10 +33,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { ResumeListItem } from "~/types";
+import type { DbResume } from "~/utils/storage";
 
 const props = defineProps<{
-  resume: ResumeListItem;
+  resume: DbResume;
 }>();
 
 const emit = defineEmits<{

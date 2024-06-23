@@ -3,7 +3,7 @@ export type SystemData = {
   cssContent: string;
   mdFlag: boolean;
   cssFlag: boolean;
-  curResumeId: string | null;
+  curResumeId: number | null;
   curResumeName: string;
   loaded: boolean;
 };
@@ -23,7 +23,13 @@ export const useDataStore = defineStore("data", () => {
 
   const setData = <T extends keyof SystemData>(key: T, value: SystemData[T]) => {
     data[key] = value;
-    if (key === "cssContent") setBackboneCss(value as string, "preview");
+
+    if (key === "cssContent") {
+      setBackboneCss(value as string, "preview");
+      toggleCssFlag(true);
+    }
+
+    if (key === "mdContent") toggleMdFlag(true);
   };
 
   const toggleMdFlag = (to: boolean) => {
