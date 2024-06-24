@@ -1,17 +1,17 @@
 <template>
-  <div v-bind="api.rootProps" relative>
+  <div v-bind="api.getRootProps()" relative>
     <div
-      v-bind="api.controlProps"
+      v-bind="api.getControlProps()"
       :class="[
         'hstack h-9 space-x-2 px-2 py-1 rounded-md border-1.5',
         api.open && 'border-primary'
       ]"
     >
       <input
-        v-bind="api.inputProps"
+        v-bind="api.getInputProps()"
         class="w-full outline-none bg-transparent capitalize"
       />
-      <button v-bind="api.triggerProps" size-5 flex-center>
+      <button v-bind="api.getTriggerProps()" size-5 flex-center>
         <span
           :class="[
             'text-lg',
@@ -21,10 +21,10 @@
       </button>
     </div>
 
-    <div v-bind="api.positionerProps">
+    <div v-bind="api.getPositionerProps()">
       <ul
         v-if="options.length > 0"
-        v-bind="api.contentProps"
+        v-bind="api.getContentProps()"
         class="z-20 max-h-60 -mt-1 p-1 bg-background border rounded-md shadow-c overflow-y-scroll"
       >
         <li

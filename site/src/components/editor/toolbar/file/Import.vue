@@ -13,13 +13,13 @@
       </UiDialogHeader>
 
       <div class="pt-2 space-y-6 text-sm">
-        <div v-bind="api.rootProps">
+        <div v-bind="api.getRootProps()">
           <div
-            v-bind="api.dropzoneProps"
+            v-bind="api.getDropzoneProps()"
             class="py-14 cursor-pointer hover:(bg-accent text-accent-foreground)"
             border="~ dashed rounded"
           >
-            <input v-bind="api.hiddenInputProps" />
+            <input v-bind="api.getHiddenInputProps()" />
             <div text-center>{{ $t("toolbar.file.import.dialog.from_local") }}</div>
           </div>
 

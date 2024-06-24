@@ -44,6 +44,7 @@ const rename = async (text?: string) => {
 
 const formatDate = (date?: string) =>
   date &&
+  IsValid.int(date) &&
   new Date(parseInt(date))
     .toISOString()
     .substring(0, 19)
