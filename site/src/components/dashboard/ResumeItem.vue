@@ -51,13 +51,13 @@ const height = PAPER.SIZES[props.resume.styles.paper].h;
 const render = ref();
 
 const updateResumeItem = async () => {
-  // set resume backbone styles
-  setBackboneCss(props.resume.css, props.resume.id);
+  // set styles that are defined via CSS editor
+  dynamicCssService.injectCssEditor(props.resume.css, props.resume.id);
   // load Google fonts
   await googleFontsService.resolve(props.resume.styles.fontEN);
   await googleFontsService.resolve(props.resume.styles.fontCJK);
-  // set resume dynamic styles
-  setDynamicCss(props.resume.styles, props.resume.id);
+  // set styles that are defined via toolbar
+  dynamicCssService.injectToolbar(props.resume.styles, props.resume.id);
   // force update SmartPage
   render.value.forceUpdate();
 };

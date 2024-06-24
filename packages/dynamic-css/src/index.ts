@@ -11,6 +11,14 @@ const supportsConstructedSheet = (() => {
 const sheet = undefined as CSSStyleSheet | HTMLStyleElement | undefined;
 const sheetMap = {} as { [key: string]: CSSStyleSheet | HTMLStyleElement };
 
+/**
+ * Inject CSS into the document.
+ *
+ * @param cssText A string of CSS to inject.
+ * @param id An optional ID to use for the injected CSS. If provided,the CSS will be
+ * injected into a <style> element with the given ID. If not provided, the CSS will
+ * be injected into the document's <style> element.
+ */
 export const injectCSS = (cssText: string, id?: string) => {
   let styleSheet = id ? sheetMap[id] : sheet;
 

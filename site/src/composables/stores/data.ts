@@ -25,7 +25,7 @@ export const useDataStore = defineStore("data", () => {
     data[key] = value;
 
     if (key === "cssContent") {
-      setBackboneCss(value as string, "preview");
+      dynamicCssService.injectCssEditor(value as string);
       toggleCssFlag(true);
     }
 

@@ -2,7 +2,7 @@
   <SmartPages
     :id="id.toString()"
     ref="smart"
-    :content="renderMarkdown(markdown)"
+    :content="markdownService.renderResume(markdown)"
     :height="constant.PAPER.sizeToPx(styles.paper, 'h')"
     :width="constant.PAPER.SIZES[styles.paper].w"
     :top="styles.marginV"

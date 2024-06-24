@@ -6,10 +6,10 @@ import type { ResumeStyles } from "~/composables/stores/style";
 const { FONT } = useConstant();
 
 export class GoogleFontsService {
-  private loader: GoogleFontsLoader | null;
+  private _loader: GoogleFontsLoader | null;
 
   constructor() {
-    this.loader = null;
+    this._loader = null;
   }
 
   public includes = (font: Font) => !FONT.LOCAL.includes(font);
@@ -27,19 +27,19 @@ export class GoogleFontsService {
    * Load Google Fonts, if not already loaded
    * @returns GoogleFontsLoader instance if successful, null otherwise
    */
-  public async load() {
+  public async loader() {
     const config = useRuntimeConfig();
     const key = config.public.googleFontsKey;
 
-    if (!this.loader && key !== "") {
-      this.loader = new GoogleFontsLoader(key, {
+    if (!this._loader && key !== "") {
+      this._loader = new GoogleFontsLoader(key, {
         variants: ["regular", "700"],
         filter: (font: GoogleFont) => !FONT.GF.IGNORE.includes(font.family)
       });
-      await this.loader.init();
+      await this._loader.init();
     }
 
-    return this.loader;
+    return this._loader;
   }
 
   /**
@@ -47,7 +47,7 @@ export class GoogleFontsService {
    */
   public async resolve(font: Font) {
     if (this.includes(font)) {
-      const loader = await this.load();
+      const loader = await this.loader();
 
       if (loader) {
         await loader.setActiveFont(font.fontFamily || font.name);
@@ -60,7 +60,7 @@ export class GoogleFontsService {
    * @returns List of EN and CJK Google Fonts
    */
   public async get() {
-    const loader = await this.load();
+    const loader = await this.loader();
 
     const en: GoogleFont[] = [];
     const cjk: GoogleFont[] = [];
