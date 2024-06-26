@@ -24,5 +24,21 @@ export const slugify = (str: string) =>
       .replace(/\-+$/, "") // Remove trailing -
   );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const copy = (obj: any) => JSON.parse(JSON.stringify(obj));
+export const htmlEscape = (str: string) => {
+  const escapeMap: Record<string, string> = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "'": "&#39;",
+    '"': "&quot;"
+  };
+
+  return str.replace(/[&<>'"]/g, (char) => escapeMap[char]);
+};
+
+export const copy = <T>(obj: T): T => {
+  if (obj === null || typeof obj !== "object") {
+    throw new Error("Input must be a non-null object.");
+  }
+  return JSON.parse(JSON.stringify(obj));
+};

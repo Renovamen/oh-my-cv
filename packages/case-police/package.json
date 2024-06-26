@@ -1,15 +1,15 @@
 {
-  "name": "@ohmycv/correct-case",
+  "name": "@ohmycv/case-police",
   "version": "0.1.1",
-  "description": "Make the case correct (dictionaries are from `case-police`).",
-  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/correct-case",
+  "description": "Use `case-police` in the browser environment.",
+  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/case-police",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-my-cv"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renovamen/oh-my-cv.git",
-    "directory": "packages/correct-case"
+    "directory": "packages/case-police"
   },
   "license": "MIT",
   "author": "Renovamen <renovamenzxh@gmail.com>",

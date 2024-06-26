@@ -19,18 +19,18 @@
 </template>
 
 <script lang="ts" setup>
-import { correctCase } from "@ohmycv/correct-case";
+import { replace } from "@ohmycv/case-police";
 
 const { data, setData } = useDataStore();
 const toast = useToast();
 
 const correct = async () => {
   const md = data.mdContent;
-  const result = correctCase(md);
+  const result = replace(md);
 
-  setData("mdContent", result.text);
+  setData("mdContent", result?.code ?? md);
 
-  const corrected = result.correctedWords ? result.correctedWords.length : true;
+  const corrected = result?.changed.length ?? true;
   toast.correct(corrected);
 };
 </script>

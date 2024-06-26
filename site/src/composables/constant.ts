@@ -336,19 +336,19 @@ ${PREVIEW_SELECTOR} .resume-header-item:not(.no-separator)::after {
 
 /* Citations */
 
-${PREVIEW_SELECTOR} ul.crossref-list {
+${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definitions"] {
   padding-left: 1.2em;
 }
 
-${PREVIEW_SELECTOR} li.crossref-item p {
+${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definition"] p {
   margin-left: 0.5em;
 }
 
-${PREVIEW_SELECTOR} li.crossref-item::marker {
-  content: attr(data-caption);
+${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="definition"]::marker {
+  content: attr(data-label);
 }
 
-${PREVIEW_SELECTOR} sup.crossref-ref {
+${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="reference"] {
   font-size: 100%;
   top: 0;
 }

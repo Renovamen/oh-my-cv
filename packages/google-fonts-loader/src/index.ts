@@ -1,4 +1,4 @@
-import { loadFontList, loadFont } from "./google-fonts";
+import { fetchFontList, loadFontStylesheet } from "./utils";
 import type { Font, FontMap, Options } from "./types";
 
 export class GoogleFontsLoader {
@@ -37,34 +37,33 @@ export class GoogleFontsLoader {
   }
 
   public async init(): Promise<FontMap> {
-    // Get list of all fonts
-    const fonts = await loadFontList(this.apiKey);
+    // Load all fonts
+    const fonts = await fetchFontList(this.apiKey);
+
+    // Function to check if a font satisfies the filter criteria
+    const isFontIncluded = (font: Font) =>
+      // Only keep fonts whose names are included in the provided array
+      (this.options.families!.length === 0 ||
+        this.options.families!.includes(font.family)) &&
+      // Only keep fonts in categories from the provided array
+      (this.options.categories!.length === 0 ||
+        this.options.categories!.includes(font.category)) &&
+      // Only keep fonts which are available in all specified subsets
+      this.options.subsets!.every((subset) => font.subsets.includes(subset)) &&
+      // Only keep fonts which contain all specified variants
+      this.options.variants!.every((variant) => font.variants.includes(variant)) &&
+      // Only keep fonts for which the `filter` function evaluates to `true`
+      this.options.filter!(font) === true;
 
     // Save desired fonts in the font map
-    for (let i = 0; i < fonts.length; i++) {
-      const font = fonts[i];
-
+    for (const font of fonts) {
       // Exit once specified limit of number of fonts is reached
       if (this.options.limit! >= 0 && this.fontMap.size >= this.options.limit!) break;
-
-      if (
-        // Only keep fonts whose names are included in the provided array
-        (this.options.families!.length === 0 ||
-          this.options.families!.includes(font.family)) &&
-        // Only keep fonts in categories from the provided array
-        (this.options.categories!.length === 0 ||
-          this.options.categories!.includes(font.category)) &&
-        // Only keep fonts which are available in all specified subsets
-        this.options.subsets!.every((subset) => font.subsets.includes(subset)) &&
-        // Only keep fonts which contain all specified variants
-        this.options.variants!.every((variant) => font.variants.includes(variant)) &&
-        // Only keep fonts for which the `filter` function evaluates to `true`
-        this.options.filter!(font) === true
-      ) {
-        this.fontMap.set(font.family, font);
-      }
+      // Only keep fonts that satisfy the filter criteria
+      if (isFontIncluded(font)) this.fontMap.set(font.family, font);
     }
 
+    // Sort the font map if required
     if (this.options.sort === "alphabet") {
       this.fontMap = new Map(
         [...this.fontMap.entries()].sort(([family1], [family2]) =>
@@ -104,7 +103,7 @@ export class GoogleFontsLoader {
 
     this.activeFontFamily = fontFamily;
 
-    await loadFont(activeFont, this.options.subsets!, this.options.variants!);
+    await loadFontStylesheet(activeFont, this.options.subsets!, this.options.variants!);
 
     this.onChange(activeFont);
   }

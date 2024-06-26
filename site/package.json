@@ -13,7 +13,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.4.1",
     "@nuxtjs/i18n": "^8.3.1",
-    "@ohmycv/correct-case": "workspace:*",
+    "@ohmycv/case-police": "workspace:*",
     "@ohmycv/dynamic-css": "workspace:*",
     "@ohmycv/front-matter": "workspace:*",
     "@ohmycv/google-fonts-loader": "workspace:*",

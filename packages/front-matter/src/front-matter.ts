@@ -80,7 +80,7 @@ export class FrontMatterParser<T = { [key: string]: any }> {
    * - `{ frontMatterString, body, bodyBegin }` if contains
    * @see {@link FrontMatterResults}
    */
-  private _split(content: string) {
+  public split(content: string) {
     const regex = new RegExp(PATTERN, "m");
     const match = regex.exec(content);
 
@@ -98,7 +98,7 @@ export class FrontMatterParser<T = { [key: string]: any }> {
   }
 
   private _parse(content: string): FrontMatterResults<T> {
-    const split = this._split(content);
+    const split = this.split(content);
 
     if (!split) return this._emptyResults(content);
 

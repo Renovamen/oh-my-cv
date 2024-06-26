@@ -1,55 +1,43 @@
-// Borrowed from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
-
-const supportsConstructedSheet = (() => {
-  try {
-    new CSSStyleSheet();
-    return true;
-  } catch (e) {}
-  return false;
-})();
-
-const sheet = undefined as CSSStyleSheet | HTMLStyleElement | undefined;
-const sheetMap = {} as { [key: string]: CSSStyleSheet | HTMLStyleElement };
+const sheetsMap = new Map<string, HTMLStyleElement>();
 
 /**
- * Inject CSS into the document.
+ * Dynamically injects CSS into the document. Borrowed from Vite:
+ * https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
  *
- * @param cssText A string of CSS to inject.
- * @param id An optional ID to use for the injected CSS. If provided,the CSS will be
- * injected into a <style> element with the given ID. If not provided, the CSS will
- * be injected into the document's <style> element.
+ * This used to be implemented using constructable stylesheets, but that was abandoned
+ * due to low performance, see https://github.com/vitejs/vite/pull/11818.
+ *
+ * @param id To make sure the CSS won't override each other.
+ * @param content A string of CSS to inject.
  */
-export const injectCSS = (cssText: string, id?: string) => {
-  let styleSheet = id ? sheetMap[id] : sheet;
+export const injectCss = (id: string, content: string) => {
+  let style = sheetsMap.get(id);
 
-  if (supportsConstructedSheet) {
-    // Use constructed sheet if supported
-    if (styleSheet && !(styleSheet instanceof CSSStyleSheet)) {
-      styleSheet = undefined;
-    }
+  if (!style) {
+    style = document.createElement("style");
 
-    if (!styleSheet) {
-      styleSheet = new CSSStyleSheet();
-      styleSheet.replaceSync(cssText);
-      document.adoptedStyleSheets = [...document.adoptedStyleSheets, styleSheet];
-    } else {
-      styleSheet.replaceSync(cssText);
-    }
+    style.setAttribute("type", "text/css");
+    style.setAttribute("data-dynamic-css-id", id);
+    style.textContent = content;
+
+    document.head.appendChild(style);
   } else {
-    // Use <style> element on browsers that don't support constructed sheet
-    if (styleSheet && !(styleSheet instanceof HTMLStyleElement)) {
-      styleSheet = undefined;
-    }
-
-    if (!styleSheet) {
-      styleSheet = document.createElement("style");
-      styleSheet.setAttribute("type", "text/css");
-      styleSheet.innerHTML = cssText;
-      document.head.appendChild(styleSheet);
-    } else {
-      styleSheet.innerHTML = cssText;
-    }
+    style.textContent = content;
   }
+
+  sheetsMap.set(id, style);
 };
 
-export default injectCSS;
+/**
+ * Remove the CSS from the document.
+ *
+ * @param id The ID of the CSS to remove.
+ */
+export const removeCss = (id: string) => {
+  const style = sheetsMap.get(id);
+
+  if (style) {
+    document.head.removeChild(style);
+    sheetsMap.delete(id);
+  }
+};

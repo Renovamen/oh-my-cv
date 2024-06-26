@@ -15,9 +15,7 @@ export type ResumeStyles = {
 
 export const useStyleStore = defineStore("style", () => {
   const { DEFAULT } = useConstant();
-
-  const copiedStyles = copy(DEFAULT.STYLES);
-  const styles = reactive<ResumeStyles>(copiedStyles);
+  const styles = reactive<ResumeStyles>(copy(DEFAULT.STYLES));
 
   const setStyle = async <T extends keyof ResumeStyles>(
     key: T,

@@ -1,12 +1,12 @@
-export const getStylesheetId = (fontId: string) => `font-${fontId}`;
+const _stylesheetId = (fontId: string) => `font-${fontId}`;
 
 export const hasStylesheet = (fontId: string) =>
-  document.getElementById(getStylesheetId(fontId)) !== null;
+  document.getElementById(_stylesheetId(fontId)) !== null;
 
 export const createStylesheet = (fontId: string, styles: string) => {
   const stylesheet = document.createElement("style");
 
-  stylesheet.id = getStylesheetId(fontId);
+  stylesheet.id = _stylesheetId(fontId);
   stylesheet.textContent = styles;
 
   document.head.appendChild(stylesheet);

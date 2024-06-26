@@ -190,6 +190,6 @@ export class LocalForageDbService implements DbService {
     delete storage[id];
     await this._setItems(storage);
 
-    return this._success(deleted);
+    return this._success({ id, ...deleted });
   }
 }

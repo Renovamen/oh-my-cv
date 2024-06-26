@@ -1,7 +1,7 @@
 import { defineComponent, h, onMounted, watch } from "vue";
 import type { VNode } from "vue";
 import { debounce } from "ts-debounce";
-import { injectCSS } from "@ohmycv/dynamic-css";
+import { injectCss } from "@ohmycv/dynamic-css";
 import { breakPage } from "../utils";
 
 export default defineComponent({
@@ -71,12 +71,12 @@ export default defineComponent({
     const id = `vue-smart-pages-${props.id}`;
 
     const updateCSS = () =>
-      injectCSS(
+      injectCss(
+        id,
         `#${id} {
           padding: ${props.top}px ${props.right}px ${props.bottom}px ${props.left}px;
           width: ${props.width}mm;
-        }`,
-        id
+        }`
       );
 
     const resolvePages = (delay?: number) => {

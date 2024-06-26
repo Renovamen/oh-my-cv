@@ -1,7 +1,7 @@
 {
   "name": "@ohmycv/dynamic-css",
   "version": "0.1.1",
-  "description": "Dynamically inject global CSS.",
+  "description": "Dynamically injects global CSS.",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/dynamic-css",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-my-cv"

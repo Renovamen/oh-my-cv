@@ -84,11 +84,16 @@ const api = computed(() => fileUpload.connect(state.value, send, normalizeProps)
 // Fetched file from pasted URL
 const pastedURL = ref("");
 
-const uploadFileFromURL = () => {
+const uploadFileFromURL = async () => {
   if (pastedURL.value.trim() === "") return;
-  fetchFile(pastedURL.value).then((content: string) => {
+
+  try {
+    const content = await fetchFile(pastedURL.value);
     setData("mdContent", content);
     localFile.value = null;
-  });
+  } catch (error) {
+    // TODO: use toast to show error message
+    console.error(error);
+  }
 };
 </script>

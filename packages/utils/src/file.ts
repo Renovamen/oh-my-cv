@@ -1,46 +1,44 @@
-export const fetchFile = async (url: string) => {
+export const fetchFile = async (url: string): Promise<string> => {
   try {
     const res = await fetch(url);
-    if (!res.ok) throw Error("Request error: " + res);
-    return res.text();
+
+    if (!res.ok) {
+      throw new Error(`Request error: ${res.status} ${res.statusText}`);
+    }
+
+    return await res.text();
   } catch (error) {
-    return Promise.reject(error);
+    return Promise.reject(error instanceof Error ? error : new Error(String(error)));
   }
 };
 
 export const uploadFile = (callback: (content: string) => void, accept?: string) => {
+  const handleFileRead = (e: ProgressEvent<FileReader>) => {
+    const content = e.target?.result as string;
+    callback(content);
+  };
+
   const upload = (e: Event) => {
     e.stopPropagation();
+    const input = e.target as HTMLInputElement;
+    const file = input.files?.[0];
 
-    if (
-      !(e.target as HTMLInputElement).files ||
-      (e.target as HTMLInputElement).files!.length < 1
-    )
-      return;
+    if (!file) return;
 
-    const file: File = (e.target as HTMLInputElement).files![0];
-    let fileReader: FileReader | null = null;
-
-    const handleFileRead = () => {
-      const content = (fileReader as FileReader).result as string;
-      callback(content);
-    };
-
-    fileReader = new FileReader();
+    const fileReader = new FileReader();
     fileReader.onloadend = handleFileRead;
     fileReader.readAsText(file);
   };
 
   const element = document.createElement("input");
 
-  element.style.display = "none";
   element.type = "file";
+  element.style.display = "none";
   element.onchange = upload;
   if (accept) element.accept = accept;
 
   document.body.appendChild(element);
   element.click();
-
   document.body.removeChild(element);
 };
 
@@ -53,6 +51,5 @@ export const downloadFile = (filename: string, content: string) => {
 
   document.body.appendChild(element);
   element.click();
-
   document.body.removeChild(element);
 };

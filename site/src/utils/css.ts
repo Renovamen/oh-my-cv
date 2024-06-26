@@ -1,4 +1,4 @@
-import { injectCSS } from "@ohmycv/dynamic-css";
+import { injectCss } from "@ohmycv/dynamic-css";
 import type { ResumeStyles } from "~/composables/stores/style";
 
 const { RENDER } = useConstant();
@@ -76,7 +76,7 @@ export class DynamicCssService {
       // We only need to set paper size for the preview view in the editor
       (id === undefined ? this.paperSize(styles) : "");
 
-    injectCSS(css, this._injectedCssId("toolbar", id));
+    injectCss(this._injectedCssId("toolbar", id), css);
   }
 
   /**
@@ -92,7 +92,7 @@ export class DynamicCssService {
       css = css.replaceAll(RENDER.PREVIEW_SELECTOR, `#${this._elementId(id)}`);
     }
 
-    injectCSS(css, this._injectedCssId("css-editor", id));
+    injectCss(this._injectedCssId("css-editor", id), css);
   }
 }
 
