@@ -1,3 +1,4 @@
 #dashboard-page {
-  height: calc(100dvh);
+  height: 100vh;
+  height: 100dvh;
 }

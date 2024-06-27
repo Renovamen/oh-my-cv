@@ -116,12 +116,9 @@ importers:
 
   packages/vue-smart-pages:
     dependencies:
-      '@ohmycv/dynamic-css':
-        specifier: workspace:*
-        version: link:../dynamic-css
-      ts-debounce:
-        specifier: ^4.0.0
-        version: 4.0.0
+      '@vueuse/core':
+        specifier: ^10.11.0
+        version: 10.11.0(vue@3.4.30(typescript@5.5.2))
       vue:
         specifier: ^3.4.30
         version: 3.4.30(typescript@5.5.2)

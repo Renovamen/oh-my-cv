@@ -6,7 +6,7 @@
     @update:model-value="(payload) => activate(payload)"
   >
     <TabsList
-      class="relative hstack w-full text-sm h-9 border-b px-4"
+      class="relative shrink-0 hstack w-full text-sm h-9 border-b px-4"
       md="text-base h-10"
     >
       <TabsIndicator

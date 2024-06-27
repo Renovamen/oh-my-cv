@@ -1,13 +1,13 @@
 <template>
   <div class="pane-container hide-scrollbar bg-secondary" border="4 secondary">
-    <Zoom ref="zoom" :scale="scale">
+    <VueZoom ref="zoom" :scale="scale">
       <SharedResumeRender
         id="preview"
         :markdown="data.mdContent"
         :css="data.cssContent"
         :styles="styles"
       />
-    </Zoom>
+    </VueZoom>
 
     <div
       id="zoom-bar"
@@ -32,10 +32,10 @@
 
 <script lang="ts" setup>
 import { debounce } from "ts-debounce";
-import Zoom from "@ohmycv/vue-zoom";
+import VueZoom from "@ohmycv/vue-zoom";
 
 const scale = ref(1);
-const zoom = ref<InstanceType<typeof Zoom>>();
+const zoom = ref<InstanceType<typeof VueZoom>>();
 
 const { width, height } = useElementSize(zoom);
 const { styles } = useStyleStore();

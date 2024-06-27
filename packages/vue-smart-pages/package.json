@@ -1,7 +1,7 @@
 {
   "name": "@ohmycv/vue-smart-pages",
   "version": "0.1.1",
-  "description": "Automatically breaking page just like Word, for Vue 3.",
+  "description": "Automatically break your content into multiple pages, just like what Word does.",
   "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/vue-smart-pages",
   "bugs": {
     "url": "https://github.com/Renovamen/oh-my-cv"
@@ -29,8 +29,7 @@
     "build:pkg": "pnpm run build-fast:pkg --dts"
   },
   "dependencies": {
-    "@ohmycv/dynamic-css": "workspace:*",
-    "ts-debounce": "^4.0.0",
+    "@vueuse/core": "^10.11.0",
     "vue": "^3.4.30"
   },
   "publishConfig": {

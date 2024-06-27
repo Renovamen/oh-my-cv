@@ -1,25 +1,12 @@
 <template>
-  <SmartPages
-    :id="id.toString()"
-    ref="smart"
-    :content="markdownService.renderResume(markdown)"
-    :height="constant.PAPER.sizeToPx(styles.paper, 'h')"
-    :width="constant.PAPER.SIZES[styles.paper].w"
-    :top="styles.marginV"
-    :bottom="Math.max(styles.marginV - 10, constant.RENDER.PRINT_BOTTOM)"
-    :left="styles.marginH"
-    :right="styles.marginH"
-    :before-break-page="() => googleFontsService.presetObserver(styles)"
-    :watch="[styles.lineHeight, styles.paragraphSpace, styles.fontSize, css]"
-    :watch-delay="[styles.fontCJK, styles.fontEN]"
-  />
+  <div :id="`resume-${id}`" ref="target" />
 </template>
 
 <script lang="ts" setup>
-import SmartPages from "@ohmycv/vue-smart-pages";
+import { useSmartPages } from "@ohmycv/vue-smart-pages";
 import type { ResumeStyles } from "~/composables/stores/style";
 
-defineProps<{
+const props = defineProps<{
   id: string | number;
   markdown: string;
   css?: string;
@@ -27,14 +14,42 @@ defineProps<{
 }>();
 
 const constant = useConstant();
+const target = ref<HTMLElement>();
 
-const smart = ref();
+const size = computed(() => ({
+  height: constant.PAPER.sizeToPx(props.styles.paper, "h"),
+  width: constant.PAPER.SIZES[props.styles.paper].w
+}));
+const margins = computed(() => ({
+  top: props.styles.marginV,
+  bottom: Math.max(props.styles.marginV - 10, constant.RENDER.PRINT_BOTTOM),
+  left: props.styles.marginH,
+  right: props.styles.marginH
+}));
+const html = computed(() => markdownService.renderResume(props.markdown));
 
-const forceUpdate = () => {
-  smart.value.resolvePages(100);
-};
+const { render } = useSmartPages(target, html, size, margins, {
+  beforeRender: async () => {
+    await googleFontsService.presetObserver(props.styles);
+  }
+});
+
+watchDebounced(
+  () => [
+    props.styles.lineHeight,
+    props.styles.paragraphSpace,
+    props.styles.fontSize,
+    props.css,
+    props.styles.fontCJK,
+    props.styles.fontEN
+  ],
+  render,
+  {
+    debounce: 200
+  }
+);
 
 defineExpose({
-  forceUpdate
+  render
 });
 </script>

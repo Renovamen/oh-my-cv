@@ -24,10 +24,6 @@ const props = defineProps<{
   resume: DbResume;
 }>();
 
-const emit = defineEmits<{
-  (e: "update"): void;
-}>();
-
 const rename = async (text?: string) => {
   if (!text) return;
 
@@ -38,8 +34,6 @@ const rename = async (text?: string) => {
     },
     false
   );
-
-  emit("update");
 };
 
 const formatDate = (date?: string) =>

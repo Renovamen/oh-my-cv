@@ -108,7 +108,8 @@ const PRESET_COLORS = ["#000000", "#377bb5", "#ca3832", "#ee8732", "#9c5bde", "#
 // -------- Render constants --------
 
 const PRINT_BOTTOM = 10;
-const PREVIEW_SELECTOR = "#vue-smart-pages-preview";
+const PREVIEW_ID = "preview";
+const PREVIEW_SELECTOR = `#resume-${PREVIEW_ID}`;
 
 // -------- Default constants --------
 
@@ -236,7 +237,7 @@ const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */
 
 /* Basic */
 
-${PREVIEW_SELECTOR} {
+${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
   background-color: white;
   color: black;
   text-align: justify;
@@ -354,20 +355,17 @@ ${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="reference"] {
 }
 
 /* Dark & print mode */
+/* You might want to comment out the following lines if you change the background or text color. */
 
-.dark ${PREVIEW_SELECTOR} {
+.dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
   background-color: hsl(213, 12%, 15%);
   color: hsl(216, 12%, 84%);
 }
 
 @media print {
-  ${PREVIEW_SELECTOR} {
-    background-color: white !important;
-    color: black !important;
-  }
-
-  .dark ${PREVIEW_SELECTOR} a {
-    color: black !important;
+  .dark ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
+    background-color: white;
+    color: black;
   }
 }
 `;
@@ -401,6 +399,7 @@ export const useConstant = () => {
 
   const RENDER = {
     PRINT_BOTTOM,
+    PREVIEW_ID,
     PREVIEW_SELECTOR
   };
 

@@ -11,7 +11,7 @@
         <nuxt-link :to="$nuxt.$localePath(`/editor/${props.resume.id}`)">
           <SharedResumeRender
             :id="resume.id"
-            ref="render"
+            ref="renderEl"
             :markdown="resume.markdown"
             :styles="resume.styles"
             :style="{
@@ -28,12 +28,14 @@
       </div>
     </div>
 
-    <DashboardResumeInfo :resume="resume" @update="emit('update')" />
+    <DashboardResumeInfo :resume="resume" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { delay } from "@renovamen/utils";
 import type { DbResume } from "~/utils/storage";
+import { SharedResumeRender } from "#components";
 
 const props = defineProps<{
   resume: DbResume;
@@ -48,7 +50,7 @@ const { PAPER } = useConstant();
 const width = PAPER.SIZES[props.resume.styles.paper].w;
 const height = PAPER.SIZES[props.resume.styles.paper].h;
 
-const render = ref();
+const renderEl = ref<InstanceType<typeof SharedResumeRender>>();
 
 const updateResumeItem = async () => {
   // set styles that are defined via CSS editor
@@ -58,8 +60,9 @@ const updateResumeItem = async () => {
   await googleFontsService.resolve(props.resume.styles.fontCJK);
   // set styles that are defined via toolbar
   dynamicCssService.injectToolbar(props.resume.styles, props.resume.id);
-  // force update SmartPage
-  render.value.forceUpdate();
+  // force update resume render
+  await delay(100);
+  renderEl.value?.render();
 };
 
 onMounted(updateResumeItem);

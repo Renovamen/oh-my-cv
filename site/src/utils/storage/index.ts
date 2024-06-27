@@ -93,7 +93,7 @@ export class StorageService {
       // TODO: Use toast to show error message
       console.error(`Switch error: Resume ${id} not found.`);
     } else {
-      setResume(data!);
+      await setResume(data!);
 
       const toast = useToast();
       toast.switch(data!.name);

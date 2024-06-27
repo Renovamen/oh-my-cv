@@ -6,12 +6,12 @@ import type { DbResume } from "./db";
  *
  * @param styles resume styles
  */
-const setResumeStyles = (styles: ResumeStyles) => {
+const setResumeStyles = async (styles: ResumeStyles) => {
   const { setStyle } = useStyleStore();
 
-  Object.entries(styles).forEach(([key, value]) => {
-    setStyle(key as keyof ResumeStyles, value);
-  });
+  for (const [key, value] of Object.entries(styles)) {
+    await setStyle(key as keyof ResumeStyles, value);
+  }
 };
 
 /**
@@ -19,7 +19,7 @@ const setResumeStyles = (styles: ResumeStyles) => {
  *
  * @param data resume data
  */
-export const setResume = (data: DbResume) => {
+export const setResume = async (data: DbResume) => {
   const { setData } = useDataStore();
 
   setData("curResumeId", data.id);
@@ -28,7 +28,7 @@ export const setResume = (data: DbResume) => {
   setData("mdContent", data.markdown);
   setData("cssContent", data.css);
 
-  setResumeStyles(data.styles);
+  await setResumeStyles(data.styles);
 };
 
 const _isFieldValid = (input: {
