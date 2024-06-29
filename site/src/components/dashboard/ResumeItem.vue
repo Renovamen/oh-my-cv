@@ -4,8 +4,8 @@
       <div
         class="resume-card group border"
         :style="{
-          width: `${width}px`,
-          height: `${height}px`
+          width: `${size.w}px`,
+          height: `${size.h}px`
         }"
       >
         <nuxt-link :to="$nuxt.$localePath(`/editor/${props.resume.id}`)">
@@ -47,9 +47,7 @@ const emit = defineEmits<{
 
 const { PAPER } = useConstant();
 
-const width = PAPER.SIZES[props.resume.styles.paper].w;
-const height = PAPER.SIZES[props.resume.styles.paper].h;
-
+const size = computed(() => PAPER.SIZES[props.resume.styles.paper]);
 const renderEl = ref<InstanceType<typeof SharedResumeRender>>();
 
 const updateResumeItem = async () => {
