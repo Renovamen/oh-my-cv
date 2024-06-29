@@ -24,7 +24,7 @@
 import { downloadFile } from "@renovamen/utils";
 
 const { data } = useDataStore();
-const saveName = computed(() => data.curResumeName.trim().replace(/\s+/g, "_"));
+const saveName = computed(() => data.resumeName.trim().replace(/\s+/g, "_"));
 
 // Export as PDF
 const exportPDF = () => {
@@ -37,6 +37,6 @@ const exportPDF = () => {
 
 // Export as Markdown
 const exportMd = () => {
-  downloadFile(`${saveName.value}.md`, data.mdContent);
+  downloadFile(`${saveName.value}.md`, data.markdown);
 };
 </script>

@@ -22,11 +22,11 @@ const setResumeStyles = async (styles: ResumeStyles) => {
 export const setResume = async (data: DbResume) => {
   const { setData } = useDataStore();
 
-  setData("curResumeId", data.id);
-  setData("curResumeName", data.name);
+  setData("resumeId", data.id);
+  setData("resumeName", data.name);
 
-  setData("mdContent", data.markdown);
-  setData("cssContent", data.css);
+  setData("markdown", data.markdown);
+  setData("css", data.css);
 
   await setResumeStyles(data.styles);
 };

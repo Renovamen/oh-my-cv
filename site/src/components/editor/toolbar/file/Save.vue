@@ -18,13 +18,13 @@ const { data } = useDataStore();
 const { styles } = useStyleStore();
 
 const save = async () => {
-  if (!data.curResumeId) return;
+  if (!data.resumeId) return;
 
   await storageService.updateResume({
-    id: data.curResumeId,
-    name: data.curResumeName,
-    markdown: data.mdContent,
-    css: data.cssContent,
+    id: data.resumeId,
+    name: data.resumeName,
+    markdown: data.markdown,
+    css: data.css,
     styles: toRaw(styles)
   });
 };

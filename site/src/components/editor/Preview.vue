@@ -3,8 +3,8 @@
     <VueZoom ref="zoom" :scale="scale">
       <SharedResumeRender
         id="preview"
-        :markdown="data.mdContent"
-        :css="data.cssContent"
+        :markdown="data.markdown"
+        :css="data.css"
         :styles="styles"
       />
     </VueZoom>
@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-import { debounce } from "ts-debounce";
 import VueZoom from "@ohmycv/vue-zoom";
 
 const scale = ref(1);
@@ -50,7 +49,7 @@ const fitHeight = () => {
   scale.value = height.value / PAPER.sizeToPx(styles.paper, "h");
 };
 
-watch(width, () => debounce(fitWidth, 100)());
+watch(width, fitWidth);
 </script>
 
 <style scoped>

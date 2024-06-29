@@ -48,7 +48,6 @@
     "radix-vue": "^1.8.5",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.3.0",
-    "ts-debounce": "^4.0.0",
     "unocss-preset-animations": "^1.0.2",
     "unocss-preset-shadcn": "^0.3.0",
     "vue-sonner": "^1.1.3"

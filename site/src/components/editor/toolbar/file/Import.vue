@@ -56,7 +56,7 @@ import * as fileUpload from "@zag-js/file-upload";
 import { normalizeProps, useMachine } from "@zag-js/vue";
 import { fetchFile } from "@renovamen/utils";
 
-const { setData } = useDataStore();
+const { setAndSyncToMonaco } = useDataStore();
 
 // Zag.js file component
 const localFile = ref<string | null>(null);
@@ -70,7 +70,7 @@ const [state, send] = useMachine(
 
       reader.onloadend = () => {
         const content = reader.result as string;
-        setData("mdContent", content);
+        setAndSyncToMonaco("markdown", content);
       };
       reader.readAsText(files[0]);
 
@@ -89,7 +89,7 @@ const uploadFileFromURL = async () => {
 
   try {
     const content = await fetchFile(pastedURL.value);
-    setData("mdContent", content);
+    setAndSyncToMonaco("markdown", content);
     localFile.value = null;
   } catch (error) {
     // TODO: use toast to show error message

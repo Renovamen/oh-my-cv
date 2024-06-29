@@ -6,7 +6,7 @@
 
   <SharedUiEditable
     class="text-sm ml-8.5 mt-1"
-    :default-value="data.curResumeName"
+    :default-value="data.resumeName"
     submit-mode="enter"
     auto-resize
     @submit="(text) => rename(text)"
@@ -17,13 +17,13 @@
 const { data } = useDataStore();
 
 const rename = async (text?: string) => {
-  if (!text || !data.curResumeId) return;
+  if (!text || !data.resumeId) return;
 
-  data.curResumeName = text;
+  data.resumeName = text;
 
   await storageService.updateResume(
     {
-      id: data.curResumeId,
+      id: data.resumeId,
       name: text
     },
     false

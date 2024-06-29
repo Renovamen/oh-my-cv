@@ -30,11 +30,12 @@ const html = computed(() => markdownService.renderResume(props.markdown));
 
 const { render } = useSmartPages(target, html, size, margins, {
   beforeRender: async () => {
+    // Wait for the fonts to be loaded
     await googleFontsService.presetObserver(props.styles);
   }
 });
 
-watchDebounced(
+watchThrottled(
   () => [
     props.styles.lineHeight,
     props.styles.paragraphSpace,
@@ -45,7 +46,8 @@ watchDebounced(
   ],
   render,
   {
-    debounce: 200
+    throttle: 200,
+    leading: false
   }
 );
 

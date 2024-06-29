@@ -83,7 +83,8 @@ export class GoogleFontsService {
    * Font monitor, it will notify when the font is loaded
    *
    * @param fonts Font or a list of fonts to monitor
-   * @returns Promise that resolves when the font is loaded
+   * @returns A promise, fulfilled when when all the fonts are loaded, or rejected if any
+   * of the fonts fail to load
    */
   public observer(fonts: string | Array<string>) {
     const observers = [];
@@ -95,11 +96,10 @@ export class GoogleFontsService {
   }
 
   /**
-   * Monitor the fonts used in the resume styles
+   * Notify when the fonts used in the resume styles are loaded
    *
    * @param styles Resume styles
-   * @returns Promise that resolves when the font is loaded
-   * @see observer
+   * @see {@link observer}
    */
   public presetObserver(styles: ResumeStyles) {
     return this.observer([
