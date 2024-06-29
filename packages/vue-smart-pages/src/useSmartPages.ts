@@ -1,79 +1,14 @@
-import { onMounted, watch } from "vue";
-import { unrefElement, toValue, type MaybeComputedElementRef } from "@vueuse/core";
+import { onMounted } from "vue";
+import {
+  unrefElement,
+  toValue,
+  watchThrottled,
+  type WatchThrottledOptions,
+  type MaybeComputedElementRef
+} from "@vueuse/core";
 import type { MaybeRef } from "@vueuse/shared";
-
-export type PageSize = {
-  width: number;
-  height: number;
-};
-
-export type PageMargins = Partial<{
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-}>;
-
-const NEW_PAGE_CLASS = "md-it-newpage";
-
-const _elementHeight = (element: Element) => {
-  const style = window.getComputedStyle(element);
-
-  const marginTop = parseInt(style.marginTop) || 0;
-  const marginBottom = parseInt(style.marginBottom) || 0;
-
-  return element.clientHeight + marginTop + marginBottom;
-};
-
-const _setWidthAndMargins = (
-  element: HTMLElement,
-  size: PageSize,
-  margins: Required<PageMargins>
-) => {
-  element.style.width = `${size.width}mm`;
-  element.style.padding = `${margins.top}px ${margins.right}px ${margins.bottom}px ${margins.left}px`;
-};
-
-const _createPage = (size: PageSize, margins: Required<PageMargins>) => {
-  const page = document.createElement("div");
-
-  page.dataset.scope = "vue-smart-pages";
-  page.dataset.part = "page";
-
-  page.style.height = `${size.height}px`;
-  _setWidthAndMargins(page, size, margins);
-
-  return page;
-};
-
-const breakPage = (
-  target: HTMLElement,
-  size: PageSize,
-  margins: Required<PageMargins>
-) => {
-  const maxHeight = size.height - margins.top - margins.bottom;
-  const pages = document.createElement("div");
-
-  let accHeight = 0;
-  let page = _createPage(size, margins);
-
-  Array.from(target.children).forEach((child) => {
-    const childHeight = _elementHeight(child);
-
-    if (accHeight + childHeight > maxHeight || child.className === NEW_PAGE_CLASS) {
-      pages.appendChild(page);
-
-      accHeight = 0;
-      page = _createPage(size, margins);
-    }
-
-    page.appendChild(child);
-    accHeight += childHeight;
-  });
-
-  pages.appendChild(page);
-  target.innerHTML = pages.innerHTML;
-};
+import { breakPage, setWidthAndMargins } from "./dom";
+import type { PageSize, PageMargins } from "./types";
 
 /**
  * Break the content into pages based on the given size and margins.
@@ -81,7 +16,7 @@ const breakPage = (
  * @param target HTML element
  * @param html Content that will be rendered as innerHTML of the target element
  * @param size Size and margins of each page
- * @param options Callbacks to run before and after rendering
+ * @param options
  *
  * @returns A render function to manually trigger the page breaking
  *
@@ -109,6 +44,7 @@ export const useSmartPages = (
   options: {
     beforeRender?: () => void | Promise<void>;
     afterRender?: () => void | Promise<void>;
+    watchThrottledOptions?: WatchThrottledOptions<Readonly<boolean>>;
   } = {}
 ) => {
   const render = async () => {
@@ -127,7 +63,7 @@ export const useSmartPages = (
     const copy = element.cloneNode(true) as HTMLElement;
 
     copy.innerHTML = toValue(html);
-    _setWidthAndMargins(copy, _size, _margins);
+    setWidthAndMargins(copy, _size, _margins);
 
     // Attach it to the body temporarily to get the correct computed styles
     document.body.appendChild(copy);
@@ -147,7 +83,7 @@ export const useSmartPages = (
   };
 
   onMounted(render);
-  watch([size, margins, html], render);
+  watchThrottled([size, margins, html], render, options.watchThrottledOptions);
 
   return { render };
 };
