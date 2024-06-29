@@ -1,4 +1,4 @@
-import { downloadFile, uploadFile } from "@renovamen/utils";
+import { downloadFile } from "@renovamen/utils";
 import { LocalForageDbService } from "./localForage";
 import { setResume, IsValid } from "./utils";
 import type { DbService, ExportedStorageJson, DbResumeUpdate, DbResumeEmpty } from "./db";
@@ -145,42 +145,42 @@ export class StorageService {
   /**
    * Check the validity of and import JSON data
    *
-   * @param callback A callback function to be called after importing
+   * @param content JSON string
    */
-  public async importFromJson(cb?: () => void) {
+  public async importFromJson(content: string) {
     const toast = useToast();
 
-    const merge = async (content: string) => {
-      const data = JSON.parse(content);
+    const data = (() => {
+      try {
+        return JSON.parse(content);
+      } catch (error) {
+        return false;
+      }
+    })();
 
-      if (!IsValid.importedJson(data)) {
-        console.error("Import error: Invalid data.");
-        toast.import(false);
-        return;
+    if (!IsValid.importedJson(data)) {
+      console.error("Import error: Invalid data.");
+      toast.import(false);
+      return;
+    }
+
+    for (const [_id, resume] of Object.entries(data as ExportedStorageJson)) {
+      const id = Number(_id);
+      const { data, error } = await this._db.queryById(id);
+
+      if (error) {
+        console.error("Import error: Storage error.");
+        break;
       }
 
-      for (const [_id, resume] of Object.entries(data as ExportedStorageJson)) {
-        const id = Number(_id);
-        const { data, error } = await this._db.queryById(id);
-
-        if (error) {
-          console.error("Import error: Storage error.");
-          break;
-        }
-
-        if (data) {
-          await this._db.update({ id, ...resume }, false);
-        } else {
-          await this._db.create({ id, ...resume });
-        }
+      if (data) {
+        await this._db.update({ id, ...resume }, false);
+      } else {
+        await this._db.create({ id, ...resume });
       }
+    }
 
-      toast.import(true);
-
-      cb && cb();
-    };
-
-    uploadFile(merge, ".json");
+    toast.import(true);
   }
 }
 

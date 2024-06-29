@@ -1,15 +1,6 @@
-export const isClient = typeof window !== "undefined";
+import { isObject } from "./is";
 
-export const isMac = isClient
-  ? /mac/i.test(navigator.userAgentData?.platform || navigator.platform)
-  : false;
-
-export const isExternal = (path: string) => {
-  const outboundRE = /^(https?:|mailto:|tel:)/;
-  return outboundRE.test(path);
-};
-
-// https://github.com/meteorlxy/vscode-slugify
+// Copied from https://github.com/meteorlxy/vscode-slugify
 export const slugify = (str: string) =>
   encodeURI(
     str
@@ -37,10 +28,10 @@ export const htmlEscape = (str: string) => {
 };
 
 export const copy = <T>(obj: T): T => {
-  if (obj === null || typeof obj !== "object") {
-    throw new Error("Input must be a non-null object.");
-  }
-  return JSON.parse(JSON.stringify(obj));
+  if (isObject(obj)) return JSON.parse(JSON.stringify(obj));
+  throw new Error("Input must be a non-null object.");
 };
 
 export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export const timestamp = () => Date.now();

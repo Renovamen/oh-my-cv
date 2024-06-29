@@ -18,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+import { isInteger } from "@renovamen/utils";
 import type { DbResume } from "~/utils/storage";
 
 const props = defineProps<{
@@ -38,7 +39,7 @@ const rename = async (text?: string) => {
 
 const formatDate = (date?: string) =>
   date &&
-  IsValid.int(date) &&
+  isInteger(date, { allowString: true }) &&
   new Date(parseInt(date))
     .toISOString()
     .substring(0, 19)

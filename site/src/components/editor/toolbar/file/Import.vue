@@ -41,7 +41,13 @@
             @keyup.enter="uploadFileFromURL"
           />
 
-          <UiButton type="submit" size="icon" class="shrink-0" @click="uploadFileFromURL">
+          <UiButton
+            type="submit"
+            size="icon"
+            class="shrink-0"
+            @click="uploadFileFromURL"
+            :disabled="pastedURL === ''"
+          >
             <span class="sr-only">Submit</span>
             <span i-line-md:confirm size-4 />
           </UiButton>
@@ -90,7 +96,9 @@ const uploadFileFromURL = async () => {
   try {
     const content = await fetchFile(pastedURL.value);
     setAndSyncToMonaco("markdown", content);
+
     localFile.value = null;
+    pastedURL.value = "";
   } catch (error) {
     // TODO: use toast to show error message
     console.error(error);

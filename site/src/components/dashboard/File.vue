@@ -7,7 +7,7 @@
     <UiButton
       class="bg-neutral-800 hover:(bg-neutral-800/90 ring-neutral-800/40) dark:(bg-secondary hover:bg-background hover:ring-secondary/40)"
       :aria-label="$t('dashboard.import')"
-      @click="() => storageService.importFromJson(() => $emit('update'))"
+      @click="open"
     >
       <span i-ic:round-upload-file size-4 mr-1 />
       {{ $t("dashboard.import") }}
@@ -17,10 +17,19 @@
 
 <script lang="ts" setup>
 import { useShortcuts } from "@ohmycv/vue-shortcuts";
+import { useFileDialog, readFile } from "@renovamen/utils";
 
-defineEmits<{
+const emits = defineEmits<{
   (e: "update"): void;
 }>();
+
+const { open, onChange } = useFileDialog(".json");
+
+onChange(async (file) => {
+  const content = await readFile(file);
+  await storageService.importFromJson(content);
+  emits("update");
+});
 
 const exportToJSON = () => storageService.exportToJSON();
 

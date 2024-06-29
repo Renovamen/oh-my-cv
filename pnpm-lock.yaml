@@ -96,11 +96,7 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
 
-  packages/utils:
-    devDependencies:
-      user-agent-data-types:
-        specifier: ^0.4.2
-        version: 0.4.2
+  packages/utils: {}
 
   packages/vue-shortcuts:
     dependencies:
@@ -5889,9 +5885,6 @@ packages:
 
   urlpattern-polyfill@8.0.2:
     resolution: {integrity: sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==}
-
-  user-agent-data-types@0.4.2:
-    resolution: {integrity: sha512-jXep3kO/dGNmDOkbDa8ccp4QArgxR4I76m3QVcJ1aOF0B9toc+YtSXtX5gLdDTZXyWlpQYQrABr6L1L2GZOghw==}
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -13178,8 +13171,6 @@ snapshots:
       punycode: 2.3.1
 
   urlpattern-polyfill@8.0.2: {}
-
-  user-agent-data-types@0.4.2: {}
 
   util-deprecate@1.0.2: {}
 

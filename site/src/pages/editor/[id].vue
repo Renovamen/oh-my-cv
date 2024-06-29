@@ -50,14 +50,14 @@
 </template>
 
 <script lang="ts" setup>
-import { IsValid } from "~/utils";
+import { isInteger } from "@renovamen/utils";
 
 const route = useRoute();
 const { data } = useDataStore();
 
 // Fetch resume data
 onMounted(() => {
-  if (IsValid.int(route.params.id)) {
+  if (isInteger(route.params.id, { allowString: true })) {
     storageService.switchToResume(Number(route.params.id));
   }
 });

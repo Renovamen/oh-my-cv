@@ -1,6 +1,5 @@
 import * as localForage from "localforage";
-import { isClient } from "@vueuse/core";
-import { copy } from "@renovamen/utils";
+import { isClient, copy, timestamp } from "@renovamen/utils";
 import type {
   DbService,
   ExportedStorageJson,
@@ -38,8 +37,6 @@ export class LocalForageDbService implements DbService {
     data,
     error: null
   });
-
-  private _currentTime = () => new Date().getTime().toString();
 
   /**
    * Get the storage object. Note that this method will return an empty object
@@ -137,7 +134,7 @@ export class LocalForageDbService implements DbService {
     const { id, ...updatedResume } = {
       ...storage[data.id],
       ...data,
-      updated_at: newUpdateTime ? this._currentTime() : storage[data.id].updated_at
+      updated_at: newUpdateTime ? timestamp().toString() : storage[data.id].updated_at
     };
 
     storage[id] = updatedResume;
@@ -162,13 +159,13 @@ export class LocalForageDbService implements DbService {
       };
     }
 
-    const currentTime = this._currentTime();
+    const now = timestamp();
 
     // Generate a new "id", "updated_at" and "created_at" if not provided
     const createdData: DbResume = {
-      updated_at: currentTime,
-      created_at: currentTime,
-      id: Number(currentTime),
+      updated_at: now.toString(),
+      created_at: now.toString(),
+      id: now,
       ...data
     };
 

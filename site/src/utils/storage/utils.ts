@@ -1,3 +1,4 @@
+import { isObject, isInteger } from "@renovamen/utils";
 import type { ResumeStyles } from "~/composables/stores/style";
 import type { DbResume } from "./db";
 
@@ -39,16 +40,17 @@ const _isFieldValid = (input: {
 }) => {
   const { object, fields, required, allowUndefined = false } = input;
 
-  if (typeof object !== "object") return false;
-
-  return (Array.isArray(fields) ? fields : [fields]).every(
-    (f) => typeof object[f] === required || (allowUndefined && object[f] === undefined)
+  return (
+    isObject(object) &&
+    (Array.isArray(fields) ? fields : [fields]).every(
+      (f) => typeof object[f] === required || (allowUndefined && object[f] === undefined)
+    )
   );
 };
 
 export class IsValid {
   static font = (font: any) =>
-    typeof font === "object" &&
+    isObject(font) &&
     typeof font.name === "string" &&
     ["string", "undefined"].includes(typeof font.fontFamily);
 
@@ -90,6 +92,11 @@ export class IsValid {
   };
 
   static importedJson = (data: any) => {
-    return Object.entries(data).every(([id, item]) => this.int(id) && this.resume(item));
+    return (
+      isObject(data) &&
+      Object.entries(data).every(
+        ([id, item]) => isInteger(id, { allowString: true }) && this.resume(item)
+      )
+    );
   };
 }
