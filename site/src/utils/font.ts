@@ -1,6 +1,6 @@
 import GoogleFontsLoader from "@ohmycv/google-fonts-loader";
 import type { Font as GoogleFont, Subset } from "@ohmycv/google-fonts-loader";
-import type { Font } from "~/composables/constant";
+import { useConstant, type Font } from "~/composables/constant";
 import type { ResumeStyles } from "~/composables/stores/style";
 
 const { FONT } = useConstant();

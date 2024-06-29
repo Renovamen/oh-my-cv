@@ -1,119 +1,7 @@
-import type { Subset } from "@ohmycv/google-fonts-loader";
-import type { ResumeStyles } from "./stores/style";
+import { PREVIEW_SELECTOR } from "./render";
+import type { ResumeStyles } from "../../stores/style";
 
-export type Font = {
-  readonly name: string;
-  readonly fontFamily?: string;
-};
-
-export type ValidPaperSize = keyof typeof PAPER_SIZES;
-
-// -------- Font constants --------
-
-const LOCAL_EN_FONTS: Font[] = [
-  {
-    name: "Adobe Garamond Pro"
-  },
-  {
-    name: "CMU Sans Serif"
-  },
-  {
-    name: "Euclid"
-  },
-  {
-    name: "Minion Pro"
-  },
-  {
-    name: "Tex Gyre Pagella"
-  },
-  {
-    name: "Times Newer Roman"
-  }
-];
-
-const LOCAL_CJK_FONTS: Font[] = [
-  {
-    name: "华康宋体",
-    fontFamily: "HKST"
-  },
-  {
-    name: "霞鹜文楷",
-    fontFamily: "LXGW WenKai"
-  }
-];
-
-const GF_CJK_SUBSETS = [
-  "chinese-simplified",
-  "chinese-traditional",
-  "japanese",
-  "korean"
-] as Subset[];
-
-const GF_CJK_FAMILY_TO_NAME = {
-  "Noto Sans SC": "思源黑体（简）",
-  "Noto Sans TC": "思源黑体（繁）",
-  "Noto Serif SC": "思源宋体（简）",
-  "Noto Serif TC": "思源宋体（繁）"
-} as Record<string, string>;
-
-const GF_CJK_FIRST = [
-  "思源黑体（简）",
-  "思源黑体（繁）",
-  "思源宋体（简）",
-  "思源宋体（繁）"
-];
-
-const GF_IGNORE_FONTS = [
-  "Baloo 2",
-  "Baloo Bhai 2",
-  "Baloo Bhaijaan 2",
-  "Baloo Bhaina 2",
-  "Baloo Chettan 2",
-  "Baloo Da 2",
-  "Baloo Paaji 2",
-  "Baloo Tamma 2",
-  "Baloo Tammudu 2",
-  "Baloo Thambi 2",
-  "Brygada 1918",
-  "Exo 2",
-  "M PLUS 1",
-  "M PLUS 1 Code",
-  "M PLUS 1p",
-  "M PLUS 2",
-  "M PLUS Rounded 1c",
-  "Shippori Mincho",
-  "Source Sans 3",
-  "Source Serif 4"
-];
-
-// -------- Paper constants --------
-
-const PAPER_SIZES = {
-  A4: {
-    h: 297 + 2,
-    w: 210
-  },
-  letter: {
-    h: 279.4 + 3,
-    w: 215.9
-  }
-};
-
-const MM_TO_PX = 3.78;
-
-// -------- Color constants --------
-
-const PRESET_COLORS = ["#000000", "#377bb5", "#ca3832", "#ee8732", "#9c5bde", "#43912b"];
-
-// -------- Render constants --------
-
-const PRINT_BOTTOM = 10;
-const PREVIEW_ID = "preview";
-const PREVIEW_SELECTOR = `#resume-${PREVIEW_ID}`;
-
-// -------- Default constants --------
-
-const DEFAULT_STYLES = {
+export const DEFAULT_STYLES = {
   marginV: 55,
   marginH: 45,
   lineHeight: 1.3,
@@ -130,7 +18,7 @@ const DEFAULT_STYLES = {
   paper: "A4"
 } as ResumeStyles;
 
-const DEFAULT_MD_CONTENT = `---
+export const DEFAULT_MD_CONTENT = `---
 name: Haha Ha
 header:
   - text: <span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
@@ -233,7 +121,7 @@ B.Eng. in Software Engineering
 **Languages:** Chinese (native), English (proficient)
 `;
 
-const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */
+export const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */
 
 /* Basic */
 
@@ -369,56 +257,3 @@ ${PREVIEW_SELECTOR} [data-scope="cross-ref"][data-part="reference"] {
   }
 }
 `;
-
-export const useConstant = () => {
-  const FONT = {
-    LOCAL: {
-      EN: LOCAL_EN_FONTS,
-      CJK: LOCAL_CJK_FONTS,
-      includes: (font: Font) => {
-        const check = (list: Font[]) =>
-          list.some(
-            (item) => (item.fontFamily ?? item.name) === (font.fontFamily ?? font.name)
-          );
-        return check(LOCAL_EN_FONTS) || check(LOCAL_CJK_FONTS);
-      }
-    },
-    GF: {
-      CJK_SUBSETS: GF_CJK_SUBSETS,
-      CJK_FAMILY_TO_NAME: GF_CJK_FAMILY_TO_NAME,
-      CJK_FIRST: GF_CJK_FIRST,
-      IGNORE: GF_IGNORE_FONTS
-    }
-  };
-
-  const PAPER = {
-    SIZES: PAPER_SIZES,
-    MM_TO_PX,
-    sizeToPx: (size: ValidPaperSize, v: "h" | "w") => ~~(PAPER_SIZES[size][v] * MM_TO_PX)
-  };
-
-  const RENDER = {
-    PRINT_BOTTOM,
-    PREVIEW_ID,
-    PREVIEW_SELECTOR
-  };
-
-  const COLOR = {
-    PRESET: PRESET_COLORS
-  };
-
-  const DEFAULT = {
-    RESUME_NAME: "New Resume",
-    STYLES: DEFAULT_STYLES,
-    MD_CONTENT: DEFAULT_MD_CONTENT,
-    CSS_CONTENT: DEFAULT_CSS_CONTENT
-  };
-
-  return {
-    FONT,
-    PAPER,
-    RENDER,
-    COLOR,
-    DEFAULT
-  };
-};
