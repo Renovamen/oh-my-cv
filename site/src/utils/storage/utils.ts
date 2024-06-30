@@ -1,6 +1,9 @@
-import { isObject, isInteger } from "@renovamen/utils";
+import * as localForage from "localforage";
+import { isObject, isInteger, arrayify } from "@renovamen/utils";
+import type { ValidVersion } from "~/composables/constant";
 import type { ResumeStyles } from "~/composables/stores/style";
 import type { DbResume } from "./db";
+import type { ValidStorageJsonData } from "./migrate";
 
 /**
  * Write resume styles from local storage to the store
@@ -32,19 +35,20 @@ export const setResume = async (data: DbResume) => {
   await setResumeStyles(data.styles);
 };
 
-const _isFieldValid = (input: {
-  object: any;
-  fields: string | string[];
-  required: string;
-  allowUndefined?: boolean;
-}) => {
-  const { object, fields, required, allowUndefined = false } = input;
+const _checkType = (value: any, required: string | string[]) => {
+  return arrayify(required).includes(typeof value);
+};
 
-  return (
-    isObject(object) &&
-    (Array.isArray(fields) ? fields : [fields]).every(
-      (f) => typeof object[f] === required || (allowUndefined && object[f] === undefined)
-    )
+const _getNestedValue = (object: any, path: string) => {
+  return path.split(".").reduce((o, p) => (o ? o[p] : undefined), object);
+};
+
+const _checkObject = (
+  obj: any,
+  fields: Array<{ fields: string | string[]; types: string | string[] }>
+): boolean => {
+  return fields.every(({ fields, types }) =>
+    arrayify(fields).every((field) => _checkType(_getNestedValue(obj, field), types))
   );
 };
 
@@ -54,49 +58,52 @@ export class IsValid {
     typeof font.name === "string" &&
     ["string", "undefined"].includes(typeof font.fontFamily);
 
-  static int = (str: any) => {
-    if (typeof str !== "string") return false;
-    return !isNaN(Number(str));
-  };
+  static importedData = (data: any, version: any) => {
+    const { VERSION } = useConstant();
 
-  static resume = (item: any) => {
-    const FIELDS = {
-      data: {
-        string: ["name", "markdown", "css", "updated_at", "created_at"]
-      },
-      styles: {
-        number: ["fontSize", "lineHeight", "marginH", "marginV", "paragraphSpace"],
-        string: ["paper", "themeColor"]
-      }
-    };
-
-    if (!_isFieldValid({ object: item, fields: FIELDS.data.string, required: "string" }))
-      return false;
-    if (!_isFieldValid({ object: item, fields: "styles", required: "object" }))
-      return false;
-
-    const styles = item.styles;
-
-    if (
-      !_isFieldValid({ object: styles, fields: FIELDS.styles.number, required: "number" })
-    )
-      return false;
-    if (
-      !_isFieldValid({ object: styles, fields: FIELDS.styles.string, required: "string" })
-    )
-      return false;
-
-    if (!this.font(styles.fontCJK) || !this.font(styles.fontEN)) return false;
-
-    return true;
-  };
-
-  static importedJson = (data: any) => {
     return (
+      // Check version
+      typeof version === "string" &&
+      VERSION.isVersionValid(version) &&
+      // Check data
       isObject(data) &&
       Object.entries(data).every(
-        ([id, item]) => isInteger(id, { allowString: true }) && this.resume(item)
+        ([id, item]) =>
+          isInteger(id, { allowString: true }) &&
+          _checkObject(item, VERSION.REQUIRED_DATA_TYPES[version as ValidVersion])
       )
     );
+  };
+
+  static importedJson(
+    json: any
+  ): false | { version: ValidVersion; data: ValidStorageJsonData } {
+    const { VERSION } = useConstant();
+
+    if (!isObject(json)) return false;
+
+    if (this.importedData(json.data, json.version)) {
+      return json;
+    } else if (this.importedData(json, VERSION.EMPTY_FALLBACK)) {
+      return {
+        data: json,
+        version: VERSION.EMPTY_FALLBACK
+      };
+    }
+
+    return false;
+  }
+}
+
+export class StorageVersion {
+  static get = async (): Promise<ValidVersion | null> => {
+    const { VERSION } = useConstant();
+    return await localForage.getItem<ValidVersion>(VERSION.VERSION_KEY);
+  };
+
+  static update = async () => {
+    const { VERSION } = useConstant();
+    await localForage.setItem(VERSION.VERSION_KEY, VERSION.CURRENT);
+    return VERSION.CURRENT;
   };
 }

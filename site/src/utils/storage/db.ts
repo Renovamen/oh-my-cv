@@ -35,9 +35,14 @@ export type DbServiceResponse<T> = Promise<
   { data: T | null; error: null } | { data: null; error: DbServiceError }
 >;
 
-export type ExportedStorageJson = {
-  [id: string]: Omit<DbResume, "id">;
+export type StorageJson = {
+  version: string;
+  data: {
+    [id: string]: Omit<DbResume, "id">;
+  };
 };
+
+export type StorageJsonData = StorageJson["data"];
 
 export interface DbService {
   queryAll(): DbServiceResponse<Array<DbResume>>;
@@ -46,3 +51,5 @@ export interface DbService {
   create(data: DbResumeEmpty | DbResume): DbServiceResponse<DbResume>;
   delete(id: number): DbServiceResponse<DbResume>;
 }
+
+export type DbServiceConstructor = new () => DbService;

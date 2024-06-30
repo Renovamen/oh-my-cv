@@ -1,20 +1,14 @@
 import * as localForage from "localforage";
-import { isClient, copy, timestamp } from "@renovamen/utils";
+import { isClient, copy, now } from "@renovamen/utils";
 import type {
   DbService,
-  ExportedStorageJson,
+  StorageJsonData,
   DbResume,
   DbResumeEmpty,
   DbResumeUpdate
 } from "./db";
-
-type LocalForageOldStorage = {
-  [id: string]: DbResumeEmpty & {
-    update?: string;
-    updated_at?: string;
-    created_at?: string;
-  };
-};
+import { StorageVersion } from "./utils";
+import { MigrateService, type ValidStorageJsonData } from "./migrate";
 
 export class LocalForageDbService implements DbService {
   private _key = "ohmycv_data";
@@ -45,18 +39,43 @@ export class LocalForageDbService implements DbService {
    *
    * @returns Storage object or null if an error occurred
    */
-  private async _storage(): Promise<ExportedStorageJson | null> {
-    if (!isClient) return {}; // Server-side rendering
+  private async _storage(): Promise<StorageJsonData | null> {
+    if (!isClient) return null; // Server-side rendering
 
     try {
-      const storage = await localForage.getItem<LocalForageOldStorage>(this._key);
-      return storage ? await this._migrate(storage) : {};
+      const storage = await localForage.getItem<ValidStorageJsonData>(this._key);
+      const _from = await StorageVersion.get();
+
+      // The storage is not initialized
+      if (!storage) {
+        // An empty version might indicate that the storage is not initialized, or the
+        // storage version is "v0". Here the storage is not initialized, so we can safely
+        // update the version to the latest.
+        if (!_from) await StorageVersion.update();
+        return {};
+      }
+
+      // Migrate the storage from old versions if needed
+      // From now on, we can safely assume the storage version is "v0" if the version is empty
+      const migrateService = new MigrateService(_from);
+      const { data, to, from } = await migrateService.migrate(storage);
+
+      if (from !== to) {
+        // Set the migrated storage
+        await this._setItems(data);
+        // Update the storage version to the latest
+        await StorageVersion.update();
+        // Backup the old storage
+        await localForage.setItem(`${this._key}_${from}`, storage);
+      }
+
+      return data;
     } catch (error) {
       return null;
     }
   }
 
-  private async _setItems(storage: ExportedStorageJson) {
+  private async _setItems(storage: StorageJsonData) {
     await localForage.setItem(this._key, storage);
   }
 
@@ -79,27 +98,6 @@ export class LocalForageDbService implements DbService {
       return allowNotExist ? this._success(null) : this._notFoundError(id);
 
     return this._success(storage);
-  }
-
-  private async _migrate(storage: LocalForageOldStorage): Promise<ExportedStorageJson> {
-    const newStorage: ExportedStorageJson = {};
-
-    const needMigrate = Object.entries(storage).some(([id, data]) => {
-      const { update, ...rest } = data;
-      const requiresUpdate = !rest.created_at || !rest.updated_at || update;
-
-      if (requiresUpdate) {
-        if (!rest.created_at) rest.created_at = id;
-        if (!rest.updated_at) rest.updated_at = update ?? rest.created_at;
-      }
-
-      newStorage[id] = rest as DbResume;
-      return requiresUpdate;
-    });
-
-    if (needMigrate) await this._setItems(newStorage);
-
-    return newStorage;
   }
 
   public async queryAll() {
@@ -127,14 +125,13 @@ export class LocalForageDbService implements DbService {
 
   public async update(data: DbResumeUpdate, newUpdateTime: boolean) {
     const res = await this._getStorageIfIdExists(data.id);
-
     if (res.error) return res;
 
     const storage = res.data!;
     const { id, ...updatedResume } = {
       ...storage[data.id],
       ...data,
-      updated_at: newUpdateTime ? timestamp().toString() : storage[data.id].updated_at
+      updated_at: newUpdateTime ? now().toString() : storage[data.id].updated_at
     };
 
     storage[id] = updatedResume;
@@ -159,13 +156,13 @@ export class LocalForageDbService implements DbService {
       };
     }
 
-    const now = timestamp();
+    const _now = now();
 
     // Generate a new "id", "updated_at" and "created_at" if not provided
     const createdData: DbResume = {
-      updated_at: now.toString(),
-      created_at: now.toString(),
-      id: now,
+      updated_at: _now.toString(),
+      created_at: _now.toString(),
+      id: _now,
       ...data
     };
 

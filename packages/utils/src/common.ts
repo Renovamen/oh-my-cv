@@ -34,4 +34,7 @@ export const copy = <T>(obj: T): T => {
 
 export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const timestamp = () => Date.now();
+export const now = () => Date.now();
+
+export const arrayify = <T>(value: T | T[]): T[] =>
+  Array.isArray(value) ? value : [value];

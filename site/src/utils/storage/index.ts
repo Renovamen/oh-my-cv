@@ -1,7 +1,15 @@
 import { downloadFile } from "@renovamen/utils";
+import type { ValidVersion } from "~/composables/constant";
 import { LocalForageDbService } from "./localForage";
 import { setResume, IsValid } from "./utils";
-import type { DbService, ExportedStorageJson, DbResumeUpdate, DbResumeEmpty } from "./db";
+import { MigrateService } from "./migrate";
+import type {
+  DbService,
+  StorageJson,
+  StorageJsonData,
+  DbResumeUpdate,
+  DbResumeEmpty
+} from "./db";
 
 const AVAILABLE_SERVICES: Record<string, DbService> = {
   localForage: new LocalForageDbService()
@@ -10,8 +18,12 @@ const AVAILABLE_SERVICES: Record<string, DbService> = {
 
 export class StorageService {
   private _db: DbService;
+  private _version: ValidVersion;
 
   constructor(service: keyof typeof AVAILABLE_SERVICES) {
+    const { VERSION } = useConstant();
+
+    this._version = VERSION.CURRENT;
     this._db = AVAILABLE_SERVICES[service];
   }
 
@@ -132,12 +144,15 @@ export class StorageService {
   }
 
   public async exportToJSON() {
-    const data = await this.getResumes();
-
-    const json = data.reduce((acc, { id, ...resume }) => {
+    const data = (await this.getResumes()).reduce((acc, { id, ...resume }) => {
       acc[id] = resume;
       return acc;
-    }, {} as ExportedStorageJson);
+    }, {} as StorageJsonData);
+
+    const json: StorageJson = {
+      version: this._version,
+      data
+    };
 
     downloadFile("ohmycv_data.json", JSON.stringify(json));
   }
@@ -145,26 +160,35 @@ export class StorageService {
   /**
    * Check the validity of and import JSON data
    *
+   * TODO: handle migration if needed
+   *
    * @param content JSON string
    */
   public async importFromJson(content: string) {
     const toast = useToast();
 
-    const data = (() => {
+    const json = (() => {
       try {
         return JSON.parse(content);
       } catch (error) {
-        return false;
+        return null;
       }
     })();
 
-    if (!IsValid.importedJson(data)) {
+    const res = IsValid.importedJson(json);
+
+    // Invalid version or format
+    if (!res) {
       console.error("Import error: Invalid data.");
       toast.import(false);
       return;
     }
 
-    for (const [_id, resume] of Object.entries(data as ExportedStorageJson)) {
+    // Migrate data if needed
+    const migrateService = new MigrateService(res.version);
+    const { data } = await migrateService.migrate(res.data);
+
+    for (const [_id, resume] of Object.entries(data)) {
       const id = Number(_id);
       const { data, error } = await this._db.queryById(id);
 

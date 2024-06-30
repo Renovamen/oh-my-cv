@@ -10,3 +10,5 @@ export const PAPER_SIZES = {
 };
 
 export const MM_TO_PX = 3.78;
+
+export type ValidPaperSize = keyof typeof PAPER_SIZES;

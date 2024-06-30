@@ -1,5 +1,9 @@
 import type { Subset } from "@ohmycv/google-fonts-loader";
-import type { Font } from "~/composables/constant";
+
+export type Font = {
+  readonly name: string;
+  readonly fontFamily?: string;
+};
 
 export const LOCAL_EN_FONTS: Font[] = [
   {

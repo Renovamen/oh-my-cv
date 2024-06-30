@@ -1,11 +1,7 @@
 import * as V from "./variables";
+import type { Font, ValidPaperSize, ValidVersion } from "./variables";
 
-export type Font = {
-  readonly name: string;
-  readonly fontFamily?: string;
-};
-
-export type ValidPaperSize = keyof typeof V.PAPER_SIZES;
+export type { Font, ValidPaperSize, ValidVersion };
 
 export const useConstant = () => {
   const FONT = {
@@ -52,11 +48,21 @@ export const useConstant = () => {
     CSS_CONTENT: V.DEFAULT_CSS_CONTENT
   };
 
+  const VERSION = {
+    CURRENT: V.CURRENT_VERSION,
+    EMPTY_FALLBACK: V.EMPTY_VERSION_FALLBACK,
+    VERSION_KEY: V.VERSION_STORAGE_KEY,
+    REQUIRED_DATA_TYPES: V.REQUIRED_DATA_TYPES,
+    VALID: V.VALID_VERSIONS,
+    isVersionValid: (version: string) => V.VALID_VERSIONS.includes(version)
+  };
+
   return {
     FONT,
     PAPER,
     RENDER,
     COLOR,
-    DEFAULT
+    DEFAULT,
+    VERSION
   };
 };
