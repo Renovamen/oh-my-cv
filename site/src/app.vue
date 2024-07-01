@@ -2,12 +2,13 @@
   <div class="font-ui">
     <VitePwaManifest />
     <NuxtPage />
-    <UiToaster rich-colors close-button />
+    <UiToaster close-button />
   </div>
 </template>
 
 <script setup lang="ts">
 const { t, locale } = useI18n();
+
 const colorMode = useColorMode();
 const preferredDark = usePreferredDark();
 
@@ -21,7 +22,7 @@ useHead({
     { property: "og:locale", content: locale },
     {
       name: "theme-color",
-      content: () => (colorMode?.preference === "dark" ? "#30343A" : "#F3F4F6")
+      content: () => (colorMode.value === "dark" ? "#30343A" : "#F3F4F6")
     }
   ],
   link: [

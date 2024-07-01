@@ -108,6 +108,6 @@ export const setupMonacoTheme = async (monaco: typeof Monaco) => {
 
   const colorMode = useColorMode();
 
-  setTheme(colorMode.preference);
-  watch(() => colorMode.preference, setTheme);
+  setTheme(colorMode.value);
+  watch(() => colorMode.value, setTheme);
 };

@@ -3,7 +3,7 @@
     width="1.7em"
     viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
-    :fill="$colorMode?.preference === 'dark' ? '#e2e8f0' : '#1e293b'"
+    :fill="$colorMode.value === 'dark' ? '#e2e8f0' : '#1e293b'"
   >
     <circle cx="15.672" cy="15.184" r="11.544" fill-opacity="0.15" />
     <path
