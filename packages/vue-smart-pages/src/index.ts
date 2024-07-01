@@ -1,3 +1,6 @@
-import SmartPages from "./components/SmartPages";
+import { useSmartPages } from "./useSmartPages";
 
-export default SmartPages;
+export * from "./useSmartPages";
+export type * from "./types";
+
+export default useSmartPages;

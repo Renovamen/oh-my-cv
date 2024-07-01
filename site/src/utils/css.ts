@@ -1,57 +1,99 @@
-import { injectCSS } from "@renovamen/dynamic-css";
-import type { ResumeStyles } from "~/types";
+import { injectCss } from "@ohmycv/dynamic-css";
+import { useConstant } from "~/composables/constant";
+import type { ResumeStyles } from "~/composables/stores/style";
 
-const themeColorCss = (styles: ResumeStyles, id: string) => {
-  return (
-    `#${id} :not(.resume-header-item) > a { color: ${styles.themeColor} }` +
-    `#${id} h1, #${id} h2, #${id} h3 { color: ${styles.themeColor} }` +
-    `#${id} h2 { border-bottom-color: ${styles.themeColor} }`
-  );
-};
+const { RENDER } = useConstant();
 
-const lineHeightCss = (styles: ResumeStyles, id: string) => {
-  const height = styles.lineHeight;
-  return (
-    `#${id} p, #${id} li { line-height: ${height.toFixed(2)} }` +
-    `#${id} h2, #${id} h3 { line-height: ${(height * 1.154).toFixed(2)} }` +
-    `#${id} dl { line-height: ${(height * 1.038).toFixed(2)} }`
-  );
-};
+/**
+ * Service for injecting dynamic CSS into the document.
+ *
+ * Note: This service will not handle margins, height and width, which should be
+ * handled by the `vue-smart-pages` package.
+ */
+export class DynamicCssService {
+  constructor() {}
 
-const paragraphSpaceCss = (styles: ResumeStyles, id: string) => {
-  return `#${id} h2 { margin-top: ${styles.paragraphSpace}px }`;
-};
+  private _selector = (id?: string | number) => {
+    return `#resume-${id ?? RENDER.PREVIEW_ID}`;
+  };
 
-const fontFamilyCss = (styles: ResumeStyles, id: string) => {
-  const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
-  const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name;
-  return `#${id} { font-family: ${fontEN}, ${fontCJK} }`;
-};
+  private _injectedCssId = (type: "toolbar" | "css-editor", id?: string | number) => {
+    return `ohmycv-${type}-${id ?? RENDER.PREVIEW_ID}`;
+  };
 
-const fontSizeCss = (styles: ResumeStyles, id: string) => {
-  return `#${id} { font-size: ${styles.fontSize}px }`;
-};
+  private themeColor = (selector: string, styles: ResumeStyles) => {
+    return (
+      `${selector} :not(.resume-header-item) > a { color: ${styles.themeColor} }` +
+      `${selector} h1, ${selector} h2, ${selector} h3 { color: ${styles.themeColor} }` +
+      `${selector} h2 { border-bottom-color: ${styles.themeColor} }`
+    );
+  };
 
-const paperCss = (styles: ResumeStyles) => {
-  return `@media print { @page { size: ${styles.paper}; } }`;
-};
+  private lineHeight = (selector: string, styles: ResumeStyles) => {
+    const height = styles.lineHeight;
 
-export const setDynamicCss = (styles: ResumeStyles, id: string) => {
-  const pageId = `vue-smart-pages-${id}`;
+    return (
+      `${selector} p, ${selector} li { line-height: ${height.toFixed(2)} }` +
+      `${selector} h2, ${selector} h3 { line-height: ${(height * 1.154).toFixed(2)} }` +
+      `${selector} dl { line-height: ${(height * 1.038).toFixed(2)} }`
+    );
+  };
 
-  const content =
-    fontFamilyCss(styles, pageId) +
-    fontSizeCss(styles, pageId) +
-    themeColorCss(styles, pageId) +
-    paragraphSpaceCss(styles, pageId) +
-    lineHeightCss(styles, pageId) +
-    (id === "preview" ? paperCss(styles) : "");
+  private paragraphSpace = (selector: string, styles: ResumeStyles) => {
+    return `${selector} h2 { margin-top: ${styles.paragraphSpace}px }`;
+  };
 
-  injectCSS(content, `oh-my-cv-dynamic-${id}`);
-};
+  private fontFamily = (selector: string, styles: ResumeStyles) => {
+    const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
+    const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name;
+    return `${selector} { font-family: ${fontEN}, ${fontCJK} }`;
+  };
 
-export const setBackboneCss = (css: string, id: string) => {
-  if (id !== "preview") css = css.replaceAll(PREVIEW_SELECTOR, `#vue-smart-pages-${id}`);
+  private fontSize = (selector: string, styles: ResumeStyles) => {
+    return `${selector} { font-size: ${styles.fontSize}px }`;
+  };
 
-  injectCSS(css, `oh-my-cv-backbone-${id}`);
-};
+  private paperSize = (styles: ResumeStyles) => {
+    return `@media print { @page { size: ${styles.paper}; } }`;
+  };
+
+  /**
+   * Inject CSS that controlled by the toolbar into the document.
+   *
+   * @param styles Resume styles
+   * @param id Element ID of the corresponding resume element (dashboard). If not
+   * provided, it will be set to "preview", which is the preview view in the editor.
+   */
+  public injectToolbar(styles: ResumeStyles, id?: string | number) {
+    const selector = this._selector(id);
+
+    const css =
+      this.fontFamily(selector, styles) +
+      this.fontSize(selector, styles) +
+      this.themeColor(selector, styles) +
+      this.paragraphSpace(selector, styles) +
+      this.lineHeight(selector, styles) +
+      // We only need to set paper size for the preview view in the editor
+      (id === undefined ? this.paperSize(styles) : "");
+
+    injectCss(this._injectedCssId("toolbar", id), css);
+  }
+
+  /**
+   * Inject CSS that controlled by the CSS editor into the document.
+   *
+   * @param css CSS string
+   * @param id Element ID of the corresponding resume element (dashboard). If not
+   * provided, it will be set to "preview", which is the preview view in the editor.
+   */
+  public injectCssEditor(css: string, id?: string | number) {
+    if (id !== undefined) {
+      // To control each resume element (dashboard) separately
+      css = css.replaceAll(RENDER.PREVIEW_SELECTOR, this._selector(id));
+    }
+
+    injectCss(this._injectedCssId("css-editor", id), css);
+  }
+}
+
+export const dynamicCssService = new DynamicCssService();

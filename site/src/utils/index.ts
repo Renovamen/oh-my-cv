@@ -1,2 +1,1 @@
-export * from "./constants/data";
-export * from "./constants/default";
+export { StorageService, storageService, IsValid } from "./storage";

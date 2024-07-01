@@ -7,7 +7,7 @@ head:
   keywords: resume maker, cv maker, curriculum vitae maker, markdown resume
 
 landing:
-  hero: Write your <span text-brand>resume</span> in Markdown!
+  hero: Write your <span text-primary>resume</span> in Markdown!
   desc: is a free and open source tool created to build and manage your resumes as easy as possible, without losing the privacy of your data.
   start: Create My Resume
   feats:
@@ -16,32 +16,33 @@ landing:
     - title: Privacy First
       items: Open source and free<br>Data are saved locally<br>No login or registration required<br>No user tracking<br>No ads
 
-resumes:
+dashboard:
   my_resumes: My Resumes
   created: "Created: "
   updated: "Updated: "
   new: New
-  save: Save
   saveas: Save as...
   import: Import from...
   rename: Rename
   duplicate: Duplicate
   delete: Delete
 
-import:
-  title: Import a Markdown file
-  from_local: Drag your file here, or click here to choose a file
-  from_url: Paste file URL
-
 toolbar:
   file:
-    text: Import / Export
-    import: Import Markdown
+    text: File
+    save: Save
+    rename: Rename
+    import:
+      trigger: Import Markdown
+      dialog:
+        header: Import a Markdown file
+        from_local: Drag your file here, or click here to choose a file
+        from_url: Paste file URL
     export_pdf: Export PDF
     export_md: Export Markdown
   correct_case:
     text: Correct Case
-    desc: "Example: \"Github\" → \"GitHub\" <br> Note: the words only including uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched"
+    desc: "Example: \"Github\" → \"GitHub\" <br> Note: Words that are only in uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched."
     btn : Correct it!
   paper: Paper Size
   font_family: Font Family

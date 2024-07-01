@@ -1,0 +1,38 @@
+{
+  "name": "@ohmycv/google-fonts-loader",
+  "version": "0.1.1",
+  "description": "Load Goolge Fonts with ease.",
+  "keywords": [
+    "google fonts",
+    "fonts"
+  ],
+  "homepage": "https://github.com/Renovamen/oh-my-cv/tree/main/packages/gfonts-loader",
+  "bugs": {
+    "url": "https://github.com/Renovamen/oh-my-cv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renovamen/oh-my-cv.git",
+    "directory": "packages/gfonts-loader"
+  },
+  "license": "MIT",
+  "author": "Renovamen <renovamenzxh@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build-fast:pkg": "tsup src/index.ts --format cjs,esm",
+    "build:pkg": "pnpm run build-fast:pkg --dts"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

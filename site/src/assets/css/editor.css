@@ -1,0 +1,61 @@
+#editor-page {
+  height: 100vh;
+  height: 100dvh;
+}
+
+#resume-preview {
+  @apply flex flex-col gap-1.5;
+}
+
+.pane-container {
+  @apply h-full rounded-xl overflow-scroll;
+}
+
+/* Print mode */
+
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  #editor-page {
+    height: auto;
+  }
+
+  .workspace,
+  [data-panel-group-id="splitter-editor"] {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  header,
+  .toaster.group,
+  #zoom-bar,
+  #code-pane,
+  #code-preview-handle,
+  #tools-pane,
+  #nuxt-devtools-container {
+    display: none !important;
+  }
+
+  .pane-container {
+    border: none;
+    border-radius: 0;
+  }
+
+  .vue-zoom {
+    transform: scale(1) !important;
+    margin: 0 !important;
+  }
+
+  #resume-preview {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    gap: 0;
+  }
+
+  #resume-preview [data-scope="vue-smart-pages"][data-part="page"] {
+    break-before: page;
+    height: 100vh !important;
+  }
+}

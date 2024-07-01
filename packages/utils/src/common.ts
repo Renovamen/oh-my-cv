@@ -1,15 +1,6 @@
-export const isClient = typeof window !== "undefined";
+import { isObject } from "./is";
 
-export const isMac = isClient
-  ? /mac/i.test(navigator.userAgentData?.platform || navigator.platform)
-  : false;
-
-export const isExternal = (path: string) => {
-  const outboundRE = /^(https?:|mailto:|tel:)/;
-  return outboundRE.test(path);
-};
-
-// https://github.com/meteorlxy/vscode-slugify
+// Copied from https://github.com/meteorlxy/vscode-slugify
 export const slugify = (str: string) =>
   encodeURI(
     str
@@ -24,5 +15,26 @@ export const slugify = (str: string) =>
       .replace(/\-+$/, "") // Remove trailing -
   );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const copy = (obj: any) => JSON.parse(JSON.stringify(obj));
+export const htmlEscape = (str: string) => {
+  const escapeMap: Record<string, string> = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "'": "&#39;",
+    '"': "&quot;"
+  };
+
+  return str.replace(/[&<>'"]/g, (char) => escapeMap[char]);
+};
+
+export const copy = <T>(obj: T): T => {
+  if (isObject(obj)) return JSON.parse(JSON.stringify(obj));
+  throw new Error("Input must be a non-null object.");
+};
+
+export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export const now = () => Date.now();
+
+export const arrayify = <T>(value: T | T[]): T[] =>
+  Array.isArray(value) ? value : [value];

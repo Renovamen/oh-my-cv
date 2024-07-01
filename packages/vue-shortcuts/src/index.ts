@@ -2,41 +2,42 @@ import { watch } from "vue";
 import { useMagicKeys } from "@vueuse/core";
 import { isMac } from "@renovamen/utils";
 
+/**
+ * Handle keyboard shortcuts, dealing ctrl/meta key for Windows/Mac automatically.
+ *
+ * @param keys Keyboard shortcuts, split by `+`, e.g. `ctrl+shift+e`.
+ * @param cb Callback function to be called when the shortcuts are triggered.
+ */
 export const useShortcuts = (keys: string, cb: () => void) => {
-  const newKeys = keys.replace("ctrl", isMac ? "meta" : "ctrl");
+  const adjustedKeys = keys.replace("ctrl", isMac ? "meta" : "ctrl").split("+");
 
   const magic = useMagicKeys({
     passive: false,
     onEventFired: (e) => {
       if (e.type !== "keydown") return;
 
-      let flag = true;
-
-      for (const item of newKeys.split("+")) {
-        switch (item) {
+      const isKeyActive = (key: string) => {
+        switch (key) {
           case "ctrl":
-            if (!e.ctrlKey) flag = false;
-            break;
+            return e.ctrlKey;
           case "meta":
-            if (!e.metaKey) flag = false;
-            break;
+            return e.metaKey;
           case "shift":
-            if (!e.shiftKey) flag = false;
-            break;
+            return e.shiftKey;
           default:
-            if (e.key !== item) flag = false;
+            return e.key === key;
         }
-      }
+      };
 
-      if (flag) e.preventDefault();
+      if (adjustedKeys.every(isKeyActive)) e.preventDefault();
     }
   });
 
-  const shortcuts = magic[newKeys];
+  const shortcuts = magic[adjustedKeys.join("+")];
   const { current } = magic;
 
   watch(shortcuts, (v) => {
-    if (v && current.size === newKeys.split("+").length) cb();
+    if (v && current.size === adjustedKeys.length) cb();
   });
 };
 

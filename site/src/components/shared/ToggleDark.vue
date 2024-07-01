@@ -1,12 +1,15 @@
 <template>
-  <button
-    class="round-btn"
-    :title="$t('toggle_dark')"
+  <UiButton
+    variant="ghost-secondary"
+    size="round"
+    :aria-label="$t('toggle_dark')"
     @click="$colorMode.preference = $colorMode.preference === 'dark' ? 'light' : 'dark'"
   >
-    <span
-      :class="$colorMode.preference === 'dark' ? 'i-ph:moon-bold' : 'i-ph:sun-bold'"
-      md:text-lg
+    <div
+      class="i-ph:sun-bold size-4 scale-100 rotate-0 dark:(scale-0 -rotate-90) transition-transform duration-500"
     />
-  </button>
+    <div
+      class="i-ph:moon-bold size-4 absolute scale-0 rotate-90 dark:(scale-100 rotate-0) transition-transform duration-500"
+    />
+  </UiButton>
 </template>

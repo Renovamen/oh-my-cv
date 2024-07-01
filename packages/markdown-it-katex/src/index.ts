@@ -1,5 +1,3 @@
-// Adapted from https://github.com/waylonflinn/markdown-it-katex
-
 import Katex, { type KatexOptions } from "katex";
 import type {
   PluginWithOptions,
@@ -7,7 +5,7 @@ import type {
   ParserBlock,
   ParserInline
 } from "markdown-it";
-import { htmlEscape } from "./utils";
+import { htmlEscape } from "@renovamen/utils";
 
 const isValidDelim = (
   state: StateInline,
@@ -16,39 +14,23 @@ const isValidDelim = (
   const prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1;
   const nextChar = pos + 1 <= state.posMax ? state.src.charCodeAt(pos + 1) : -1;
 
-  let canOpen = true;
-  let canClost = true;
+  // 0x20: " ", 0x09: \t
+  const isWhitespace = (char: number) => char === 0x20 || char === 0x09;
+  // 0x30: "0", 0x39: "9"
+  const isDigit = (char: number) => char >= 0x30 && char <= 0x39;
 
-  /*
-   * Check non-whitespace conditions for opening and closing, and
-   * check that closing delimeter isn't followed by a number
-   */
-  if (
-    prevChar === 0x20 /* " " */ ||
-    prevChar === 0x09 /* \t */ ||
-    (nextChar >= 0x30 /* "0" */ && nextChar <= 0x39) /* "9" */
-  ) {
-    canClost = false;
-  }
-  if (nextChar === 0x20 /* " " */ || nextChar === 0x09 /* \t */) {
-    canOpen = false;
-  }
+  const canOpen = !isWhitespace(nextChar);
+  const canClose = !isWhitespace(prevChar) && !isDigit(nextChar);
 
-  return {
-    canOpen: canOpen,
-    canClose: canClost
-  };
+  return { canOpen, canClose };
 };
 
 const mathInline: ParserInline.RuleInline = (state, silent) => {
-  let match, token, res, pos;
-
   if (state.src[state.pos] !== "$") return false;
 
-  res = isValidDelim(state, state.pos);
+  const res = isValidDelim(state, state.pos);
   if (!res.canOpen) {
     if (!silent) state.pending += "$";
-
     state.pos += 1;
     return true;
   }
@@ -60,12 +42,12 @@ const mathInline: ParserInline.RuleInline = (state, silent) => {
    * we have found an opening delimieter already.
    */
   const start = state.pos + 1;
+  let match = start;
 
-  match = start;
   while ((match = state.src.indexOf("$", match)) !== -1) {
     // Found potential $, look for escapes, pos will point to
     // first non escape when complete
-    pos = match - 1;
+    let pos = match - 1;
     while (state.src[pos] === "\\") pos -= 1;
 
     // Even number of escapes, potential closing delimiter found
@@ -77,7 +59,6 @@ const mathInline: ParserInline.RuleInline = (state, silent) => {
   // No closing delimter found.  Consume $ and continue.
   if (match === -1) {
     if (!silent) state.pending += "$";
-
     state.pos = start;
     return true;
   }
@@ -85,70 +66,60 @@ const mathInline: ParserInline.RuleInline = (state, silent) => {
   // Check if we have empty content, ie: $$.  Do not parse.
   if (match - start === 0) {
     if (!silent) state.pending += "$$";
-
     state.pos = start + 1;
     return true;
   }
 
   // Check for valid closing delimiter
-  res = isValidDelim(state, match);
-
-  if (!res.canClose) {
+  const closeDelim = isValidDelim(state, match);
+  if (!closeDelim.canClose) {
     if (!silent) state.pending += "$";
-
     state.pos = start;
     return true;
   }
 
   if (!silent) {
-    token = state.push("mathInline", "math", 0);
+    const token = state.push("mathInline", "math", 0);
     token.markup = "$";
     token.content = state.src.slice(start, match);
   }
 
   state.pos = match + 1;
-
   return true;
 };
 
 const mathBlock: ParserBlock.RuleBlock = (state, start, end, silent) => {
-  let firstLine;
-  let lastLine;
-  let next;
-  let lastPos;
-  let found = false;
   let pos = state.bMarks[start] + state.tShift[start];
-  let max = state.eMarks[start];
+  const max = state.eMarks[start];
 
-  if (pos + 2 > max) return false;
-  if (state.src.slice(pos, pos + 2) !== "$$") return false;
+  if (pos + 2 > max || state.src.slice(pos, pos + 2) !== "$$") return false;
 
   pos += 2;
-  firstLine = state.src.slice(pos, max);
+  let firstLine = state.src.slice(pos, max);
 
   if (silent) return true;
 
-  if (firstLine.trim().endsWith("$$")) {
-    // Single line expression
-    firstLine = firstLine.trim().slice(0, -2);
-    found = true;
-  }
+  let found = firstLine.trim().endsWith("$$");
+  // Single line expression
+  if (found) firstLine = firstLine.trim().slice(0, -2);
 
-  for (next = start; !found; ) {
+  let next = start;
+  let lastLine = "";
+
+  while (!found) {
     next += 1;
 
     if (next >= end) break;
 
     pos = state.bMarks[next] + state.tShift[next];
-    max = state.eMarks[next];
+    const lineMax = state.eMarks[next];
 
-    if (pos < max && state.tShift[next] < state.blkIndent)
-      // non-empty line with negative indent should stop the list:
-      break;
+    // Non-empty line with negative indent should stop the list
+    if (pos < lineMax && state.tShift[next] < state.blkIndent) break;
 
-    if (state.src.slice(pos, max).trim().endsWith("$$")) {
-      lastPos = state.src.slice(0, max).lastIndexOf("$$");
-      lastLine = state.src.slice(pos, lastPos);
+    const trimmedLine = state.src.slice(pos, lineMax).trim();
+    if (trimmedLine.endsWith("$$")) {
+      lastLine = trimmedLine.slice(0, -2);
       found = true;
     }
   }
@@ -159,58 +130,57 @@ const mathBlock: ParserBlock.RuleBlock = (state, start, end, silent) => {
 
   token.block = true;
   token.content =
-    (firstLine?.trim() ? `${firstLine}\n` : "") +
+    (firstLine.trim() ? `${firstLine}\n` : "") +
     state.getLines(start + 1, next, state.tShift[start], true) +
-    (lastLine?.trim() ? lastLine : "");
+    (lastLine.trim() ? lastLine : "");
   token.map = [start, state.line];
   token.markup = "$$";
 
   return true;
 };
 
+/**
+ * A markdown-it plugin for rendering KaTeX math expressions, improved from
+ * https://github.com/waylonflinn/markdown-it-katex.
+ *
+ * This one is typed and has clearer code.
+ */
 export const MarkdownItKatex: PluginWithOptions<KatexOptions> = (
   md,
   options = { throwOnError: false }
 ) => {
-  // set KaTeX as the renderer for markdown-it-simplemath
-  const katexInline = (tex: string, options: KatexOptions): string => {
-    options.displayMode = false;
+  const renderKatex = (
+    tex: string,
+    options: KatexOptions,
+    displayMode: boolean // Whether to render as block math
+  ): string => {
+    options.displayMode = displayMode;
 
     try {
-      return Katex.renderToString(tex, options);
+      return displayMode
+        ? `<p>${Katex.renderToString(tex, options)}</p>\n`
+        : Katex.renderToString(tex, options);
     } catch (error) {
       if (options.throwOnError) console.warn(error);
 
-      return `<span title='${htmlEscape((error as Error).toString())}'>${htmlEscape(
-        tex
-      )}</span>`;
-    }
-  };
+      const errorMsg = htmlEscape((error as Error).toString());
+      const escapedTex = htmlEscape(tex);
 
-  const katexBlock = (tex: string, options: KatexOptions): string => {
-    options.displayMode = true;
-
-    try {
-      return `<p>${Katex.renderToString(tex, options)}</p>\n`;
-    } catch (error) {
-      if (options.throwOnError) console.warn(error);
-
-      return `<p class='katex-error' title='${htmlEscape(
-        (error as Error).toString()
-      )}'>${htmlEscape(tex)}</p>\n`;
+      return displayMode
+        ? `<p class='katex-error' title='${errorMsg}'>${escapedTex}</p>\n`
+        : `<span title='${errorMsg}'>${escapedTex}</span>`;
     }
   };
 
   md.inline.ruler.after("escape", "mathInline", mathInline);
-  // It’s a workaround here because types issue
   md.block.ruler.after("blockquote", "mathBlock", mathBlock, {
     alt: ["paragraph", "reference", "blockquote", "list"]
   });
 
   md.renderer.rules.mathInline = (tokens, idx): string =>
-    katexInline(tokens[idx].content, options);
+    renderKatex(tokens[idx].content, options, false);
   md.renderer.rules.mathBlock = (tokens, idx): string =>
-    katexBlock(tokens[idx].content, options);
+    renderKatex(tokens[idx].content, options, true);
 };
 
 export default MarkdownItKatex;

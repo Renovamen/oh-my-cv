@@ -1,47 +1,43 @@
-// Borrowed from https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
+const sheetsMap = new Map<string, HTMLStyleElement>();
 
-const supportsConstructedSheet = (() => {
-  try {
-    new CSSStyleSheet();
-    return true;
-  } catch (e) {}
-  return false;
-})();
+/**
+ * Dynamically injects CSS into the document. Borrowed from Vite:
+ * https://github.com/vitejs/vite/blob/main/packages/vite/src/client/client.ts
+ *
+ * This used to be implemented using constructable stylesheets, but that was abandoned
+ * due to low performance, see https://github.com/vitejs/vite/pull/11818.
+ *
+ * @param id To make sure the CSS won't override each other.
+ * @param content A string of CSS to inject.
+ */
+export const injectCss = (id: string, content: string) => {
+  let style = sheetsMap.get(id);
 
-const sheet = undefined as CSSStyleSheet | HTMLStyleElement | undefined;
-const sheetMap = {} as { [key: string]: CSSStyleSheet | HTMLStyleElement };
+  if (!style) {
+    style = document.createElement("style");
 
-export const injectCSS = (cssText: string, id?: string) => {
-  let styleSheet = id ? sheetMap[id] : sheet;
+    style.setAttribute("type", "text/css");
+    style.setAttribute("data-dynamic-css-id", id);
+    style.textContent = content;
 
-  if (supportsConstructedSheet) {
-    // Use constructed sheet if supported
-    if (styleSheet && !(styleSheet instanceof CSSStyleSheet)) {
-      styleSheet = undefined;
-    }
-
-    if (!styleSheet) {
-      styleSheet = new CSSStyleSheet();
-      styleSheet.replaceSync(cssText);
-      document.adoptedStyleSheets = [...document.adoptedStyleSheets, styleSheet];
-    } else {
-      styleSheet.replaceSync(cssText);
-    }
+    document.head.appendChild(style);
   } else {
-    // Use <style> element on browsers that don't support constructed sheet
-    if (styleSheet && !(styleSheet instanceof HTMLStyleElement)) {
-      styleSheet = undefined;
-    }
-
-    if (!styleSheet) {
-      styleSheet = document.createElement("style");
-      styleSheet.setAttribute("type", "text/css");
-      styleSheet.innerHTML = cssText;
-      document.head.appendChild(styleSheet);
-    } else {
-      styleSheet.innerHTML = cssText;
-    }
+    style.textContent = content;
   }
+
+  sheetsMap.set(id, style);
 };
 
-export default injectCSS;
+/**
+ * Remove the CSS from the document.
+ *
+ * @param id The ID of the CSS to remove.
+ */
+export const removeCss = (id: string) => {
+  const style = sheetsMap.get(id);
+
+  if (style) {
+    document.head.removeChild(style);
+    sheetsMap.delete(id);
+  }
+};

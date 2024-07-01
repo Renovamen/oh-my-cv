@@ -2,7 +2,7 @@
   <div class="font-ui">
     <VitePwaManifest />
     <NuxtPage />
-    <ToastList />
+    <UiToaster rich-colors close-button />
   </div>
 </template>
 

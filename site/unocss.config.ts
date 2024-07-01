@@ -8,38 +8,19 @@ import {
   transformerVariantGroup
 } from "unocss";
 import { i18n } from "./configs/i18n";
+import presetAnimations from "unocss-preset-animations";
+import { presetShadcn } from "unocss-preset-shadcn";
 
 export default defineConfig({
   shortcuts: [
-    ["flex-center", "flex items-center justify-center"],
-    ["hstack", "flex items-center"],
-    ["text-c", "text-gray-600 dark:text-gray-300"],
-    ["text-light-c", "text-gray-500 dark:text-gray-400"],
-    ["text-lighter-c", "text-gray-400 dark:text-gray-500"],
-    ["text-dark-c", "text-black dark:text-white"],
-    ["text-brand", "text-red-500 dark:text-rose-400"],
-    ["bg-c", "bg-white dark:bg-slate-700"],
-    ["bg-dark-c", "bg-gray-100 dark:bg-slate-600"],
-    ["bg-darker-c", "bg-gray-200 dark:bg-slate-500"],
-    ["bg-brand", "bg-red-400 dark:bg-rose-400"],
-    ["border-c", "border-gray-300 dark:border-gray-500"],
-    ["border-dark-c", "border-gray-500 dark:border-gray-400"],
-    ["border-darker-c", "border-black dark:border-gray-200"],
-    ["border-light-c", "border-gray-200 dark:border-slate-500"],
-    ["hide-on-mobile", "lt-md:hidden"],
-    ["shadow-c", "shadow shadow-slate-300 dark:shadow-slate-800"],
-    [
-      "dropdown-container",
-      "bg-c border border-c rounded shadow-c overflow-x-hidden overflow-y-scroll"
-    ],
-    ["dropdown-li", "hstack px-3 h-8 truncate cursor-pointer hover:bg-dark-c"],
-    ["circle", "rounded-full flex-center"],
-    ["round-btn", "circle size-7 md:size-8 hover:bg-darker-c"],
-    ["rect-btn", "hstack space-x-1.5 px-2.5 py-1.5 rounded"],
-    [
-      "resume-card",
-      "cursor-pointer mx-auto overflow-hidden rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
-    ]
+    {
+      "flex-center": "flex items-center justify-center",
+      hstack: "flex items-center",
+      "hide-on-mobile": "lt-md:hidden",
+      "shadow-c": "shadow shadow-gray-300 dark:shadow-neutral-900",
+      "resume-card":
+        "cursor-pointer mx-auto overflow-hidden rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
+    }
   ],
   theme: {
     breakpoints: {
@@ -60,9 +41,56 @@ export default defineConfig({
       fonts: {
         ui: "Lato:400,700"
       }
-    })
+    }),
+    presetAnimations(),
+    presetShadcn(
+      {
+        color: {
+          base: "orange",
+          light: {
+            background: "0 0% 100%",
+            foreground: "215 25% 27%",
+            card: "0 0% 100%",
+            "card-foreground": "215 25% 27%",
+            popover: "0 0% 100%",
+            "popover-foreground": "215 25% 27%",
+            secondary: "220 13% 91%",
+            "secondary-foreground": "220.9 39.3% 11%", // gray
+            muted: "220 14.3% 95.9%", // gray
+            "muted-foreground": "220 8.9% 46.1%", // gray
+            accent: "220 14.3% 95.9%", // gray
+            "accent-foreground": "220.9 39.3% 11%", // gray
+            border: "216 12% 85%",
+            input: "216 12% 85%"
+          },
+          dark: {
+            background: "213 12% 15%",
+            foreground: "0 0% 90%",
+            card: "213 12% 15%",
+            "card-foreground": "0 0% 90%",
+            popover: "213 12% 15%",
+            "popover-foreground": "0 0% 90%",
+            secondary: "230 5% 36%",
+            "secondary-foreground": "0 0% 98%", // neutral
+            muted: "220 10% 21%",
+            "muted-foreground": "0 0% 63.9%", // neutral
+            accent: "220 10% 21%",
+            "accent-foreground": "0 0% 98%", // neutral
+            border: "0 0% 45%",
+            input: "0 0% 45%"
+          }
+        }
+      },
+      false
+    )
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
+  content: {
+    pipeline: {
+      // https://github.com/fisand/unocss-preset-shadcn
+      include: [/\.ts/, /\.vue$/, /\.vue\?vue/]
+    }
+  },
   // @ts-expect-error icon is a customized key
   safelist: i18n.locales.map((item) => item.icon)
 });

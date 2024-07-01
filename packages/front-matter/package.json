@@ -1,7 +1,7 @@
 {
-  "name": "@renovamen/front-matter",
+  "name": "@ohmycv/front-matter",
   "version": "0.1.1",
-  "description": "Extract YAML front matter from a string",
+  "description": "A better `js-yaml`, for extracting and parsing YAML front matter from strings.",
   "keywords": [
     "yaml",
     "front matter",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.12.8"
+    "@types/node": "^20.14.8"
   },
   "publishConfig": {
     "access": "public"

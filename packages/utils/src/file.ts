@@ -1,47 +1,79 @@
-export const fetchFile = async (url: string) => {
+import type { Callback } from "./types";
+
+export const fetchFile = async (url: string): Promise<string> => {
   try {
     const res = await fetch(url);
-    if (!res.ok) throw Error("Request error: " + res);
-    return res.text();
+
+    if (!res.ok) {
+      throw new Error(`Request error: ${res.status} ${res.statusText}`);
+    }
+
+    return await res.text();
   } catch (error) {
-    return Promise.reject(error);
+    return Promise.reject(error instanceof Error ? error : new Error(String(error)));
   }
 };
 
-export const uploadFile = (callback: (content: string) => void, accept?: string) => {
-  const upload = (e: Event) => {
-    e.stopPropagation();
+/**
+ * Open file dialog with ease. This hook differs from vueuse's useFileDialog in that it
+ * doesn't require Vue.
+ *
+ * @param accept File types to accept
+ * @returns
+ */
+export const useFileDialog = (accept?: string) => {
+  let callback: Callback<File> | null = null;
 
-    if (
-      !(e.target as HTMLInputElement).files ||
-      (e.target as HTMLInputElement).files!.length < 1
-    )
-      return;
+  let input: HTMLInputElement | undefined;
 
-    const file: File = (e.target as HTMLInputElement).files![0];
-    let fileReader: FileReader | null = null;
+  if (document) {
+    input = document.createElement("input");
 
-    const handleFileRead = () => {
-      const content = (fileReader as FileReader).result as string;
-      callback(content);
+    input.type = "file";
+    input.style.display = "none";
+    if (accept) input.accept = accept;
+
+    input.onchange = (event: Event) => {
+      const target = event.target as HTMLInputElement;
+      const file = target.files?.[0];
+
+      if (file && callback) callback(file);
     };
+  }
 
-    fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
-    fileReader.readAsText(file);
+  const open = () => {
+    if (!input) return;
+
+    document.body.appendChild(input);
+    input.click();
+    document.body.removeChild(input);
   };
 
-  const element = document.createElement("input");
+  const onChange = (cb: Callback<File>) => {
+    callback = cb;
+  };
 
-  element.style.display = "none";
-  element.type = "file";
-  element.onchange = upload;
-  if (accept) element.accept = accept;
+  return {
+    open,
+    onChange
+  };
+};
 
-  document.body.appendChild(element);
-  element.click();
+/**
+ * Read file content as text.
+ *
+ * @param file File object
+ * @returns Promise containing file content as string
+ */
+export const readFile = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
 
-  document.body.removeChild(element);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(new Error("Failed to read file"));
+
+    reader.readAsText(file);
+  });
 };
 
 export const downloadFile = (filename: string, content: string) => {
@@ -53,6 +85,5 @@ export const downloadFile = (filename: string, content: string) => {
 
   document.body.appendChild(element);
   element.click();
-
   document.body.removeChild(element);
 };

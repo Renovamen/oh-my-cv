@@ -1,6 +1,4 @@
-import { extractFrontMatter } from "./front-matter";
+import { FrontMatterParser } from "./front-matter";
 
-export default extractFrontMatter;
-
+export default FrontMatterParser;
 export * from "./front-matter";
-export * from "./types";
