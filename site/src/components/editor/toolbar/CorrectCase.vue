@@ -29,8 +29,6 @@ const correct = async () => {
   const result = replace(md);
 
   setAndSyncToMonaco("markdown", result?.code ?? md);
-
-  const corrected = result?.changed.length ?? true;
-  toast.correct(corrected);
+  toast.correct(result?.changed);
 };
 </script>

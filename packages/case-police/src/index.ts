@@ -35,3 +35,5 @@ export const replace = (
 };
 
 export default replace;
+
+export type { Preset, CasePoliceReturn, ChangedCase } from "./utils";

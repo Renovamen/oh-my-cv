@@ -13,14 +13,15 @@ import softwares from "case-police/dict/softwares.json" assert { type: "json" };
 
 export type Preset = "softwares" | "products" | "general" | "brands" | "abbreviates";
 
-type ChangedWord = {
+export type ChangedCase = {
   from: string;
   to: string;
   index: number;
 };
+
 export type CasePoliceReturn = {
   code: string;
-  changed: ChangedWord[];
+  changed: ChangedCase[];
 };
 
 export const DISABLE_KEY = "@case-police-disable";
@@ -61,7 +62,7 @@ export function replaceCore(
     );
   });
 
-  const changed = [] as ChangedWord[];
+  const changed = [] as ChangedCase[];
 
   code = code.replace(regex, (_, from: string, index: number) => {
     if (containsUTF8(code, from, index)) return _;

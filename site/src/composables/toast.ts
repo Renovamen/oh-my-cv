@@ -1,4 +1,5 @@
 import { toast } from "vue-sonner";
+import type { ChangedCase } from "@ohmycv/case-police";
 
 export const useToast = () => {
   const nuxtApp = useNuxtApp();
@@ -28,11 +29,23 @@ export const useToast = () => {
     );
   };
 
-  const correct = (msg: true | number) => {
-    if (msg === true) {
-      toast.info(nuxtApp.$i18n.t("notification.correct.no"));
+  const correct = (msg?: ChangedCase[]) => {
+    if (msg?.length) {
+      const groups = msg.reduce<Record<string, number>>((acc, { from, to }) => {
+        const key = `${from} → ${to}`;
+        acc[key] = (acc[key] ?? 0) + 1;
+        return acc;
+      }, {});
+
+      const description = Object.entries(groups)
+        .map(([key, count]) => `${key}${count > 1 ? ` (x${count})` : ""}`)
+        .join(", ");
+
+      toast.success(nuxtApp.$i18n.t("notification.correct.yes", { num: msg.length }), {
+        description
+      });
     } else {
-      toast.success(nuxtApp.$i18n.t("notification.correct.yes", { num: msg }));
+      toast.info(nuxtApp.$i18n.t("notification.correct.no"));
     }
   };
 
