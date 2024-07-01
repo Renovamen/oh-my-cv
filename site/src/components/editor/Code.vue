@@ -13,8 +13,8 @@
         class="absolute left-0 bottom-0 h-0.5 bg-primary rounded-full w-[--radix-tabs-indicator-size] translate-x-[--radix-tabs-indicator-position] transition-[width,transform] duration-300"
       />
 
-      <TabsTrigger value="markdown" p="x-2">Markdown</TabsTrigger>
-      <TabsTrigger value="css" p="x-4">CSS</TabsTrigger>
+      <TabsTrigger value="markdown" p="x-2" :disabled="loading">Markdown</TabsTrigger>
+      <TabsTrigger value="css" p="x-4" :disabled="loading">CSS</TabsTrigger>
     </TabsList>
 
     <div ref="editor" flex-1 />
@@ -23,7 +23,7 @@
 
 <script lang="ts" setup>
 const editor = ref<HTMLDivElement>();
-const { setup, activateModel, dispose } = useMonaco();
+const { setup, activateModel, dispose, loading } = useMonaco();
 
 onMounted(async () => {
   await setup(editor.value);

@@ -2,14 +2,15 @@
   <div class="absolute right-3 top-3 space-y-2">
     <UiButton
       size="round"
-      class="flex hover:ring-none bg-gray-500/80 hover:bg-gray-500"
+      class="flex hover:ring-none bg-gray-500/90 hover:bg-gray-500"
       @click="duplicate"
     >
       <span i-ion:duplicate />
     </UiButton>
     <UiButton
       size="round"
-      class="flex hover:ring-none bg-gray-500/80 hover:bg-gray-500"
+      variant="destructive"
+      class="flex bg-destructive/90 hover:bg-destructive"
       @click="remove"
     >
       <span i-material-symbols:delete-outline-rounded />

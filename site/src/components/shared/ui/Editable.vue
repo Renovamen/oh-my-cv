@@ -1,7 +1,7 @@
 <template>
   <EditableRoot v-slot="{ isEditing }" v-bind="forwarded">
     <EditableArea class="w-full">
-      <EditablePreview />
+      <EditablePreview class="cursor-pointer" />
       <EditableInput />
     </EditableArea>
 

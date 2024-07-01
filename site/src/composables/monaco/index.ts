@@ -13,9 +13,12 @@ const useMonacoState = () =>
 
 export const useMonaco = () => {
   const states = useMonacoState();
+  const loading = useState<boolean>("monacoLoading", () => false);
 
   const setup = async (container?: HTMLElement) => {
     if (!isClient || !container) return;
+
+    loading.value = true;
 
     const { editor } = await setupMonacoEditor(container);
     const { data, setData } = useDataStore();
@@ -31,13 +34,17 @@ export const useMonaco = () => {
     );
 
     states.value = { editor, markdown, css };
+
+    loading.value = false;
   };
 
   const dispose = () => {
     states.value?.editor.dispose();
     states.value?.markdown.dispose();
     states.value?.css.dispose();
+
     states.value = undefined;
+    loading.value = false;
   };
 
   const activateModel = (model: "markdown" | "css") => {
@@ -52,6 +59,7 @@ export const useMonaco = () => {
     setup,
     dispose,
     activateModel,
-    setContent
+    setContent,
+    loading
   };
 };
