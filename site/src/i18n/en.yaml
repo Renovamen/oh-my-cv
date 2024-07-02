@@ -7,14 +7,14 @@ head:
   keywords: resume maker, cv maker, curriculum vitae maker, markdown resume
 
 landing:
-  hero: Write your <span text-primary>resume</span> in Markdown!
-  desc: is a free and open source tool created to build and manage your resumes as easy as possible, without losing the privacy of your data.
+  hero: Write your <span text-primary>resumes</span> in Markdown!
+  desc: is a free, open-source tool that helps you easily create and manage your resumes, while keeping your data private.
   start: Create My Resume
   feats:
     - title: Simple and Powerful
-      items: Manage multiple resumes<br>Real-time preview<br>Export to PDF format<br>Fully customizable<br>Pick fonts and add icons<br>And <a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">more features</a>
+      items: Manage multiple resumes<br>Real-time preview<br>Export to PDF<br>Fully customizable<br>Choose fonts and add icons<br>And <a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">more features</a>
     - title: Privacy First
-      items: Open source and free<br>Data are saved locally<br>No login or registration required<br>No user tracking<br>No ads
+      items: Open source and free<br>All data is saved locally<br>No login or registration needed<br>No user tracking<br>No ads
 
 dashboard:
   my_resumes: My Resumes

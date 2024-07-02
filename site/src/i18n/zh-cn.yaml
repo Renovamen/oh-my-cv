@@ -8,7 +8,7 @@ head:
 
 landing:
   hero: 用 Markdown 写<span text-primary>简历</span>！
-  desc: 能让您轻松的制作和管理简历，它开源免费，且绝不会（也无法）收集您的数据
+  desc: 能让您轻松地制作和管理简历，它开源免费，且绝不会（也无法）收集您的数据
   start: 开始制作简历
   feats:
     - title: 简单且强大
