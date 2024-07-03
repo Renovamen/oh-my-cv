@@ -54,8 +54,16 @@ export class MigrateService {
           `#resume-preview [data-scope="cross-ref"][data-part="definitions"] {`
         )
         .replace(
-          /#vue-smart-pages-preview\s+li\.crossref-item p\s*{/g,
+          /#vue-smart-pages-preview\s+li\.crossref-item\s+p\s*{/g,
           `#resume-preview [data-scope="cross-ref"][data-part="definition"] p {`
+        )
+        .replace(
+          /(#vue-smart-pages-preview\s+li\.crossref-item::marker\s*{[^}]*})/g,
+          (match) =>
+            match.replace(
+              /content:\s*attr\(\s*data-caption\s*\)\s*;/g,
+              "content: attr(data-label);"
+            )
         )
         .replace(
           /#vue-smart-pages-preview\s+li\.crossref-item::marker\s*{/g,
