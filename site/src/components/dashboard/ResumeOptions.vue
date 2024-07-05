@@ -7,9 +7,7 @@
       :aria-label="$t('dashboard.duplicate')"
     >
       <span i-ion:duplicate />
-      <span
-        class="hidden text-xs group-hover/btn:inline group-focus-visible/btn:inline"
-      >
+      <span class="hidden text-xs group-hover/btn:inline group-focus-visible/btn:inline">
         {{ $t("dashboard.duplicate") }}
       </span>
     </UiButton>
@@ -22,9 +20,7 @@
       :aria-label="$t('dashboard.delete')"
     >
       <span i-material-symbols:delete-outline-rounded />
-      <span
-        class="hidden text-xs group-hover/btn:inline group-focus-visible/btn:inline"
-      >
+      <span class="hidden text-xs group-hover/btn:inline group-focus-visible/btn:inline">
         {{ $t("dashboard.delete") }}
       </span>
     </UiButton>

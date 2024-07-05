@@ -1,115 +1,109 @@
 <template>
-  <div flex w-72 h-full>
-    <ToolList />
-    <Navigation />
+  <div class="flex w-72 h-full">
+    <div
+      id="toolbar"
+      class="pane-container hide-scrollbar bg-background"
+      lt-lg="bg-accent rounded-none"
+    >
+      <template v-for="(tool, i) in tools" :key="tool.id">
+        <component :is="tool.component" :id="`toolbar-${tool.id}`" />
+        <UiSeparator v-if="i < tools.length - 1" class="w-[calc(100%-32px)] mx-auto" />
+      </template>
+    </div>
+
+    <div flex="center col none gap-1" border="l dashed lg:none" w-10 bg-accent>
+      <template v-for="tool in tools" :key="tool.id">
+        <UiButton
+          size="round"
+          variant="ghost-secondary"
+          @click="scrollTo(tool.id)"
+          :aria-label="getTooltip(tool.id)"
+        >
+          <span :class="[tool.icon, ' size-4']" />
+        </UiButton>
+      </template>
+    </div>
   </div>
 </template>
 
-<script lang="tsx" setup>
-const sections = [
+<script setup lang="ts">
+import {
+  EditorToolbarFile,
+  EditorToolbarPaper,
+  EditorToolbarThemeColor,
+  EditorToolbarFontFamily,
+  EditorToolbarFontSize,
+  EditorToolbarMargins,
+  EditorToolbarParagraphSpace,
+  EditorToolbarLineHeight,
+  EditorToolbarCorrectCase
+} from "#components";
+
+const tools = [
   {
     id: "file",
     icon: "i-carbon:import-export",
-    component: <EditorToolbarFile id="toolbar-file" />
+    component: EditorToolbarFile
   },
   {
     id: "paper",
     icon: "i-majesticons:paper-fold-line",
-    component: <EditorToolbarPaper id="toolbar-paper" />
+    component: EditorToolbarPaper
   },
   {
     id: "theme_color",
     icon: "i-material-symbols:palette-outline",
-    component: <EditorToolbarThemeColor id="toolbar-theme_color" />
+    component: EditorToolbarThemeColor
   },
   {
     id: "font_family",
     icon: "i-material-symbols:font-download-outline",
-    component: <EditorToolbarFontFamily id="toolbar-font_family" />
+    component: EditorToolbarFontFamily
   },
   {
     id: "font_size",
     icon: "i-ri:font-size-2",
-    component: <EditorToolbarFontSize id="toolbar-font_size" />
+    component: EditorToolbarFontSize
   },
   {
     id: "margins",
     icon: "i-radix-icons:margin",
-    component: <EditorToolbarMargins id="toolbar-margins" />
+    component: EditorToolbarMargins
   },
   {
     id: "paragraph_spacing",
     icon: "i-icon-park-outline:paragraph-break-two",
-    component: <EditorToolbarParagraphSpace id="toolbar-paragraph_spacing" />
+    component: EditorToolbarParagraphSpace
   },
   {
     id: "line_height",
     icon: "i-ic:round-format-line-spacing",
-    component: <EditorToolbarLineHeight id="toolbar-line_height" />
+    component: EditorToolbarLineHeight
   },
   {
     id: "correct_case",
     icon: "i-icon-park-outline:check-correct",
-    component: <EditorToolbarCorrectCase id="toolbar-correct_case" />
+    component: EditorToolbarCorrectCase
   }
 ];
 
 const scrollTo = (id: string) => {
-  const toolbar = document.querySelector("#toolbar") as HTMLElement;
-  const section = document.querySelector(`#toolbar-${id}`) as HTMLElement;
+  const toolbar = document.querySelector<HTMLElement>("#toolbar");
+  const section = document.querySelector<HTMLElement>(`#toolbar-${id}`);
+
+  if (!toolbar || !section) return;
 
   toolbar.scrollTo({
-    // offsetTop - header height - margin top
-    top: section.offsetTop - 48 - 20,
+    // offsetTop - header height
+    top: section.offsetTop - 48,
     behavior: "smooth"
   });
 };
 
-const ToolList = () => (
-  <div
-    id="toolbar"
-    class="pane-container hide-scrollbar bg-background"
-    lt-lg="bg-accent rounded-none"
-  >
-    {sections.map((item, i) => (
-      <>
-        {item.component}
-        {i < sections.length - 1 && (
-          <div class="px-4">
-            <UiSeparator />
-          </div>
-        )}
-      </>
-    ))}
-  </div>
-);
+const { t } = useI18n();
 
-const Navigation = () => {
-  const { t } = useI18n();
-
-  return (
-    <div
-      class="flex-center flex-col flex-none gap-1 w-10 bg-accent"
-      border="l dashed lg:none"
-    >
-      {sections.map((item) => {
-        const label =
-          t(`toolbar.${item.id}`) === `toolbar.${item.id}`
-            ? t(`toolbar.${item.id}.text`)
-            : t(`toolbar.${item.id}`);
-
-        return (
-          <UiButton
-            size="round"
-            variant="ghost-secondary"
-            onClick={() => scrollTo(item.id)}
-            aria-label={label}
-          >
-            <span class={`${item.icon} size-4`} />
-          </UiButton>
-        );
-      })}
-    </div>
-  );
+const getTooltip = (id: string) => {
+  const key = `toolbar.${id}`;
+  return t(key) === key ? t(`${key}.text`) : t(key);
 };
 </script>

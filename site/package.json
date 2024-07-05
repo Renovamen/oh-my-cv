@@ -6,8 +6,7 @@
     "build": "nuxt generate",
     "dev": "nuxt dev",
     "serve": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "shadcn": "npx shadcn-vue@latest add"
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.222",
