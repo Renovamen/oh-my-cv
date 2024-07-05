@@ -41,18 +41,21 @@ toolbar:
         header: Import a Markdown file
         from_local: Drag your file here, or click here to choose a file
         from_url: Paste file URL
-    export_pdf: Export PDF
+    export_pdf:
+      title: Export PDF
+      alert:
+        title: Heads up!
+        content: When printing on Windows, please select "Save as PDF" in the print settings popup, <b>not</b> "Microsoft Print to PDF".
     export_md: Export Markdown
   correct_case:
     title: Correct Case
     example:
       title: Example
-      desc: |
+      content: |
         "Github" → "GitHub"
     note:
       title: Note
-      desc: |
-        Words that are only in uppercase or lowercase ("GITHUB" or "github") will be left untouched.
+      content: Words that are only in uppercase or lowercase ("GITHUB" or "github") will be left untouched.
     btn : Correct it!
   paper_size: Paper Size
   theme_color: Theme Color

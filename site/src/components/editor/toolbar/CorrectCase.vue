@@ -6,14 +6,14 @@
     <UiAlert>
       <UiAlertTitle>{{ $t("toolbar.correct_case.example.title") }}</UiAlertTitle>
       <UiAlertDescription>
-        {{ $t("toolbar.correct_case.example.desc") }}
+        {{ $t("toolbar.correct_case.example.content") }}
       </UiAlertDescription>
     </UiAlert>
 
     <UiAlert variant="info" class="mt-3">
       <UiAlertTitle>{{ $t("toolbar.correct_case.note.title") }}</UiAlertTitle>
       <UiAlertDescription>
-        {{ $t("toolbar.correct_case.note.desc") }}
+        {{ $t("toolbar.correct_case.note.content") }}
       </UiAlertDescription>
     </UiAlert>
 

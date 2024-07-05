@@ -41,18 +41,21 @@ toolbar:
         header: 上传一个 Markdown 文件
         from_local: 将文件拖拽至这里，或点击这里以选择文件
         from_url: 粘贴文件 URL
-    export_pdf: 导出为 PDF
+    export_pdf:
+      title: 导出为 PDF
+      alert:
+        title: 注意
+        content: 在 Windows 上打印时，请在打印设置弹窗中选择“另存为 PDF”，而<b>不是</b>“Microsoft Print to PDF”。
     export_md: 导出为 Markdown
   correct_case:
     title: 专有名词大小写修正
     example:
       title: 例子
-      desc: |
+      content: |
         "Github" → "GitHub"
     note:
-      title: 注意
-      desc: |
-        不会修正全为大写或小写字母的单词（如 "GITHUB" 或 "github"）。
+      title: 解释
+      content: 不会修正全为大写或小写字母的单词（如“GITHUB”或“github”）。
     btn : 修正
   paper_size: 纸张尺寸
   theme_color: 主题色

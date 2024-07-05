@@ -11,10 +11,10 @@ export const alertVariants = cva(
       variant: {
         default: "bg-accent/30 text-foreground",
         destructive:
-          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+          "border-destructive/60 bg-destructive/5 [&>h5]:text-destructive [&>svg]:text-destructive",
         success:
-          "border-success/60 bg-success/5 [&>svg]:text-success [&>h5]:text-success",
-        info: "border-info/60 bg-info/5 [&>svg]:text-info [&>h5]:text-info"
+          "border-success/60 bg-success/5 [&>h5]:text-success [&>svg]:text-success",
+        info: "border-info/60 bg-info/5 [&>h5]:text-info [&>svg]:text-info"
       }
     },
     defaultVariants: {

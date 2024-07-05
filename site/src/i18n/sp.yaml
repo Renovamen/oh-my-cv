@@ -1,5 +1,8 @@
 lang: Idioma
+
 toggle_theme: Cambiar tema claro/oscuro
+open_toolbar: Abrir barra de herramientas
+close_toolbar: Cerrar barra de herramientas
 
 head:
   title: Oh My CV! - Generador de CV online GRATUITO!!
@@ -38,18 +41,21 @@ toolbar:
         header: Importar un archivo Markdown
         from_local: Subir archivo
         from_url: Pegar desde URL
-    export_pdf: Exportar PDF
+    export_pdf:
+      title: Exportar PDF
+      alert:
+        title: ¡Atención!
+        content: Al imprimir en Windows, seleccione "Guardar como PDF" en la ventana emergente de configuración de impresión, <b>no</b> "Microsoft Print to PDF".
     export_md: Exportar Markdown
   correct_case:
     title: Corregir Mayusculas
     example:
       title: Ejemplo
-      desc: |
+      content: |
         "Github" → "GitHub"
     note:
       title: Nota
-      desc: |
-        No se modificarán las palabras que sólo contengan mayúsculas o minúsculas ("GITHUB" or "github").
+      content: No se modificarán las palabras que sólo contengan mayúsculas o minúsculas ("GITHUB" or "github").
     btn : Corrígelo!
   paper_size: Tamaño de hoja
   theme_color: Color y tema
