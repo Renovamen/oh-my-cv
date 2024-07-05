@@ -23,9 +23,9 @@ export class DynamicCssService {
 
   private themeColor = (selector: string, styles: ResumeStyles) => {
     return (
-      `${selector} :not(.resume-header-item) > a { color: ${styles.themeColor} }` +
-      `${selector} h1, ${selector} h2, ${selector} h3 { color: ${styles.themeColor} }` +
-      `${selector} h2 { border-bottom-color: ${styles.themeColor} }`
+      `${selector} :not(.resume-header-item) > a { color: ${styles.themeColor}; }` +
+      `${selector} h1, ${selector} h2, ${selector} h3 { color: ${styles.themeColor}; }` +
+      `${selector} h2 { border-bottom-color: ${styles.themeColor}; }`
     );
   };
 
@@ -33,24 +33,24 @@ export class DynamicCssService {
     const height = styles.lineHeight;
 
     return (
-      `${selector} p, ${selector} li { line-height: ${height.toFixed(2)} }` +
-      `${selector} h2, ${selector} h3 { line-height: ${(height * 1.154).toFixed(2)} }` +
-      `${selector} dl { line-height: ${(height * 1.038).toFixed(2)} }`
+      `${selector} p, ${selector} li { line-height: ${height.toFixed(2)}; }` +
+      `${selector} h2, ${selector} h3 { line-height: ${(height * 1.154).toFixed(2)}; }` +
+      `${selector} dl { line-height: ${(height * 1.038).toFixed(2)}; }`
     );
   };
 
   private paragraphSpace = (selector: string, styles: ResumeStyles) => {
-    return `${selector} h2 { margin-top: ${styles.paragraphSpace}px }`;
+    return `${selector} h2 { margin-top: ${styles.paragraphSpace}px; }`;
   };
 
   private fontFamily = (selector: string, styles: ResumeStyles) => {
     const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
     const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name;
-    return `${selector} { font-family: ${fontEN}, ${fontCJK} }`;
+    return `${selector} { font-family: ${fontEN}, ${fontCJK}, Arial, Helvetica, sans-serif; }`;
   };
 
   private fontSize = (selector: string, styles: ResumeStyles) => {
-    return `${selector} { font-size: ${styles.fontSize}px }`;
+    return `${selector} { font-size: ${styles.fontSize}px; }`;
   };
 
   private paperSize = (styles: ResumeStyles) => {
