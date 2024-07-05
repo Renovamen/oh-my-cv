@@ -2,27 +2,29 @@ import { toast } from "vue-sonner";
 import type { ChangedCase } from "@ohmycv/case-police";
 
 export const useToast = () => {
-  const nuxtApp = useNuxtApp();
+  const {
+    $i18n: { t }
+  } = useNuxtApp();
 
   const save = () => {
-    toast.success(nuxtApp.$i18n.t("notification.save"));
+    toast.success(t("notification.save"));
   };
 
   const onSwitch = (msg: string) => {
-    toast.info(nuxtApp.$i18n.t("notification.switch", { msg }));
+    toast.info(t("notification.switch", { msg }));
   };
 
   const onDelete = (msg: string) => {
-    toast.error(nuxtApp.$i18n.t("notification.delete", { msg }));
+    toast.error(t("notification.delete", { msg }));
   };
 
   const onNew = () => {
-    toast.success(nuxtApp.$i18n.t("notification.new"));
+    toast.success(t("notification.new"));
   };
 
   const duplicate = (msg: string) => {
     toast.success(
-      nuxtApp.$i18n.t("notification.duplicate", {
+      t("notification.duplicate", {
         old: msg,
         new: msg + " Copy"
       })
@@ -41,19 +43,19 @@ export const useToast = () => {
         .map(([key, count]) => `${key}${count > 1 ? ` (x${count})` : ""}`)
         .join(", ");
 
-      toast.success(nuxtApp.$i18n.t("notification.correct.yes", { num: msg.length }), {
+      toast.success(t("notification.correct.yes", { num: msg.length }), {
         description
       });
     } else {
-      toast.info(nuxtApp.$i18n.t("notification.correct.no"));
+      toast.info(t("notification.correct.no"));
     }
   };
 
   const onImport = (msg: boolean) => {
     if (msg) {
-      toast.success(nuxtApp.$i18n.t("notification.import.yes"));
+      toast.success(t("notification.import.yes"));
     } else {
-      toast.error(nuxtApp.$i18n.t("notification.import.no"));
+      toast.error(t("notification.import.no"));
     }
   };
 

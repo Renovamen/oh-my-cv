@@ -20,22 +20,27 @@ export const useMonaco = () => {
 
     loading.value = true;
 
-    const { editor } = await setupMonacoEditor(container);
-    const { data, setData } = useDataStore();
+    try {
+      const { editor } = await setupMonacoEditor(container);
+      const { data, setData } = useDataStore();
 
-    // Markdown model
-    const markdown = await setupMonacoModel("markdown", data.markdown, () =>
-      setData("markdown", markdown.get().getValue())
-    );
+      // Markdown model
+      const markdown = await setupMonacoModel("markdown", data.markdown, () =>
+        setData("markdown", markdown.get().getValue())
+      );
 
-    // CSS model
-    const css = await setupMonacoModel("css", data.css, () =>
-      setData("css", css.get().getValue())
-    );
+      // CSS model
+      const css = await setupMonacoModel("css", data.css, () =>
+        setData("css", css.get().getValue())
+      );
 
-    states.value = { editor, markdown, css };
-
-    loading.value = false;
+      states.value = { editor, markdown, css };
+    } catch (error) {
+      // TODO: use toast to show error
+      console.error("Failed to initialize the editor: ", error);
+    } finally {
+      loading.value = false;
+    }
   };
 
   const dispose = () => {

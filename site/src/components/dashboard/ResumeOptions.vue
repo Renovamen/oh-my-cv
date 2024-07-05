@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute right-3 top-3 space-y-2">
+  <div flex="~ col gap-y-2">
     <UiButton
       size="round"
       class="flex hover:ring-none bg-gray-500/90 hover:bg-gray-500"

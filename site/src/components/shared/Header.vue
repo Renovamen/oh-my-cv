@@ -1,35 +1,35 @@
 <template>
   <header class="hstack justify-between pl-4 pr-1">
-    <nuxt-link
-      class="hstack space-x-2 cursor-pointer text-gray-900 dark:text-gray-100"
-      :to="$nuxt.$localePath('/')"
-    >
-      <SharedLogo hide-on-mobile text-base />
+    <nuxt-link class="hstack gap-x-2" :to="$nuxt.$localePath('/')">
+      <SharedLogo text-base />
       <div text-lg><SharedBrandName /></div>
     </nuxt-link>
 
-    <UiMenubar class="bg-transparent border-none h-auto p-0 gap-0">
-      <nuxt-link
-        class="hstack cursor-pointer space-x-1 mr-3"
+    <div class="hstack">
+      <UiButton
+        :as="NuxtLink"
         :to="$nuxt.$localePath('/dashboard')"
+        variant="ghost-secondary"
+        size="xs"
+        class="h-8 gap-x-1"
       >
         <span class="i-ep:menu text-lg" />
-        <span class="hide-on-mobile">
+        <span class="hide-on-mobile text-base">
           {{ $t("dashboard.my_resumes") }}
         </span>
-      </nuxt-link>
+      </UiButton>
 
-      <UiMenubarMenu>
-        <UiMenubarTrigger
-          class="space-x-1 mr-1.5 text-base font-normal p-0 focus:(bg-transparent text-inherit) data-[state=open]:(bg-transparent text-inherit)"
-        >
-          <span class="i-ic:round-translate text-lg" />
-          <span class="hide-on-mobile">
-            {{ localeName }}
-          </span>
-        </UiMenubarTrigger>
-        <UiMenubarContent class="min-w-28" :side-offset="4">
-          <UiMenubarItem
+      <UiDropdownMenu>
+        <UiDropdownMenuTrigger as-child>
+          <UiButton variant="ghost-secondary" size="xs" class="h-8 gap-x-1">
+            <span class="i-ic:round-translate text-lg" />
+            <span class="hide-on-mobile text-base">
+              {{ localeName }}
+            </span>
+          </UiButton>
+        </UiDropdownMenuTrigger>
+        <UiDropdownMenuContent class="min-w-28" align="start" :side-offset="0">
+          <UiDropdownMenuItem
             v-for="item in availableLocales"
             :key="item.code"
             :as="NuxtLink"
@@ -37,9 +37,9 @@
           >
             <span v-if="item.icon" :class="[item.icon, 'text-base mr-1.5']" />
             {{ item.name }}
-          </UiMenubarItem>
-        </UiMenubarContent>
-      </UiMenubarMenu>
+          </UiDropdownMenuItem>
+        </UiDropdownMenuContent>
+      </UiDropdownMenu>
 
       <slot name="tail" />
 
@@ -53,9 +53,9 @@
         target="_blank"
         rel="nofollow noopener"
       >
-        <span i-tabler:brand-github size-4.5 />
+        <span i-tabler:brand-github text-lg />
       </UiButton>
-    </UiMenubar>
+    </div>
   </header>
 </template>
 

@@ -1,27 +1,30 @@
 <template>
   <div w-56>
     <div h-80>
-      <div
-        class="resume-card group border"
-        :style="{
-          width: `${size.w}px`,
-          height: `${size.h}px`
-        }"
-      >
-        <nuxt-link :to="$nuxt.$localePath(`/editor/${props.resume.id}`)">
+      <div class="resume-card group size-fit">
+        <nuxt-link
+          :to="$nuxt.$localePath(`/editor/${props.resume.id}`)"
+          class="block border overflow-hidden rounded-md ring-when-focus peer"
+          :style="{
+            width: `${size.w}px`,
+            height: `${size.h}px`
+          }"
+        >
           <SharedResumeRender
             :id="resume.id"
-            ref="renderEl"
+            ref="renderRef"
             :markdown="resume.markdown"
             :styles="resume.styles"
+            class="origin-top-left"
             :style="{
               transform: `scale(${1 / PAPER.MM_TO_PX})`
             }"
-            class="origin-top-left"
           />
         </nuxt-link>
+
         <DashboardResumeOptions
-          class="group-hover:block hidden"
+          class="opacity-0 group-hover:opacity-100 peer-focus-within:opacity-100 focus-within:opacity-100"
+          pos="absolute right-3 top-3"
           :resume="resume"
           @update="emit('update')"
         />
@@ -48,7 +51,7 @@ const emit = defineEmits<{
 const { PAPER } = useConstant();
 
 const size = computed(() => PAPER.SIZES[props.resume.styles.paper]);
-const renderEl = ref<InstanceType<typeof SharedResumeRender>>();
+const renderRef = ref<InstanceType<typeof SharedResumeRender>>();
 
 const updateResumeItem = async () => {
   // set styles that are defined via CSS editor
@@ -60,9 +63,16 @@ const updateResumeItem = async () => {
   dynamicCssService.injectToolbar(props.resume.styles, props.resume.id);
   // force update resume render
   await delay(100);
-  renderEl.value?.render();
+  renderRef.value?.render();
 };
 
 onMounted(updateResumeItem);
 onUpdated(updateResumeItem);
 </script>
+
+<style scoped>
+/* Only need to show the first page of the resume card */
+:deep(.resume-render) > *:not(:first-child) {
+  @apply hidden;
+}
+</style>

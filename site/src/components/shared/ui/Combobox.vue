@@ -2,10 +2,7 @@
   <div v-bind="api.getRootProps()" relative>
     <div
       v-bind="api.getControlProps()"
-      :class="[
-        'hstack h-9 space-x-2 px-2 py-1 rounded-md border-1.5',
-        api.open && 'border-primary'
-      ]"
+      class="group hstack h-9 gap-x-2 px-2 py-1 rounded-md border-1.5 data-[focus]:border-primary"
     >
       <input
         v-bind="api.getInputProps()"
@@ -13,10 +10,7 @@
       />
       <button v-bind="api.getTriggerProps()" size-5 flex-center>
         <span
-          :class="[
-            'text-lg',
-            api.open ? 'i-ic:sharp-arrow-drop-up' : 'i-ic:sharp-arrow-drop-down'
-          ]"
+          class="text-lg i-ic:sharp-arrow-drop-down group-data-[focus]:i-ic:sharp-arrow-drop-up"
         />
       </button>
     </div>
@@ -31,7 +25,7 @@
           v-for="item in options"
           :key="item.value"
           v-bind="api.getItemProps({ item })"
-          class="px-2 py-1.5 rounded-sm truncate cursor-pointer hover:(bg-accent text-accent-foreground) data-[state=checked]:(bg-accent text-accent-foreground)"
+          class="px-2 py-1.5 rounded-sm truncate cursor-pointer data-[highlighted]:(bg-accent text-accent-foreground) data-[state=checked]:(bg-accent text-accent-foreground)"
         >
           {{ item.label }}
         </li>

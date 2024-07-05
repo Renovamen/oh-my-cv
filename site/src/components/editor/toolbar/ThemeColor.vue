@@ -8,7 +8,7 @@
       <button
         v-for="(color, i) in COLOR.PRESET"
         :key="`${i}-${color}`"
-        class="size-6 flex-center rounded text-white"
+        class="size-6 flex-center rounded text-white ring-when-focus"
         :style="{ backgroundColor: color }"
         @click="api.setValue(color)"
       >
@@ -21,21 +21,19 @@
       <div
         v-bind="api.getControlProps()"
         :class="[
-          'w-full hstack h-9 space-x-2 px-2 py-1 rounded-md border-1.5',
-          (api.open || isFocus) && 'border-primary'
+          'w-full hstack h-9 gap-x-2 px-2 py-1 rounded-md border-1.5 data-[focus]:border-primary',
+          api.open && 'border-primary'
         ]"
       >
-        <button v-bind="api.getTriggerProps()">
-          <div
-            class="size-4 rounded-sm"
-            v-bind="api.getSwatchProps({ value: api.value })"
-          />
+        <button
+          v-bind="api.getTriggerProps()"
+          class="size-4 rounded overflow-hidden ring-when-focus"
+        >
+          <div class="size-full" v-bind="api.getSwatchProps({ value: api.value })" />
         </button>
         <input
           v-bind="api.getChannelInputProps({ channel: 'hex' })"
           class="bg-transparent outline-none"
-          @focus="isFocus = true"
-          @blur="isFocus = false"
         />
       </div>
 
@@ -49,19 +47,22 @@
             <div v-bind="api.getAreaBackgroundProps()" class="w-full h-30" />
             <div
               v-bind="api.getAreaThumbProps()"
-              class="size-4 rounded-full border-2 border-black"
+              class="size-4 rounded-full border-2 border-black ring-when-focus"
             >
               <span absolute size-3 border="2 white rounded-full" />
             </div>
           </div>
 
-          <div hstack my-3 px-3 space-x-3>
-            <button
+          <div hstack my-3 px-3 gap-x-3>
+            <UiButton
               v-bind="api.getEyeDropperTriggerProps()"
-              class="flex-center size-7 rounded hover:(bg-accent text-accent-foreground)"
+              variant="ghost"
+              size="icon"
+              class="size-7 rounded"
             >
               <span i-bx:bxs-eyedropper text-lg />
-            </button>
+            </UiButton>
+
             <div v-bind="api.getChannelSliderProps({ channel: 'hue' })" flex-1>
               <div
                 v-bind="api.getChannelSliderTrackProps({ channel: 'hue' })"
@@ -69,7 +70,7 @@
               />
               <div
                 v-bind="api.getChannelSliderThumbProps({ channel: 'hue' })"
-                class="size-4.5 -mt-2 -ml-2"
+                class="size-4.5 -mt-2 -ml-2 ring-when-focus"
                 border="2 black rounded-full"
               >
                 <span absolute size-3.5 border="2 white rounded-full" />
@@ -88,8 +89,6 @@ import { normalizeProps, useMachine } from "@zag-js/vue";
 
 const { styles, setStyle } = useStyleStore();
 const { COLOR } = useConstant();
-
-const isFocus = ref(false);
 
 const [state, send] = useMachine(
   colorPicker.machine({

@@ -17,9 +17,11 @@ export default defineConfig({
       "flex-center": "flex items-center justify-center",
       hstack: "flex items-center",
       "hide-on-mobile": "lt-md:hidden",
+      "ring-when-focus":
+        "ring-offset-background focus-visible:(outline-none ring-2 ring-ring ring-offset-2)",
       "shadow-c": "shadow shadow-gray-300 dark:shadow-neutral-900",
       "resume-card":
-        "cursor-pointer mx-auto overflow-hidden rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
+        "relative mx-auto rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
     }
   ],
   theme: {
