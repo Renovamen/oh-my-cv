@@ -2,11 +2,11 @@
   <UiButton
     variant="ghost-secondary"
     size="round"
-    :aria-label="$t('toggle_dark')"
+    :aria-label="$t('toggle_theme')"
     @click="switchMode"
   >
     <div
-      v-for="(mode, i) in modes"
+      v-for="mode in modes"
       :class="[
         'absolute transition-transform duration-500',
         mode.icon,

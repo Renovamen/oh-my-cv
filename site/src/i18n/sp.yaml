@@ -1,5 +1,5 @@
 lang: Idioma
-toggle_dark: Cambiar tema claro/oscuro
+toggle_theme: Cambiar tema claro/oscuro
 
 head:
   title: Oh My CV! - Generador de CV online GRATUITO!!
@@ -29,7 +29,7 @@ dashboard:
 
 toolbar:
   file:
-    text: Archivo
+    title: Archivo
     save: Guardar
     rename: Renombrar
     import:
@@ -41,20 +41,22 @@ toolbar:
     export_pdf: Exportar PDF
     export_md: Exportar Markdown
   correct_case:
-    text: Corregir Mayusculas
+    title: Corregir Mayusculas
     desc: "Ejemplo: \"Github\" → \"GitHub\" <br> Nota: No se modificarán las palabras que sólo contengan mayúsculas o minúsculas (\"GITHUB\" or \"github\")"
     btn : Corrígelo!
-  paper: Tamaño de hoja
-  font_family: Fuente
-  font_size: Tamaño de Fuente
-  cjk: CJK
-  en: Inglés
+  paper_size: Tamaño de hoja
   theme_color: Color y tema
+  font_family:
+    title: Fuente
+    cjk: CJK
+    en: Inglés
+  font_size: Tamaño de Fuente
+  margins:
+    title: Margenes
+    vertical: Arriba & Abajo
+    horizontal: Izquierdo & Derecho
   paragraph_spacing: Espaciado de párrafo
   line_height: Espaciado de línea
-  margins: Margenes
-  vertical: Arriba & Abajo
-  horizontal: Izquierdo & Derecho
 
 notification:
   save: Cambios Guardados

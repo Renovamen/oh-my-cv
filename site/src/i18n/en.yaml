@@ -1,5 +1,8 @@
 lang: Language
-toggle_dark: Toggle dark mode
+
+toggle_theme: Toggle theme
+open_toolbar: Open toolbar
+close_toolbar: Close toolbar
 
 head:
   title: Oh My CV! - Free Online Resume Maker
@@ -29,7 +32,7 @@ dashboard:
 
 toolbar:
   file:
-    text: File
+    title: File
     save: Save
     rename: Rename
     import:
@@ -41,20 +44,22 @@ toolbar:
     export_pdf: Export PDF
     export_md: Export Markdown
   correct_case:
-    text: Correct Case
+    title: Correct Case
     desc: "Example: \"Github\" → \"GitHub\" <br> Note: Words that are only in uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched."
     btn : Correct it!
-  paper: Paper Size
-  font_family: Font Family
-  font_size: Font Size
-  cjk: CJK
-  en: English
+  paper_size: Paper Size
   theme_color: Theme Color
+  font_family:
+    title: Font Family
+    cjk: CJK
+    en: English
+  font_size: Font Size
+  margins:
+    title: Margins
+    vertical: Top & Bottom
+    horizontal: Left & Right
   paragraph_spacing: Paragraph Spacing
   line_height: Line Spacing
-  margins: Margins
-  vertical: Top & Bottom
-  horizontal: Left & Right
 
 notification:
   save: Your changes have been saved

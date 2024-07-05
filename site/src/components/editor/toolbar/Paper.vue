@@ -1,5 +1,5 @@
 <template>
-  <EditorToolbarBox :text="$t('toolbar.paper')" icon="i-majesticons:paper-fold-line">
+  <EditorToolbarBox :text="$t('toolbar.paper_size')" icon="i-majesticons:paper-fold-line">
     <SharedUiCombobox
       id="paper-size"
       class="capitalize"

@@ -13,14 +13,23 @@
 
     <div flex="center col none gap-1" border="l dashed lg:none" w-10 bg-accent>
       <template v-for="tool in tools" :key="tool.id">
-        <UiButton
-          size="round"
-          variant="ghost-secondary"
-          @click="scrollTo(tool.id)"
-          :aria-label="getTooltip(tool.id)"
-        >
-          <span :class="[tool.icon, ' size-4']" />
-        </UiButton>
+        <UiTooltipProvider :delay-duration="0">
+          <UiTooltip>
+            <UiTooltipTrigger as-child>
+              <UiButton
+                size="round"
+                variant="ghost-secondary"
+                @click="scrollTo(tool.id)"
+                :aria-label="getTooltip(tool.id)"
+              >
+                <span :class="[tool.icon, ' size-4']" />
+              </UiButton>
+            </UiTooltipTrigger>
+            <UiTooltipContent side="left">
+              {{ getTooltip(tool.id) }}
+            </UiTooltipContent>
+          </UiTooltip>
+        </UiTooltipProvider>
       </template>
     </div>
   </div>
@@ -46,7 +55,7 @@ const tools = [
     component: EditorToolbarFile
   },
   {
-    id: "paper",
+    id: "paper_size",
     icon: "i-majesticons:paper-fold-line",
     component: EditorToolbarPaper
   },
@@ -104,6 +113,8 @@ const { t } = useI18n();
 
 const getTooltip = (id: string) => {
   const key = `toolbar.${id}`;
-  return t(key) === key ? t(`${key}.text`) : t(key);
+  return ["file", "correct_case", "font_family", "margins"].includes(id)
+    ? t(`${key}.title`)
+    : t(key);
 };
 </script>

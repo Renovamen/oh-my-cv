@@ -1,5 +1,5 @@
 <template>
-  <EditorToolbarBox :text="$t('toolbar.file.text')" icon="i-carbon:import-export">
+  <EditorToolbarBox :text="$t('toolbar.file.title')" icon="i-carbon:import-export">
     <EditorToolbarFileSave />
     <EditorToolbarFileRename />
 

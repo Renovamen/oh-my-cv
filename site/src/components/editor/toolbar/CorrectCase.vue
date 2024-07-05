@@ -1,6 +1,6 @@
 <template>
   <EditorToolbarBox
-    :text="$t('toolbar.correct_case.text')"
+    :text="$t('toolbar.correct_case.title')"
     icon="i-icon-park-outline:check-correct"
     class="text-right"
   >

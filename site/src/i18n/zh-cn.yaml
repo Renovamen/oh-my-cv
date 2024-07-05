@@ -1,5 +1,8 @@
 lang: 语言
-toggle_dark: 切换深色模式
+
+toggle_theme: 切换颜色模式
+open_toolbar: 打开工具栏
+close_toolbar: 关闭工具栏
 
 head:
   title: Oh My CV! - 免费的在线简历制作工具
@@ -29,7 +32,7 @@ dashboard:
 
 toolbar:
   file:
-    text: 文件
+    title: 文件
     save: 保存
     rename: 重命名
     import:
@@ -41,20 +44,22 @@ toolbar:
     export_pdf: 导出为 PDF
     export_md: 导出为 Markdown
   correct_case:
-    text: 专有名词大小写修正
+    title: 专有名词大小写修正
     desc: "例如：\"Github\" → \"GitHub\" <br> 注意：不会修正全为大写或小写字母的单词（如 \"GITHUB\" 或 \"github\"）"
     btn : 修正
-  paper: 纸张尺寸
-  font_family: 字体
-  font_size: 字号
-  cjk: 中日韩
-  en: 英文
+  paper_size: 纸张尺寸
   theme_color: 主题色
+  font_family:
+    title: 字体
+    cjk: 中日韩
+    en: 英文
+  font_size: 字号
+  margins:
+    title: 页边距
+    vertical: 上下
+    horizontal: 左右
   paragraph_spacing: 段间距
   line_height: 行间距
-  margins: 页边距
-  vertical: 上下
-  horizontal: 左右
 
 notification:
   save: 保存成功
