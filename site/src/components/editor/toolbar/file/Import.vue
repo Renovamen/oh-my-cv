@@ -1,9 +1,9 @@
 <template>
   <UiDialog>
     <UiDialogTrigger as-child>
-      <UiButton class="space-x-1.5 w-full h-8 justify-start" variant="ghost" size="sm">
+      <UiButton class="gap-x-1.5 w-full h-8 justify-start" variant="ghost" size="sm">
         <span i-mdi:upload text-base />
-        <span>{{ $t("toolbar.file.import.trigger") }}</span>
+        {{ $t("toolbar.file.import.trigger") }}
       </UiButton>
     </UiDialogTrigger>
 

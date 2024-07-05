@@ -1,8 +1,8 @@
 <template>
   <div :class="cn('px-4 py-6 text-sm', props.class)">
-    <div hstack space-x-2 mb-4 text-base>
+    <div hstack gap-x-2 mb-4 text-base>
       <span v-if="icon" :class="icon" />
-      <span>{{ text }}</span>
+      {{ text }}
     </div>
 
     <slot />

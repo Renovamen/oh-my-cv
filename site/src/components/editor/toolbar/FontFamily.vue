@@ -3,7 +3,7 @@
     :text="$t('toolbar.font_family')"
     icon="i-material-symbols:font-download-outline"
   >
-    <div class="w-full hstack space-x-2 mb-2">
+    <div class="w-full hstack gap-x-2 mb-2">
       <SharedUiCombobox
         v-if="loaded"
         id="font-cjk"
@@ -15,7 +15,7 @@
       <span w-13>{{ $t("toolbar.cjk") }}</span>
     </div>
 
-    <div class="hstack space-x-2 w-full">
+    <div class="hstack gap-x-2 w-full">
       <SharedUiCombobox
         v-if="loaded"
         id="font-en"

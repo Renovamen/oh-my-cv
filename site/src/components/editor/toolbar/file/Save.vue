@@ -1,12 +1,12 @@
 <template>
   <UiButton
-    class="space-x-1.5 w-full h-8 justify-start"
+    class="gap-x-1.5 w-full h-8 justify-start"
     variant="ghost"
     size="sm"
     @click="save"
   >
     <span i-ic:baseline-save text-base />
-    <span>{{ $t("toolbar.file.save") }}</span>
+    {{ $t("toolbar.file.save") }}
     <span class="flex-1 tracking-widest" text="xs right muted-foreground">⌘ S</span>
   </UiButton>
 </template>

@@ -22,7 +22,7 @@
       <div m="t-15 x-auto" grid="~ cols-1 sm:cols-2 gap-y-10" max-w-150>
         <div v-for="i in [0, 1]" :key="i">
           <div w-fit sm:mx-auto>
-            <div hstack mb-3 space-x-1.5>
+            <div hstack mb-3 gap-x-1.5>
               <span
                 :class="[
                   'rounded-full flex-center size-5',

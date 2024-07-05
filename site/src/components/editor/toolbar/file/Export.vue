@@ -1,22 +1,22 @@
 <template>
   <UiButton
-    class="space-x-1.5 w-full h-8 justify-start"
+    class="gap-x-1.5 w-full h-8 justify-start"
     variant="ghost"
     size="sm"
     @click="exportPDF"
   >
     <span i-mdi:file-pdf text-base />
-    <span>{{ $t("toolbar.file.export_pdf") }}</span>
+    {{ $t("toolbar.file.export_pdf") }}
   </UiButton>
 
   <UiButton
-    class="space-x-1.5 w-full h-8 justify-start"
+    class="gap-x-1.5 w-full h-8 justify-start"
     variant="ghost"
     size="sm"
     @click="exportMd"
   >
     <span i-ri:markdown-fill text-base />
-    <span>{{ $t("toolbar.file.export_md") }}</span>
+    {{ $t("toolbar.file.export_md") }}
   </UiButton>
 </template>
 

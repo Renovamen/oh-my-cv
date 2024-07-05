@@ -1,8 +1,8 @@
 <template>
   <EditorToolbarBox :text="$t('toolbar.margins')" icon="i-radix-icons:margin">
-    <div hstack text-muted-foreground space-x-1 justify-end>
+    <div hstack text-muted-foreground gap-x-1 justify-end>
       <span i-icon-park-outline:margin-one />
-      <span>{{ $t("toolbar.vertical") }}</span>
+      {{ $t("toolbar.vertical") }}
     </div>
 
     <SharedUiSlider
@@ -16,9 +16,9 @@
       "
     />
 
-    <div mt-4 hstack text-muted-foreground space-x-1 justify-end>
+    <div mt-4 hstack text-muted-foreground gap-x-1 justify-end>
       <span i-icon-park-outline:margin />
-      <span>{{ $t("toolbar.horizontal") }}</span>
+      {{ $t("toolbar.horizontal") }}
     </div>
 
     <SharedUiSlider
