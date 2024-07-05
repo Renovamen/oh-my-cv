@@ -24,7 +24,10 @@
       <SplitterGroup id="splitter-editor" direction="horizontal" class="px-3">
         <SplitterPanel id="code-pane">
           <EditorCode v-if="data.loaded" />
-          <UiSkeleton v-else class="size-full bg-secondary" />
+          <div v-else class="flex flex-col gap-y-2 h-full">
+            <UiSkeleton class="h-10 bg-secondary" />
+            <UiSkeleton class="flex-1 bg-secondary" />
+          </div>
         </SplitterPanel>
 
         <SplitterResizeHandle
