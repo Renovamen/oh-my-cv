@@ -45,7 +45,14 @@ toolbar:
     export_md: Export Markdown
   correct_case:
     title: Correct Case
-    desc: "Example: \"Github\" → \"GitHub\" <br> Note: Words that are only in uppercase or lowercase (\"GITHUB\" or \"github\") will be left untouched."
+    example:
+      title: Example
+      desc: |
+        "Github" → "GitHub"
+    note:
+      title: Note
+      desc: |
+        Words that are only in uppercase or lowercase ("GITHUB" or "github") will be left untouched.
     btn : Correct it!
   paper_size: Paper Size
   theme_color: Theme Color

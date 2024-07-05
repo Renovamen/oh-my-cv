@@ -15,7 +15,9 @@ export const useToast = () => {
   };
 
   const onDelete = (msg: string) => {
-    toast.error(t("notification.delete", { msg }));
+    toast.error(t("notification.delete", { msg }), {
+      duration: 50000
+    });
   };
 
   const onNew = () => {

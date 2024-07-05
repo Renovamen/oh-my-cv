@@ -2,19 +2,27 @@
   <EditorToolbarBox
     :text="$t('toolbar.correct_case.title')"
     icon="i-icon-park-outline:check-correct"
-    class="text-right"
   >
-    <div
-      p="y-2 x-3"
-      bg="background lg:accent"
-      class="rounded text-left"
-      v-html="$t('toolbar.correct_case.desc')"
-    />
+    <UiAlert>
+      <UiAlertTitle>{{ $t("toolbar.correct_case.example.title") }}</UiAlertTitle>
+      <UiAlertDescription>
+        {{ $t("toolbar.correct_case.example.desc") }}
+      </UiAlertDescription>
+    </UiAlert>
 
-    <UiButton @click="correct" size="sm" class="mt-3">
-      <span i-carbon:rocket mr-1 />
-      {{ $t("toolbar.correct_case.btn") }}
-    </UiButton>
+    <UiAlert variant="info" class="mt-3">
+      <UiAlertTitle>{{ $t("toolbar.correct_case.note.title") }}</UiAlertTitle>
+      <UiAlertDescription>
+        {{ $t("toolbar.correct_case.note.desc") }}
+      </UiAlertDescription>
+    </UiAlert>
+
+    <div class="mt-3 text-right">
+      <UiButton @click="correct" size="sm">
+        <span i-carbon:rocket mr-1 />
+        {{ $t("toolbar.correct_case.btn") }}
+      </UiButton>
+    </div>
   </EditorToolbarBox>
 </template>
 

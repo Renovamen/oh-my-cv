@@ -45,7 +45,14 @@ toolbar:
     export_md: 导出为 Markdown
   correct_case:
     title: 专有名词大小写修正
-    desc: "例如：\"Github\" → \"GitHub\" <br> 注意：不会修正全为大写或小写字母的单词（如 \"GITHUB\" 或 \"github\"）"
+    example:
+      title: 例子
+      desc: |
+        "Github" → "GitHub"
+    note:
+      title: 注意
+      desc: |
+        不会修正全为大写或小写字母的单词（如 "GITHUB" 或 "github"）。
     btn : 修正
   paper_size: 纸张尺寸
   theme_color: 主题色

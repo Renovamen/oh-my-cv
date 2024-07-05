@@ -24,11 +24,30 @@ export default defineConfig({
         "relative mx-auto rounded-md duration-150 hover:(-translate-y-3 drop-shadow-xl)"
     }
   ],
+  preflights: [
+    {
+      getCSS: () => `
+        :root {
+          --success: 142 71% 29%;
+          --info: 224 77% 48%;
+        }
+
+        .dark {
+          --success: 142 76% 40%;
+          --info: 209 87% 57%;
+        }
+      `
+    }
+  ],
   theme: {
     breakpoints: {
       sm: "641px",
       md: "769px",
       lg: "1025px"
+    },
+    colors: {
+      success: "hsl(var(--success))",
+      info: "hsl(var(--info))"
     }
   },
   presets: [

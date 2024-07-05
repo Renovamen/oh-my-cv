@@ -42,7 +42,14 @@ toolbar:
     export_md: Exportar Markdown
   correct_case:
     title: Corregir Mayusculas
-    desc: "Ejemplo: \"Github\" → \"GitHub\" <br> Nota: No se modificarán las palabras que sólo contengan mayúsculas o minúsculas (\"GITHUB\" or \"github\")"
+    example:
+      title: Ejemplo
+      desc: |
+        "Github" → "GitHub"
+    note:
+      title: Nota
+      desc: |
+        No se modificarán las palabras que sólo contengan mayúsculas o minúsculas ("GITHUB" or "github").
     btn : Corrígelo!
   paper_size: Tamaño de hoja
   theme_color: Color y tema

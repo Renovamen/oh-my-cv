@@ -16,11 +16,9 @@ const props = defineProps<ToasterProps>();
         cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
         closeButton:
           'group-[.toast]:bg-background group-[.toast]:text-muted-foreground group-[.toaster]:border-border hover:(bg-background! text-foreground! border-foreground!)',
-        error:
-          'group-[.toaster]:text-destructive group-[.toaster]:border-destructive dark:group-[.toaster]:text-red-500',
-        success:
-          'group-[.toaster]:text-green-700 group-[.toaster]:border-green-700 dark:(group-[.toaster]:text-green-500 group-[.toaster]:border-green-600)',
-        info: 'group-[.toaster]:text-blue-700 group-[.toaster]:border-blue-700 dark:(group-[.toaster]:text-sky-500 group-[.toaster]:border-sky-600)'
+        error: 'group-[.toaster]:text-destructive group-[.toaster]:border-destructive',
+        success: 'group-[.toaster]:text-success group-[.toaster]:border-success',
+        info: 'group-[.toaster]:text-info group-[.toaster]:border-info'
       }
     }"
   />
