@@ -12,6 +12,7 @@
         variant="ghost-secondary"
         size="xs"
         class="h-8 gap-x-1"
+        :aria-label="$t('dashboard.my_resumes')"
       >
         <span class="i-ep:menu text-lg" />
         <span class="hide-on-mobile text-base">
@@ -21,7 +22,12 @@
 
       <UiDropdownMenu>
         <UiDropdownMenuTrigger as-child>
-          <UiButton variant="ghost-secondary" size="xs" class="h-8 gap-x-1">
+          <UiButton
+            variant="ghost-secondary"
+            size="xs"
+            class="h-8 gap-x-1"
+            :aria-label="`Switch the language from: ${localeName}`"
+          >
             <span class="i-ic:round-translate text-lg" />
             <span class="hide-on-mobile text-base">
               {{ localeName }}

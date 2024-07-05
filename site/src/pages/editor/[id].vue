@@ -6,6 +6,7 @@
           variant="ghost-secondary"
           size="round"
           @click="isToolbarOpen = !isToolbarOpen"
+          aria-label="Toggle toolbar"
         >
           <span
             :class="[

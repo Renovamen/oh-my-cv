@@ -10,6 +10,7 @@
         :as="EditableSubmitTrigger"
         size="xs"
         class="flex-1 rounded hover:ring-none"
+        aria-label="Submit"
       >
         <span i-material-symbols-check-rounded size-4 />
       </UiButton>
@@ -19,6 +20,7 @@
         variant="secondary"
         size="xs"
         class="flex-1 rounded"
+        aria-label="Cancel"
       >
         <span i-material-symbols-close-rounded size-4 />
       </UiButton>

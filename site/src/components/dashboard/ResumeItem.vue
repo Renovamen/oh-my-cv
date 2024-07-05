@@ -1,7 +1,7 @@
 <template>
   <div w-56>
     <div h-80>
-      <div class="resume-card group size-fit">
+      <div class="resume-card group/card size-fit">
         <nuxt-link
           :to="$nuxt.$localePath(`/editor/${props.resume.id}`)"
           class="block border overflow-hidden rounded-md ring-when-focus peer"
@@ -23,7 +23,7 @@
         </nuxt-link>
 
         <DashboardResumeOptions
-          class="opacity-0 group-hover:opacity-100 peer-focus-within:opacity-100 focus-within:opacity-100"
+          class="opacity-0 group-hover/card:opacity-100 peer-focus-within:opacity-100 focus-within:opacity-100"
           pos="absolute right-3 top-3"
           :resume="resume"
           @update="emit('update')"

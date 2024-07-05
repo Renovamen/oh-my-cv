@@ -50,9 +50,9 @@ toolbar:
   cjk: 中日韩
   en: 英文
   theme_color: 主题色
-  paragraph: 段间距
-  line: 行间距
-  margin: 页边距
+  paragraph_spacing: 段间距
+  line_height: 行间距
+  margins: 页边距
   vertical: 上下
   horizontal: 左右
 

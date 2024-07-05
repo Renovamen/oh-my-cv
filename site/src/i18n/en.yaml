@@ -50,9 +50,9 @@ toolbar:
   cjk: CJK
   en: English
   theme_color: Theme Color
-  paragraph: Paragraph Spacing
-  line: Line Spacing
-  margin: Margin
+  paragraph_spacing: Paragraph Spacing
+  line_height: Line Spacing
+  margins: Margins
   vertical: Top & Bottom
   horizontal: Left & Right
 

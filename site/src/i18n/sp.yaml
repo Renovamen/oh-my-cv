@@ -50,9 +50,9 @@ toolbar:
   cjk: CJK
   en: Inglés
   theme_color: Color y tema
-  paragraph: Espaciado de párrafo
-  line: Espaciado de línea
-  margin: Margenes
+  paragraph_spacing: Espaciado de párrafo
+  line_height: Espaciado de línea
+  margins: Margenes
   vertical: Arriba & Abajo
   horizontal: Izquierdo & Derecho
 

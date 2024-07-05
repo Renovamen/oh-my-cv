@@ -8,55 +8,55 @@
 <script lang="tsx" setup>
 const sections = [
   {
-    name: "file",
+    id: "file",
     icon: "i-carbon:import-export",
     component: <EditorToolbarFile id="toolbar-file" />
   },
   {
-    name: "paper",
+    id: "paper",
     icon: "i-majesticons:paper-fold-line",
     component: <EditorToolbarPaper id="toolbar-paper" />
   },
   {
-    name: "theme-color",
+    id: "theme_color",
     icon: "i-material-symbols:palette-outline",
-    component: <EditorToolbarThemeColor id="toolbar-theme-color" />
+    component: <EditorToolbarThemeColor id="toolbar-theme_color" />
   },
   {
-    name: "font-family",
+    id: "font_family",
     icon: "i-material-symbols:font-download-outline",
-    component: <EditorToolbarFontFamily id="toolbar-font-family" />
+    component: <EditorToolbarFontFamily id="toolbar-font_family" />
   },
   {
-    name: "font-size",
+    id: "font_size",
     icon: "i-ri:font-size-2",
-    component: <EditorToolbarFontSize id="toolbar-font-size" />
+    component: <EditorToolbarFontSize id="toolbar-font_size" />
   },
   {
-    name: "margins",
+    id: "margins",
     icon: "i-radix-icons:margin",
     component: <EditorToolbarMargins id="toolbar-margins" />
   },
   {
-    name: "paragraph-space",
+    id: "paragraph_spacing",
     icon: "i-icon-park-outline:paragraph-break-two",
-    component: <EditorToolbarParagraphSpace id="toolbar-paragraph-space" />
+    component: <EditorToolbarParagraphSpace id="toolbar-paragraph_spacing" />
   },
   {
-    name: "line-height",
+    id: "line_height",
     icon: "i-ic:round-format-line-spacing",
-    component: <EditorToolbarLineHeight id="toolbar-line-height" />
+    component: <EditorToolbarLineHeight id="toolbar-line_height" />
   },
   {
-    name: "correct-case",
+    id: "correct_case",
     icon: "i-icon-park-outline:check-correct",
-    component: <EditorToolbarCorrectCase id="toolbar-correct-case" />
+    component: <EditorToolbarCorrectCase id="toolbar-correct_case" />
   }
 ];
 
-const scrollTo = (name: string) => {
+const scrollTo = (id: string) => {
   const toolbar = document.querySelector("#toolbar") as HTMLElement;
-  const section = document.querySelector(`#toolbar-${name}`) as HTMLElement;
+  const section = document.querySelector(`#toolbar-${id}`) as HTMLElement;
 
   toolbar.scrollTo({
     // offsetTop - header height - margin top
@@ -84,20 +84,32 @@ const ToolList = () => (
   </div>
 );
 
-const Navigation = () => (
-  <div
-    class="flex-center flex-col flex-none gap-1 w-10 bg-accent"
-    border="l dashed lg:none"
-  >
-    {sections.map((item) => (
-      <UiButton
-        size="round"
-        variant="ghost-secondary"
-        onClick={() => scrollTo(item.name)}
-      >
-        <span class={`${item.icon} size-4`} />
-      </UiButton>
-    ))}
-  </div>
-);
+const Navigation = () => {
+  const { t } = useI18n();
+
+  return (
+    <div
+      class="flex-center flex-col flex-none gap-1 w-10 bg-accent"
+      border="l dashed lg:none"
+    >
+      {sections.map((item) => {
+        const label =
+          t(`toolbar.${item.id}`) === `toolbar.${item.id}`
+            ? t(`toolbar.${item.id}.text`)
+            : t(`toolbar.${item.id}`);
+
+        return (
+          <UiButton
+            size="round"
+            variant="ghost-secondary"
+            onClick={() => scrollTo(item.id)}
+            aria-label={label}
+          >
+            <span class={`${item.icon} size-4`} />
+          </UiButton>
+        );
+      })}
+    </div>
+  );
+};
 </script>

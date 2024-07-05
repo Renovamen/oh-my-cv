@@ -1,6 +1,6 @@
 <template>
   <EditorToolbarBox
-    :text="$t('toolbar.paragraph')"
+    :text="$t('toolbar.paragraph_spacing')"
     icon="i-icon-park-outline:paragraph-break-two"
   >
     <SharedUiSlider

@@ -1,5 +1,5 @@
 <template>
-  <EditorToolbarBox :text="$t('toolbar.margin')" icon="i-radix-icons:margin">
+  <EditorToolbarBox :text="$t('toolbar.margins')" icon="i-radix-icons:margin">
     <div hstack text-muted-foreground space-x-1 justify-end>
       <span i-icon-park-outline:margin-one />
       <span>{{ $t("toolbar.vertical") }}</span>
