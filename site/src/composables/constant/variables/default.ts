@@ -2,7 +2,7 @@ import { PREVIEW_SELECTOR } from "./render";
 import type { ResumeStyles } from "../../stores/style";
 
 export const DEFAULT_STYLES = {
-  marginV: 55,
+  marginV: 50,
   marginH: 45,
   lineHeight: 1.3,
   paragraphSpace: 5,
@@ -21,31 +21,35 @@ export const DEFAULT_STYLES = {
 export const DEFAULT_MD_CONTENT = `---
 name: Haha Ha
 header:
+  - text: |
+      <span style="font-size: 1.2em; font-weight: bold;">Applying for: Cooking Engineer</span>
   - text: <span class="iconify" data-icon="tabler:phone"></span> (+1) 123-456-7890
-  - text: <span class="iconify" data-icon="tabler:mail"></span> renovamenzxh@gmail.com
-    link: mailto:renovamenzxh@gmail.com
+    newLine: true
+  - text: <span class="iconify" data-icon="tabler:mail"></span> icancook@email.com
+    link: mailto:icancook@email.com
   - text: <span class="iconify" data-icon="tabler:brand-github"></span> Renovamen
     link: https://github.com/Renovamen
-  - text: <span class="iconify" data-icon="tabler:brand-linkedin"></span> xiaohan-zou
-    link: https://www.linkedin.com/in/xiaohan-zou/
-  - text: <span class="iconify" data-icon="charm:person"></span> zxh.io
-    link: https://zxh.io
-  - text: <span class="iconify" data-icon="ic:outline-location-on"></span> 1234 Abc Street, Boston, MA 02215
-    newLine: true
+  - text: <span class="iconify" data-icon="charm:person"></span> zxh.me
+    link: https://zxh.me
 ---
+
+<!-- Important: Replace all template content, especially contact details, with your own information. -->
+
+<!-- Important: When updating your email address, remember to change both the "text" (visible text) and the "link" (underlying hyperlink) fields. -->
+
 
 ## Education
 
-**University of Charles River**
-  ~ Boston, MA
+**Harvest University**
+  ~ Cambridge, MA
 
-M.S. in Computer Science
+M.S. in Cooking Science
   ~ 09/2021 - 01/2023
 
-**Huangdu Institute of Technology**
+**Huangdu Institute of Tofu**
   ~ Shanghai, China
 
-B.Eng. in Software Engineering
+B.Eng. in Salad Engineering
   ~ 09/2016 - 07/2020
 
 
@@ -55,52 +59,52 @@ B.Eng. in Software Engineering
 
     <u>Haha Ha</u>, San Zhang
 
-    *Conference on Neural Information Processing Systems (NeurIPS), 2099*
+    *Conference on Nutritional Ingredients Processing Systems (NIPS), 2099*
 
 [~P2]: **You Only Cook Once: Unified, Real-Time Mapo Tofu Recipe**
 
     <u>Haha Ha</u>, San Zhang, Si Li, Wu Wang
 
-    *Computer Vision and Pattern Recognition Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
+    *Culinary Visualization and Potato Roasting Conference (CVPR), 2077 **(Best Paper Honorable Mention)***
 
 
 ## Experience
 
-**Machine Learning Engineer Intern**
-  ~ Slow Feet Technology
+**Cooking Engineer Intern**
+  ~ Microwavesoft
   ~ 07/2021 - Present
 
-- Devised a new food-agnostic formulation for fine-grained cross-ingredient meal cooking and subsumed the recent popular works into the proposed scheme
-- Proposed a cream of mushroom soup recipe which is competitive when compared with the SOTA recipes with complex steps by only altering the way of cutting mushroom, published in NeurIPS 2099 (see [~P1])
-- Developed a pan for meal cooking which is benefiting the group members' research work
+- Developed an innovative, versatile cooking methodology applicable across diverse ingredients, incorporating and improving upon recent culinary trends
+- Created a streamlined cream of mushroom soup recipe, achieving results comparable to complex state-of-the-art techniques through a novel mushroom-cutting approach; published in NIPS 2099 (see [~P1])
+- Designed a specialized cooking pan that enhanced research efficiency for team members
 
 
-**Reseach Intern**
-  ~ Paddling University
+**Engineering Chef Intern**
+  ~ University of California, Berkebake
   ~ 08/2020 - Present
 
-- Designed an efficient method for mapo tofu quality estimation via thermometer
-- Proposed a fast stir frying algorithm for tofu cooking problems, which specifies the amount of the hot sauce instead of using terms like "as much as you can", published in CVPR 2077 (see [~P2])
-- Outperformed SOTA methods while cooking much more efficient in experiments on popular tofu
+- Developed a precise mapo tofu quality assessment technique using thermometer-based measurements
+- Invented a rapid stir-frying algorithm for tofu cooking, replacing vague instructions like "add as much as you can" with specific hot sauce measurements; published in CVPR 2077 (see [~P2])
+- Outperformed SOTA cooking methods in both efficiency and quality across experiments with popular tofu types
 
 
-**Research Assistant**
-  ~ Huangdu Institute of Technology
+**Student Chef**
+  ~ Cabbage Melon University
   ~ 03/2020 - 06/2020
 
-- Proposed a novel framework consisting of a spoon and a pair of chopsticks for eating mapo toufu
-- Designed a tofu filtering strategy inspired by beans grinding method for building a dataset for this new task
-- Designed two new evaluation criteria to assess the novelty and diversity of the eating plans
-- Outperformed baselines and existed methods substantially in terms of diversity, novelty and coherence
+- Developed an innovative mapo tofu consumption framework utilizing a spoon-chopstick combination
+- Engineered a filtering method for tofu dataset creation, inspired by bean grinding techniques
+- Established two new metrics for evaluating eating plan novelty and diversity
+- Significantly surpassed existing methods and baselines in diversity, novelty, and coherence
 
 
-**Reseach Intern**
-  ~ Paddling University
+**Research Chef Intern**
+  ~ Snapchopstick
   ~ 07/2018 - 08/2018
 
-- Designed two sandwiches consisting of breads and meat of two traditional bacon cheese burgers to make use of unused ingredients
-- Utilized the structure duality to boost the cooking speed of two dual tasks based on shared ingredients
-- Outperformed strong baselines on QWE'15 and ASDF'14 dataset
+- Designed two novel sandwiches by repurposing breads and meat from traditional bacon cheeseburgers, maximizing resource efficiency
+- Leveraged structure duality to boost cooking speed for two complementary tasks based on shared ingredients
+- Surpassed strong baselines on QWE'15 and ASDF'14 dataset
 
 
 ## Awards and Honors
@@ -108,15 +112,15 @@ B.Eng. in Software Engineering
 **Gold**, International Collegiate Catching Fish Contest (ICCFC)
   ~ 2018
 
-**First Prize**, China National Scholarship for Outstanding Dragons
+**First Prize**, China National Scholarship for Outstanding Dragon Killers
   ~ 2017, 2018
 
 
 ## Skills
 
-**Programming Languages:** <span class="iconify" data-icon="vscode-icons:file-type-python"></span> Python, <span class="iconify" data-icon="vscode-icons:file-type-js-official"></span> JavaScript / <span class="iconify" data-icon="vscode-icons:file-type-typescript-official"></span> TypeScript, <span class="iconify" data-icon="vscode-icons:file-type-html"></span> HTML / <span class="iconify" data-icon="vscode-icons:file-type-css"></span> CSS, <span class="iconify" data-icon="logos:java" data-inline="false"></span> Java
+**Programming Languages:** <span class="iconify" data-icon="vscode-icons:file-type-python"></span> Frython, <span class="iconify" data-icon="vscode-icons:file-type-js-official"></span> JavaSauce / <span class="iconify" data-icon="vscode-icons:file-type-typescript-official"></span> TypeSauce, <span class="iconify" data-icon="vscode-icons:file-type-cpp2"></span> Cheese++, <span class="iconify" data-icon="logos:java" data-inline="false"></span> Java Bean
 
-**Tools and Frameworks:** Git, PyTorch, Keras, scikit-learn, Linux, Vue, React, Django, $\\LaTeX$
+**Tools and Frameworks:** GrillHub, PanFlow, TensorFork, SpiceNet, $\\LaTeX$
 
 **Languages:** Chinese (native), English (proficient)
 `;
