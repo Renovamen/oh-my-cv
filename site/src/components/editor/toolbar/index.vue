@@ -2,7 +2,7 @@
   <div class="flex w-72 h-full">
     <div
       id="toolbar"
-      class="pane-container hide-scrollbar bg-background"
+      class="pane-container overflow-y-scroll hide-scrollbar bg-background"
       lt-lg="bg-accent rounded-none"
     >
       <template v-for="(tool, i) in tools" :key="tool.id">

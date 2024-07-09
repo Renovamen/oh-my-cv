@@ -8,7 +8,7 @@
 }
 
 .pane-container {
-  @apply h-full rounded-xl overflow-scroll;
+  @apply h-full rounded-xl;
 }
 
 /* Print mode */
