@@ -34,7 +34,8 @@
   #code-pane,
   #code-preview-handle,
   #tools-pane,
-  #nuxt-devtools-container {
+  #nuxt-devtools-container,
+  [data-radix-popper-content-wrapper] {
     display: none !important;
   }
 
