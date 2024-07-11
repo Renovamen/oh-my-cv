@@ -9,10 +9,10 @@
     />
 
     <div text="xs muted-foreground" mt-1.5>
-      {{ $t("dashboard.updated") }}{{ updated_at }}
+      {{ $t("dashboard.updated") }}{{ formatDate(resume.updated_at) }}
     </div>
     <div text="xs muted-foreground" mt-0.5>
-      {{ $t("dashboard.created") }}{{ created_at }}
+      {{ $t("dashboard.created") }}{{ formatDate(resume.created_at) }}
     </div>
   </div>
 </template>
@@ -45,7 +45,4 @@ const formatDate = (date?: string) =>
     .substring(0, 19)
     .replace("T", " ")
     .replaceAll("-", "/");
-
-const created_at = computed(() => formatDate(props.resume.created_at));
-const updated_at = computed(() => formatDate(props.resume.updated_at));
 </script>

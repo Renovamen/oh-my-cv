@@ -49,11 +49,11 @@ const emit = defineEmits<{
 }>();
 
 const { PAPER } = useConstant();
+const size = PAPER.SIZES[props.resume.styles.paper];
 
-const size = computed(() => PAPER.SIZES[props.resume.styles.paper]);
 const renderRef = ref<InstanceType<typeof SharedResumeRender>>();
 
-const updateResumeItem = async () => {
+onMounted(async () => {
   // set styles that are defined via CSS editor
   dynamicCssService.injectCssEditor(props.resume.css, props.resume.id);
   // load Google fonts
@@ -64,10 +64,7 @@ const updateResumeItem = async () => {
   // force update resume render
   await delay(100);
   renderRef.value?.render();
-};
-
-onMounted(updateResumeItem);
-onUpdated(updateResumeItem);
+});
 </script>
 
 <style scoped>
