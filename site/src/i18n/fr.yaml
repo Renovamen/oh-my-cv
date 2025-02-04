@@ -1,0 +1,84 @@
+lang: Langage
+
+toggle_theme: Changer de theme
+open_toolbar: Ouvrir la barre d'outils
+close_toolbar: Fermer la barre d'outils
+
+head:
+  title: Oh My CV! - Éditeur de CV en ligne gratuit
+  desc: Éditeur de CV en ligne gratuit, qui vous permet de créer votre CV en seulement quelques minutes !
+  keywords: éditeur de CV, créateur de CV, éditeur de curriculum vitae, CV en Markdown 
+landing:
+  hero: Écrivez des <span text-primary>CV</span> en Markdown!
+  desc: C'est un outil gratuit et open-source vous permettant de créer et gérer vos CVs, sans toucher à vos données personelles.
+  start: Créer mon CV
+  feats:
+    - title: Simple et Puissant
+      items: Gérer plusieurs CV à la fois<br>Aperçu en temps réel<br>Entièrement personnalisable<br>Exportation sous PDF<br>Choisissez vos polices et icônes<br>Et bien<a href="https://github.com/Renovamen/oh-my-cv#features" target="_blank">d'autres fonctionnalités </a>
+    - title: Respect de votre vie privée
+      items: Open-source et gratuit<br>Toutes les données sont stockées en local<br>Pas besoin de s'inscrire ni de se connecter<br>Pas de traçage des utilisateurs<br>Sans publicité
+
+dashboard:
+  my_resumes: Mes CVs
+  created: "Crée: "
+  updated: "Mis à jour: "
+  new: Nouveau
+  saveas: Enregistrer sous...
+  import: Importer depuis...
+  rename: Renommer
+  duplicate: Dupliquer
+  delete: Supprimer
+
+toolbar:
+  file:
+    title: Fichier
+    save: Enregistrer
+    rename: Renommer
+    import:
+      trigger: Importation Markdown
+      dialog:
+        header: Importer un fichier Markdown
+        from_local: Glisser votre fichier ici, ou cliquer pour choisir un fichier
+        from_url: Coller l'url du fichier
+    export_pdf:
+      title: Exportation PDF
+      alert:
+        title: Prudence!
+        content: Lorsque vous imprimer sous Windows, selectionnez bien "Enregistrer vers PDFF" dans les réglages de la fenêtre d'impression, <b>ne pas choisir</b> "Microsoft Print to PDF".
+    export_md: Exportation Markdown
+  correct_case:
+    title: Corriger la casse
+    example:
+      title: Exemple
+      content: |
+        "Github" → "GitHub"
+    note:
+      title: Remarque
+      content: Les mots qui ne sont qu'en majuscule ou en minuscule ("GITHUB" ou "github") ne seront pas affectés.
+    btn : Corrgier!
+  paper_size: Taille de la feuille
+  theme_color: Couleur du thème
+  font_family:
+    title: Famille de police
+    cjk: CJK
+    en: Anglais
+  font_size: Taille de la police
+  margins:
+    title: Marges
+    vertical: Haut et bas
+    horizontal: Droite et gauche
+  paragraph_spacing: Espace entre les paragraphes
+  line_height: Espace entre les lignes
+
+notification:
+  save: Vos changements ont été enregistrés
+  switch: Basculé vers le CV "{msg}"
+  delete: Le CV  "{msg}" a été supprimé
+  new: Nouveau CV crée
+  duplicate: Copie "{new}" du CV "{old}"
+  correct:
+    yes: {num} mots corrigés 
+    no : Aucune correction nécéssaire!
+  import:
+    yes: Les données ont bine été importées!
+    no : Format des données incorrect.
