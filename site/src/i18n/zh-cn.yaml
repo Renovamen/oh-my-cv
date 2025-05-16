@@ -56,13 +56,14 @@ toolbar:
     note:
       title: 解释
       content: 不会修正全为大写或小写字母的单词（如“GITHUB”或“github”）。
-    btn : 修正
+    btn: 修正
   paper_size: 纸张尺寸
   theme_color: 主题色
   font_family:
     title: 字体
     cjk: 中日韩
     en: 英文
+    machine: 本机
   font_size: 字号
   margins:
     title: 页边距
@@ -79,7 +80,7 @@ notification:
   duplicate: 已创建简历 "{old}" 的副本 "{new}"
   correct:
     yes: 成功修正 {num} 个单词
-    no : 您的所有拼写都是正确的！
+    no: 您的所有拼写都是正确的！
   import:
     yes: 已成功导入数据！
-    no : 数据格式不正确
+    no: 数据格式不正确

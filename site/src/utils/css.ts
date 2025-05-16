@@ -46,7 +46,8 @@ export class DynamicCssService {
   private fontFamily = (selector: string, styles: ResumeStyles) => {
     const fontEN = styles.fontEN.fontFamily || styles.fontEN.name;
     const fontCJK = styles.fontCJK.fontFamily || styles.fontCJK.name;
-    return `${selector} { font-family: ${fontEN}, ${fontCJK}, Arial, Helvetica, sans-serif; }`;
+    const fontMachine = styles.fontMachine.fontFamily || fontEN;
+    return `${selector} { font-family: ${fontMachine}, ${fontEN}, ${fontCJK}, Arial, Helvetica, sans-serif; }`;
   };
 
   private fontSize = (selector: string, styles: ResumeStyles) => {

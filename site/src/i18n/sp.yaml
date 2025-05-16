@@ -56,13 +56,14 @@ toolbar:
     note:
       title: Nota
       content: No se modificarán las palabras que sólo contengan mayúsculas o minúsculas ("GITHUB" or "github").
-    btn : Corrígelo!
+    btn: Corrígelo!
   paper_size: Tamaño de hoja
   theme_color: Color y tema
   font_family:
     title: Fuente
     cjk: CJK
     en: Inglés
+    machine: Nativo
   font_size: Tamaño de Fuente
   margins:
     title: Margenes
@@ -79,7 +80,7 @@ notification:
   duplicate: Created resume "{old}"'s duplication "{new}"
   correct:
     yes: Corregidos {num} palabras
-    no : Buen trabajo, no hubo nada que corregir!
+    no: Buen trabajo, no hubo nada que corregir!
   import:
     yes: Datos importados correctamente!
-    no : Formato de datos inválido.
+    no: Formato de datos inválido.

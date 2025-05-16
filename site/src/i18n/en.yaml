@@ -56,13 +56,14 @@ toolbar:
     note:
       title: Note
       content: Words that are only in uppercase or lowercase ("GITHUB" or "github") will be left untouched.
-    btn : Correct it!
+    btn: Correct it!
   paper_size: Paper Size
   theme_color: Theme Color
   font_family:
     title: Font Family
     cjk: CJK
     en: English
+    machine: Machine
   font_size: Font Size
   margins:
     title: Margins
@@ -79,7 +80,7 @@ notification:
   duplicate: Created resume "{old}"'s duplication "{new}"
   correct:
     yes: Corrected {num} words
-    no : All case are correct!
+    no: All case are correct!
   import:
     yes: Data has been successfully imported!
-    no : Data format is invalid.
+    no: Data format is invalid.

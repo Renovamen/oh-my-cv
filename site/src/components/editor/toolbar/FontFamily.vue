@@ -15,7 +15,7 @@
       <span w-13>{{ $t("toolbar.font_family.cjk") }}</span>
     </div>
 
-    <div class="hstack gap-x-2 w-full">
+    <div class="hstack gap-x-2 w-full mb2">
       <SharedUiCombobox
         v-if="loaded"
         id="font-en"
@@ -25,6 +25,18 @@
       />
       <UiSkeleton v-else class="flex-1 h-9" />
       <span w-13>{{ $t("toolbar.font_family.en") }}</span>
+    </div>
+
+    <div v-if="machineFonts.length > 0" class="hstack gap-x-2 w-full">
+      <SharedUiCombobox
+        v-if="loaded"
+        id="font-machine"
+        class="flex-1"
+        :items="machineFonts"
+        :default-value="styles.fontMachine.fontFamily || styles.fontMachine.name"
+      />
+      <UiSkeleton v-else class="flex-1 h-9" />
+      <span w-13>{{ $t("toolbar.font_family.machine") }}</span>
     </div>
   </EditorToolbarBox>
 </template>
@@ -63,6 +75,8 @@ const loaded = ref(false);
 const gfEn = ref<ComboboxItem[]>([]);
 const gfCjk = ref<ComboboxItem[]>([]);
 
+const machineFonts = ref<ComboboxItem[]>([]);
+
 onMounted(async () => {
   const { en, cjk } = await googleFontsService.get();
 
@@ -88,6 +102,28 @@ onMounted(async () => {
         Number(FONT.GF.CJK_FIRST.includes(b.label)) -
         Number(FONT.GF.CJK_FIRST.includes(a.label))
     );
+
+  if ("queryLocalFonts" in window) {
+    // @ts-ignore: Chrome 103 Experimental
+    window.queryLocalFonts().then((fonts) => {
+      const uniqFamily: Record<string, boolean> = {};
+
+      for (const font of fonts) {
+        if (uniqFamily[font.family]) {
+          continue;
+        } else {
+          uniqFamily[font.family] = true;
+        }
+
+        machineFonts.value.push({
+          label: font.fullName,
+          value: font.family,
+          onSelect: () =>
+            setStyle("fontMachine", { name: font.fullName, fontFamily: font.family })
+        });
+      }
+    });
+  }
 
   loaded.value = true;
 });

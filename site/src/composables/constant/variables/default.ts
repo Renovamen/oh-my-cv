@@ -14,6 +14,7 @@ export const DEFAULT_STYLES = {
   fontEN: {
     name: "Minion Pro"
   },
+  fontMachine: {},
   fontSize: 15,
   paper: "A4"
 } as ResumeStyles;
