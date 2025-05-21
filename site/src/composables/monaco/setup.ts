@@ -61,11 +61,8 @@ export const setupMonacoModel = async (
 ): Promise<MonacoModel> => {
   const { monaco } = await setupMonaco();
 
-  const disposables: Monaco.IDisposable[] = [];
   const model = monaco.editor.createModel(content, language);
-
-  disposables.push(model);
-  disposables.push(model.onDidChangeContent(onChange));
+  const disposables: Monaco.IDisposable[] = [model, model.onDidChangeContent(onChange)];
 
   return {
     get: () => model,
@@ -110,4 +107,61 @@ export const setupMonacoTheme = async (monaco: typeof Monaco) => {
 
   setTheme(colorMode.value);
   watch(() => colorMode.value, setTheme);
+};
+
+export const setupMonacoFileDrop = async (
+  container: HTMLElement,
+  editor: Monaco.editor.IStandaloneCodeEditor
+) => {
+  const { monaco } = await setupMonaco();
+  const fileUris: string[] = [];
+
+  return (
+    model: MonacoModel,
+    transformIntoMd: (fileName: string, uri: string) => string
+  ) => {
+    const modelId = model.get().id;
+
+    let disposed = false;
+    model.get().onWillDispose(() => {
+      disposed = true;
+    });
+
+    function displayLocalImage(evt: DragEvent) {
+      if (disposed) return;
+      if (editor?.getModel()?.id !== modelId) return;
+
+      evt.stopPropagation();
+      evt.preventDefault();
+
+      const file = evt.dataTransfer?.files?.[0];
+      if (!file?.type.match("image.*")) {
+        return;
+      }
+
+      const uri = window.URL.createObjectURL(file);
+      fileUris.push(uri);
+      const insertText = transformIntoMd(file.name, uri);
+      const curSelection = editor.getSelection();
+
+      if (!curSelection) return;
+      const { startLineNumber, startColumn, endLineNumber, endColumn } = curSelection;
+      editor.executeEdits("move cursor after inserted local image", [
+        {
+          range: new monaco.Range(startLineNumber, startColumn, endLineNumber, endColumn),
+          text: insertText,
+          forceMoveMarkers: true
+        }
+      ]);
+    }
+
+    const dispose = () => {
+      disposed = true;
+      fileUris.forEach((uri) => window.URL.revokeObjectURL(uri));
+      container?.removeEventListener("drop", displayLocalImage);
+    };
+    container.addEventListener("drop", displayLocalImage, false);
+
+    return dispose;
+  };
 };

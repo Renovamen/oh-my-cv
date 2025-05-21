@@ -37,6 +37,7 @@ header:
 
 <!-- Important: When updating your email address, remember to change both the "text" (visible text) and the "link" (underlying hyperlink) fields. -->
 
+<!-- Note: You can drag and drop a local image to insert it. -->
 
 ## Education
 
