@@ -132,7 +132,7 @@ export const DEFAULT_CSS_CONTENT = `/* Backbone CSS for Resume Template 1 */
 ${PREVIEW_SELECTOR} [data-scope="vue-smart-pages"][data-part="page"] {
   background-color: white;
   color: black;
-  text-align: justify;
+  text-align: start;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
