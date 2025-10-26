@@ -29,6 +29,12 @@ dashboard:
   rename: Renombrar
   duplicate: Duplicar
   delete: Eliminar
+  delete_confirm:
+    title: Eliminar CV
+    message: ¿Estás seguro de que quieres eliminar "{name}"? Esta acción no se puede deshacer.
+    placeholder: Escribe 'delete' para confirmar
+    button: Eliminar CV
+  cancel: Cancelar
 
 toolbar:
   file:

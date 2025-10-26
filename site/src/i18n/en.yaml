@@ -29,6 +29,12 @@ dashboard:
   rename: Rename
   duplicate: Duplicate
   delete: Delete
+  delete_confirm:
+    title: Delete Resume
+    message: Are you sure you want to delete "{name}"? This action cannot be undone.
+    placeholder: Type 'delete' to confirm
+    button: Delete Resume
+  cancel: Cancel
 
 toolbar:
   file:

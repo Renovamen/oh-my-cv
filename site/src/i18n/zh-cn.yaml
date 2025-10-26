@@ -29,6 +29,12 @@ dashboard:
   duplicate: 创建副本
   rename: 重命名
   delete: 删除
+  delete_confirm:
+    title: 删除简历
+    message: 确定要删除 "{name}" 吗？此操作无法撤销。
+    placeholder: 输入 'delete' 以确认
+    button: 删除简历
+  cancel: 取消
 
 toolbar:
   file:

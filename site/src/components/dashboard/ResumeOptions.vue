@@ -16,7 +16,7 @@
       size="round"
       variant="destructive"
       class="group/btn gap-x-1 transition-all bg-destructive/90 hover:(bg-destructive w-auto px-2) focus-visible:(w-auto px-2)"
-      @click="remove"
+      @click="openDeleteDialog"
       :aria-label="$t('dashboard.delete')"
     >
       <span i-material-symbols:delete-outline-rounded />
@@ -24,6 +24,38 @@
         {{ $t("dashboard.delete") }}
       </span>
     </UiButton>
+
+    <UiDialog v-model:open="deleteDialogOpen">
+      <UiDialogContent>
+        <UiDialogHeader>
+          <UiDialogTitle>{{ $t('dashboard.delete_confirm.title') }}</UiDialogTitle>
+          <UiDialogDescription>
+            {{ $t('dashboard.delete_confirm.message', { name: props.resume.name }) }}
+          </UiDialogDescription>
+        </UiDialogHeader>
+
+        <div class="py-4">
+          <UiInput
+            v-model="deleteConfirmation"
+            :placeholder="$t('dashboard.delete_confirm.placeholder')"
+            @input="deleteConfirmation = $event.target.value"
+          />
+        </div>
+
+        <UiDialogFooter>
+          <UiButton variant="outline" @click="closeDeleteDialog">
+            {{ $t('dashboard.cancel') }}
+          </UiButton>
+          <UiButton
+            variant="destructive"
+            :disabled="deleteConfirmation !== 'delete'"
+            @click="confirmDelete"
+          >
+            {{ $t('dashboard.delete_confirm.button') }}
+          </UiButton>
+        </UiDialogFooter>
+      </UiDialogContent>
+    </UiDialog>
   </div>
 </template>
 
@@ -38,13 +70,30 @@ const emit = defineEmits<{
   (e: "update"): void;
 }>();
 
+// Delete confirmation dialog state
+const deleteDialogOpen = ref(false);
+const deleteConfirmation = ref("");
+
 const duplicate = async () => {
   await storageService.duplicateResume(props.resume.id);
   emit("update");
 };
 
-const remove = async () => {
-  await storageService.deleteResume(props.resume.id);
-  emit("update");
+const openDeleteDialog = () => {
+  deleteDialogOpen.value = true;
+  deleteConfirmation.value = "";
+};
+
+const closeDeleteDialog = () => {
+  deleteDialogOpen.value = false;
+  deleteConfirmation.value = "";
+};
+
+const confirmDelete = async () => {
+  if (deleteConfirmation.value === "delete") {
+    await storageService.deleteResume(props.resume.id);
+    emit("update");
+    closeDeleteDialog();
+  }
 };
 </script>
