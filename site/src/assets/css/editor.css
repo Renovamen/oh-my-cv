@@ -57,6 +57,7 @@
 
   #resume-preview [data-scope="vue-smart-pages"][data-part="page"] {
     break-before: page;
-    height: 100vh !important;
+    height: auto !important;
+    min-height: 100vh;
   }
 }
