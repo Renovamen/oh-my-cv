@@ -6,6 +6,7 @@
           class="gap-x-1.5 w-full h-8 justify-start"
           variant="ghost"
           size="sm"
+          :disabled="exportingPDF"
           @click="exportPDF"
         >
           <span i-mdi:file-pdf text-base />
@@ -39,17 +40,99 @@
 
 <script lang="ts" setup>
 import { downloadFile } from "@renovamen/utils";
+import { toPng } from "html-to-image";
+import jsPDF from "jspdf";
 
 const { data } = useDataStore();
+const { PAPER } = useConstant();
+const { styles } = useStyleStore();
 const saveName = computed(() => data.resumeName.trim().replace(/\s+/g, "_"));
+const exportingPDF = ref(false);
+
+const waitForExportRender = async () => {
+  await nextTick();
+  await document.fonts.ready;
+  await new Promise<void>((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+  });
+};
+
+const getResumePages = () => {
+  const preview = document.getElementById("resume-preview");
+  if (!preview) throw new Error("Resume preview is not ready.");
+
+  const pages = Array.from(
+    preview.querySelectorAll<HTMLElement>(
+      '[data-scope="vue-smart-pages"][data-part="page"]'
+    )
+  );
+  if (pages.length === 0) throw new Error("Resume pages are not ready.");
+
+  return pages;
+};
+
+const getPageSize = (page: HTMLElement) => {
+  return {
+    height: page.offsetHeight || page.scrollHeight,
+    width: page.offsetWidth || page.scrollWidth
+  };
+};
+
+const prepareCloneForExport = (_node: HTMLElement, clone: HTMLElement) => {
+  const zoom = clone.closest(".vue-zoom") as HTMLElement | null;
+
+  if (zoom) {
+    zoom.style.transform = "none";
+    zoom.style.marginLeft = "0";
+  }
+
+  clone.style.transform = "none";
+};
 
 // Export as PDF
-const exportPDF = () => {
-  const title = document.title;
+const exportPDF = async () => {
+  if (exportingPDF.value) return;
 
-  document.title = saveName.value;
-  window.print();
-  document.title = title;
+  exportingPDF.value = true;
+
+  try {
+    await waitForExportRender();
+
+    const pages = getResumePages();
+    const paper = PAPER.SIZES[styles.paper];
+    const pdf = new jsPDF({
+      compress: true,
+      format: [paper.w, paper.h],
+      orientation: paper.w > paper.h ? "landscape" : "portrait",
+      unit: "mm"
+    });
+
+    for (const [index, page] of pages.entries()) {
+      const { height, width } = getPageSize(page);
+      const image = await toPng(page, {
+        backgroundColor: "#fff",
+        cacheBust: true,
+        height,
+        pixelRatio: Math.min(3, Math.max(2, window.devicePixelRatio || 1)),
+        style: {
+          transform: "none"
+        },
+        width,
+        filter: (node) => {
+          if (!(node instanceof HTMLElement)) return true;
+          return !["zoom-bar", "nuxt-devtools-container"].includes(node.id);
+        },
+        onCloneNode: prepareCloneForExport
+      });
+
+      if (index > 0) pdf.addPage([paper.w, paper.h], "portrait");
+      pdf.addImage(image, "PNG", 0, 0, paper.w, paper.h);
+    }
+
+    pdf.save(`${saveName.value}.pdf`);
+  } finally {
+    exportingPDF.value = false;
+  }
 };
 
 // Export as Markdown
