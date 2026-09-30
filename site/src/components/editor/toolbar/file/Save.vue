@@ -25,7 +25,8 @@ const save = async () => {
     name: data.resumeName,
     markdown: data.markdown,
     css: data.css,
-    styles: toRaw(styles)
+    styles: toRaw(styles),
+    photo: data.photo ? { ...toRaw(data.photo) } : null
   });
 };
 

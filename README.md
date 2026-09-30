@@ -22,6 +22,7 @@ Have fun: [ohmycv.app](https://ohmycv.app/)
 - Write your resume in Markdown and enjoy a real-time preview — it's smooth!
 - Export to PDF in A4 and US Letter sizes
 - Automatically paginate your resume like in Microsoft Word
+- Upload a profile photo, resize it, and drag it into place with alignment snapping
 - Customize page margins, theme colors, line heights, fonts, and more
 - Pick any fonts from [Google Fonts](https://fonts.google.com/)
 - Easily add icons using [Iconify](https://github.com/iconify/iconify) (search for icons on [Icônes](https://icones.js.org/))

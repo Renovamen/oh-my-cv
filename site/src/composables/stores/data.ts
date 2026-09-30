@@ -1,6 +1,9 @@
+import type { ResumePhoto } from "~/types/resume";
+
 export type SystemData = {
   markdown: string;
   css: string;
+  photo: ResumePhoto | null;
   resumeId: number | null;
   resumeName: string;
   loaded: boolean;
@@ -12,6 +15,7 @@ export const useDataStore = defineStore("data", () => {
   const data = reactive<SystemData>({
     markdown: "",
     css: "",
+    photo: null,
     resumeId: null,
     resumeName: DEFAULT.RESUME_NAME,
     loaded: false

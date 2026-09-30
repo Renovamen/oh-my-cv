@@ -15,6 +15,7 @@
             ref="renderRef"
             :markdown="resume.markdown"
             :styles="resume.styles"
+            :photo="resume.photo"
             class="origin-top-left"
             :style="{
               transform: `scale(${1 / PAPER.MM_TO_PX})`
@@ -69,7 +70,7 @@ onMounted(async () => {
 
 <style scoped>
 /* Only need to show the first page of the resume card */
-:deep(.resume-render) > *:not(:first-child) {
+:deep(.resume-pages) > *:not(:first-child) {
   @apply hidden;
 }
 </style>

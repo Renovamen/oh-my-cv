@@ -1,16 +1,38 @@
 <template>
-  <div class="resume-render" :id="`resume-${id}`" ref="target" />
+  <div class="resume-render">
+    <div :id="`resume-${id}`" ref="target" class="resume-pages" />
+    <SharedResumePhoto
+      v-if="photo"
+      :photo="photo"
+      :paper="styles.paper"
+      :interactive="interactivePhoto"
+      @update:photo="emit('update:photo', $event)"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { useSmartPages } from "@ohmycv/vue-smart-pages";
 import type { ResumeStyles } from "~/composables/stores/style";
+import type { ResumePhoto } from "~/types/resume";
 
-const props = defineProps<{
-  id: string | number;
-  markdown: string;
-  css?: string;
-  styles: ResumeStyles;
+const props = withDefaults(
+  defineProps<{
+    id: string | number;
+    markdown: string;
+    css?: string;
+    styles: ResumeStyles;
+    photo?: ResumePhoto | null;
+    interactivePhoto?: boolean;
+  }>(),
+  {
+    photo: null,
+    interactivePhoto: false
+  }
+);
+
+const emit = defineEmits<{
+  (event: "update:photo", photo: ResumePhoto): void;
 }>();
 
 const constant = useConstant();
@@ -58,3 +80,16 @@ defineExpose({
   render
 });
 </script>
+
+<style scoped>
+.resume-render {
+  position: relative;
+  width: fit-content;
+}
+
+.resume-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+</style>

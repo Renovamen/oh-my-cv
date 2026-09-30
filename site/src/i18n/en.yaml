@@ -56,8 +56,17 @@ toolbar:
     note:
       title: Note
       content: Words that are only in uppercase or lowercase ("GITHUB" or "github") will be left untouched.
-    btn : Correct it!
+    btn: Correct it!
   paper_size: Paper Size
+  photo:
+    title: Profile Photo
+    upload: Upload photo
+    preview_alt: Profile photo preview
+    width: Photo width
+    reset: Reset position
+    remove: Remove photo
+    move: Drag to move photo
+    invalid: Choose a JPG, PNG, or WebP image under 8 MB
   theme_color: Theme Color
   font_family:
     title: Font Family
@@ -79,7 +88,7 @@ notification:
   duplicate: Created resume "{old}"'s duplication "{new}"
   correct:
     yes: Corrected {num} words
-    no : All case are correct!
+    no: All case are correct!
   import:
     yes: Data has been successfully imported!
-    no : Data format is invalid.
+    no: Data format is invalid.

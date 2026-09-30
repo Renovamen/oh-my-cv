@@ -49,7 +49,8 @@
     margin: 0 !important;
   }
 
-  #resume-preview {
+  #resume-preview,
+  #resume-preview .resume-pages {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
     gap: 0;

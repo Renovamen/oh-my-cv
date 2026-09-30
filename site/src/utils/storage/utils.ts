@@ -31,6 +31,7 @@ export const setResume = async (data: DbResume) => {
 
   setData("markdown", data.markdown);
   setData("css", data.css);
+  setData("photo", data.photo ?? null);
 
   await setResumeStyles(data.styles);
 };
@@ -52,6 +53,27 @@ const _checkObject = (
   );
 };
 
+const _isValidPhoto = (photo: unknown) => {
+  if (photo === undefined || photo === null) return true;
+  if (!isObject(photo)) return false;
+
+  const value = photo as Record<string, unknown>;
+  const dimensions = ["xMm", "yMm", "widthMm", "heightMm"];
+
+  return (
+    typeof value.src === "string" &&
+    /^data:image\/(?:jpeg|png|webp);base64,/.test(value.src) &&
+    dimensions.every(
+      (field) =>
+        typeof value[field] === "number" &&
+        Number.isFinite(value[field]) &&
+        value[field] >= 0
+    ) &&
+    (value.widthMm as number) > 0 &&
+    (value.heightMm as number) > 0
+  );
+};
+
 export class IsValid {
   static font = (font: any) =>
     isObject(font) &&
@@ -70,7 +92,8 @@ export class IsValid {
       Object.entries(data).every(
         ([id, item]) =>
           isInteger(id, { allowString: true }) &&
-          _checkObject(item, VERSION.REQUIRED_DATA_TYPES[version as ValidVersion])
+          _checkObject(item, VERSION.REQUIRED_DATA_TYPES[version as ValidVersion]) &&
+          _isValidPhoto(item.photo)
       )
     );
   };

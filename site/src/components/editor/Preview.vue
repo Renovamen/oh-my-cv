@@ -9,6 +9,9 @@
         :markdown="data.markdown"
         :css="data.css"
         :styles="styles"
+        :photo="data.photo"
+        interactive-photo
+        @update:photo="setData('photo', $event)"
       />
     </VueZoom>
 
@@ -41,7 +44,7 @@ const zoom = ref<InstanceType<typeof VueZoom>>();
 
 const { width, height } = useElementSize(zoom);
 const { styles } = useStyleStore();
-const { data } = useDataStore();
+const { data, setData } = useDataStore();
 const { PAPER } = useConstant();
 
 const fitWidth = () => {

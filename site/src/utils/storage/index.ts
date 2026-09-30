@@ -34,7 +34,8 @@ export class StorageService {
       name: DEFAULT.RESUME_NAME,
       markdown: DEFAULT.MD_CONTENT,
       css: DEFAULT.CSS_CONTENT,
-      styles: DEFAULT.STYLES
+      styles: DEFAULT.STYLES,
+      photo: null
     };
   }
 

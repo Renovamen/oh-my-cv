@@ -38,6 +38,7 @@
 <script setup lang="ts">
 import {
   EditorToolbarFile,
+  EditorToolbarPhoto,
   EditorToolbarPaper,
   EditorToolbarThemeColor,
   EditorToolbarFontFamily,
@@ -53,6 +54,11 @@ const tools = [
     id: "file",
     icon: "i-carbon:import-export",
     component: EditorToolbarFile
+  },
+  {
+    id: "photo",
+    icon: "i-lucide:image",
+    component: EditorToolbarPhoto
   },
   {
     id: "paper_size",
@@ -113,7 +119,7 @@ const { t } = useI18n();
 
 const getTooltip = (id: string) => {
   const key = `toolbar.${id}`;
-  return ["file", "correct_case", "font_family", "margins"].includes(id)
+  return ["file", "photo", "correct_case", "font_family", "margins"].includes(id)
     ? t(`${key}.title`)
     : t(key);
 };

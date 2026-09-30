@@ -1,11 +1,13 @@
 import type { PartialWithRequired } from "@renovamen/utils";
 import type { ResumeStyles } from "~/composables/stores/style";
+import type { ResumePhoto } from "~/types/resume";
 
 export type DbResumeEmpty = {
   name: string;
   markdown: string;
   css: string;
   styles: ResumeStyles;
+  photo?: ResumePhoto | null;
 };
 
 export interface DbResume extends DbResumeEmpty {
