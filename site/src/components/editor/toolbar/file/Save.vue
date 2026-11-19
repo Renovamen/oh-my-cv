@@ -13,6 +13,7 @@
 
 <script lang="ts" setup>
 import { useShortcuts } from "@ohmycv/vue-shortcuts";
+import { gistService } from "~/utils/storage";
 
 const { data } = useDataStore();
 const { styles } = useStyleStore();
@@ -27,6 +28,12 @@ const save = async () => {
     css: data.css,
     styles: toRaw(styles)
   });
+
+  if (gistService.hasToken() && gistService.isAutoSyncEnabled()) {
+    storageService.syncToGithub().catch((err) => {
+      console.warn("GitHub auto-sync error:", err);
+    });
+  }
 };
 
 // Use the shortcut to save the current resume

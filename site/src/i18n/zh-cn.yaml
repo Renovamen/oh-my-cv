@@ -26,6 +26,7 @@ dashboard:
   new: 新建
   saveas: 另存为...
   import: 从...导入
+  github_sync: 云端同步
   duplicate: 创建副本
   rename: 重命名
   delete: 删除

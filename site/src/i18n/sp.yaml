@@ -26,6 +26,7 @@ dashboard:
   new: Nuevo
   saveas: Guardar como...
   import: Importar desde...
+  github_sync: Sincronizar
   rename: Renombrar
   duplicate: Duplicar
   delete: Eliminar

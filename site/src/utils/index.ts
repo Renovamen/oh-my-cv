@@ -1,1 +1,1 @@
-export { StorageService, storageService, IsValid } from "./storage";
+export { StorageService, storageService, IsValid, gistService } from "./storage";
