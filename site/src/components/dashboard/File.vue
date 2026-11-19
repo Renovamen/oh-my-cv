@@ -1,5 +1,6 @@
 <template>
-  <div class="flex gap-2">
+  <div class="flex flex-wrap gap-2">
+    <DashboardGithubSync @update="emits('update')" />
     <UiButton @click="exportToJSON">
       <span i-ic:baseline-save-as size-4 mr-1 />
       {{ $t("dashboard.saveas") }}

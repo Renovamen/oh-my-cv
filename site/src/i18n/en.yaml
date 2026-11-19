@@ -26,6 +26,7 @@ dashboard:
   new: New
   saveas: Save as...
   import: Import from...
+  github_sync: Cloud Sync
   rename: Rename
   duplicate: Duplicate
   delete: Delete

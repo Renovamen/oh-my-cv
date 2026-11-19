@@ -3,6 +3,7 @@ import type { ValidVersion } from "~/composables/constant";
 import { LocalForageDbService } from "./localForage";
 import { setResume, IsValid } from "./utils";
 import { MigrateService } from "./migrate";
+import { gistService } from "./gist";
 import type {
   DbService,
   StorageJson,
@@ -206,9 +207,29 @@ export class StorageService {
 
     toast.import(true);
   }
+
+  public async syncToGithub() {
+    const data = (await this.getResumes()).reduce((acc, { id, ...resume }) => {
+      acc[id] = resume;
+      return acc;
+    }, {} as StorageJsonData);
+
+    const json: StorageJson = {
+      version: this._version,
+      data
+    };
+
+    return await gistService.pushToGist(json);
+  }
+
+  public async syncFromGithub() {
+    const content = await gistService.pullFromGist();
+    await this.importFromJson(content);
+  }
 }
 
 export const storageService = new StorageService("localForage");
 
 export * from "./db";
+export * from "./gist";
 export { IsValid } from "./utils";
